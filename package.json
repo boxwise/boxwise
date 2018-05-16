@@ -4,13 +4,19 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.1.1",
+    "firebase": "^5.0.2",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-redux-firebase": "^2.1.1",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
-    "reactstrap": "^6.0.1"
+    "reactstrap": "^6.0.1",
+    "redux": "^4.0.0",
+    "redux-firestore": "^0.5.2"
   },
   "devDependencies": {
+    "firebase-mock": "^2.2.4",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.0",
     "prettier": "^1.12.1"
