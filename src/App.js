@@ -1,9 +1,13 @@
-import React, { Component } from "react";
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 
-class App extends Component {
-  render() {
-    return <p>Hello world</p>;
-  }
-}
+const App = () => (
+  <BrowserRouter>
+    <div>
+      <Route exact path="/" component={() => <HomePage />} />
+    </div>
+  </BrowserRouter>
+);
 
 export default App;
