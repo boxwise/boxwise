@@ -13,7 +13,7 @@
     "react-scripts": "1.1.4",
     "reactstrap": "^6.0.1",
     "redux": "^4.0.0",
-    "redux-firestore": "^0.5.2"
+    "redux-firestore": "^0.5.4"
   },
   "devDependencies": {
     "firebase-mock": "^2.2.4",
