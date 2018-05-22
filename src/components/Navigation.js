@@ -1,20 +1,17 @@
 import React from "react";
-import { Nav, NavItem, NavLink, Navbar, NavbarBrand } from "reactstrap";
 import { Link } from "react-router-dom";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 
 const Navigation = () => (
-  <Navbar color="light" light expand="md" className="mb-5">
-    <NavbarBrand tag={Link} to="/">
-      Drop App
-    </NavbarBrand>
-    <Nav className="ml-auto" navbar>
-      <NavItem>
-        <NavLink tag={Link} to="/">
-          Home
-        </NavLink>
-      </NavItem>
-    </Nav>
-  </Navbar>
+  <AppBar position="static">
+    <Toolbar>
+      <Typography variant="title" color="inherit">
+        Drop App
+      </Typography>
+    </Toolbar>
+  </AppBar>
 );
 
 export default Navigation;
