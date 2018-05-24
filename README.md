@@ -34,6 +34,11 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
           REACT_APP_FIREBASE_MESSAGING_SENDER_ID=...
 
     * Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable".
+    * Click "Authentication" in the left hand menu, click "Email/Password", flip the first "Enable" switch, then click "Save".
+
+4.  Deploy database rules to your development app.
+
+        $ firebase deploy --only firestore:rules
 
 ## Running the development environment
 
