@@ -6495,13 +6495,13 @@ react-popper@^0.10.4:
     popper.js "^1.14.1"
     prop-types "^15.6.1"
 
-react-redux-firebase@^2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-2.1.1.tgz#bbbb2d3b69707d6ba3dbb6c89df1ff87af8545dc"
+react-redux-firebase@^2.1.4:
+  version "2.1.4"
+  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-2.1.4.tgz#07452180c0d273c8e572291837bf6017531a7fa6"
   dependencies:
     hoist-non-react-statics "^2.3.1"
-    lodash "^4.17.4"
-    prop-types "^15.6.0"
+    lodash "^4.17.10"
+    prop-types "^15.6.1"
 
 react-redux@^5.0.7:
   version "5.0.7"
