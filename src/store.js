@@ -6,8 +6,7 @@ import rootReducer from "./reducers";
 
 const reactReduxConfig = {
   userProfile: "users",
-  useFirestoreForProfile: true,
-  enableLogging: false
+  useFirestoreForProfile: true
 };
 
 const createStoreWithFirebase = compose(
