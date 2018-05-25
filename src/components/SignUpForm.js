@@ -31,7 +31,8 @@ const SignUpForm = ({ firebase, classes, onSuccess }) => (
     }}
     onSubmit={(values, { setSubmitting, setErrors }) => {
       firebase
-        .createUser({ email: values.email, password: values.password })
+        .auth()
+        .createUserWithEmailAndPassword(values.email, values.password)
         .then(user => {
           setSubmitting(false);
           onSuccess(user);
