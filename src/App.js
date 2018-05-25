@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Navigation from "./components/Navigation";
-import HomePage from "./pages/HomePage";
+import AuthedRoute from "./router/AuthedRoute";
+import DashboardPage from "./pages/DashboardPage";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 
@@ -13,8 +13,7 @@ const App = () => (
   <BrowserRouter>
     <div>
       <CssBaseline />
-      <Navigation />
-      <Route exact path="/" component={() => <HomePage />} />
+      <AuthedRoute exact path="/" component={() => <DashboardPage />} />
       <Route exact path="/signup" component={() => <SignUpPage />} />
       <Route exact path="/signin" component={() => <SignInPage />} />
     </div>

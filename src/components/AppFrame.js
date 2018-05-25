@@ -1,0 +1,126 @@
+import React from "react";
+import PropTypes from "prop-types";
+import {
+  withStyles,
+  createMuiTheme,
+  MuiThemeProvider
+} from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import AppDrawer from "./AppDrawer";
+
+const drawerTheme = createMuiTheme({
+  palette: {
+    type: "dark"
+  }
+});
+
+const styles = theme => ({
+  root: {
+    display: "flex",
+    alignItems: "stretch",
+    minHeight: "100vh",
+    width: "100%"
+  },
+  grow: {
+    flex: "1 1 auto"
+  },
+  title: {
+    flex: "0 1 auto"
+  },
+  appBar: {
+    transition: theme.transitions.create("width"),
+    "@media print": {
+      position: "absolute"
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "calc(100% - 250px)"
+    }
+  },
+  drawer: {
+    [theme.breakpoints.up("lg")]: {
+      width: 250
+    }
+  },
+  children: {
+    paddingTop: 80,
+    flex: "1 1 100%",
+    maxWidth: "100%",
+    // margin: "0 auto",
+    [theme.breakpoints.up("md")]: {
+      maxWidth: theme.breakpoints.values.md
+    }
+  },
+  hamburger: {
+    [theme.breakpoints.up("lg")]: {
+      display: "none"
+    }
+  }
+});
+
+class AppFrame extends React.Component {
+  state = {
+    mobileOpen: false
+  };
+
+  handleDrawerOpen = () => {
+    this.setState({ mobileOpen: true });
+  };
+
+  handleDrawerClose = () => {
+    this.setState({ mobileOpen: false });
+  };
+
+  render() {
+    const { children, classes, title } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <AppBar className={classes.appBar}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={this.handleDrawerOpen}
+              className={classes.hamburger}
+            >
+              <MenuIcon />
+            </IconButton>
+            {title !== null && (
+              <Typography
+                className={classes.title}
+                variant="title"
+                color="inherit"
+                noWrap
+              >
+                {title}
+              </Typography>
+            )}
+            <div className={classes.grow} />
+          </Toolbar>
+        </AppBar>
+        <MuiThemeProvider theme={drawerTheme}>
+          <AppDrawer
+            className={classes.drawer}
+            disablePermanent={false}
+            onClose={this.handleDrawerClose}
+            onOpen={this.handleDrawerOpen}
+            mobileOpen={this.state.mobileOpen}
+          />
+        </MuiThemeProvider>
+        <div className={classes.children}>{children}</div>
+      </div>
+    );
+  }
+}
+
+AppFrame.propTypes = {
+  children: PropTypes.node.isRequired,
+  classes: PropTypes.object.isRequired,
+  title: PropTypes.string
+};
+
+export default withStyles(styles)(AppFrame);
