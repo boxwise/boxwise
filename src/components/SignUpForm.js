@@ -1,10 +1,10 @@
 import React from "react";
 import { compose } from "redux";
-import { Formik } from "formik";
+import { Formik, Field } from "formik";
 import { withFirebase } from "react-redux-firebase";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
@@ -42,41 +42,25 @@ const SignUpForm = ({ firebase, classes, onSuccess }) => (
           setErrors({ form: error.message });
         });
     }}
-    render={({
-      values,
-      errors,
-      touched,
-      handleChange,
-      handleBlur,
-      handleSubmit,
-      isSubmitting
-    }) => (
+    render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
         {/* TODO: style errors */}
         {errors.form ? (
           <Typography variant="body1">{errors.form}</Typography>
         ) : null}
-        <TextField
-          error={touched.email && !!errors.email}
+        <Field
           type="email"
-          name="email"
           label="Email"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.email}
-          helperText={touched.email && errors.email}
+          name="email"
+          component={TextField}
           fullWidth
           margin="normal"
         />
-        <TextField
-          error={touched.password && !!errors.password}
+        <Field
           type="password"
-          name="password"
           label="Password"
-          onChange={handleChange}
-          onBlur={handleBlur}
-          value={values.password}
-          helperText={touched.password && errors.password}
+          name="password"
+          component={TextField}
           fullWidth
           margin="normal"
         />
