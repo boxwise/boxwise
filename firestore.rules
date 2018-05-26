@@ -4,5 +4,9 @@ service cloud.firestore {
       // TODO: disallow updating fields
       allow read, create, update: if request.auth.uid == userId;
     }
+    match /products/{productId} {
+      // TODO: correct permissions
+      allow read, create, update, delete;
+    }
   }
 }
