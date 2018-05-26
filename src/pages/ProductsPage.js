@@ -1,7 +1,7 @@
 import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { firestoreConnect, isLoaded, isEmpty } from "react-redux-firebase";
+import { firestoreConnect, isLoaded } from "react-redux-firebase";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Toolbar from "@material-ui/core/Toolbar";
