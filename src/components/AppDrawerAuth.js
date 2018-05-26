@@ -7,7 +7,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { isEmpty, withFirebase } from "react-redux-firebase";
 
-const AppDrawerAuth = ({ auth, firebase }) => {
+const AppDrawerAuth = ({ auth, firebase, organisation }) => {
   if (isEmpty(auth)) {
     return null;
   }
@@ -15,6 +15,9 @@ const AppDrawerAuth = ({ auth, firebase }) => {
     <List>
       <ListItem>
         <ListItemText secondary={`Signed in as ${auth.email}`} />
+      </ListItem>
+      <ListItem>
+        <ListItemText secondary={`Organisation ${organisation.id}`} />
       </ListItem>
       <ListItem button>
         <ListItemText
@@ -34,7 +37,8 @@ AppDrawerAuth.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  auth: state.firebase.auth
+  auth: state.firebase.auth,
+  organisation: state.organisation
 });
 
 export default compose(connect(mapStateToProps), withFirebase)(AppDrawerAuth);
