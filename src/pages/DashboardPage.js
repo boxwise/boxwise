@@ -7,7 +7,7 @@ import Page from "../components/Page";
 
 const styles = theme => ({});
 
-const DashboardPage = ({ auth, classes, firebase }) => (
+const DashboardPage = ({ classes }) => (
   <AppFrame title="Dashboard">
     <Page>
       <Typography variant="body1" gutterBottom>
