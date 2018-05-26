@@ -1,5 +1,4 @@
 import React from "react";
-import { compose } from "redux";
 import { Formik, Field } from "formik";
 import { withFirebase } from "react-redux-firebase";
 import { withStyles } from "@material-ui/core/styles";
@@ -78,4 +77,6 @@ const SignInForm = ({ firebase, classes, onSuccess }) => (
   />
 );
 
-export default compose(withStyles(styles), withFirebase)(SignInForm);
+export const SignInFormUnconnected = withStyles(styles)(SignInForm);
+
+export default withFirebase(SignInFormUnconnected);
