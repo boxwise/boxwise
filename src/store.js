@@ -14,6 +14,9 @@ const createStoreWithFirebase = compose(
   reduxFirestore(firebase)
 )(createStore);
 
-const store = createStoreWithFirebase(rootReducer);
+const store = createStoreWithFirebase(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 export default store;
