@@ -1,5 +1,4 @@
 import React from "react";
-import { compose } from "redux";
 import { Formik, Field } from "formik";
 import { withFirebase } from "react-redux-firebase";
 import { withStyles } from "@material-ui/core/styles";
@@ -29,10 +28,9 @@ const SignUpForm = ({ firebase, classes, onSuccess }) => (
       }
       return errors;
     }}
-    onSubmit={(values, { setSubmitting, setErrors }) => {
+    onSubmit={({ email, password }, { setSubmitting, setErrors }) => {
       firebase
-        .auth()
-        .createUserWithEmailAndPassword(values.email, values.password)
+        .createUser({ email, password })
         .then(user => {
           setSubmitting(false);
           onSuccess(user);
@@ -79,4 +77,7 @@ const SignUpForm = ({ firebase, classes, onSuccess }) => (
   />
 );
 
-export default compose(withStyles(styles), withFirebase)(SignUpForm);
+// For testing
+export const SignUpFormUnconnected = withStyles(styles)(SignUpForm);
+
+export default withFirebase(SignUpFormUnconnected);
