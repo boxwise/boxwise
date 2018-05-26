@@ -19,6 +19,8 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
 
         $ yarn
 
+    You will need to run this again if the `package.json` or `yarn.lock` files are changed by you or somebody else.
+
 3.  Set up an app on Firebase to use as your development environment.
 
     * Go to https://console.firebase.google.com/ and click "Add project".
@@ -44,6 +46,8 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
 5.  Deploy database rules to your development app.
 
         $ yarn run firebase deploy --only firestore:rules
+
+    You will need to run this again if the `firestore.rules` file is changed by you or somebody else.
 
 ## Running the development environment
 
