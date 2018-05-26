@@ -36,9 +36,14 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
     * Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable".
     * Click "Authentication" in the left hand menu, click "Email/Password", flip the first "Enable" switch, then click "Save".
 
-4.  Deploy database rules to your development app.
+4.  Log into Firebase, then select the app you created in the previous step. Give it the alias "development".
 
-        $ firebase deploy --only firestore:rules
+        $ yarn run firebase login
+        $ yarn run firebase use --add
+
+5.  Deploy database rules to your development app.
+
+        $ yarn run firebase deploy --only firestore:rules
 
 ## Running the development environment
 

@@ -21,6 +21,7 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "firebase-mock": "^2.2.4",
+    "firebase-tools": "^3.18.5",
     "husky": "^0.14.3",
     "jest-enzyme": "^6.0.1",
     "lint-staged": "^7.1.0",
