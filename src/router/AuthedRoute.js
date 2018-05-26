@@ -8,7 +8,6 @@ const AuthedRoute = ({ auth, component: Component, ...rest }) => {
     return null; // TODO: loading indicator if this is slow?
   }
   const isLoggedIn = !isEmpty(auth);
-  console.log(isLoggedIn);
 
   return (
     <Route
