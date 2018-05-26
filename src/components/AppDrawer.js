@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
-import AppDrawerAuth from "./AppDrawerAuth";
+import AppDrawerAuthContainer from "./AppDrawerAuthContainer";
 
 const styles = theme => ({
   paper: {
@@ -71,7 +71,7 @@ const AppDrawer = ({
         </ListItem>
       </List>
       <Divider />
-      <AppDrawerAuth />
+      <AppDrawerAuthContainer />
     </div>
   );
 
