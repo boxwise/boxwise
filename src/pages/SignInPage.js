@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import SignInForm from "../components/SignInForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
@@ -11,6 +11,10 @@ const SignInPage = ({ history }) => (
       <Grid item xs={12} md={4}>
         <Typography variant="display1">Sign In</Typography>
         <SignInForm onSuccess={user => history.push("/")} />
+        <br />
+        <Typography variant="body1">
+          <Link to="/signup">Don’t have an account?</Link>
+        </Typography>
       </Grid>
     </Grid>
   </Page>
