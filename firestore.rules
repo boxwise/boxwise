@@ -1,6 +1,7 @@
 service cloud.firestore {
   match /databases/{database}/documents {
     match /users/{userId} {
+      // TODO: disallow updating fields
       allow read, create, update: if request.auth.uid == userId;
     }
   }
