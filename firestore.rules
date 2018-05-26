@@ -8,5 +8,9 @@ service cloud.firestore {
       // TODO: correct permissions
       allow read, create, update, delete;
     }
+    match /organisations/{organisationId} {
+      // TODO: only allow reads of orgs of which user is a member?
+      allow read: if request.auth.uid != null;
+    }
   }
 }
