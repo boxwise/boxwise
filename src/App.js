@@ -14,12 +14,8 @@ const App = () => (
   <BrowserRouter>
     <div>
       <CssBaseline />
-      {/* FIXME: AuthedRoute only seems to work on first load for some reason
       <AuthedRoute exact path="/" component={() => <DashboardPage />} />
       <AuthedRoute exact path="/products" component={() => <ProductsPage />} />
-      */}
-      <Route exact path="/" component={() => <DashboardPage />} />
-      <Route exact path="/products" component={() => <ProductsPage />} />
       <Route exact path="/signup" component={() => <SignUpPage />} />
       <Route exact path="/signin" component={() => <SignInPage />} />
     </div>

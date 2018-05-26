@@ -10,7 +10,8 @@ const SignUpPage = ({ history }) => (
     <Grid container spacing={24} justify="center" alignItems="center">
       <Grid item xs={12} md={4}>
         <Typography variant="display1">Sign Up</Typography>
-        <SignUpForm onSuccess={user => history.push("/")} />
+        {/* setTimeout because we need to let AuthedRoute update */}
+        <SignUpForm onSuccess={user => setTimeout(() => history.push("/"))} />
         <br />
         <Typography variant="body1">
           <Link to="/signin">Already have an account?</Link>

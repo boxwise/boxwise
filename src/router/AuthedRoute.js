@@ -8,6 +8,7 @@ const AuthedRoute = ({ auth, component: Component, ...rest }) => {
     return null; // TODO: loading indicator if this is slow?
   }
   const isLoggedIn = !isEmpty(auth);
+  console.log(isLoggedIn);
 
   return (
     <Route
@@ -29,4 +30,7 @@ const mapStateToProps = state => ({
   auth: state.firebase.auth
 });
 
-export default connect(mapStateToProps)(AuthedRoute);
+// https://github.com/reduxjs/react-redux/blob/master/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
+export default connect(mapStateToProps, null, null, { pure: false })(
+  AuthedRoute
+);
