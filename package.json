@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@material-ui/core": "^1.1.0",
-    "@material-ui/icons": "^1.0.0",
+    "@material-ui/icons": "^1.1.0",
     "firebase": "^5.0.4",
     "formik": "^0.11.11",
     "react": "^16.4.0",
