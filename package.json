@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^1.0.0",
+    "@material-ui/core": "^1.1.0",
     "@material-ui/icons": "^1.0.0",
     "firebase": "^5.0.4",
     "formik": "^0.11.11",
