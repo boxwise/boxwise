@@ -1,6 +1,5 @@
 import React from "react";
 import BoxTable from "./BoxTable";
-import firebase from "../firebase";
 import { FirestoreCollection } from "react-firestore";
 
 const BoxTableContainer = () => (
