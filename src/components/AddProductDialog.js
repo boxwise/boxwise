@@ -35,9 +35,7 @@ const AddProductDialog = ({
     <DialogTitle id="form-dialog-title">Add Product</DialogTitle>
     <Formik
       initialValues={{
-        name: "",
-        description: "",
-        price: ""
+        name: ""
       }}
       validate={values => {
         let errors = {};
@@ -65,21 +63,6 @@ const AddProductDialog = ({
               component={TextField}
               fullWidth
               autoFocus
-              margin="dense"
-            />
-            <Field
-              label="Description"
-              name="description"
-              component={TextField}
-              fullWidth
-              margin="dense"
-            />
-            <Field
-              type="number"
-              label="Price"
-              name="price"
-              component={TextField}
-              fullWidth
               margin="dense"
             />
           </DialogContent>

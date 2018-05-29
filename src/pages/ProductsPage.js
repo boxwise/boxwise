@@ -65,21 +65,13 @@ class ProductsPage extends React.Component {
                   <TableHead>
                     <TableRow>
                       <TableCell>Name</TableCell>
-                      <TableCell>Description</TableCell>
-                      <TableCell numeric>Items</TableCell>
-                      <TableCell numeric>Price</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
                     {products.map(n => {
                       return (
                         <TableRow key={n.id}>
-                          <TableCell component="th" scope="row">
-                            {n.name}
-                          </TableCell>
-                          <TableCell>{n.description}</TableCell>
-                          <TableCell numeric>0</TableCell>
-                          <TableCell numeric>{n.price}</TableCell>
+                          <TableCell>{n.name}</TableCell>
                         </TableRow>
                       );
                     })}
