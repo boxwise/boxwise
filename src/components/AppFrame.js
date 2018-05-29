@@ -46,7 +46,6 @@ const styles = theme => ({
     }
   },
   children: {
-    paddingTop: 80,
     flex: "1 1 100%",
     maxWidth: "100%",
     // margin: "0 auto",
@@ -79,7 +78,7 @@ class AppFrame extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar className={classes.appBar}>
+        <AppBar className={classes.appBar} position="fixed">
           <Toolbar>
             <IconButton
               color="inherit"
@@ -111,7 +110,10 @@ class AppFrame extends React.Component {
             mobileOpen={this.state.mobileOpen}
           />
         </MuiThemeProvider>
-        <div className={classes.children}>{children}</div>
+        <div className={classes.children}>
+          <Toolbar />
+          {children}
+        </div>
       </div>
     );
   }
