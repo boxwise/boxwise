@@ -8147,6 +8147,12 @@ react-event-listener@^0.5.9:
     prop-types "^15.6.0"
     warning "^3.0.0"
 
+react-firestore@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/react-firestore/-/react-firestore-0.8.0.tgz#35766f1e80ec94f1e0522a3879c0e15fd9869526"
+  dependencies:
+    hoist-non-react-statics "^2.3.1"
+
 react-is@^16.4.0:
   version "16.4.0"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.4.0.tgz#cc9fdc855ac34d2e7d9d2eb7059bbc240d35ffcf"

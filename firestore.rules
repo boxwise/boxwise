@@ -8,6 +8,10 @@ service cloud.firestore {
       // TODO: correct permissions
       allow read, create, update, delete;
     }
+    match /boxes/{productId} {
+      // TODO: correct permissions
+      allow read, create, update, delete;
+    }
     match /organisations/{organisationId} {
       // TODO: correct permissions
       allow read, create, update, delete;
