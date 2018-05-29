@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
 import BoxesPage from "./pages/BoxesPage";
+import CreateQRLabelsPage from "./pages/CreateQRLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
@@ -17,6 +18,11 @@ const App = () => (
       <CssBaseline />
       <AuthedRoute exact path="/" component={() => <DashboardPage />} />
       <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
+      <AuthedRoute
+        exact
+        path="/create-qr-labels"
+        component={() => <CreateQRLabelsPage />}
+      />
       <AuthedRoute exact path="/products" component={() => <ProductsPage />} />
       <Route exact path="/signup" component={() => <SignUpPage />} />
       <Route exact path="/signin" component={() => <SignInPage />} />

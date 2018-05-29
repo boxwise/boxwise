@@ -72,6 +72,14 @@ const AppDrawer = ({
         <ListItem component={Link} to="/products" onClick={onClose} button>
           <ListItemText primary="Products" />
         </ListItem>
+        <ListItem
+          component={Link}
+          to="/create-qr-labels"
+          onClick={onClose}
+          button
+        >
+          <ListItemText primary="Create QR Labels" />
+        </ListItem>
       </List>
       <Divider />
       <AppDrawerAuthContainer />
