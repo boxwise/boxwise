@@ -1,6 +1,8 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import { withFirebase } from "react-redux-firebase";
+import { compose } from "redux";
+import { withFirebase, withFirestore } from "react-redux-firebase";
+import actualFirebase from "../firebase";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "../vendor/formik-material-ui/TextField";
@@ -12,7 +14,7 @@ const styles = theme => ({
   }
 });
 
-const SignUpForm = ({ firebase, classes, onSuccess }) => (
+const SignUpForm = ({ firebase, firestore, classes, onSuccess }) => (
   <Formik
     initialValues={{
       email: "",
@@ -29,17 +31,38 @@ const SignUpForm = ({ firebase, classes, onSuccess }) => (
       return errors;
     }}
     onSubmit={({ email, password }, { setSubmitting, setErrors }) => {
-      firebase
-        .createUser({ email, password })
-        .then(user => {
-          setSubmitting(false);
-          onSuccess(user);
+      // HACK: For testing, add user to first organisation that exists.
+      // f$&*ing react-redux-firebase doesn't work so get actual firebase
+      actualFirebase
+        .firestore()
+        .collection("organisations")
+        .get()
+        .then(organisations => {
+          console.log(organisations);
+          if (organisations.empty) {
+            return firestore.add(
+              { collection: "organisations" },
+              { name: "Boxaid" }
+            );
+          } else {
+            return Promise.resolve(organisations.docs[0].ref);
+          }
         })
-        .catch(error => {
-          setSubmitting(false);
-          console.error(error);
-          setErrors({ form: error.message });
-        });
+        .then(organisation => {
+          firebase
+            .createUser({ email, password })
+            .then(user => {
+              firebase.updateProfile({ organisations: [organisation] });
+              setSubmitting(false);
+              onSuccess(user);
+            })
+            .catch(error => {
+              setSubmitting(false);
+              console.error(error);
+              setErrors({ form: error.message });
+            });
+        })
+        .catch(console.error);
     }}
     render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
@@ -81,4 +104,7 @@ const SignUpForm = ({ firebase, classes, onSuccess }) => (
 // For testing
 export const SignUpFormUnconnected = withStyles(styles)(SignUpForm);
 
-export default withFirebase(SignUpFormUnconnected);
+export default compose(
+  withFirebase,
+  withFirestore
+)(SignUpFormUnconnected);

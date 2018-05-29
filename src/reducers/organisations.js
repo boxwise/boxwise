@@ -9,9 +9,13 @@ export const organisationReducer = (state = initialState, action) => {
       return action.organisationId;
     // set default organisation
     case actionTypes.SET_PROFILE:
-      const organisations = action.profile.organisations;
-      if (!state && organisations && organisations.length) {
-        return organisations[0].id;
+      if (
+        !state &&
+        action.profile &&
+        action.profile.organisations &&
+        action.profile.organisations.length
+      ) {
+        return action.profile.organisations[0].id;
       }
       return state;
     default:
