@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { Formik, Field } from "formik";
 import { compose } from "redux";
 import { withStyles } from "@material-ui/core/styles";
-import { withFirestore } from "react-redux-firebase";
 import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -22,7 +21,8 @@ const AddProductDialog = ({
   firestore,
   open,
   fullScreen,
-  onClose
+  onClose,
+  onSubmit
 }) => (
   <Dialog
     className={classes.root}
@@ -44,12 +44,7 @@ const AddProductDialog = ({
         }
         return errors;
       }}
-      onSubmit={(values, { setSubmitting, setErrors }) => {
-        firestore
-          .add("products", values)
-          .then(onClose)
-          .catch(err => setErrors({ form: err.message }));
-      }}
+      onSubmit={onSubmit}
       render={({ handleSubmit, isSubmitting, errors }) => (
         <form onSubmit={handleSubmit}>
           <DialogContent>
@@ -92,6 +87,5 @@ AddProductDialog.propTypes = {
 
 export default compose(
   withStyles(styles),
-  withMobileDialog(),
-  withFirestore
+  withMobileDialog()
 )(AddProductDialog);
