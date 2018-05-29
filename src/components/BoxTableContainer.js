@@ -6,10 +6,7 @@ const BoxTableContainer = () => (
   <FirestoreCollection
     path="boxes"
     render={({ isLoading, data }) => {
-      if (isLoading) {
-        return <p>Loading</p>;
-      }
-      return <BoxTable boxes={data} />;
+      return <BoxTable isLoading={isLoading} boxes={data} />;
     }}
   />
 );
