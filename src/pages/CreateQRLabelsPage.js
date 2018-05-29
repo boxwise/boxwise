@@ -18,7 +18,7 @@ class CreateQRLabelsPage extends React.Component {
   render() {
     var i;
     var labels = [];
-    for (i = 0; i < 100; i++) {
+    for (i = 0; i < 104; i++) {
       labels[i] = i;
     }
 
