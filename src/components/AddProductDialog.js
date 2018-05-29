@@ -100,6 +100,8 @@ AddProductDialog.propTypes = {
   fullScreen: PropTypes.bool.isRequired
 };
 
-export default compose(withStyles(styles), withMobileDialog(), withFirestore)(
-  AddProductDialog
-);
+export default compose(
+  withStyles(styles),
+  withMobileDialog(),
+  withFirestore
+)(AddProductDialog);

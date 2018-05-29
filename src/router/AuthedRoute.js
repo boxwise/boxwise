@@ -30,6 +30,9 @@ const mapStateToProps = state => ({
 });
 
 // https://github.com/reduxjs/react-redux/blob/master/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux
-export default connect(mapStateToProps, null, null, { pure: false })(
-  AuthedRoute
-);
+export default connect(
+  mapStateToProps,
+  null,
+  null,
+  { pure: false }
+)(AuthedRoute);
