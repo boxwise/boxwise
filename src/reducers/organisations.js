@@ -11,7 +11,7 @@ export const organisationReducer = (state = initialState, action) => {
     case actionTypes.SET_PROFILE:
       const organisations = action.profile.organisations;
       if (!state && organisations && organisations.length) {
-        return organisations[0];
+        return organisations[0].id;
       }
       return state;
     default:

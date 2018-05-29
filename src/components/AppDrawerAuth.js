@@ -11,7 +11,7 @@ const AppDrawerAuth = ({ profile, organisation, signOut }) => {
         <ListItemText secondary={`Signed in as ${profile.email}`} />
       </ListItem>
       <ListItem>
-        <ListItemText secondary={`Organisation ${organisation.id}`} />
+        <ListItemText secondary={`Organisation: ${organisation.name}`} />
       </ListItem>
       <ListItem button>
         <ListItemText primary="Sign Out" onClick={signOut} />
