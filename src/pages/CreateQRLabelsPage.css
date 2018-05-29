@@ -1,3 +1,49 @@
-.CreateQRLabelsPage p {
-  color: #c00;
+@page {
+  size: A4 landscape;
+  margin: 5.9mm 0mm 0mm 9.5mm;
+}
+
+.CreateQRLabelsPage .label {
+  background-color: #fff;
+  page-break-inside: avoid;
+  padding: 8mm;
+  width: 139mm;
+  height: 99.1mm;
+  border: 1px solid #eee;
+  float: left;
+  position: relative;
+  font-family: Helvetica, Arial, sans-serif;
+}
+.CreateQRLabelsPage .qrcode {
+  position: absolute;
+  top: 8mm;
+  right: 8mm;
+  float: right;
+  width: 40mm;
+  height: 40mm;
+}
+.CreateQRLabelsPage .name {
+  position: absolute;
+  top: 8mm;
+  left: 8mm;
+  font-weight: bold;
+  font-size: 18pt;
+}
+.CreateQRLabelsPage .product {
+  position: absolute;
+  bottom: 10mm;
+  left: 8mm;
+  width: 121mm;
+  padding-top: 1mm;
+  font-size: 9pt;
+  border-top: 0.5pt solid #999;
+}
+.CreateQRLabelsPage .count {
+  position: absolute;
+  bottom: 46mm;
+  left: 8mm;
+  width: 50mm;
+  padding-top: 1mm;
+  font-size: 9pt;
+  border-top: 0.5pt solid #999;
 }
