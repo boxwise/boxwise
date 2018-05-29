@@ -17,13 +17,20 @@ const styles = theme => ({
   root: {}
 });
 
-const AddProductDialog = ({ classes, firestore, open, onClose }) => (
+const AddProductDialog = ({
+  classes,
+  firestore,
+  open,
+  fullScreen,
+  onClose
+}) => (
   <Dialog
     className={classes.root}
     open={open}
     onClose={onClose}
     aria-labelledby="form-dialog-title"
     fullWidth
+    fullScreen={fullScreen}
   >
     <DialogTitle id="form-dialog-title">Add Product</DialogTitle>
     <Formik
