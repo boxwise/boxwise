@@ -11,10 +11,6 @@ function uuidv4() {
 }
 
 class CreateQRLabelsPage extends React.Component {
-  state = {
-    addDialogOpen: false
-  };
-
   render() {
     const numberOfLabels = 104;
     if (this.props.profile.isFetching) {
