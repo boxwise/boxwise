@@ -14,10 +14,7 @@ export const createUserAndProfile = ({ email, password }) => {
     .get()
     .then(organizations => {
       if (organizations.empty) {
-        return firestore.add(
-          { collection: "organizations" },
-          { name: "Boxaid" }
-        );
+        return firestore.collection("organizations").add({ name: "Boxaid" });
       } else {
         return Promise.resolve(organizations.docs[0].ref);
       }
