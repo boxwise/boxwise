@@ -1,12 +1,32 @@
 service cloud.firestore {
   match /databases/{database}/documents {
+    function isAuthenticated() {
+      return request.auth.uid != null;
+    }
+
+    function userProfileExists() {
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid));
+    }
+
+    function userProfile() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+
+    function organisationMatchesUser(organisation) {
+      return  userProfileExists()
+        && organisation != null
+        && organisation in userProfile().organisations;
+    }
+
     match /users/{userId} {
       // TODO: disallow updating fields
       allow read, create, update: if request.auth.uid == userId;
     }
     match /products/{productId} {
-      // TODO: correct permissions
-      allow read, create, update, delete;
+      allow read: if isAuthenticated() && organisationMatchesUser(resource.data.organisation);
+      allow create: if isAuthenticated() && organisationMatchesUser(request.resource.data.organisation);
+      allow update: if isAuthenticated() && organisationMatchesUser(resource.data.organisation);
+      allow delete: if isAuthenticated() && organisationMatchesUser(resource.data.organisation);
     }
     match /boxes/{productId} {
       // TODO: correct permissions

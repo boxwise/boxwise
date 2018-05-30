@@ -19,8 +19,10 @@
     "typeface-roboto": "^0.0.54"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "expect-firestore": "^1.0.1",
     "firebase-mock": "^2.2.4",
     "firebase-tools": "^3.18.5",
     "husky": "^0.14.3",
