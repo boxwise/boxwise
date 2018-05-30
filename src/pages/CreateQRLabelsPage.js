@@ -16,16 +16,12 @@ class CreateQRLabelsPage extends React.Component {
   };
 
   render() {
-    var i;
-    var labels = [];
-    for (i = 0; i < 104; i++) {
-      labels[i] = i;
-    }
+    const numberOfLabels = 104;
 
     return (
       <div className="CreateQRLabelsPage">
-        {labels.map(label => (
-          <div className="label">
+        {[...Array(numberOfLabels)].map((_, i) => (
+          <div className="label" key={i}>
             <img
               src={
                 "https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=" +
