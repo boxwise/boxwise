@@ -32,6 +32,7 @@ class CreateQRLabelsPage extends React.Component {
               className="barcode"
             />
             <div className="name">{this.props.profile.organization.name}</div>
+            <div className="boxid">box number</div>
             <div className="count">count</div>
             <div className="product">product</div>
           </div>

@@ -19,8 +19,8 @@
   top: 8mm;
   right: 8mm;
   float: right;
-  width: 40mm;
-  height: 40mm;
+  width: 50mm;
+  height: 50mm;
 }
 .CreateLabelsPage .name {
   position: absolute;
@@ -40,9 +40,18 @@
 }
 .CreateLabelsPage .count {
   position: absolute;
-  bottom: 46mm;
+  bottom: 36mm;
   left: 8mm;
-  width: 50mm;
+  width: 60mm;
+  padding-top: 1mm;
+  font-size: 9pt;
+  border-top: 0.5pt solid #999;
+}
+.CreateLabelsPage .boxid {
+  position: absolute;
+  bottom: 56mm;
+  left: 8mm;
+  width: 60mm;
   padding-top: 1mm;
   font-size: 9pt;
   border-top: 0.5pt solid #999;
