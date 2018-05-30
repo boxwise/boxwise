@@ -1,5 +1,5 @@
 import React from "react";
-import "./CreateQRLabelsPage.css";
+import "./CreateLabelsPage.css";
 import { connect } from "react-redux";
 
 function uuidv4() {
@@ -19,7 +19,7 @@ class CreateQRLabelsPage extends React.Component {
     }
 
     return (
-      <div className="CreateQRLabelsPage">
+      <div className="CreateLabelsPage">
         {[...Array(numberOfLabels)].map((_, i) => (
           <div className="label" key={i}>
             <img
@@ -28,8 +28,8 @@ class CreateQRLabelsPage extends React.Component {
                 uuidv4() +
                 "&chld=L|0"
               }
-              alt="qr code"
-              className="qrcode"
+              alt="barcode"
+              className="barcode"
             />
             <div className="name">{this.props.profile.organization.name}</div>
             <div className="count">count</div>

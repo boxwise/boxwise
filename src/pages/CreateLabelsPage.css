@@ -3,7 +3,7 @@
   margin: 5.9mm 0mm 0mm 9.5mm;
 }
 
-.CreateQRLabelsPage .label {
+.CreateLabelsPage .label {
   background-color: #fff;
   page-break-inside: avoid;
   padding: 8mm;
@@ -14,7 +14,7 @@
   position: relative;
   font-family: Helvetica, Arial, sans-serif;
 }
-.CreateQRLabelsPage .qrcode {
+.CreateLabelsPage .barcode {
   position: absolute;
   top: 8mm;
   right: 8mm;
@@ -22,14 +22,14 @@
   width: 40mm;
   height: 40mm;
 }
-.CreateQRLabelsPage .name {
+.CreateLabelsPage .name {
   position: absolute;
   top: 8mm;
   left: 8mm;
   font-weight: bold;
   font-size: 18pt;
 }
-.CreateQRLabelsPage .product {
+.CreateLabelsPage .product {
   position: absolute;
   bottom: 10mm;
   left: 8mm;
@@ -38,7 +38,7 @@
   font-size: 9pt;
   border-top: 0.5pt solid #999;
 }
-.CreateQRLabelsPage .count {
+.CreateLabelsPage .count {
   position: absolute;
   bottom: 46mm;
   left: 8mm;
