@@ -26,7 +26,7 @@ class BoxesPage extends React.Component {
                 color="primary"
                 onClick={() => this.setState({ addDialogOpen: true })}
               >
-                Add Box
+                Make a new box
               </Button>
             </Toolbar>
             <BoxTableContainer />
