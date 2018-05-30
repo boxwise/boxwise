@@ -31,28 +31,27 @@ const SignUpForm = ({ firebase, firestore, classes, onSuccess }) => (
       return errors;
     }}
     onSubmit={({ email, password }, { setSubmitting, setErrors }) => {
-      // HACK: For testing, add user to first organisation that exists.
+      // HACK: For testing, add user to first organization that exists.
       // f$&*ing react-redux-firebase doesn't work so get actual firebase
       actualFirebase
         .firestore()
-        .collection("organisations")
+        .collection("organizations")
         .get()
-        .then(organisations => {
-          console.log(organisations);
-          if (organisations.empty) {
+        .then(organizations => {
+          if (organizations.empty) {
             return firestore.add(
-              { collection: "organisations" },
+              { collection: "organizations" },
               { name: "Boxaid" }
             );
           } else {
-            return Promise.resolve(organisations.docs[0].ref);
+            return Promise.resolve(organizations.docs[0].ref);
           }
         })
-        .then(organisation => {
+        .then(organization => {
           firebase
             .createUser({ email, password })
             .then(user => {
-              firebase.updateProfile({ organisations: [organisation] });
+              firebase.updateProfile({ organizations: [organization] });
               setSubmitting(false);
               onSuccess(user);
             })

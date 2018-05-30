@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import AddProductDialog from "./AddProductDialog";
 import firebase from "../firebase";
 
-const AddProductDialogContainer = ({ onClose, organisation, ...props }) => (
+const AddProductDialogContainer = ({ onClose, organization, ...props }) => (
   <AddProductDialog
     onSubmit={values => {
       const firestore = firebase.firestore();
-      values.organisation = firestore.doc(`organisations/${organisation}`);
+      values.organization = firestore.doc(`organizations/${organization}`);
       firestore
         .collection("products")
         .add(values)
@@ -21,6 +21,6 @@ const AddProductDialogContainer = ({ onClose, organisation, ...props }) => (
   />
 );
 
-export default connect(({ organisation }) => ({
-  organisation: organisation
+export default connect(({ organization }) => ({
+  organization: organization
 }))(AddProductDialogContainer);

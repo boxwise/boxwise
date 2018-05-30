@@ -24,7 +24,7 @@ describeButSkipIfNoKey("firestore.rules", () => {
   describe("/products", () => {
     beforeEach(() => {
       database.setData({
-        organisations: [
+        organizations: [
           {
             key: "1",
             fields: { name: "Org 1" },
@@ -39,12 +39,12 @@ describeButSkipIfNoKey("firestore.rules", () => {
         users: [
           {
             key: "org1",
-            fields: { organisations: ["organisations/1"] },
+            fields: { organizations: ["organizations/1"] },
             collections: {}
           },
           {
             key: "org2",
-            fields: { organisations: ["organisations/2"] },
+            fields: { organizations: ["organizations/2"] },
             collections: {}
           }
         ],
@@ -53,50 +53,50 @@ describeButSkipIfNoKey("firestore.rules", () => {
             key: "1",
             fields: {
               name: "Socks",
-              organisation: "organisations/1"
+              organization: "organizations/1"
             },
             collections: {}
           }
         ]
       });
     });
-    test("products can be only be created for an organisation by a user in that organisation", async () => {
+    test("products can be only be created for an organization by a user in that organization", async () => {
       firestore.assert(
         await database.canSet({ uid: "org1" }, "products/5437890", {
           name: "T-Shirts",
-          organisation: "organisations/1"
+          organization: "organizations/1"
         })
       );
       firestore.assert(
         await database.cannotSet({ uid: "org1" }, "products/03248", {
           name: "Underwear",
-          organisation: "organisations/2"
+          organization: "organizations/2"
         })
       );
     });
-    test("products can only be updated by correct organisation", async () => {
+    test("products can only be updated by correct organization", async () => {
       firestore.assert(
         await database.canUpdate({ uid: "org1" }, "products/1", {
           name: "Long Socks",
-          organisation: "organisations/1"
+          organization: "organizations/1"
         })
       );
       firestore.assert(
         await database.cannotUpdate({ uid: "org2" }, "products/1", {
           name: "Long Socks",
-          organisation: "organisations/1"
+          organization: "organizations/1"
         })
       );
     });
-    test("organisation cannot be changed", async () => {
+    test("organization cannot be changed", async () => {
       firestore.assert(
         await database.cannotUpdate({ uid: "org1" }, "products/1", {
           name: "Long Socks",
-          organisation: "organisation/2"
+          organization: "organization/2"
         })
       );
     });
-    test("products can only be deleted by correct organisation", async () => {
+    test("products can only be deleted by correct organization", async () => {
       firestore.assert(
         await database.cannotCommit({ uid: "org2" }, [
           firestore.Batch.delete("products/1")

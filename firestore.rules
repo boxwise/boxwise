@@ -12,10 +12,10 @@ service cloud.firestore {
       return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
     }
 
-    function organisationMatchesUser(organisation) {
+    function organizationMatchesUser(organization) {
       return  userProfileExists()
-        && organisation != null
-        && organisation in userProfile().organisations;
+        && organization != null
+        && organization in userProfile().organizations;
     }
 
     match /users/{userId} {
@@ -23,16 +23,16 @@ service cloud.firestore {
       allow read, create, update: if request.auth.uid == userId;
     }
     match /products/{productId} {
-      allow read: if isAuthenticated() && organisationMatchesUser(resource.data.organisation);
-      allow create: if isAuthenticated() && organisationMatchesUser(request.resource.data.organisation);
-      allow update: if isAuthenticated() && organisationMatchesUser(resource.data.organisation);
-      allow delete: if isAuthenticated() && organisationMatchesUser(resource.data.organisation);
+      allow read: if isAuthenticated() && organizationMatchesUser(resource.data.organization);
+      allow create: if isAuthenticated() && organizationMatchesUser(request.resource.data.organization);
+      allow update: if isAuthenticated() && organizationMatchesUser(resource.data.organization);
+      allow delete: if isAuthenticated() && organizationMatchesUser(resource.data.organization);
     }
     match /boxes/{productId} {
       // TODO: correct permissions
       allow read, create, update, delete;
     }
-    match /organisations/{organisationId} {
+    match /organizations/{organizationId} {
       // TODO: correct permissions
       allow read, create, update, delete;
     }

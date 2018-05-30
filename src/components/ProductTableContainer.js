@@ -4,17 +4,17 @@ import ProductTable from "./ProductTable";
 import { FirestoreCollection } from "react-firestore";
 import firebase from "../firebase";
 
-const ProductTableContainer = ({ organisation }) => {
-  if (!organisation) {
+const ProductTableContainer = ({ organization }) => {
+  if (!organization) {
     return null;
   }
   return (
     <FirestoreCollection
       path="products"
       filter={[
-        "organisation",
+        "organization",
         "==",
-        firebase.firestore().doc("organisations/" + organisation)
+        firebase.firestore().doc("organizations/" + organization)
       ]}
       render={({ isLoading, data }) => {
         return <ProductTable isLoading={isLoading} products={data} />;
@@ -23,6 +23,6 @@ const ProductTableContainer = ({ organisation }) => {
   );
 };
 
-export default connect(({ organisation }) => ({
-  organisation: organisation
+export default connect(({ organization }) => ({
+  organization: organization
 }))(ProductTableContainer);

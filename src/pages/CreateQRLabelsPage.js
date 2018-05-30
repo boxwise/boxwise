@@ -45,6 +45,6 @@ class CreateQRLabelsPage extends React.Component {
   }
 }
 
-export default connect(({ organisation }) => ({
-  organisation: organisation
+export default connect(({ organization }) => ({
+  organization: organization
 }))(CreateQRLabelsPage);

@@ -4,14 +4,14 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 
-const AppDrawerAuth = ({ profile, organisation, signOut }) => {
+const AppDrawerAuth = ({ profile, organization, signOut }) => {
   return (
     <List>
       <ListItem>
         <ListItemText secondary={`Signed in as ${profile.email}`} />
       </ListItem>
       <ListItem>
-        <ListItemText secondary={`Organisation: ${organisation.name}`} />
+        <ListItemText secondary={`Organization: ${organization.name}`} />
       </ListItem>
       <ListItem button>
         <ListItemText primary="Sign Out" onClick={signOut} />
@@ -22,7 +22,7 @@ const AppDrawerAuth = ({ profile, organisation, signOut }) => {
 
 AppDrawerAuth.propTypes = {
   profile: PropTypes.object.isRequired,
-  organisation: PropTypes.object.isRequired,
+  organization: PropTypes.object.isRequired,
   signOut: PropTypes.func.isRequired
 };
 

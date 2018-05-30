@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
 import { firebaseReducer } from "react-redux-firebase";
 import { firestoreReducer } from "redux-firestore";
-import { organisationReducer } from "./organisations";
+import { organizationReducer } from "./organizations";
 
 const rootReducer = combineReducers({
   firebase: firebaseReducer,
   firestore: firestoreReducer,
-  organisation: organisationReducer
+  organization: organizationReducer
 });
 
 export default rootReducer;
