@@ -4,18 +4,18 @@ service cloud.firestore {
       return request.auth.uid != null;
     }
 
-    function userProfileExists() {
-      return exists(/databases/$(database)/documents/users/$(request.auth.uid));
+    function profileExists() {
+      return exists(/databases/$(database)/documents/profiles/$(request.auth.uid));
     }
 
-    function userProfile() {
-      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    function getProfile() {
+      return get(/databases/$(database)/documents/profiles/$(request.auth.uid)).data;
     }
 
-    function organizationMatchesUser(organization) {
-      return  userProfileExists()
+    function userIsInOrganisation(organization) {
+      return profileExists()
         && organization != null
-        && organization in userProfile().organizations;
+        && organization == getProfile().organization;
     }
 
     match /profiles/{userId} {
@@ -23,10 +23,10 @@ service cloud.firestore {
       allow read, create, update: if request.auth.uid == userId;
     }
     match /products/{productId} {
-      allow read: if isAuthenticated() && organizationMatchesUser(resource.data.organization);
-      allow create: if isAuthenticated() && organizationMatchesUser(request.resource.data.organization);
-      allow update: if isAuthenticated() && organizationMatchesUser(resource.data.organization);
-      allow delete: if isAuthenticated() && organizationMatchesUser(resource.data.organization);
+      allow read: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
+      allow create: if isAuthenticated() && userIsInOrganisation(request.resource.data.organization);
+      allow update: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
+      allow delete: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
     }
     match /boxes/{productId} {
       // TODO: correct permissions

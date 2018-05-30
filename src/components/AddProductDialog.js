@@ -3,18 +3,21 @@ import PropTypes from "prop-types";
 import { Formik, Field } from "formik";
 import { compose } from "redux";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Dialog from "@material-ui/core/Dialog";
-import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
-import DialogTitle from "@material-ui/core/DialogTitle";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
+import Slide from "@material-ui/core/Slide";
+import DialogToolbar from "./DialogToolbar";
 
 const styles = theme => ({
   root: {}
 });
+
+function Transition(props) {
+  return <Slide direction="up" {...props} />;
+}
 
 const AddProductDialog = ({
   classes,
@@ -31,8 +34,8 @@ const AddProductDialog = ({
     aria-labelledby="form-dialog-title"
     fullWidth
     fullScreen={fullScreen}
+    TransitionComponent={Transition}
   >
-    <DialogTitle id="form-dialog-title">Add Product</DialogTitle>
     <Formik
       initialValues={{
         name: ""
@@ -47,6 +50,13 @@ const AddProductDialog = ({
       onSubmit={onSubmit}
       render={({ handleSubmit, isSubmitting, errors }) => (
         <form onSubmit={handleSubmit}>
+          <DialogToolbar
+            title="Add Product"
+            onClose={onClose}
+            buttonText="Done"
+            buttonIsLoading={isSubmitting}
+            onClickButton={handleSubmit}
+          />
           <DialogContent>
             {/* TODO: style errors */}
             {errors.form ? (
@@ -61,17 +71,6 @@ const AddProductDialog = ({
               margin="dense"
             />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button
-              variant="raised"
-              color="primary"
-              type="submit"
-              disabled={isSubmitting}
-            >
-              Add
-            </Button>
-          </DialogActions>
         </form>
       )}
     />

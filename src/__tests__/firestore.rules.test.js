@@ -36,15 +36,15 @@ describeButSkipIfNoKey("firestore.rules", () => {
             collections: {}
           }
         ],
-        users: [
+        profiles: [
           {
             key: "org1",
-            fields: { organizations: ["organizations/1"] },
+            fields: { organization: "organizations/1" },
             collections: {}
           },
           {
             key: "org2",
-            fields: { organizations: ["organizations/2"] },
+            fields: { organization: "organizations/2" },
             collections: {}
           }
         ],

@@ -2,20 +2,16 @@ import React from "react";
 import { connect } from "react-redux";
 import ProductTable from "./ProductTable";
 import { FirestoreCollection } from "react-firestore";
-import firebase from "../firebase";
+import { firestore } from "../firebase";
 
-const ProductTableContainer = ({ organization }) => {
-  if (!organization) {
-    return null;
+const ProductTableContainer = ({ profile }) => {
+  if (profile.isFetching) {
+    return <ProductTable isLoading={true} products={[]} />;
   }
   return (
     <FirestoreCollection
       path="products"
-      filter={[
-        "organization",
-        "==",
-        firebase.firestore().doc("organizations/" + organization)
-      ]}
+      filter={["organization", "==", firestore.doc(profile.organization.ref)]}
       render={({ isLoading, data }) => {
         return <ProductTable isLoading={isLoading} products={data} />;
       }}
@@ -23,6 +19,6 @@ const ProductTableContainer = ({ organization }) => {
   );
 };
 
-export default connect(({ organization }) => ({
-  organization: organization
+export default connect(state => ({
+  profile: state.profile
 }))(ProductTableContainer);

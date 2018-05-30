@@ -24,6 +24,7 @@ export const fetchProfile = user => {
           .then(doc => {
             profile.organization = {
               id: doc.id,
+              ref: `organizations/${doc.id}`,
               ...doc.data()
             };
             dispatch(setProfile(profile));
