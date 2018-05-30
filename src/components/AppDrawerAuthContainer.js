@@ -13,8 +13,8 @@ const enhance = compose(
 );
 
 const AppDrawerAuthContainer = ({ organization, user, profile }) => {
-  if (user.isEmpty || profile.isEmpty) {
-    return null;
+  if (user.isFetching || profile.isFetching) {
+    return <AppDrawerAuth isFetching={true} />;
   }
 
   return (

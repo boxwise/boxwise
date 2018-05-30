@@ -3,8 +3,12 @@ import PropTypes from "prop-types";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const AppDrawerAuth = ({ user, profile, onSignOut }) => {
+const AppDrawerAuth = ({ isFetching, user, profile, onSignOut }) => {
+  if (isFetching) {
+    return <CircularProgress />;
+  }
   return (
     <List>
       <ListItem>
@@ -23,9 +27,10 @@ const AppDrawerAuth = ({ user, profile, onSignOut }) => {
 };
 
 AppDrawerAuth.propTypes = {
-  user: PropTypes.object.isRequired,
-  profile: PropTypes.object.isRequired,
-  onSignOut: PropTypes.func.isRequired
+  isFetching: PropTypes.bool,
+  user: PropTypes.object,
+  profile: PropTypes.object,
+  onSignOut: PropTypes.func
 };
 
 export default AppDrawerAuth;
