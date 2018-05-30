@@ -17,6 +17,10 @@ class CreateQRLabelsPage extends React.Component {
 
   render() {
     const numberOfLabels = 104;
+    if (this.props.profile.isFetching) {
+      // TODO: loading spinner
+      return <p>Loading</p>;
+    }
 
     return (
       <div className="CreateQRLabelsPage">
@@ -31,7 +35,7 @@ class CreateQRLabelsPage extends React.Component {
               alt="qr code"
               className="qrcode"
             />
-            <div className="name">IHA Warehouse</div>
+            <div className="name">{this.props.profile.organization.name}</div>
             <div className="count">count</div>
             <div className="product">product</div>
           </div>
@@ -41,6 +45,6 @@ class CreateQRLabelsPage extends React.Component {
   }
 }
 
-export default connect(({ organization }) => ({
-  organization: organization
+export default connect(state => ({
+  profile: state.profile
 }))(CreateQRLabelsPage);
