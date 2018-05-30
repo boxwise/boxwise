@@ -6,7 +6,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
   root: {
-    position: "relative"
+    position: "relative",
+    display: "inline-flex"
   },
   progress: {
     position: "absolute",
@@ -17,8 +18,14 @@ const styles = {
   }
 };
 
-const ButtonWithProgress = ({ classes, children, loading, ...props }) => (
-  <div className={classes.root}>
+const ButtonWithProgress = ({
+  classes,
+  children,
+  loading,
+  className,
+  ...props
+}) => (
+  <div className={[classes.root, className].join(" ")}>
     <Button disabled={loading} {...props}>
       {children}
     </Button>

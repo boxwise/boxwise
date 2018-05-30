@@ -2,9 +2,9 @@ import React from "react";
 import { Formik, Field } from "formik";
 import { createUserAndProfile } from "../auth";
 import { withStyles } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
+import ButtonWithProgress from "./ButtonWithProgress";
 
 const styles = theme => ({
   submit: {
@@ -63,15 +63,15 @@ const SignUpForm = ({ firebase, firestore, classes, onSuccess }) => (
           fullWidth
           margin="normal"
         />
-        <Button
+        <ButtonWithProgress
           variant="raised"
           color="primary"
           type="submit"
-          disabled={isSubmitting}
+          loading={isSubmitting}
           className={classes.submit}
         >
           Sign Up
-        </Button>
+        </ButtonWithProgress>
       </form>
     )}
   />
