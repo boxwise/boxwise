@@ -9,7 +9,6 @@ import TableRow from "@material-ui/core/TableRow";
 
 const styles = theme => ({
   table: {
-    minWidth: 700,
     marginBottom: theme.spacing.unit * 4
   },
   tableWrapper: {
@@ -35,19 +34,17 @@ const BoxTable = ({ classes, isLoading, boxes }) => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
-            <TableCell>Number</TableCell>
             <TableCell>Product</TableCell>
-            <TableCell>Count</TableCell>
-            <TableCell>Status</TableCell>
+            <TableCell>Quantity</TableCell>
+            <TableCell>Comment</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {boxes.map(box => (
             <TableRow key={box.id}>
-              <TableCell>{box.number}</TableCell>
               <TableCell>{box.product}</TableCell>
-              <TableCell>{box.count}</TableCell>
-              <TableCell>{box.status}</TableCell>
+              <TableCell>{box.quantity}</TableCell>
+              <TableCell>{box.comment}</TableCell>
             </TableRow>
           ))}
         </TableBody>
