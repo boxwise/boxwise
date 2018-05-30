@@ -18,7 +18,7 @@ service cloud.firestore {
         && organization in userProfile().organizations;
     }
 
-    match /users/{userId} {
+    match /profiles/{userId} {
       // TODO: disallow updating fields
       allow read, create, update: if request.auth.uid == userId;
     }

@@ -2,50 +2,32 @@ import React from "react";
 import PropTypes from "prop-types";
 import { compose } from "redux";
 import { connect } from "react-redux";
-import { isEmpty, firestoreConnect } from "react-redux-firebase";
 import AppDrawerAuth from "./AppDrawerAuth";
+import firebase from "../firebase";
 
 const enhance = compose(
-  firestoreConnect(["organizations"]),
-  connect(({ firebase, firestore, organization }) => ({
-    organization: organization,
-    organizations: firestore.data.organizations,
-    profile: firebase.profile
+  connect(state => ({
+    profile: state.profile,
+    user: state.user
   }))
 );
 
-const AppDrawerAuthContainer = ({
-  firebase,
-  organization,
-  organizations,
-  profile
-}) => {
-  if (isEmpty(profile)) {
+const AppDrawerAuthContainer = ({ organization, user, profile }) => {
+  if (user.isEmpty || profile.isEmpty) {
     return null;
-  }
-
-  let org;
-  if (isEmpty(organizations) || !organization) {
-    org = { id: "<unknown>" };
-  } else {
-    org = organizations[organization];
   }
 
   return (
     <AppDrawerAuth
+      user={user}
       profile={profile}
-      organization={org}
-      signOut={firebase.logout}
+      onSignOut={() => firebase.auth().signOut()}
     />
   );
 };
 
 AppDrawerAuthContainer.propTypes = {
-  firebase: PropTypes.shape({
-    logout: PropTypes.func.isRequired
-  }),
-  organization: PropTypes.string,
-  organizations: PropTypes.object,
+  user: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
 

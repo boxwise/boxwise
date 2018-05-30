@@ -3,7 +3,7 @@ import { mount } from "enzyme";
 import { SignInFormUnconnected } from "./SignInForm";
 
 describe("SignInForm", () => {
-  it("signs in users", done => {
+  it.skip("signs in users", done => {
     const mockFirebase = {
       login: jest.fn(() => Promise.resolve({ email: "test@example.com" }))
     };

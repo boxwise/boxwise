@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import { withFirebase } from "react-redux-firebase";
+import firebase from "../firebase";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import TextField from "../vendor/formik-material-ui/TextField";
@@ -12,7 +12,7 @@ const styles = theme => ({
   }
 });
 
-const SignInForm = ({ firebase, classes, onSuccess }) => (
+const SignInForm = ({ classes, onSuccess }) => (
   <Formik
     initialValues={{
       email: "",
@@ -30,8 +30,9 @@ const SignInForm = ({ firebase, classes, onSuccess }) => (
     }}
     onSubmit={({ email, password }, { setSubmitting, setErrors }) => {
       firebase
-        .login({ email, password })
-        .then(user => {
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then(({ user }) => {
           setSubmitting(false);
           onSuccess(user);
         })
@@ -78,6 +79,4 @@ const SignInForm = ({ firebase, classes, onSuccess }) => (
   />
 );
 
-export const SignInFormUnconnected = withStyles(styles)(SignInForm);
-
-export default withFirebase(SignInFormUnconnected);
+export default withStyles(styles)(SignInForm);

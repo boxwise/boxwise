@@ -8245,14 +8245,6 @@ react-reconciler@^0.7.0:
     object-assign "^4.1.1"
     prop-types "^15.6.0"
 
-react-redux-firebase@^2.1.4:
-  version "2.1.4"
-  resolved "https://registry.yarnpkg.com/react-redux-firebase/-/react-redux-firebase-2.1.4.tgz#07452180c0d273c8e572291837bf6017531a7fa6"
-  dependencies:
-    hoist-non-react-statics "^2.3.1"
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
-
 react-redux@^5.0.7:
   version "5.0.7"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
@@ -8488,12 +8480,9 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-firestore@^0.5.4:
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/redux-firestore/-/redux-firestore-0.5.4.tgz#23c4fe42068d294829c16ae62b8232c4981df03a"
-  dependencies:
-    lodash "^4.17.10"
-    prop-types "^15.6.1"
+redux-thunk@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
 
 redux@^4.0.0:
   version "4.0.0"
