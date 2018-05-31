@@ -67,13 +67,13 @@ const AppDrawer = ({
           <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem component={Link} to="/boxes" onClick={onClose} button>
-          <ListItemText primary="Boxes" />
+          <ListItemText primary="Find a box" />
         </ListItem>
         <ListItem component={Link} to="/products" onClick={onClose} button>
           <ListItemText primary="Products" />
         </ListItem>
         <ListItem component={Link} to="/create-labels" onClick={onClose} button>
-          <ListItemText primary="Create Labels" />
+          <ListItemText primary="Create labels" />
         </ListItem>
         <Divider />
         <ListItem component={Link} to="/makebox-ui" onClick={onClose} button>

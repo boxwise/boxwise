@@ -24,7 +24,7 @@ const AppDrawerAuth = ({ isFetching, user, profile, onSignOut, onClose }) => {
         <ListItemText primary="Invite people" />
       </ListItem>
       <ListItem button>
-        <ListItemText primary="Sign Out" onClick={onSignOut} />
+        <ListItemText primary="Sign out" onClick={onSignOut} />
       </ListItem>
     </List>
   );
