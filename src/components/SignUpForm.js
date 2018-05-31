@@ -1,6 +1,5 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import { createUserAndProfile } from "../auth";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
@@ -12,7 +11,7 @@ const styles = theme => ({
   }
 });
 
-const SignUpForm = ({ firebase, firestore, classes, onSuccess }) => (
+const SignUpForm = ({ classes, onSubmit }) => (
   <Formik
     initialValues={{
       email: "",
@@ -28,18 +27,7 @@ const SignUpForm = ({ firebase, firestore, classes, onSuccess }) => (
       }
       return errors;
     }}
-    onSubmit={({ email, password }, { setSubmitting, setErrors }) => {
-      createUserAndProfile({ email, password })
-        .then(user => {
-          setSubmitting(false);
-          onSuccess(user);
-        })
-        .catch(error => {
-          setSubmitting(false);
-          console.error(error);
-          setErrors({ form: error.message });
-        });
-    }}
+    onSubmit={onSubmit}
     render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
         {/* TODO: style errors */}
