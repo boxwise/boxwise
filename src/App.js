@@ -10,6 +10,7 @@ import CreateOrganizationPage from "./pages/CreateOrganizationPage";
 import SignInPage from "./pages/SignInPage";
 import InvitePage from "./pages/InvitePage";
 import MakeBoxUIPage from "./pages/MakeBoxUIPage";
+import FindBoxUIPage from "./pages/FindBoxUIPage";
 import JoinPage from "./pages/JoinPage";
 
 import theme from "./theme";
@@ -42,6 +43,7 @@ const App = () => (
         <Route exact path="/signin" component={() => <SignInPage />} />
         <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
         <Route exact path="/makebox-ui" component={() => <MakeBoxUIPage />} />
+        <Route exact path="/findbox-ui" component={() => <FindBoxUIPage />} />
       </div>
     </BrowserRouter>
   </MuiThemeProvider>
