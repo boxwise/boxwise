@@ -9,7 +9,6 @@ import TableRow from "@material-ui/core/TableRow";
 
 const styles = theme => ({
   table: {
-    minWidth: 700,
     marginBottom: theme.spacing.unit * 4
   },
   tableWrapper: {
