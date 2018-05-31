@@ -1,33 +1,25 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppFrame from "../components/AppFrame";
+import AddBoxDialogContainer from "../components/AddBoxDialogContainer";
 import Page from "../components/Page";
-import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
-  paper: {
-    padding: 16,
-    width: "100%",
+  paper: theme.mixins.gutters({
+    paddingTop: 16,
+    paddingBottom: 16,
     marginBottom: theme.spacing.unit * 3
-  },
-  button: {
-    marginRight: 20
-  }
+  })
 });
 
 class DashboardPage extends React.Component {
-  handleChange = key => (event, value) => {
-    this.setState({
-      [key]: value
-    });
-  };
-
-  handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+  state = {
+    addBoxDialogOpen: false
   };
 
   render() {
@@ -36,29 +28,32 @@ class DashboardPage extends React.Component {
     return (
       <AppFrame title="Dashboard">
         <Page>
-          <Grid container className={classes.root} xs={12} sm={9} md={7}>
-            <Paper className={classes.paper}>
-              <Typography variant="headline" paragraph="true">
-                Things to do
-              </Typography>
-              <Button
-                variant="raised"
-                color="secondary"
-                className={classes.button}
-                href="/makebox-ui"
-              >
-                Make a box
-              </Button>
-              <Button
-                variant="raised"
-                color="secondary"
-                className={classes.button}
-                href="/findbox-ui"
-              >
-                Find a box
-              </Button>
-            </Paper>
-          </Grid>
+          <AddBoxDialogContainer
+            open={this.state.addBoxDialogOpen}
+            onClose={() => this.setState({ addBoxDialogOpen: false })}
+          />
+          <Paper className={classes.paper}>
+            <Typography variant="headline" paragraph={true}>
+              Things to do
+            </Typography>
+            <Button
+              variant="raised"
+              color="secondary"
+              onClick={() => this.setState({ addBoxDialogOpen: true })}
+            >
+              Make a box
+            </Button>
+            <br />
+            <br />
+            <Button
+              variant="raised"
+              color="secondary"
+              component={Link}
+              to="/boxes"
+            >
+              Find a box
+            </Button>
+          </Paper>
         </Page>
       </AppFrame>
     );
