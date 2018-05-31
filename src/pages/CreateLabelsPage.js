@@ -6,6 +6,7 @@ import uuidv4 from "uuid/v4";
 class CreateQRLabelsPage extends React.Component {
   render() {
     const numberOfLabels = 104;
+
     if (this.props.profile.isFetching) {
       // TODO: loading spinner
       return <p>Loading</p>;

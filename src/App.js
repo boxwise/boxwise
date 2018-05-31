@@ -9,6 +9,7 @@ import ProductsPage from "./pages/ProductsPage";
 import SignUpPage from "./pages/SignUpPage";
 import SignInPage from "./pages/SignInPage";
 import InvitePage from "./pages/InvitePage";
+import MakeBoxUIPage from "./pages/MakeBoxUIPage";
 
 import CssBaseline from "@material-ui/core/CssBaseline";
 import "typeface-roboto";
@@ -28,6 +29,7 @@ const App = () => (
       <AuthedRoute exact path="/invite" component={() => <InvitePage />} />
       <Route exact path="/signup" component={() => <SignUpPage />} />
       <Route exact path="/signin" component={() => <SignInPage />} />
+      <Route exact path="/makebox-ui" component={() => <MakeBoxUIPage />} />
     </div>
   </BrowserRouter>
 );
