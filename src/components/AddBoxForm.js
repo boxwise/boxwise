@@ -1,11 +1,12 @@
 import React from "react";
 import { Formik, Field } from "formik";
 import DialogContent from "@material-ui/core/DialogContent";
+import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
 import DialogToolbar from "./DialogToolbar";
 
-const AddBoxForm = ({ classes, onClose, onSubmit }) => (
+const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
   <Formik
     initialValues={{
       product: "",
@@ -15,7 +16,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit }) => (
     validate={values => {
       let errors = {};
       if (!values.product) {
-        errors.product = "Enter a product";
+        errors.product = "Select a product.";
       }
       if (!values.quantity) {
         errors.quantity = "Enter the number of items.";
@@ -23,7 +24,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit }) => (
       return errors;
     }}
     onSubmit={onSubmit}
-    render={({ handleSubmit, isSubmitting, errors }) => (
+    render={({ handleSubmit, handleChange, isSubmitting, values, errors }) => (
       <form onSubmit={handleSubmit}>
         <DialogToolbar
           title="New box"
@@ -41,9 +42,19 @@ const AddBoxForm = ({ classes, onClose, onSubmit }) => (
             label="Product"
             name="product"
             component={TextField}
+            select
+            value={values.product}
+            onChange={handleChange}
             fullWidth
+            autoFocus
             margin="dense"
-          />
+          >
+            {products.map(n => (
+              <MenuItem key={n.id} value={n.id}>
+                {n.name}
+              </MenuItem>
+            ))}
+          </Field>
           <Field
             label="Number of items"
             name="quantity"

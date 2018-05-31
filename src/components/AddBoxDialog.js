@@ -13,6 +13,7 @@ const AddBoxDialog = ({
   classes,
   open,
   box,
+  products,
   done,
   onClose,
   onReset,
@@ -29,7 +30,7 @@ const AddBoxDialog = ({
     {done ? (
       <AddBoxDone box={box} onClose={onClose} onReset={onReset} />
     ) : (
-      <AddBoxForm onClose={onClose} onSubmit={onSubmit} />
+      <AddBoxForm products={products} onClose={onClose} onSubmit={onSubmit} />
     )}
   </Dialog>
 );

@@ -42,7 +42,7 @@ const BoxTable = ({ classes, isLoading, boxes }) => {
         <TableBody>
           {boxes.map(box => (
             <TableRow key={box.id}>
-              <TableCell>{box.product}</TableCell>
+              <TableCell>{box.product.id}</TableCell>
               <TableCell>{box.quantity}</TableCell>
               <TableCell>{box.comment}</TableCell>
             </TableRow>
