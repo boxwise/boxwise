@@ -4,7 +4,7 @@ import SignUpForm from "../components/SignUpForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Page from "../components/Page";
-import { createUserAndProfile } from "../auth";
+import { createUserAndProfile, getOrAddDummyOrganization } from "../auth";
 
 const SignUpPage = ({ history }) => (
   <Page>
@@ -13,7 +13,13 @@ const SignUpPage = ({ history }) => (
         <Typography variant="display1">Sign Up</Typography>
         <SignUpForm
           onSuccess={({ email, password }, { setSubmitting, setErrors }) => {
-            createUserAndProfile({ email, password })
+            getOrAddDummyOrganization()
+              .then(organization => {
+                return createUserAndProfile(
+                  { email, password },
+                  { organization }
+                );
+              })
               .then(user => {
                 setSubmitting(false);
                 /* setTimeout because we need to let AuthedRoute update */

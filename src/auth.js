@@ -7,8 +7,7 @@ export const setProfile = (user, data) => {
     .set(data);
 };
 
-export const createUserAndProfile = ({ email, password }) => {
-  // HACK: For testing, add user to first organization that exists.
+export const getOrAddDummyOrganization = () => {
   return firestore
     .collection("organizations")
     .get()
@@ -18,13 +17,14 @@ export const createUserAndProfile = ({ email, password }) => {
       } else {
         return Promise.resolve(organizations.docs[0].ref);
       }
-    })
-    .then(organization => {
-      return firebase
-        .auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then(({ user }) => {
-          return setProfile(user, { organization });
-        });
+    });
+};
+
+export const createUserAndProfile = ({ email, password }, profile) => {
+  return firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(({ user }) => {
+      return setProfile(user, profile);
     });
 };

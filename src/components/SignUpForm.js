@@ -11,7 +11,7 @@ const styles = theme => ({
   }
 });
 
-const SignUpForm = ({ classes, onSubmit }) => (
+const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
   <Formik
     initialValues={{
       email: "",
@@ -23,7 +23,7 @@ const SignUpForm = ({ classes, onSubmit }) => (
         errors.email = "Enter your email.";
       }
       if (!values.password) {
-        errors.password = "Enter your password.";
+        errors.password = "Enter a password.";
       }
       return errors;
     }}
@@ -36,7 +36,7 @@ const SignUpForm = ({ classes, onSubmit }) => (
         ) : null}
         <Field
           type="email"
-          label="Email"
+          label="What is your email?"
           name="email"
           component={TextField}
           fullWidth
@@ -45,7 +45,7 @@ const SignUpForm = ({ classes, onSubmit }) => (
         />
         <Field
           type="password"
-          label="Password"
+          label="Choose a password"
           name="password"
           component={TextField}
           fullWidth
@@ -58,11 +58,15 @@ const SignUpForm = ({ classes, onSubmit }) => (
           loading={isSubmitting}
           className={classes.submit}
         >
-          Sign Up
+          {submitButtonText}
         </ButtonWithProgress>
       </form>
     )}
   />
 );
+
+SignUpForm.defaultProps = {
+  submitButtonText: "Sign Up"
+};
 
 export default withStyles(styles)(SignUpForm);
