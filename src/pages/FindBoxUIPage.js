@@ -20,6 +20,18 @@ import Select from "@material-ui/core/Select";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import TextField from "@material-ui/core/TextField";
 
+import CategorySelector from "../components/CategorySelector";
+import ProductSelector from "../components/ProductSelector";
+import ProductButton from "../components/ProductButton";
+
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemText from "@material-ui/core/ListItemText";
+import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
+import IconButton from "@material-ui/core/IconButton";
+import CommentIcon from "@material-ui/icons/Comment";
+import Checkbox from "@material-ui/core/Checkbox";
+
 const styles = theme => ({
   categorySelect: {
     float: "left",
@@ -67,7 +79,7 @@ const styles = theme => ({
   }
 });
 
-class MakeBoxUIPage extends React.Component {
+class FindBoxUIPage extends React.Component {
   state = {
     spacing: "16"
   };
@@ -91,7 +103,83 @@ class MakeBoxUIPage extends React.Component {
         <Page>
           <Grid container className={classes.root} xs={12} sm={9} md={7}>
             <Paper className={classes.paper}>
-              <Typography variant="headline" paragraph="true" />
+              <Typography variant="subheading" paragraph>
+                Choose a product category
+              </Typography>
+              <CategorySelector />
+            </Paper>
+
+            <Paper className={classes.paper}>
+              <Typography variant="subheading" paragraph>
+                Current category:
+              </Typography>
+              <ProductButton icon="male" label="Man" />
+              <div style={{ clear: "both" }} />
+              <Typography variant="subheading" paragraph>
+                Choose a product
+              </Typography>
+              <ProductSelector />
+            </Paper>
+
+            <Paper className={classes.paper}>
+              <ProductButton icon="male" label="Man" />
+              <ProductButton icon="tshirt" label="T-Shirt" />
+              <List style={{ clear: "both", maxHeight: 400, overflow: "auto" }}>
+                <ListItem disableGutters divider>
+                  <ListItemText
+                    primary="166035 T-Shirts / Men / 20x"
+                    secondary="Available / New shirts donated by Mango"
+                  />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText
+                    primary="197456 T-Shirts / Men / 36x"
+                    secondary="Available / New shirts donated by Mango"
+                  />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText primary="239236 T-Shirts / Men / 33x" />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText
+                    primary="166035 T-Shirts / Men / 20x"
+                    secondary="Available / New shirts donated by Mango"
+                  />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText
+                    primary="197456 T-Shirts / Men / 36x"
+                    secondary="Available / New shirts donated by Mango"
+                  />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText primary="239236 T-Shirts / Men / 33x" />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText
+                    primary="166035 T-Shirts / Men / 20x"
+                    secondary="Available / New shirts donated by Mango"
+                  />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText
+                    primary="197456 T-Shirts / Men / 36x"
+                    secondary="Available / New shirts donated by Mango"
+                  />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+                <ListItem disableGutters divider>
+                  <ListItemText primary="239236 T-Shirts / Men / 33x" />
+                  <Checkbox tabIndex={-1} />
+                </ListItem>
+              </List>
             </Paper>
           </Grid>
         </Page>
@@ -100,8 +188,8 @@ class MakeBoxUIPage extends React.Component {
   }
 }
 
-MakeBoxUIPage.propTypes = {
+FindBoxUIPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MakeBoxUIPage);
+export default withStyles(styles)(FindBoxUIPage);

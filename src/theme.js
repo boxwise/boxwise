@@ -11,6 +11,9 @@ const theme = createMuiTheme({
     },
     title: {
       fontFamily: "ZinnebeeldBold"
+    },
+    subheading: {
+      fontFamily: "ZinnebeeldBold"
     }
   },
   palette: {
