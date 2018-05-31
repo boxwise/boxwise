@@ -15,8 +15,30 @@ import FormControl from "@material-ui/core/FormControl";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import Select from "@material-ui/core/Select";
+import ButtonBase from "@material-ui/core/ButtonBase";
 
 const styles = theme => ({
+  logo: {
+    height: 50,
+    marginBottom: 10
+  },
+  categorySelect: {
+    float: "left",
+    backgroundColor: "#eee",
+    width: 90,
+    height: 90,
+    marginRight: 10,
+    marginBottom: 10,
+    borderRadius: 5
+  },
+  categoryIcon: {
+    fontSize: 35,
+    textAlign: "center",
+    color: "009BD9"
+  },
+  categoryTitle: {
+    textAlign: "center"
+  },
   formControl: {
     margin: theme.spacing.unit,
     minWidth: 120
@@ -32,10 +54,9 @@ const styles = theme => ({
     marginLeft: "auto",
     marginRight: "auto"
   },
-  instruction: {
+  paper: {
     padding: 16,
     marginTop: theme.spacing.unit * 3,
-    height: 240,
     width: "100%"
   },
   control: {
@@ -64,7 +85,8 @@ class MakeBoxUIPage extends React.Component {
 
     return (
       <Grid container className={classes.root} xs={11} md={7} lg={4}>
-        <Paper className={classes.instruction}>
+        <Paper className={classes.paper}>
+          <img src="/images/dropapp.svg" className={classes.logo} />
           <Typography variant="headline" paragraph="true">
             Make a new box
           </Typography>
@@ -80,61 +102,147 @@ class MakeBoxUIPage extends React.Component {
             Barcodes are not yet operational. Press "Next Step" to proceed
             making a box without a barcode
           </Typography>
-          <Button variant="raised" color="primary">
+          <Button variant="raised" color="secondary">
             Next step
           </Button>
         </Paper>
-        <Paper className={classes.instruction}>
+
+        <Paper className={classes.paper}>
+          <img src="/images/dropapp.svg" className={classes.logo} />
           <Typography variant="headline" paragraph="true">
             Make a new box
           </Typography>
-          <form className={classes.root} autoComplete="off">
-            <FormControl className={classes.formControl}>
-              <InputLabel htmlFor="category">Category</InputLabel>
-              <Select
-                value={this.state.category}
-                onChange={this.handleChange}
-                inputProps={{
-                  name: "category",
-                  id: "category"
-                }}
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={1}>
-                  <i className="fas fa-male" /> Man
-                </MenuItem>
-                <MenuItem value={2}>
-                  <i className="fas fa-female" /> Woman
-                </MenuItem>
-                <MenuItem value={3}>
-                  <i className="fas fa-female" /> Adult
-                </MenuItem>
-                <MenuItem value={4}>
-                  <i className="fas fa-child" /> Boy
-                </MenuItem>
-                <MenuItem value={5}>
-                  <i className="fas fa-child" /> Girl
-                </MenuItem>
-                <MenuItem value={6}>
-                  <i className="fas fa-child" /> Child
-                </MenuItem>
-                <MenuItem value={7}>
-                  <i className="fas fa-child" /> Baby
-                </MenuItem>
-                <MenuItem value={8}>
-                  <i className="fas fa-shower" /> Hygiene
-                </MenuItem>
-                <MenuItem value={9}>
-                  <i className="fas fa-utensils" /> Food
-                </MenuItem>
-                <MenuItem value={10}>
-                  <i className="fas fa-ellipsis-v" /> Other
-                </MenuItem>
-              </Select>
-            </FormControl>
-          </form>
+          <Typography variant="subheading" paragraph="true">
+            Choose a product category for this box
+          </Typography>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-male" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Man
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-female" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Woman
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-male" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Adult
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-child" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Boy
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-child" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Girl
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-child" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Child
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-child" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Baby
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography className={classes.categoryIcon}>
+              <i className="fas fa-shower" />
+            </Typography>
+            <Typography className={classes.categoryTitle}>Hygiene</Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-utensils" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Food
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-ellipsis-v" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Other
+            </Typography>
+          </ButtonBase>
+        </Paper>
+
+        <Paper className={classes.paper}>
+          <img src="/images/dropapp.svg" className={classes.logo} />
+          <Typography variant="headline" paragraph="true">
+            Make a new box
+          </Typography>
+          <Typography variant="subheading" paragraph="true">
+            Choose a product for this box
+          </Typography>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-tshirt" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              T-Shirt
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-tshirt" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Sweater
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-tshirt" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Trousers
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-tshirt" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Socks
+            </Typography>
+          </ButtonBase>
+          <ButtonBase className={classes.categorySelect}>
+            <Typography component="p" className={classes.categoryIcon}>
+              <i className="fas fa-tshirt" />
+            </Typography>
+            <Typography component="p" className={classes.categoryTitle}>
+              Shoes
+            </Typography>
+          </ButtonBase>
         </Paper>
       </Grid>
     );
