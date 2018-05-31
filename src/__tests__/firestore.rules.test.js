@@ -163,4 +163,38 @@ describeButSkipIfNoKey("firestore.rules", () => {
       );
     });
   });
+
+  // WIP
+  describe.skip("/profiles", () => {
+    beforeEach(() => {
+      database.setData(TEST_DATA);
+    });
+
+    test("profiles for a user can only be created by that user", async () => {
+      firestore.assert(
+        await database.canSet({ uid: "org1" }, "profiles/1", {
+          organization: "organizations/1"
+        })
+      );
+      firestore.assert(
+        await database.cannotSet({ uid: "org1" }, "invites/03248", {
+          organization: "organizations/2"
+        })
+      );
+    });
+    test("profiles cannot be updated", async () => {
+      firestore.assert(
+        await database.cannotUpdate({ uid: "org1" }, "profiles/org1", {
+          organization: "organizations/org1"
+        })
+      );
+    });
+    test("invites cannot be deleted", async () => {
+      firestore.assert(
+        await database.cannotCommit({ uid: "org1" }, [
+          firestore.Batch.delete("invites/1")
+        ])
+      );
+    });
+  });
 });
