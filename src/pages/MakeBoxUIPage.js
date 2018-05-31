@@ -285,6 +285,23 @@ class MakeBoxUIPage extends React.Component {
                 Save this box
               </Button>
             </Paper>
+
+            <Paper className={classes.paper}>
+              <Typography component="p" paragraph="true">
+                Write on the label:
+              </Typography>
+              <Typography variant="headline" paragraph="true">
+                642213<br />
+                40x<br />
+                T-Shirts Man
+              </Typography>
+              <Typography component="p" paragraph="true">
+                Now store the box on the right position in the warehouse.
+              </Typography>
+              <Button variant="raised" color="secondary">
+                Make another box
+              </Button>
+            </Paper>
           </Grid>
         </Page>
       </AppFrame>
