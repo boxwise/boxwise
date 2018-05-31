@@ -5,6 +5,11 @@ import { compose } from "redux";
 import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import InputLabel from "@material-ui/core/InputLabel";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
@@ -38,17 +43,27 @@ const AddProductDialog = ({
   >
     <Formik
       initialValues={{
+        category: "",
         name: ""
       }}
       validate={values => {
         let errors = {};
+        if (!values.category) {
+          errors.category = "Enter a category.";
+        }
         if (!values.name) {
           errors.name = "Enter a name.";
         }
         return errors;
       }}
       onSubmit={onSubmit}
-      render={({ handleSubmit, isSubmitting, errors }) => (
+      render={({
+        handleSubmit,
+        handleChange,
+        isSubmitting,
+        values,
+        errors
+      }) => (
         <form onSubmit={handleSubmit}>
           <DialogToolbar
             title="Add Product"
@@ -62,6 +77,29 @@ const AddProductDialog = ({
             {errors.form ? (
               <Typography variant="body1">{errors.form}</Typography>
             ) : null}
+            <FormControl fullWidth error={errors.category ? true : false}>
+              <InputLabel>Category</InputLabel>
+              <Select
+                name="category"
+                value={values.category}
+                onChange={handleChange}
+              >
+                <MenuItem value="Men">Men</MenuItem>
+                <MenuItem value="Women">Women</MenuItem>
+                <MenuItem value="Adult unisex">Adult unisex</MenuItem>
+                <MenuItem value="Boy">Boy</MenuItem>
+                <MenuItem value="Girl">Girl</MenuItem>
+                <MenuItem value="Children">Children</MenuItem>
+                <MenuItem value="Baby">Baby</MenuItem>
+                <MenuItem value="Food">Food</MenuItem>
+                <MenuItem value="Hygiene">Hygiene</MenuItem>
+                <MenuItem value="Other">Other</MenuItem>
+              </Select>
+              {errors.category ? (
+                <FormHelperText error>Enter a category.</FormHelperText>
+              ) : null}
+            </FormControl>
+
             <Field
               label="Name"
               name="name"
