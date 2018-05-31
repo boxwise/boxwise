@@ -1,4 +1,5 @@
 import React from "react";
+import { compose } from "redux";
 import { connect } from "react-redux";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import Typography from "@material-ui/core/Typography";
@@ -7,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getOrAddInvite, createInviteLink } from "../queries/invites";
+import { waitForProfile } from "../utils";
 
 class InviteLink extends React.Component {
   state = {
@@ -58,6 +60,9 @@ class InviteLink extends React.Component {
     );
   }
 }
-export default connect(state => ({
-  profile: state.profile
-}))(InviteLink);
+export default compose(
+  connect(state => ({
+    profile: state.profile
+  })),
+  waitForProfile
+)(InviteLink);
