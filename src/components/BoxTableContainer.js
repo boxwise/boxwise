@@ -10,10 +10,28 @@ const BoxTableContainer = ({ profile }) => {
   }
   return (
     <FirestoreCollection
-      path="boxes"
+      path={"boxes"}
       filter={["organization", "==", firestore.doc(profile.organization.ref)]}
-      render={({ isLoading, data }) => {
-        return <BoxTable isLoading={isLoading} boxes={data} />;
+      render={boxresult => {
+        return (
+          <FirestoreCollection
+            path={"products"}
+            filter={[
+              "organization",
+              "==",
+              firestore.doc(profile.organization.ref)
+            ]}
+            render={productresult => {
+              return (
+                <BoxTable
+                  isLoading={boxresult.isLoading || productresult.isLoading}
+                  boxes={boxresult.data}
+                  products={productresult.data}
+                />
+              );
+            }}
+          />
+        );
       }}
     />
   );
