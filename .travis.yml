@@ -2,8 +2,9 @@ language: node_js
 node_js:
 - '8'
 cache: yarn
-script: yarn test
-before_deploy: yarn build
+script:
+- yarn build
+- yarn test
 deploy:
   provider: firebase
   project: drop-app-production
