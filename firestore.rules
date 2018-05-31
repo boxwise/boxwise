@@ -36,5 +36,12 @@ service cloud.firestore {
       // TODO: correct permissions
       allow read, create, update, delete;
     }
+    match /invites/{inviteId} {
+      allow get: if true;
+      allow list: if false;
+      allow create: if isAuthenticated() && userIsInOrganisation(request.resource.data.organization);
+      allow update: if false;
+      allow delete: if false;
+    }
   }
 }

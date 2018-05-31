@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React from "react";
 import AppFrame from "../components/AppFrame";
 import Page from "../components/Page";
