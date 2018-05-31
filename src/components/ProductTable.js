@@ -35,6 +35,7 @@ const ProductTable = ({ classes, isLoading, products }) => {
       <Table className={classes.table}>
         <TableHead>
           <TableRow>
+            <TableCell>Category</TableCell>
             <TableCell>Name</TableCell>
           </TableRow>
         </TableHead>
@@ -42,6 +43,7 @@ const ProductTable = ({ classes, isLoading, products }) => {
           {products.map(n => {
             return (
               <TableRow key={n.id}>
+                <TableCell>{n.category}</TableCell>
                 <TableCell>{n.name}</TableCell>
               </TableRow>
             );
