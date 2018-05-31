@@ -12,32 +12,40 @@ import InvitePage from "./pages/InvitePage";
 import MakeBoxUIPage from "./pages/MakeBoxUIPage";
 import JoinPage from "./pages/JoinPage";
 
+import theme from "./theme";
+import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import "typeface-roboto";
 
 const App = () => (
-  <BrowserRouter>
-    <div>
-      <CssBaseline />
-      <AuthedRoute exact path="/" component={() => <DashboardPage />} />
-      <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
-      <AuthedRoute
-        exact
-        path="/create-labels"
-        component={() => <CreateLabelsPage />}
-      />
-      <AuthedRoute exact path="/products" component={() => <ProductsPage />} />
-      <AuthedRoute exact path="/invite" component={() => <InvitePage />} />
-      <Route
-        exact
-        path="/create-organization"
-        component={() => <CreateOrganizationPage />}
-      />
-      <Route exact path="/signin" component={() => <SignInPage />} />
-      <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
-      <Route exact path="/makebox-ui" component={() => <MakeBoxUIPage />} />
-    </div>
-  </BrowserRouter>
+  <MuiThemeProvider theme={theme}>
+    <BrowserRouter>
+      <div>
+        <CssBaseline />
+        <AuthedRoute exact path="/" component={() => <DashboardPage />} />
+        <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
+        <AuthedRoute
+          exact
+          path="/create-labels"
+          component={() => <CreateLabelsPage />}
+        />
+        <AuthedRoute
+          exact
+          path="/products"
+          component={() => <ProductsPage />}
+        />
+        <AuthedRoute exact path="/invite" component={() => <InvitePage />} />
+        <Route
+          exact
+          path="/create-organization"
+          component={() => <CreateOrganizationPage />}
+        />
+        <Route exact path="/signin" component={() => <SignInPage />} />
+        <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
+        <Route exact path="/makebox-ui" component={() => <MakeBoxUIPage />} />
+      </div>
+    </BrowserRouter>
+  </MuiThemeProvider>
 );
 
 export default App;
