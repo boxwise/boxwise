@@ -11,8 +11,23 @@ import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import Select from "@material-ui/core/Select";
 
 const styles = theme => ({
+  formControl: {
+    margin: theme.spacing.unit,
+    minWidth: 120
+  },
+  selectEmpty: {
+    marginTop: theme.spacing.unit * 2
+  },
+  menuIcon: {
+    height: 20,
+    marginRight: 10
+  },
   root: {
     marginLeft: "auto",
     marginRight: "auto"
@@ -39,6 +54,10 @@ class MakeBoxUIPage extends React.Component {
     });
   };
 
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
   render() {
     const { classes } = this.props;
     const { spacing } = this.state;
@@ -61,17 +80,61 @@ class MakeBoxUIPage extends React.Component {
             Barcodes are not yet operational. Press "Next Step" to proceed
             making a box without a barcode
           </Typography>
-          <div>
-            <Button variant="raised" color="primary">
-              Next step
-            </Button>
-          </div>
+          <Button variant="raised" color="primary">
+            Next step
+          </Button>
         </Paper>
         <Paper className={classes.instruction}>
           <Typography variant="headline" paragraph="true">
             Make a new box
           </Typography>
-          "hello"
+          <form className={classes.root} autoComplete="off">
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="category">Category</InputLabel>
+              <Select
+                value={this.state.category}
+                onChange={this.handleChange}
+                inputProps={{
+                  name: "category",
+                  id: "category"
+                }}
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={1}>
+                  <i className="fas fa-male" /> Man
+                </MenuItem>
+                <MenuItem value={2}>
+                  <i className="fas fa-female" /> Woman
+                </MenuItem>
+                <MenuItem value={3}>
+                  <i className="fas fa-female" /> Adult
+                </MenuItem>
+                <MenuItem value={4}>
+                  <i className="fas fa-child" /> Boy
+                </MenuItem>
+                <MenuItem value={5}>
+                  <i className="fas fa-child" /> Girl
+                </MenuItem>
+                <MenuItem value={6}>
+                  <i className="fas fa-child" /> Child
+                </MenuItem>
+                <MenuItem value={7}>
+                  <i className="fas fa-child" /> Baby
+                </MenuItem>
+                <MenuItem value={8}>
+                  <i className="fas fa-shower" /> Hygiene
+                </MenuItem>
+                <MenuItem value={9}>
+                  <i className="fas fa-utensils" /> Food
+                </MenuItem>
+                <MenuItem value={10}>
+                  <i className="fas fa-ellipsis-v" /> Other
+                </MenuItem>
+              </Select>
+            </FormControl>
+          </form>
         </Paper>
       </Grid>
     );
