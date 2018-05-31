@@ -50,7 +50,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
             margin="dense"
           >
             {products.map(n => (
-              <MenuItem key={n.id} value={n.id}>
+              <MenuItem key={n.id} value={n}>
                 {n.name}
               </MenuItem>
             ))}

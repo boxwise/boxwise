@@ -12,8 +12,9 @@ function Transition(props) {
 const AddBoxDialog = ({
   classes,
   open,
-  box,
   products,
+  box,
+  selectedProduct,
   done,
   onClose,
   onReset,
@@ -28,7 +29,12 @@ const AddBoxDialog = ({
     TransitionComponent={Transition}
   >
     {done ? (
-      <AddBoxDone box={box} onClose={onClose} onReset={onReset} />
+      <AddBoxDone
+        box={box}
+        selectedProduct={selectedProduct}
+        onClose={onClose}
+        onReset={onReset}
+      />
     ) : (
       <AddBoxForm products={products} onClose={onClose} onSubmit={onSubmit} />
     )}

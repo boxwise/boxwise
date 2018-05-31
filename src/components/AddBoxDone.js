@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import DialogToolbar from "./DialogToolbar";
 
-const AddBoxDone = ({ box, onClose, onReset }) => (
+const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
   <div>
     <DialogToolbar
       title="New box"
@@ -23,7 +23,7 @@ const AddBoxDone = ({ box, onClose, onReset }) => (
       </Typography>
       <Typography variant="body1" gutterBottom>
         <strong>
-          {box.product} {box.quantity}x
+          {selectedProduct.category} {selectedProduct.name} {box.quantity}x
         </strong>
       </Typography>
       <Button onClick={onReset} color="primary">
