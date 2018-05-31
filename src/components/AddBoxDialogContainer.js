@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import AddBoxDialog from "./AddBoxDialog";
 import { firestore } from "../firebase";
 
@@ -15,12 +16,13 @@ class AddBoxDialogContainer extends React.Component {
   };
 
   render() {
-    const { onClose, ...props } = this.props;
+    const { onClose, profile, ...props } = this.props;
     return (
       <AddBoxDialog
         done={this.state.done}
         box={this.state.box}
         onSubmit={(values, { setSubmitting, setErrors }) => {
+          values.organization = firestore.doc(profile.organization.ref);
           firestore
             .collection("boxes")
             .add(values)
@@ -47,4 +49,6 @@ class AddBoxDialogContainer extends React.Component {
   }
 }
 
-export default AddBoxDialogContainer;
+export default connect(state => ({
+  profile: state.profile
+}))(AddBoxDialogContainer);
