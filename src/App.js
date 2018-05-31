@@ -15,7 +15,6 @@ import JoinPage from "./pages/JoinPage";
 import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
-import "typeface-roboto";
 
 const App = () => (
   <MuiThemeProvider theme={theme}>

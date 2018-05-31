@@ -195,6 +195,9 @@ class MakeBoxUIPage extends React.Component {
             </Paper>
 
             <Paper className={classes.paper}>
+              <Typography variant="subheading" paragraph="true">
+                Current category:
+              </Typography>
               <ButtonBase className={classes.categorySelect}>
                 <Typography component="p" className={classes.categoryIcon}>
                   <i className="fas fa-male" />
