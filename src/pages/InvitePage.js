@@ -8,10 +8,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import AppFrame from "../components/AppFrame";
 import Page from "../components/Page";
-import {
-  getOrCreateInviteCode,
-  createInviteLink
-} from "../utils/organizations";
+import { getOrAddInvite, createInviteLink } from "../queries/invites";
 
 class InvitePage extends React.Component {
   state = {
@@ -21,11 +18,11 @@ class InvitePage extends React.Component {
   };
 
   componentDidMount() {
-    getOrCreateInviteCode(this.props.profile.organization.id)
-      .then(inviteCode => {
+    getOrAddInvite(this.props.profile.organization.ref)
+      .then(invite => {
         this.setState({
           isFetching: false,
-          inviteLink: createInviteLink(inviteCode)
+          inviteLink: createInviteLink(invite)
         });
       })
       .catch(console.error);

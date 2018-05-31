@@ -10,6 +10,33 @@ try {
   describeButSkipIfNoKey = describe.skip;
 }
 
+const TEST_DATA = {
+  organizations: [
+    {
+      key: "1",
+      fields: { name: "Org 1" },
+      collections: {}
+    },
+    {
+      key: "2",
+      fields: { name: "Org 2" },
+      collections: {}
+    }
+  ],
+  profiles: [
+    {
+      key: "org1",
+      fields: { organization: "organizations/1" },
+      collections: {}
+    },
+    {
+      key: "org2",
+      fields: { organization: "organizations/2" },
+      collections: {}
+    }
+  ]
+};
+
 describeButSkipIfNoKey("firestore.rules", () => {
   let database;
 
@@ -24,30 +51,7 @@ describeButSkipIfNoKey("firestore.rules", () => {
   describe("/products", () => {
     beforeEach(() => {
       database.setData({
-        organizations: [
-          {
-            key: "1",
-            fields: { name: "Org 1" },
-            collections: {}
-          },
-          {
-            key: "2",
-            fields: { name: "Org 2" },
-            collections: {}
-          }
-        ],
-        profiles: [
-          {
-            key: "org1",
-            fields: { organization: "organizations/1" },
-            collections: {}
-          },
-          {
-            key: "org2",
-            fields: { organization: "organizations/2" },
-            collections: {}
-          }
-        ],
+        ...TEST_DATA,
         products: [
           {
             key: "1",
@@ -60,7 +64,7 @@ describeButSkipIfNoKey("firestore.rules", () => {
         ]
       });
     });
-    test("products can be only be created for an organization by a user in that organization", async () => {
+    test("products can only be created for an organization by a user in that organization", async () => {
       firestore.assert(
         await database.canSet({ uid: "org1" }, "products/5437890", {
           name: "T-Shirts",
@@ -105,6 +109,56 @@ describeButSkipIfNoKey("firestore.rules", () => {
       firestore.assert(
         await database.canCommit({ uid: "org1" }, [
           firestore.Batch.delete("products/1")
+        ])
+      );
+    });
+  });
+
+  describe("/invites", () => {
+    beforeEach(() => {
+      database.setData({
+        ...TEST_DATA,
+        invites: [
+          {
+            key: "1",
+            fields: {
+              organization: "organizations/1"
+            },
+            collections: {}
+          }
+        ]
+      });
+    });
+
+    test("invites can only be created for an organization by a user in that organization", async () => {
+      firestore.assert(
+        await database.canSet({ uid: "org1" }, "invites/5437890", {
+          organization: "organizations/1"
+        })
+      );
+      firestore.assert(
+        await database.cannotSet({ uid: "org1" }, "invites/03248", {
+          organization: "organizations/2"
+        })
+      );
+    });
+
+    test("unauthenticated users can get invites", async () => {
+      firestore.assert(await database.canGet({}, "invites/1"));
+    });
+    // Unsupported: https://github.com/GitbookIO/expect-firestore/issues/11
+    test.skip("invites cannot be listed", async () => {});
+    test("invites cannot be updated", async () => {
+      firestore.assert(
+        await database.cannotUpdate({ uid: "org1" }, "invites/1", {
+          organization: "organizations/org1"
+        })
+      );
+    });
+    test("invites cannot be deleted", async () => {
+      firestore.assert(
+        await database.cannotCommit({ uid: "org1" }, [
+          firestore.Batch.delete("invites/1")
         ])
       );
     });
