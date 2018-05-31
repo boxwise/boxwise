@@ -1,0 +1,113 @@
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+import CreateOrganizationForm from "./CreateOrganizationForm";
+import SignUpForm from "./SignUpForm";
+import InviteLink from "./InviteLink";
+import { addOrganization } from "../queries/organizations";
+import { createUserAndProfile } from "../auth";
+
+const OrganizationStep = ({ onDone }) => {
+  return (
+    <div>
+      <Typography variant="body1" gutterBottom>
+        Start using Drop App to manage your warehouse by signing up here.
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        After giving us a few details about your organization, you'll then be
+        able to invite your co-workers to join you in using Drop App.
+      </Typography>
+      <br />
+      <br />
+      <CreateOrganizationForm
+        onSubmit={(data, { setSubmitting, setErrors }) => {
+          setSubmitting(false);
+          onDone(data);
+        }}
+      />
+    </div>
+  );
+};
+
+const UserStep = ({ organizationData, onDone }) => {
+  return (
+    <SignUpForm
+      submitButtonText="Continue"
+      onSubmit={(data, { setSubmitting, setErrors }) => {
+        return addOrganization(organizationData)
+          .then(organization => {
+            return createUserAndProfile(data, { organization });
+          })
+          .then(onDone)
+          .catch(error => {
+            setSubmitting(false);
+            console.error(error);
+            setErrors({ form: error.message });
+          });
+      }}
+    />
+  );
+};
+
+const InviteStep = ({ onDone }) => {
+  return (
+    <div>
+      <InviteLink />
+      <br />
+      <br />
+      <Button variant="raised" color="primary" onClick={onDone}>
+        Continue
+      </Button>
+    </div>
+  );
+};
+
+const DoneStep = ({ onDone }) => {
+  return (
+    <div>
+      <Typography variant="body1" gutterBottom>
+        That’s it! You’re all set up. Let’s start making some boxes...
+      </Typography>
+      <br />
+      <br />
+      <Button variant="raised" color="primary" onClick={onDone}>
+        Start using Drop App
+      </Button>
+    </div>
+  );
+};
+
+class CreateOrganizationFlow extends React.Component {
+  state = {
+    step: "organization",
+    organizationData: null
+  };
+
+  render() {
+    switch (this.state.step) {
+      case "organization":
+        return (
+          <OrganizationStep
+            onDone={data => {
+              this.setState({ organizationData: data, step: "user" });
+            }}
+          />
+        );
+      case "user":
+        return (
+          <UserStep
+            organizationData={this.state.organizationData}
+            onDone={user => this.setState({ step: "invite" })}
+          />
+        );
+      case "invite":
+        return <InviteStep onDone={() => this.setState({ step: "done" })} />;
+      case "done":
+        return <DoneStep onDone={this.props.onDone} />;
+      default:
+        throw new Error("unknown step");
+    }
+  }
+}
+
+export default CreateOrganizationFlow;

@@ -6,7 +6,7 @@ import DashboardPage from "./pages/DashboardPage";
 import BoxesPage from "./pages/BoxesPage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
-import SignUpPage from "./pages/SignUpPage";
+import CreateOrganizationPage from "./pages/CreateOrganizationPage";
 import SignInPage from "./pages/SignInPage";
 import InvitePage from "./pages/InvitePage";
 import MakeBoxUIPage from "./pages/MakeBoxUIPage";
@@ -28,7 +28,11 @@ const App = () => (
       />
       <AuthedRoute exact path="/products" component={() => <ProductsPage />} />
       <AuthedRoute exact path="/invite" component={() => <InvitePage />} />
-      <Route exact path="/signup" component={() => <SignUpPage />} />
+      <Route
+        exact
+        path="/create-organization"
+        component={() => <CreateOrganizationPage />}
+      />
       <Route exact path="/signin" component={() => <SignInPage />} />
       <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
       <Route exact path="/makebox-ui" component={() => <MakeBoxUIPage />} />

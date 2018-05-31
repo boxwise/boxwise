@@ -14,7 +14,10 @@ const SignInPage = ({ history }) => (
         <SignInForm onSuccess={user => setTimeout(() => history.push("/"))} />
         <br />
         <Typography variant="body1">
-          <Link to="/signup">Don’t have an account?</Link>
+          Don’t have an account?{" "}
+          <Link to="/create-organization">
+            Set up your organization with Drop App
+          </Link>
         </Typography>
       </Grid>
     </Grid>

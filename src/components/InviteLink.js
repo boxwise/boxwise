@@ -40,9 +40,7 @@ class InviteLink extends React.Component {
           text={this.state.inviteLink}
           onCopy={() => this.setState({ snackbarOpen: true })}
         >
-          <Button variant="raised" color="primary">
-            Copy to clipboard
-          </Button>
+          <Button color="primary">Copy to clipboard</Button>
         </CopyToClipboard>
         <Snackbar
           anchorOrigin={{
