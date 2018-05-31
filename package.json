@@ -43,6 +43,10 @@
     "src/**/*.{js,jsx,json,css}": [
       "prettier --write",
       "git add"
+    ],
+    "src/**/*.js": [
+      "eslint --fix --max-warnings 0",
+      "git add"
     ]
   }
 }
