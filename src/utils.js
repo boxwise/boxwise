@@ -4,7 +4,6 @@ import React from "react";
 // wait for the damned thing to be ready in the redux state.
 export function waitForProfile(Component) {
   return function({ isLoading, ...props }) {
-    console.log(props.profile);
     if (props.profile.isEmpty || props.profile.isFetching) {
       return null;
     }
