@@ -21,5 +21,6 @@ jest.mock("./firebase", () => {
   );
   const firebase = mocksdk.initializeApp();
   firebase.auth().autoFlush(true);
+  firebase.firestore().autoFlush(true);
   return firebase;
 });

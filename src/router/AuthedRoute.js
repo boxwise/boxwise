@@ -1,19 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
-const AuthedRoute = ({ user, component: Component, ...rest }) => {
-  if (user.isFetching) {
-    return null; // TODO: loading indicator if this is slow?
-  }
+const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
   const isLoggedIn = !user.isEmpty;
 
   return (
     <Route
       {...rest}
       render={props =>
+        // First, wait for user to load
+        user.isFetching ? (
+          <CircularProgress />
+        ) : // Are we logged in?
         isLoggedIn ? (
-          <Component {...props} />
+          // Wait for profile to load if logged in
+          profile.isFetching ? (
+            <CircularProgress />
+          ) : (
+            <Component {...props} />
+          )
         ) : (
           <Redirect
             to={{ pathname: "/signin", state: { from: props.location } }}
@@ -25,7 +32,8 @@ const AuthedRoute = ({ user, component: Component, ...rest }) => {
 };
 
 const mapStateToProps = state => ({
-  user: state.user
+  user: state.user,
+  profile: state.profile
 });
 
 // https://github.com/reduxjs/react-redux/blob/master/docs/troubleshooting.md#my-views-arent-updating-when-something-changes-outside-of-redux

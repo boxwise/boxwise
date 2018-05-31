@@ -12,7 +12,7 @@ const enhance = compose(
   }))
 );
 
-const AppDrawerAuthContainer = ({ organization, user, profile }) => {
+const AppDrawerAuthContainer = ({ onClose, organization, user, profile }) => {
   if (user.isEmpty || profile.isEmpty) {
     return <AppDrawerAuth isFetching={true} />;
   }
@@ -22,6 +22,7 @@ const AppDrawerAuthContainer = ({ organization, user, profile }) => {
       user={user}
       profile={profile}
       onSignOut={() => firebase.auth().signOut()}
+      onClose={onClose}
     />
   );
 };

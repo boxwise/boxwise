@@ -77,7 +77,7 @@ const AppDrawer = ({
         </ListItem>
       </List>
       <Divider />
-      <AppDrawerAuthContainer />
+      <AppDrawerAuthContainer onClose={onClose} />
     </div>
   );
 
