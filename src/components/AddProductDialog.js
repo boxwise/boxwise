@@ -84,12 +84,12 @@ const AddProductDialog = ({
                 value={values.category}
                 onChange={handleChange}
               >
-                <MenuItem value="Men">Men</MenuItem>
-                <MenuItem value="Women">Women</MenuItem>
-                <MenuItem value="Adult unisex">Adult unisex</MenuItem>
+                <MenuItem value="Man">Man</MenuItem>
+                <MenuItem value="Woman">Woman</MenuItem>
+                <MenuItem value="Adult">Adult</MenuItem>
                 <MenuItem value="Boy">Boy</MenuItem>
                 <MenuItem value="Girl">Girl</MenuItem>
-                <MenuItem value="Children">Children</MenuItem>
+                <MenuItem value="Child">Child</MenuItem>
                 <MenuItem value="Baby">Baby</MenuItem>
                 <MenuItem value="Food">Food</MenuItem>
                 <MenuItem value="Hygiene">Hygiene</MenuItem>
