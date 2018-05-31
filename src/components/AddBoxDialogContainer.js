@@ -35,9 +35,8 @@ class AddBoxDialogContainer extends React.Component {
               box={this.state.box}
               selectedProduct={this.state.selectedProduct}
               onSubmit={(values, { setSubmitting, setErrors }) => {
-                const selectedProduct = values.product;
                 values.organization = firestore.doc(profile.organization.ref);
-                values.product = firestore.doc("products/" + values.product.id);
+                values.product = firestore.doc("products/" + values.product);
                 firestore
                   .collection("boxes")
                   .add(values)
@@ -48,7 +47,9 @@ class AddBoxDialogContainer extends React.Component {
                     setSubmitting(false);
                     this.setState({
                       box: box.data(),
-                      selectedProduct: selectedProduct,
+                      selectedProduct: data.filter(
+                        product => product.id === values.product.id
+                      )[0],
                       done: true
                     });
                   })
