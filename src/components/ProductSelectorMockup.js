@@ -1,7 +1,7 @@
 import React from "react";
 import ProductButton from "../components/ProductButton";
 
-const ProductSelector = () => {
+const ProductSelectorMockup = () => {
   return (
     <div>
       <ProductButton icon="tshirt" label="T-Shirt" />
@@ -13,4 +13,4 @@ const ProductSelector = () => {
   );
 };
 
-export default ProductSelector;
+export default ProductSelectorMockup;

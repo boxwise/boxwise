@@ -20,7 +20,7 @@ import Select from "@material-ui/core/Select";
 import ButtonBase from "@material-ui/core/ButtonBase";
 import TextField from "@material-ui/core/TextField";
 import CategorySelector from "../components/CategorySelector";
-import ProductSelector from "../components/ProductSelector";
+import ProductSelectorMockup from "../components/ProductSelectorMockup";
 import ProductButton from "../components/ProductButton";
 
 const styles = theme => ({
@@ -110,7 +110,7 @@ class MakeBoxMockupPage extends React.Component {
               <Typography variant="subheading" paragraph="true">
                 Choose a product
               </Typography>
-              <ProductSelector />
+              <ProductSelectorMockup />
             </Paper>
 
             <Paper className={classes.paper}>

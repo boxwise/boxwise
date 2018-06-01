@@ -21,7 +21,7 @@ import ButtonBase from "@material-ui/core/ButtonBase";
 import TextField from "@material-ui/core/TextField";
 
 import CategorySelector from "../components/CategorySelector";
-import ProductSelector from "../components/ProductSelector";
+import ProductSelectorMockup from "../components/ProductSelectorMockup";
 import ProductButton from "../components/ProductButton";
 
 import List from "@material-ui/core/List";
@@ -118,7 +118,7 @@ class FindBoxMockupPage extends React.Component {
               <Typography variant="subheading" paragraph>
                 Choose a product
               </Typography>
-              <ProductSelector />
+              <ProductSelectorMockup />
             </Paper>
 
             <Paper className={classes.paper}>
