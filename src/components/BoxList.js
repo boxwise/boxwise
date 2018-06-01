@@ -5,12 +5,17 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
+import Typography from "@material-ui/core/Typography";
 
 const styles = theme => ({
   root: {
     marginTop: theme.spacing.unit * 2,
     marginBottom: theme.spacing.unit * 4
   },
+  empty: theme.mixins.gutters({
+    textAlign: "center",
+    marginTop: theme.spacing.unit * 4
+  }),
   progress: {
     margin: theme.spacing.unit * 4,
     display: "flex",
@@ -30,6 +35,15 @@ const BoxList = ({ classes, isLoading, boxes, products }) => {
       </div>
     );
   }
+
+  if (!boxes.length) {
+    return (
+      <Typography className={classes.empty} variant="body1">
+        No boxes. Make some?
+      </Typography>
+    );
+  }
+
   return (
     <List className={classes.root}>
       {boxes.map(box => (
