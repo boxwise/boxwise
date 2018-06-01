@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
@@ -24,39 +24,41 @@ const App = () => (
     <BrowserRouter>
       <div>
         <CssBaseline />
-        <AuthedRoute exact path="/" component={() => <DashboardPage />} />
-        <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
-        <AuthedRoute
-          exact
-          path="/create-labels"
-          component={() => <CreateLabelsPage />}
-        />
-        <AuthedRoute
-          exact
-          path="/products"
-          component={() => <ProductsPage />}
-        />
-        <AuthedRoute exact path="/invite" component={() => <InvitePage />} />
-        <Route
-          exact
-          path="/create-organization"
-          component={() => <CreateOrganizationPage />}
-        />
-        <Route exact path="/signin" component={() => <SignInPage />} />
-        <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
+        <Switch>
+          <AuthedRoute exact path="/" component={() => <DashboardPage />} />
+          <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
+          <AuthedRoute
+            exact
+            path="/create-labels"
+            component={() => <CreateLabelsPage />}
+          />
+          <AuthedRoute
+            exact
+            path="/products"
+            component={() => <ProductsPage />}
+          />
+          <AuthedRoute exact path="/invite" component={() => <InvitePage />} />
+          <Route
+            exact
+            path="/create-organization"
+            component={() => <CreateOrganizationPage />}
+          />
+          <Route exact path="/signin" component={() => <SignInPage />} />
+          <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
 
-        <Route exact path="/mockups" component={() => <MockupsPage />} />
-        <Route
-          exact
-          path="/mockups/make-box"
-          component={() => <MakeBoxMockupPage />}
-        />
-        <Route
-          exact
-          path="/mockups/find-box"
-          component={() => <FindBoxMockupPage />}
-        />
-        <Route component={NotFound} />
+          <Route exact path="/mockups" component={() => <MockupsPage />} />
+          <Route
+            exact
+            path="/mockups/make-box"
+            component={() => <MakeBoxMockupPage />}
+          />
+          <Route
+            exact
+            path="/mockups/find-box"
+            component={() => <FindBoxMockupPage />}
+          />
+          <Route component={NotFound} />
+        </Switch>
       </div>
     </BrowserRouter>
   </MuiThemeProvider>
