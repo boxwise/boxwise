@@ -81,7 +81,6 @@ const AddProductDialog = ({
               value={values.category}
               onChange={handleChange}
               fullWidth
-              autoFocus
               margin="dense"
             >
               <MenuItem value="Man">Man</MenuItem>
@@ -100,7 +99,6 @@ const AddProductDialog = ({
               name="name"
               component={TextField}
               fullWidth
-              autoFocus
               margin="dense"
             />
           </DialogContent>
