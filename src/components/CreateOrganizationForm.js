@@ -36,7 +36,6 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
           name="name"
           component={TextField}
           fullWidth
-          autoFocus
           margin="normal"
         />
         <ButtonWithProgress
