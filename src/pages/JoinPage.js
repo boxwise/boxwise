@@ -8,6 +8,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import Page from "../components/Page";
 import { createUserAndProfile } from "../auth";
 
+// TODO: clean this up. needs some separate components and containers.
+
 const JoinPage = ({ history, match }) => (
   <Page>
     <Grid container spacing={24} justify="center" alignItems="center">
@@ -16,7 +18,7 @@ const JoinPage = ({ history, match }) => (
         <br />
         <FirestoreDocument
           path={`invites/${match.params.inviteId}`}
-          render={({ isLoading, data, snapshot }) => {
+          render={({ isLoading, data: invite, snapshot }) => {
             if (isLoading) {
               return <CircularProgress />;
             } else if (!snapshot.exists) {
@@ -28,36 +30,47 @@ const JoinPage = ({ history, match }) => (
               );
             }
             return (
-              <div>
-                <Typography variant="body1">
-                  You have been invited by{" "}
-                  <strong>{data.organization.id}</strong> to join them on Drop
-                  App.
-                </Typography>
-                <SignUpForm
-                  onSubmit={(
-                    { email, password },
-                    { setSubmitting, setErrors }
-                  ) => {
-                    createUserAndProfile(
-                      { email, password },
-                      { organization: data.organization }
-                    )
-                      .then(user => {
-                        setSubmitting(false);
-                        /* setTimeout because we need to let AuthedRoute update */
-                        setTimeout(() => history.push("/"));
-                      })
-                      .catch(error => {
-                        setSubmitting(false);
-                        console.error(error);
-                        setErrors({ form: error.message });
-                      });
-                  }}
-                  submitButtonText="Join"
-                />
-                <br />
-              </div>
+              <FirestoreDocument
+                path={`organizations/${invite.organization.id}`}
+                render={({ isLoading, data: organization }) => {
+                  if (isLoading) {
+                    return <CircularProgress />;
+                  } else {
+                    return (
+                      <React.Fragment>
+                        <Typography variant="body1">
+                          You have been invited by{" "}
+                          <strong>{organization.name}</strong> to join them on
+                          Drop App.
+                        </Typography>
+                        <SignUpForm
+                          onSubmit={(
+                            { email, password },
+                            { setSubmitting, setErrors }
+                          ) => {
+                            createUserAndProfile(
+                              { email, password },
+                              { organization: invite.organization }
+                            )
+                              .then(user => {
+                                setSubmitting(false);
+                                /* setTimeout because we need to let AuthedRoute update */
+                                setTimeout(() => history.push("/"));
+                              })
+                              .catch(error => {
+                                setSubmitting(false);
+                                console.error(error);
+                                setErrors({ form: error.message });
+                              });
+                          }}
+                          submitButtonText="Join"
+                        />
+                        <br />
+                      </React.Fragment>
+                    );
+                  }
+                }}
+              />
             );
           }}
         />
