@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import AddBoxDialog from "./AddBoxDialog";
 import { FirestoreCollection } from "react-firestore";
 import { firestore } from "../firebase";
+import { handleError } from "../utils";
 
 const DEFAULT_STATE = {
   box: null,
@@ -55,7 +56,8 @@ class AddBoxDialogContainer extends React.Component {
                   })
                   .catch(e => {
                     setSubmitting(false);
-                    console.error();
+                    // TODO: handle user error, throw everything else
+                    handleError(e);
                   });
               }}
               onClose={() => {

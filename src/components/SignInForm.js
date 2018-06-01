@@ -5,6 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
 import ButtonWithProgress from "./ButtonWithProgress";
+import { handleError } from "../utils";
 
 const styles = theme => ({
   submit: {
@@ -38,7 +39,8 @@ const SignInForm = ({ classes, onSuccess }) => (
         })
         .catch(error => {
           setSubmitting(false);
-          console.error(error);
+          // TODO: handle user error, throw everything else
+          handleError(error);
           setErrors({ form: error.message });
         });
     }}

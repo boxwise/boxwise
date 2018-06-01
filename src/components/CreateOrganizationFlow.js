@@ -6,6 +6,7 @@ import SignUpForm from "./SignUpForm";
 import InviteLink from "./InviteLink";
 import { addOrganization } from "../queries/organizations";
 import { createUserAndProfile } from "../auth";
+import { handleError } from "../utils";
 
 const OrganizationStep = ({ onDone }) => {
   return (
@@ -41,7 +42,8 @@ const UserStep = ({ organizationData, onDone }) => {
           .then(onDone)
           .catch(error => {
             setSubmitting(false);
-            console.error(error);
+            // TODO: handle user errors, log everything else
+            handleError(error);
             setErrors({ form: error.message });
           });
       }}

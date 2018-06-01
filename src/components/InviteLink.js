@@ -8,7 +8,7 @@ import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import { getOrAddInvite, createInviteLink } from "../queries/invites";
-import { waitForProfile } from "../utils";
+import { waitForProfile, handleError } from "../utils";
 
 class InviteLink extends React.Component {
   state = {
@@ -25,7 +25,7 @@ class InviteLink extends React.Component {
           inviteLink: createInviteLink(invite)
         });
       })
-      .catch(console.error);
+      .catch(handleError); // TODO: actually handle errors
   }
 
   render() {
