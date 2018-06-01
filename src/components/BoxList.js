@@ -34,7 +34,14 @@ const BoxList = ({
   onChangeProductFilter
 }) => {
   const getProduct = id => {
-    return products.filter(product => product.id === id)[0];
+    const result = products.filter(product => product.id === id);
+    if (result[0]) {
+      return result[0];
+    }
+    return {
+      category: "[none]",
+      name: "[none]"
+    };
   };
 
   let list;
