@@ -12,18 +12,20 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: "Zinnebeeld",
+    fontFamily: "Open Sans",
     headline: {
-      fontFamily: "ZinnebeeldBold"
+      fontFamily: "Open Sans",
+      fontWeight: 700
     },
     button: {
-      fontFamily: "ZinnebeeldBold"
+      fontFamily: "Open Sans",
+      fontWeight: 700
     },
     title: {
-      fontFamily: "ZinnebeeldBold"
+      fontFamily: "Open Sans"
     },
     subheading: {
-      fontFamily: "ZinnebeeldBold"
+      fontFamily: "Open Sans"
     }
   },
   palette: {
