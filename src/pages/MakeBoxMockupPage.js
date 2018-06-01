@@ -53,7 +53,7 @@ const styles = theme => ({
   }
 });
 
-class MakeBoxUIPage extends React.Component {
+class MakeBoxMockupPage extends React.Component {
   state = {
     spacing: "16"
   };
@@ -166,8 +166,8 @@ class MakeBoxUIPage extends React.Component {
   }
 }
 
-MakeBoxUIPage.propTypes = {
+MakeBoxMockupPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(MakeBoxUIPage);
+export default withStyles(styles)(MakeBoxMockupPage);

@@ -9,9 +9,10 @@ import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
 import SignInPage from "./pages/SignInPage";
 import InvitePage from "./pages/InvitePage";
-import MakeBoxUIPage from "./pages/MakeBoxUIPage";
-import FindBoxUIPage from "./pages/FindBoxUIPage";
 import JoinPage from "./pages/JoinPage";
+import MockupsPage from "./pages/MockupsPage";
+import MakeBoxMockupPage from "./pages/MakeBoxMockupPage";
+import FindBoxMockupPage from "./pages/FindBoxMockupPage";
 
 import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
@@ -42,8 +43,18 @@ const App = () => (
         />
         <Route exact path="/signin" component={() => <SignInPage />} />
         <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
-        <Route exact path="/makebox-ui" component={() => <MakeBoxUIPage />} />
-        <Route exact path="/findbox-ui" component={() => <FindBoxUIPage />} />
+
+        <Route exact path="/mockups" component={() => <MockupsPage />} />
+        <Route
+          exact
+          path="/mockups/make-box"
+          component={() => <MakeBoxMockupPage />}
+        />
+        <Route
+          exact
+          path="/mockups/find-box"
+          component={() => <FindBoxMockupPage />}
+        />
       </div>
     </BrowserRouter>
   </MuiThemeProvider>

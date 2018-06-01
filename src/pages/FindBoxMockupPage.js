@@ -79,7 +79,7 @@ const styles = theme => ({
   }
 });
 
-class FindBoxUIPage extends React.Component {
+class FindBoxMockupPage extends React.Component {
   state = {
     spacing: "16"
   };
@@ -188,8 +188,8 @@ class FindBoxUIPage extends React.Component {
   }
 }
 
-FindBoxUIPage.propTypes = {
+FindBoxMockupPage.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(FindBoxUIPage);
+export default withStyles(styles)(FindBoxMockupPage);

@@ -75,13 +75,6 @@ const AppDrawer = ({
         <ListItem component={Link} to="/create-labels" onClick={onClose} button>
           <ListItemText primary="Create labels" />
         </ListItem>
-        <Divider />
-        <ListItem component={Link} to="/makebox-ui" onClick={onClose} button>
-          <ListItemText primary="Make Box UI" />
-        </ListItem>
-        <ListItem component={Link} to="/findbox-ui" onClick={onClose} button>
-          <ListItemText primary="Find Box UI" />
-        </ListItem>
       </List>
       <Divider />
       <AppDrawerAuthContainer onClose={onClose} />
