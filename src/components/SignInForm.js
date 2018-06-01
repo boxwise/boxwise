@@ -54,7 +54,6 @@ const SignInForm = ({ classes, onSuccess }) => (
           name="email"
           component={TextField}
           fullWidth
-          autoFocus
           margin="normal"
         />
         <Field
