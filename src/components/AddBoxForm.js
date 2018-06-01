@@ -51,7 +51,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
           >
             {products.map(n => (
               <MenuItem key={n.id} value={n.id}>
-                {n.name}
+                {n.category} / {n.name}
               </MenuItem>
             ))}
           </Field>
