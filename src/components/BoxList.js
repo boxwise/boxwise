@@ -36,9 +36,9 @@ const BoxList = ({ classes, isLoading, boxes, products }) => {
         <React.Fragment key={box.id}>
           <ListItem>
             <ListItemText
-              primary={`${box.quantity}x ${getProduct(box.product.id).name} / ${
-                getProduct(box.product.id).name
-              }`}
+              primary={`${box.quantity}x ${
+                getProduct(box.product.id).category
+              } / ${getProduct(box.product.id).name}`}
               secondary={box.comment ? box.comment : " "}
             />
           </ListItem>
