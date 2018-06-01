@@ -20,7 +20,7 @@ class AddBoxDialogContainer extends React.Component {
   render() {
     const { onClose, profile, ...props } = this.props;
 
-    if (profile.isFetching) {
+    if (profile.isFetching || profile.isEmpty) {
       return <AddBoxDialog isLoading={true} products={[]} />;
     }
     return (
