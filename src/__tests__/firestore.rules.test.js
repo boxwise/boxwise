@@ -147,7 +147,7 @@ describeButSkipIfNoKey("firestore.rules", () => {
       firestore.assert(await database.canGet({}, "invites/1"));
     });
     // Unsupported: https://github.com/GitbookIO/expect-firestore/issues/11
-    test.skip("invites cannot be listed", async () => {});
+    test.skip("invites can only be listed by organization", async () => {});
     test("invites cannot be updated", async () => {
       firestore.assert(
         await database.cannotUpdate({ uid: "org1" }, "invites/1", {

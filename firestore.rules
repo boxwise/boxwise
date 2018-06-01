@@ -38,7 +38,7 @@ service cloud.firestore {
     }
     match /invites/{inviteId} {
       allow get: if true;
-      allow list: if false;
+      allow list: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
       allow create: if isAuthenticated() && userIsInOrganisation(request.resource.data.organization);
       allow update: if false;
       allow delete: if false;
