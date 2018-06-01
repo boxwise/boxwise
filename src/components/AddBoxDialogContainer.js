@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import AddBoxDialog from "./AddBoxDialog";
 import { FirestoreCollection } from "react-firestore";
-import { firestore } from "../firebase";
+import firebase, { firestore } from "../firebase";
 import { handleError } from "../utils";
 
 const DEFAULT_STATE = {
@@ -38,6 +38,7 @@ class AddBoxDialogContainer extends React.Component {
               onSubmit={(values, { setSubmitting, setErrors }) => {
                 values.organization = firestore.doc(profile.organization.ref);
                 values.product = firestore.doc("products/" + values.product);
+                values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
                 firestore
                   .collection("boxes")
                   .add(values)
