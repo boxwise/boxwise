@@ -26,7 +26,10 @@ class AddBoxDialogContainer extends React.Component {
     return (
       <FirestoreCollection
         path="products"
-        filter={["organization", "==", firestore.doc(profile.organization.ref)]}
+        filter={[
+          ["organization", "==", firestore.doc(profile.organization.ref)],
+          ["isDeleted", "==", false]
+        ]}
         render={({ data }) => {
           return (
             <AddBoxDialog

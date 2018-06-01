@@ -27,16 +27,15 @@ class BoxListContainer extends React.Component {
 
     return (
       <FirestoreCollection
-        path={"boxes"}
+        path="boxes"
         filter={filters}
         render={boxresult => {
           return (
             <FirestoreCollection
-              path={"products"}
+              path="products"
               filter={[
-                "organization",
-                "==",
-                firestore.doc(profile.organization.ref)
+                ["organization", "==", firestore.doc(profile.organization.ref)],
+                ["isDeleted", "==", false]
               ]}
               render={productresult => {
                 return (
