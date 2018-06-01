@@ -70,7 +70,7 @@ const AppDrawer = ({
           <ListItemText primary="Find boxes" />
         </ListItem>
         <ListItem component={Link} to="/products" onClick={onClose} button>
-          <ListItemText primary="Products" />
+          <ListItemText primary="Manage products" />
         </ListItem>
         <ListItem component={Link} to="/create-labels" onClick={onClose} button>
           <ListItemText primary="Create labels" />

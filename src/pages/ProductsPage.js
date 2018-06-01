@@ -32,7 +32,7 @@ class ProductsPage extends React.Component {
   render() {
     const { classes } = this.props;
     return (
-      <AppFrame title="Products">
+      <AppFrame title="Manage products">
         <Page className={classes.root}>
           <AddProductDialogContainer
             open={this.state.addDialogOpen}
