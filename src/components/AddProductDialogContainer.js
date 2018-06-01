@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import AddProductDialog from "./AddProductDialog";
 import firebase from "../firebase";
+import { handleError } from "../utils";
 
 const AddProductDialogContainer = ({ onClose, profile, ...props }) => (
   <AddProductDialog
@@ -14,7 +15,7 @@ const AddProductDialogContainer = ({ onClose, profile, ...props }) => (
         .then(product => {
           onClose();
         })
-        .catch(console.error);
+        .catch(handleError); // TODO: actually handle the error
     }}
     onClose={onClose}
     {...props}

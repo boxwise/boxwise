@@ -1,4 +1,5 @@
 import { firestore } from "../firebase";
+import { handleError } from "../utils";
 
 export const SET_PROFILE = "SET_PROFILE";
 
@@ -29,8 +30,8 @@ export const fetchProfile = user => {
             };
             dispatch(setProfile(profile));
           })
-          .catch(console.error);
+          .catch(handleError); // TODO: proper handling
       })
-      .catch(console.error);
+      .catch(handleError); // TODO: proper handling
   };
 };

@@ -8,6 +8,8 @@
 // To learn more about the benefits of this model, read https://goo.gl/KwvDNy.
 // This link also includes instructions on opting out of this behavior.
 
+import { handleError } from "./utils";
+
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
     // [::1] is the IPv6 localhost address.
@@ -77,7 +79,7 @@ function registerValidSW(swUrl) {
       };
     })
     .catch(error => {
-      console.error("Error during service worker registration:", error);
+      handleError(error);
     });
 }
 

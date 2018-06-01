@@ -7,6 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Page from "../components/Page";
 import { createUserAndProfile } from "../auth";
+import { handleError } from "../utils";
 
 // TODO: clean this up. needs some separate components and containers.
 
@@ -59,7 +60,8 @@ const JoinPage = ({ history, match }) => (
                               })
                               .catch(error => {
                                 setSubmitting(false);
-                                console.error(error);
+                                // TODO: handle user error, throw everything else
+                                handleError(error);
                                 setErrors({ form: error.message });
                               });
                           }}
