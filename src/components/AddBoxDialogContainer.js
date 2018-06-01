@@ -39,6 +39,7 @@ class AddBoxDialogContainer extends React.Component {
                 values.organization = firestore.doc(profile.organization.ref);
                 values.product = firestore.doc("products/" + values.product);
                 values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+                values.createdBy = firestore.doc(profile.ref);
                 firestore
                   .collection("boxes")
                   .add(values)
