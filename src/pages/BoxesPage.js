@@ -1,18 +1,12 @@
 import React from "react";
 import AppFrame from "../components/AppFrame";
-import Page from "../components/Page";
-import Paper from "@material-ui/core/Paper";
-import BoxTableContainer from "../components/BoxTableContainer";
+import BoxListContainer from "../components/BoxListContainer";
 
 class BoxesPage extends React.Component {
   render() {
     return (
       <AppFrame title="Find boxes">
-        <Page>
-          <Paper>
-            <BoxTableContainer />
-          </Paper>
-        </Page>
+        <BoxListContainer />
       </AppFrame>
     );
   }

@@ -7,7 +7,7 @@ import AddBoxDialogContainer from "../components/AddBoxDialogContainer";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Toolbar from "@material-ui/core/Toolbar";
-import BoxTableContainer from "../components/BoxTableContainer";
+import BoxListContainer from "../components/BoxListContainer";
 
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";

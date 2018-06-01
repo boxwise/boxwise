@@ -1,12 +1,12 @@
 import React from "react";
-import BoxTable from "./BoxTable";
+import BoxList from "./BoxList";
 import { connect } from "react-redux";
 import { FirestoreCollection } from "react-firestore";
 import { firestore } from "../firebase";
 
-const BoxTableContainer = ({ profile }) => {
+const BoxListContainer = ({ profile }) => {
   if (profile.isFetching) {
-    return <BoxTable isLoading={true} boxes={[]} />;
+    return <BoxList isLoading={true} boxes={[]} />;
   }
   return (
     <FirestoreCollection
@@ -23,7 +23,7 @@ const BoxTableContainer = ({ profile }) => {
             ]}
             render={productresult => {
               return (
-                <BoxTable
+                <BoxList
                   isLoading={boxresult.isLoading || productresult.isLoading}
                   boxes={boxresult.data}
                   products={productresult.data}
@@ -39,4 +39,4 @@ const BoxTableContainer = ({ profile }) => {
 
 export default connect(state => ({
   profile: state.profile
-}))(BoxTableContainer);
+}))(BoxListContainer);
