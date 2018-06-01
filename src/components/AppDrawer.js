@@ -67,7 +67,7 @@ const AppDrawer = ({
           <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem component={Link} to="/boxes" onClick={onClose} button>
-          <ListItemText primary="Find a box" />
+          <ListItemText primary="Find boxes" />
         </ListItem>
         <ListItem component={Link} to="/products" onClick={onClose} button>
           <ListItemText primary="Products" />

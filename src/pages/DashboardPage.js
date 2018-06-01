@@ -51,7 +51,7 @@ class DashboardPage extends React.Component {
               component={Link}
               to="/boxes"
             >
-              Find a box
+              Find boxes
             </Button>
           </Paper>
         </Page>

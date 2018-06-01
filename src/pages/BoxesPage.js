@@ -7,7 +7,7 @@ import BoxTableContainer from "../components/BoxTableContainer";
 class BoxesPage extends React.Component {
   render() {
     return (
-      <AppFrame title="Boxes">
+      <AppFrame title="Find boxes">
         <Page>
           <Paper>
             <BoxTableContainer />
