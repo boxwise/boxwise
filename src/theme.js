@@ -1,5 +1,7 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
+const fontFamily = '"Open Sans", Helvetica, Arial, sans-serif';
+
 const theme = createMuiTheme({
   overrides: {
     MuiButton: {
@@ -12,20 +14,20 @@ const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: "Open Sans",
+    fontFamily: fontFamily,
     headline: {
-      fontFamily: "Open Sans",
+      fontFamily: fontFamily,
       fontWeight: 700
     },
     button: {
-      fontFamily: "Open Sans",
+      fontFamily: fontFamily,
       fontWeight: 700
     },
     title: {
-      fontFamily: "Open Sans"
+      fontFamily: fontFamily
     },
     subheading: {
-      fontFamily: "Open Sans"
+      fontFamily: fontFamily
     }
   },
   palette: {
