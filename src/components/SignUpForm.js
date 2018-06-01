@@ -40,7 +40,6 @@ const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
           name="email"
           component={TextField}
           fullWidth
-          autoFocus
           margin="normal"
         />
         <Field
