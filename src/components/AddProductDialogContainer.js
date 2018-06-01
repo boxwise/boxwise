@@ -10,6 +10,7 @@ const AddProductDialogContainer = ({ onClose, profile, ...props }) => (
       const firestore = firebase.firestore();
       values.organization = firestore.doc(profile.organization.ref);
       values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+      values.createdBy = firestore.doc(profile.ref);
       firestore
         .collection("products")
         .add(values)

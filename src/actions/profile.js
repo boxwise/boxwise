@@ -20,6 +20,7 @@ export const fetchProfile = user => {
         // Populate organization
         // TODO: this could be a general helper to populate objects
         let profile = doc.data();
+        profile.ref = `profiles/${doc.id}`;
         profile.organization
           .get()
           .then(doc => {
