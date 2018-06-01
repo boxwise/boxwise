@@ -13,6 +13,7 @@ import JoinPage from "./pages/JoinPage";
 import MockupsPage from "./pages/MockupsPage";
 import MakeBoxMockupPage from "./pages/MakeBoxMockupPage";
 import FindBoxMockupPage from "./pages/FindBoxMockupPage";
+import NotFound from "./components/NotFound";
 
 import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
@@ -55,6 +56,7 @@ const App = () => (
           path="/mockups/find-box"
           component={() => <FindBoxMockupPage />}
         />
+        <Route component={NotFound} />
       </div>
     </BrowserRouter>
   </MuiThemeProvider>
