@@ -45,7 +45,7 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
 
 5.  Deploy database rules to your development app.
 
-        $ yarn run firebase deploy --only firestore:rules
+        $ yarn run deploy-firestore
 
     You will need to run this again if the `firestore.rules` file is changed by you or somebody else.
 
