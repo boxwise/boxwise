@@ -43,7 +43,7 @@ class AddBoxDialogContainer extends React.Component {
                 values.product = firestore.doc("products/" + values.product);
                 values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
                 values.createdBy = firestore.doc(profile.ref);
-                values.boxnumber = Math.floor(Math.random() * 1000000);
+                values.humanID = Math.floor(Math.random() * 1000000);
                 firestore
                   .collection("boxes")
                   .add(values)
