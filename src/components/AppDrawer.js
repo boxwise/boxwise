@@ -6,20 +6,24 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Drawer from "@material-ui/core/Drawer";
 import SwipeableDrawer from "@material-ui/core/SwipeableDrawer";
-import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
 import AppDrawerAuthContainer from "./AppDrawerAuthContainer";
 
 const styles = theme => ({
+  logo: {
+    width: "100%"
+  },
   paper: {
     width: 250,
     backgroundColor: theme.palette.background.paper
   },
   title: {
     color: theme.palette.text.secondary,
-    marginBottom: theme.spacing.unit / 2,
+    marginBottom: theme.spacing.unit * 2,
+    marginRight: theme.spacing.unit * 3,
+    marginTop: theme.spacing.unit * 3,
     textDecoration: "none"
   },
   // https://github.com/philipwalton/flexbugs#3-min-height-on-a-flex-container-wont-apply-to-its-flex-items
@@ -55,13 +59,14 @@ const AppDrawer = ({
       <div className={classes.toolbarIe11}>
         <div className={classes.toolbar}>
           <Link className={classes.title} to="/" onClick={onClose}>
-            <Typography variant="title" color="inherit">
-              Boxwise
-            </Typography>
+            <img
+              src="/images/boxwise-sidebar.png"
+              alt="Boxwise logo"
+              className={classes.logo}
+            />
           </Link>
         </div>
       </div>
-      <Divider />
       <List>
         <ListItem component={Link} to="/" onClick={onClose} button>
           <ListItemText primary="Dashboard" />
