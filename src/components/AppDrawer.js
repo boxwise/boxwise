@@ -13,7 +13,7 @@ import AppDrawerAuthContainer from "./AppDrawerAuthContainer";
 
 const styles = theme => ({
   logo: {
-    width: "100%"
+    width: "75%"
   },
   paper: {
     width: 250,
