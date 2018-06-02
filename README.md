@@ -1,11 +1,11 @@
-# Drop App
+# Boxwise
 
-Drop App makes it easy for organizations (such as refugee camps) to distribute donated goods to people in need. It consists of:
+Boxwise makes it easy for organizations (such as refugee camps) to distribute donated goods to people in need. It consists of:
 
-* **A point of sale system for running a shop.** Drop App distributes tokens that people can use to buy the things they need (clothes, food, toiletries, etc). They can choose carefully and try things on instead of just being given something they don’t want. The app registers people, gives them tokens, and manages all transactions in the shop.
-* **A warehouse management system.** Warehouses full of donated goods can quickly turn to chaos. Drop App makes sure organizations know what they have, where it is, and what they need to restock. There is not even any complicated hardware involved -- only a smartphone is needed.
+- **A point of sale system for running a shop.** Boxwise distributes tokens that people can use to buy the things they need (clothes, food, toiletries, etc). They can choose carefully and try things on instead of just being given something they don’t want. The app registers people, gives them tokens, and manages all transactions in the shop.
+- **A warehouse management system.** Warehouses full of donated goods can quickly turn to chaos. Boxwise makes sure organizations know what they have, where it is, and what they need to restock. There is not even any complicated hardware involved -- only a smartphone is needed.
 
-This is a new version of [the original Drop App used by Drop In The Ocean](https://www.drapenihavet.no/en/the-drop-app-2/). The original app was limited to just managing a single shop. This is a rewrite to support multiple organizations on a centrally hosted system.
+This is a new version of [the original Drop App used by Drop In The Ocean](https://www.drapenihavet.no/en/the-drop-app-2/). The original app was limited to just managing a single organization. This is a rewrite to support multiple organizations on a centrally hosted system.
 
 ## Setting up development environment
 
@@ -23,10 +23,10 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
 
 3.  Set up an app on Firebase to use as your development environment.
 
-    * Go to https://console.firebase.google.com/ and click "Add project".
-    * Enter "Drop App Development" into the name field and click "Create Project"
-    * Once that has completed, click "Add Firebase to your web app"
-    * Copy the configuration values in that code into a file called `.env.local`, without any quotes, in this format:
+    - Go to https://console.firebase.google.com/ and click "Add project".
+    - Enter "Boxwise Development" into the name field and click "Create Project"
+    - Once that has completed, click "Add Firebase to your web app"
+    - Copy the configuration values in that code into a file called `.env.local`, without any quotes, in this format:
 
           REACT_APP_FIREBASE_API_KEY=...
           REACT_APP_FIREBASE_AUTH_DOMAIN=...
@@ -35,8 +35,8 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
           REACT_APP_FIREBASE_STORAGE_BUCKET=...
           REACT_APP_FIREBASE_MESSAGING_SENDER_ID=...
 
-    * Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable".
-    * Click "Authentication" in the left hand menu, click "Email/Password", flip the first "Enable" switch, then click "Save".
+    - Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable".
+    - Click "Authentication" in the left hand menu, click "Email/Password", flip the first "Enable" switch, then click "Save".
 
 4.  Log into Firebase, then select the app you created in the previous step. Give it the alias "development".
 
@@ -56,3 +56,7 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
 ## Running tests
 
     $ yarn test
+
+## Community
+
+[We have a Slack for discussing development and for users to get support.](https://join.slack.com/t/drop-app/shared_invite/enQtMzE4NzExMjkxNTM2LTk0MzY2Mjg0MTY5ZmJjMjI1ODNmODZiNmJlNTAwM2Y4MmJkZDJjZWEyNzk0YTQyZGI0ZTYxMTc2NTgxNjk1ZTM)

@@ -15,7 +15,7 @@ const JoinPage = ({ history, match }) => (
   <Page>
     <Grid container spacing={24} justify="center" alignItems="center">
       <Grid item xs={12} md={4}>
-        <Typography variant="display1">Join Drop App</Typography>
+        <Typography variant="display1">Join Boxwise</Typography>
         <br />
         <FirestoreDocument
           path={`invites/${match.params.inviteId}`}
@@ -42,7 +42,7 @@ const JoinPage = ({ history, match }) => (
                         <Typography variant="body1">
                           You have been invited by{" "}
                           <strong>{organization.name}</strong> to join them on
-                          Drop App.
+                          Boxwise.
                         </Typography>
                         <SignUpForm
                           onSubmit={(

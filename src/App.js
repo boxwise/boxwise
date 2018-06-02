@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ReactGA from "react-ga";
+import Config from "./Config";
 
 import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
@@ -19,11 +21,22 @@ import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+if (Config.GOOGLE_ANALYTICS_CODE) {
+  ReactGA.initialize(Config.GOOGLE_ANALYTICS_CODE);
+}
+
+const recordPageview = ({ location }) => {
+  if (Config.GOOGLE_ANALYTICS_CODE) {
+    ReactGA.pageview(location.pathname);
+  }
+  return null;
+};
+
 const App = () => (
   <MuiThemeProvider theme={theme}>
+    <CssBaseline />
     <BrowserRouter>
-      <div>
-        <CssBaseline />
+      <React.Fragment>
         <Switch>
           <AuthedRoute exact path="/" component={() => <DashboardPage />} />
           <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
@@ -59,7 +72,9 @@ const App = () => (
           />
           <Route component={NotFound} />
         </Switch>
-      </div>
+        {/* this is outside the switch so the 404 works */}
+        <Route path="/" render={recordPageview} />
+      </React.Fragment>
     </BrowserRouter>
   </MuiThemeProvider>
 );

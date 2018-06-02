@@ -9,7 +9,7 @@ const CreateOrganizationPage = ({ history }) => (
   <Page>
     <Grid container spacing={24} justify="center" alignItems="center">
       <Grid item xs={12} md={4}>
-        <Typography variant="display1">Set up Drop App</Typography>
+        <Typography variant="display1">Set up Boxwise</Typography>
         <br />
         <br />
         <CreateOrganizationFlow
