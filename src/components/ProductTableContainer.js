@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProductTable from "./ProductTable";
-import { FirestoreCollection } from "react-firestore";
+import { ProductsCollection } from "../queries/products";
 import { firestore } from "../firebase";
 import { handleError } from "../utils";
 
@@ -16,12 +16,8 @@ class ProductTableContainer extends React.Component {
       return <ProductTable isLoading={true} products={[]} />;
     }
     return (
-      <FirestoreCollection
-        path="products"
-        filter={[
-          ["organization", "==", firestore.doc(profile.organization.ref)],
-          ["isDeleted", "==", false]
-        ]}
+      <ProductsCollection
+        organizationRef={profile.organization.ref}
         render={({ isLoading, data }) => {
           return (
             <ProductTable
