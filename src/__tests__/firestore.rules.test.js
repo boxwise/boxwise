@@ -41,11 +41,110 @@ describeButSkipIfNoKey("firestore.rules", () => {
   let database;
 
   beforeAll(async () => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 20000;
+
     database = new firestore.Database({
       credential: serviceAccountKey
     });
     await database.authorize();
     database.setRulesFromFile(path.join(__dirname, "../../firestore.rules"));
+  });
+
+  afterAll(async () => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
+  });
+
+  describe("/boxes", () => {
+    beforeEach(() => {
+      database.setData({
+        ...TEST_DATA,
+        products: [
+          {
+            key: "1",
+            fields: {
+              name: "Socks",
+              organization: "organizations/1",
+              isDeleted: false
+            },
+            collections: {}
+          },
+          {
+            key: "2",
+            fields: {
+              name: "T-Shirts",
+              organization: "organizations/2",
+              isDeleted: false
+            },
+            collections: {}
+          }
+        ],
+        boxes: [
+          {
+            key: "1",
+            fields: {
+              organization: "organizations/1",
+              product: "products/1",
+              quantity: 5,
+              humanID: 123456
+            },
+            collections: {}
+          },
+          {
+            key: "2",
+            fields: {
+              organization: "organizations/2",
+              product: "products/2",
+              quantity: 10,
+              humanID: 654321
+            },
+            collections: {}
+          }
+        ]
+      });
+    });
+    test("boxes can only be read by a user in that organization", async () => {
+      firestore.assert(await database.canGet({ uid: "org1" }, "boxes/1"));
+      firestore.assert(await database.canGet({ uid: "org2" }, "boxes/2"));
+      firestore.assert(await database.cannotGet({ uid: "org1" }, "boxes/2"));
+      firestore.assert(await database.cannotGet({ uid: "org2" }, "boxes/1"));
+    });
+    test("boxes can only be created for an organization by a user in that organization", async () => {
+      firestore.assert(
+        await database.canSet({ uid: "org1" }, "boxes/5437890", {
+          product: "products/1",
+          organization: "organizations/1"
+        })
+      );
+      firestore.assert(
+        await database.cannotSet({ uid: "org1" }, "boxes/03248", {
+          product: "products/1",
+          organization: "organizations/2"
+        })
+      );
+    });
+    test.skip("boxes can only be created that pointed to products owned by the organization", async () => {
+      firestore.assert(
+        await database.cannotSet({ uid: "org1" }, "boxes/03248fdshjk", {
+          product: "products/2",
+          organization: "organizations/1"
+        })
+      );
+    });
+    test("boxes cannot be updated", async () => {
+      firestore.assert(
+        await database.cannotUpdate({ uid: "org1" }, "boxes/1", {
+          product: "products/2",
+          organization: "organizations/1"
+        })
+      );
+    });
+    test("boxes cannot be deleted", async () => {
+      firestore.assert(
+        await database.cannotCommit({ uid: "org1" }, [
+          firestore.Batch.delete("boxes/1")
+        ])
+      );
+    });
   });
 
   describe("/products", () => {
