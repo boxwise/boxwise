@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import List from "@material-ui/core/List";
@@ -55,7 +56,7 @@ const BoxList = ({
   } else if (!boxes.length) {
     list = (
       <Typography className={classes.empty} variant="body1">
-        No boxes. Make some?
+        No boxes. <Link to="/">Make some?</Link>
       </Typography>
     );
   } else {
