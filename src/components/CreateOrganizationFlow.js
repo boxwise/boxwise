@@ -54,12 +54,19 @@ const UserStep = ({ organizationData, onDone }) => {
 const InviteStep = ({ onDone }) => {
   return (
     <div>
-      <InviteLink />
-      <br />
-      <br />
-      <Button variant="raised" color="primary" onClick={onDone}>
-        Continue
-      </Button>
+      {/* put the button inside the component so it doesn't show while loading */}
+      <InviteLink
+        extra={
+          <React.Fragment>
+            <br />
+            <br />
+
+            <Button variant="raised" color="primary" onClick={onDone}>
+              Continue
+            </Button>
+          </React.Fragment>
+        }
+      />
     </div>
   );
 };
