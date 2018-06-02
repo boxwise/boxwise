@@ -100,6 +100,8 @@ const AddProductDialog = ({
               component={TextField}
               fullWidth
               margin="dense"
+              helperText="Enter a name, like “T-Shirt” or “Socks”. Don’t reuse the category
+              name here."
             />
           </DialogContent>
         </form>
