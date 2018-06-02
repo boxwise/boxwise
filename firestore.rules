@@ -22,15 +22,17 @@ service cloud.firestore {
       // TODO: disallow updating fields
       allow read, create, update: if request.auth.uid == userId;
     }
+    match /boxes/{boxId} {
+      allow read: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
+      allow create: if isAuthenticated() && userIsInOrganisation(request.resource.data.organization);
+      allow update: if false;
+      allow delete: if false;
+    }
     match /products/{productId} {
       allow read: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
       allow create: if isAuthenticated() && userIsInOrganisation(request.resource.data.organization);
       allow update: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
       allow delete: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
-    }
-    match /boxes/{productId} {
-      // TODO: correct permissions
-      allow read, create, update, delete;
     }
     match /organizations/{organizationId} {
       // TODO: correct permissions
