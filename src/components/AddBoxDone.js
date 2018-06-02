@@ -20,15 +20,14 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
       <Typography variant="body1" gutterBottom>
         Write on the label:
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        <p>
-          <strong>{box.humanID}</strong>
-        </p>
-        <p>
-          <strong>
-            {selectedProduct.category} {selectedProduct.name} {box.quantity}x
-          </strong>
-        </p>
+      <br />
+      <Typography variant="title" gutterBottom>
+        <strong>{box.humanID}</strong>
+      </Typography>
+      <Typography variant="title" gutterBottom>
+        <strong>
+          {selectedProduct.category} {selectedProduct.name} {box.quantity}x
+        </strong>
       </Typography>
       {/*
         <Button onClick={onReset} color="primary">
