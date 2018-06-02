@@ -66,7 +66,7 @@ const BoxList = ({
           <React.Fragment key={box.id}>
             <ListItem>
               <ListItemText
-                primary={`${box.boxnumber} ${box.quantity}x ${
+                primary={`${box.humanID} ${box.quantity}x ${
                   getProduct(box.product.id).category
                 } / ${getProduct(box.product.id).name}`}
                 secondary={box.comment ? box.comment : " "}

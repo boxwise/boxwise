@@ -22,7 +22,7 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
       </Typography>
       <Typography variant="body1" gutterBottom>
         <p>
-          <strong>{box.boxnumber}</strong>
+          <strong>{box.humanID}</strong>
         </p>
         <p>
           <strong>
