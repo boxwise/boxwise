@@ -34,9 +34,9 @@ const recordPageview = ({ location }) => {
 
 const App = () => (
   <MuiThemeProvider theme={theme}>
+    <CssBaseline />
     <BrowserRouter>
-      <div>
-        <CssBaseline />
+      <React.Fragment>
         <Switch>
           <AuthedRoute exact path="/" component={() => <DashboardPage />} />
           <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
@@ -74,7 +74,7 @@ const App = () => (
         </Switch>
         {/* this is outside the switch so the 404 works */}
         <Route path="/" render={recordPageview} />
-      </div>
+      </React.Fragment>
     </BrowserRouter>
   </MuiThemeProvider>
 );
