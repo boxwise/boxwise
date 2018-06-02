@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReactGA from "react-ga";
 import Config from "./Config";
+import ScrollToTop from "./components/ScrollToTop";
 
 import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
@@ -36,7 +37,7 @@ const App = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
     <BrowserRouter>
-      <React.Fragment>
+      <ScrollToTop>
         <Switch>
           <AuthedRoute exact path="/" component={() => <DashboardPage />} />
           <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
@@ -74,7 +75,7 @@ const App = () => (
         </Switch>
         {/* this is outside the switch so the 404 works */}
         <Route path="/" render={recordPageview} />
-      </React.Fragment>
+      </ScrollToTop>
     </BrowserRouter>
   </MuiThemeProvider>
 );
