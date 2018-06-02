@@ -56,7 +56,7 @@ const AppDrawer = ({
         <div className={classes.toolbar}>
           <Link className={classes.title} to="/" onClick={onClose}>
             <Typography variant="title" color="inherit">
-              Drop App
+              Boxwise
             </Typography>
           </Link>
         </div>
