@@ -54,6 +54,40 @@ describeButSkipIfNoKey("firestore.rules", () => {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = 5000;
   });
 
+  describe("/organizations", () => {
+    beforeEach(() => {
+      database.setData({
+        ...TEST_DATA
+      });
+    });
+
+    test.skip("organizations can be read by anyone in that organization", async () => {
+      firestore.assert(
+        await database.canGet({ uid: "org1" }, "organizations/1")
+      );
+      firestore.assert(
+        await database.cannotGet({ uid: "org1" }, "organizations/2")
+      );
+    });
+    // Not supported
+    test.skip("organizations cannot be listed");
+    test.skip("creating organizations");
+    test("organizations cannot be updated", async () => {
+      firestore.assert(
+        await database.cannotUpdate({ uid: "org1" }, "organizations/1", {
+          name: "Blah"
+        })
+      );
+    });
+    test("organizations cannot be deleted", async () => {
+      firestore.assert(
+        await database.cannotCommit({ uid: "org1" }, [
+          firestore.Batch.delete("organisations/1")
+        ])
+      );
+    });
+  });
+
   describe("/boxes", () => {
     beforeEach(() => {
       database.setData({
