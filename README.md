@@ -59,4 +59,4 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
 
 ## Community
 
-[We have a Slack for discussing development and for users to get support.](https://join.slack.com/t/drop-app/shared_invite/enQtMzE4NzExMjkxNTM2LTk0MzY2Mjg0MTY5ZmJjMjI1ODNmODZiNmJlNTAwM2Y4MmJkZDJjZWEyNzk0YTQyZGI0ZTYxMTc2NTgxNjk1ZTM)
+[We have a Slack for discussing development and for users to get support.](https://join.slack.com/t/boxwise/shared_invite/enQtMzE4NzExMjkxNTM2LTk0MzY2Mjg0MTY5ZmJjMjI1ODNmODZiNmJlNTAwM2Y4MmJkZDJjZWEyNzk0YTQyZGI0ZTYxMTc2NTgxNjk1ZTM)
