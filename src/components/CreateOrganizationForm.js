@@ -32,7 +32,7 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
         ) : null}
         <Field
           type="text"
-          label="What is the name of your organization?"
+          label="What’s the name of your organization?"
           name="name"
           component={TextField}
           fullWidth
