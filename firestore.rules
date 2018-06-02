@@ -35,8 +35,12 @@ service cloud.firestore {
       allow delete: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
     }
     match /organizations/{organizationId} {
-      // TODO: correct permissions
-      allow read, create, update, delete;
+      // Check user is in organization
+      allow get: if true;
+      allow list: if false;
+      allow create: if true;
+      allow update: if false;
+      allow delete: if false;
     }
     match /invites/{inviteId} {
       allow get: if true;
