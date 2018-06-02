@@ -29,6 +29,7 @@ class BoxListContainer extends React.Component {
       <FirestoreCollection
         path="boxes"
         filter={filters}
+        sort="humanID:asc"
         render={boxresult => {
           return (
             <FirestoreCollection
