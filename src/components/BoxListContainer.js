@@ -2,6 +2,7 @@ import React from "react";
 import BoxList from "./BoxList";
 import { connect } from "react-redux";
 import { FirestoreCollection } from "react-firestore";
+import { ProductsCollection } from "../queries/products";
 import { firestore } from "../firebase";
 
 class BoxListContainer extends React.Component {
@@ -32,12 +33,8 @@ class BoxListContainer extends React.Component {
         sort="humanID:asc"
         render={boxresult => {
           return (
-            <FirestoreCollection
-              path="products"
-              filter={[
-                ["organization", "==", firestore.doc(profile.organization.ref)],
-                ["isDeleted", "==", false]
-              ]}
+            <ProductsCollection
+              organizationRef={profile.organization.ref}
               render={productresult => {
                 return (
                   <BoxList

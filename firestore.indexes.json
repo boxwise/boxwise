@@ -25,6 +25,27 @@
           "mode": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionId": "products",
+      "fields": [
+        {
+          "fieldPath": "isDeleted",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "organization",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "category",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "name",
+          "mode": "ASCENDING"
+        }
+      ]
     }
   ]
 }

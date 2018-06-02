@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import AddBoxDialog from "./AddBoxDialog";
-import { FirestoreCollection } from "react-firestore";
 import firebase, { firestore } from "../firebase";
+import { ProductsCollection } from "../queries/products";
 import { handleError } from "../utils";
 
 const DEFAULT_STATE = {
@@ -24,12 +24,8 @@ class AddBoxDialogContainer extends React.Component {
       return <AddBoxDialog isLoading={true} products={[]} />;
     }
     return (
-      <FirestoreCollection
-        path="products"
-        filter={[
-          ["organization", "==", firestore.doc(profile.organization.ref)],
-          ["isDeleted", "==", false]
-        ]}
+      <ProductsCollection
+        organizationRef={profile.organization.ref}
         render={({ data }) => {
           return (
             <AddBoxDialog
