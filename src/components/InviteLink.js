@@ -29,6 +29,7 @@ class InviteLink extends React.Component {
   }
 
   render() {
+    const { extra } = this.props;
     if (this.state.isFetching) {
       return <CircularProgress />;
     }
@@ -56,6 +57,7 @@ class InviteLink extends React.Component {
           }}
           message="Link copied!"
         />
+        {extra}
       </div>
     );
   }
