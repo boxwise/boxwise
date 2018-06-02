@@ -297,21 +297,27 @@ describeButSkipIfNoKey("firestore.rules", () => {
     });
   });
 
-  // WIP
-  describe.skip("/profiles", () => {
+  describe("/profiles", () => {
     beforeEach(() => {
-      database.setData(TEST_DATA);
+      database.setData({});
     });
 
+    test("profiles can only be read by its user", async () => {
+      database.setData(TEST_DATA);
+      firestore.assert(await database.canGet({ uid: "org1" }, "profiles/org1"));
+      firestore.assert(
+        await database.cannotGet({ uid: "org1" }, "profiles/org2")
+      );
+    });
     test("profiles for a user can only be created by that user", async () => {
       firestore.assert(
-        await database.canSet({ uid: "org1" }, "profiles/1", {
+        await database.cannotSet({ uid: "org1" }, "profiles/03248", {
           organization: "organizations/1"
         })
       );
       firestore.assert(
-        await database.cannotSet({ uid: "org1" }, "invites/03248", {
-          organization: "organizations/2"
+        await database.canSet({ uid: "org1" }, "profiles/org1", {
+          organization: "organizations/1"
         })
       );
     });
@@ -325,7 +331,7 @@ describeButSkipIfNoKey("firestore.rules", () => {
     test("invites cannot be deleted", async () => {
       firestore.assert(
         await database.cannotCommit({ uid: "org1" }, [
-          firestore.Batch.delete("invites/1")
+          firestore.Batch.delete("profiles/org1")
         ])
       );
     });
