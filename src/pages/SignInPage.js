@@ -16,7 +16,7 @@ const SignInPage = ({ history }) => (
         <Typography variant="body1">
           Don’t have an account?{" "}
           <Link to="/create-organization">
-            Set up your organization with Drop App
+            Set up your organization with Boxwise
           </Link>
         </Typography>
       </Grid>

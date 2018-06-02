@@ -12,11 +12,11 @@ const OrganizationStep = ({ onDone }) => {
   return (
     <div>
       <Typography variant="body1" gutterBottom>
-        Start using Drop App to manage your warehouse by signing up here.
+        Start using Boxwise to manage your warehouse by signing up here.
       </Typography>
       <Typography variant="body1" gutterBottom>
         After giving us a few details about your organization, you'll then be
-        able to invite your co-workers to join you in using Drop App.
+        able to invite your co-workers to join you in using Boxwise.
       </Typography>
       <br />
       <br />
@@ -73,7 +73,7 @@ const DoneStep = ({ onDone }) => {
       <br />
       <br />
       <Button variant="raised" color="primary" onClick={onDone}>
-        Start using Drop App
+        Start using Boxwise
       </Button>
     </div>
   );
