@@ -1,3 +1,30 @@
 {
-  "indexes": []
+  "indexes": [
+    {
+      "collectionId": "boxes",
+      "fields": [
+        {
+          "fieldPath": "organization",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "humanID",
+          "mode": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionId": "boxes",
+      "fields": [
+        {
+          "fieldPath": "product",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "humanID",
+          "mode": "ASCENDING"
+        }
+      ]
+    }
+  ]
 }
