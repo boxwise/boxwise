@@ -26,6 +26,6 @@ const { stdout: output2 } = execa.sync(
 // if diff exists, update dependencies
 if (output2.length > 0) {
   console.warn(
-    `Changes to lockfile found, you should run \'yarn run deploy-firestore\' to update the deployment.`
+    `There have been changes to the database configuration. You should run \'yarn run deploy-firestore\' to deploy them.`
   );
 }
