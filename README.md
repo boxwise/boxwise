@@ -57,6 +57,14 @@ This is a new version of [the original Drop App used by Drop In The Ocean](https
 
     $ yarn test
 
+## Running the database tests
+
+We have some tests that check the Firestore database security rules are set up correctly. They have to run against a real database.
+
+To set it up, click "⚙️" then "Project Settings" in the development app you created above. Click the "Service Accounts" tab, then click "Generate New Private key". Save this file to `.service-account-key.json` in the root of the project. Take care not to share it or commit it to the repository!
+
+Now, when you run `yarn test`, the database tests will run automatically.
+
 ## Community
 
 [We have a Slack for discussing development and for users to get support.](https://join.slack.com/t/boxwise/shared_invite/enQtMzE4NzExMjkxNTM2LTk0MzY2Mjg0MTY5ZmJjMjI1ODNmODZiNmJlNTAwM2Y4MmJkZDJjZWEyNzk0YTQyZGI0ZTYxMTc2NTgxNjk1ZTM)
