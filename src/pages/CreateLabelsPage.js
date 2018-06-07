@@ -31,6 +31,12 @@ class CreateQRLabelsPage extends React.Component {
             <div className="product">product</div>
           </div>
         ))}
+        <div className="infobox no-print">
+          Print these labels on A4-sheets divided in a 2x2 layout. Use a Chrome
+          browser to be sure that the layout prints well.<br />
+          <br />
+          <a href="/dashboard">Go back</a>
+        </div>
       </div>
     );
   }

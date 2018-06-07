@@ -2,7 +2,27 @@
   size: A4 landscape;
   margin: 5.9mm 0mm 0mm 9.5mm;
 }
-
+@media print {
+  .no-print,
+  .no-print * {
+    display: none !important;
+  }
+}
+.infobox {
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 250px;
+  border-radius: 3px;
+  padding: 10px;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 85%;
+}
+.infobox a {
+  color: #fff;
+}
 .CreateLabelsPage .label {
   background-color: #fff;
   page-break-inside: avoid;
