@@ -36,7 +36,6 @@ class CreateQRLabelsPage extends React.Component {
           browser to be sure that the layout prints well.<br />
           <br />
           <a href="/dashboard">Go back</a> or{" "}
-          <button onClick="window.print">Print</button>
         </div>
       </div>
     );
