@@ -8,7 +8,8 @@
     display: none !important;
   }
 }
-.CreateLabelsPage .infobox {
+
+.CreateLabelsPage .infobox a {
   background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
   position: absolute;
@@ -19,9 +20,6 @@
   padding: 10px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 85%;
-}
-.CreateLabelsPage .infobox a {
-  color: #fff;
 }
 .CreateLabelsPage .label {
   background-color: #fff;
