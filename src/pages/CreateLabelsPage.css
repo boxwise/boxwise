@@ -3,12 +3,13 @@
   margin: 5.9mm 0mm 0mm 9.5mm;
 }
 @media print {
-  .no-print,
-  .no-print * {
+  .CreateLabelsPage .no-print,
+  .CreateLabelsPage .no-print * {
     display: none !important;
   }
 }
-.infobox {
+
+.CreateLabelsPage .infobox a {
   background-color: rgba(0, 0, 0, 0.75);
   color: #fff;
   position: absolute;
@@ -19,9 +20,6 @@
   padding: 10px;
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 85%;
-}
-.infobox a {
-  color: #fff;
 }
 .CreateLabelsPage .label {
   background-color: #fff;
