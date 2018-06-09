@@ -11,7 +11,7 @@ A couple of quick things:
 
 For everything else, please read on...
 
-## Guidelines
+## Guidelines
 
 - **Start small.** Contributing to a new project can be quite daunting. We've put a ["good first issue" label](https://github.com/boxwise/boxwise/labels/good%20first%20issue) on issues that are easy to start with.
 - **Be bold!** If there is something that needs fixing, go for it. We are always looking for help.
