@@ -27,19 +27,11 @@ We are always looking for help. Working on this project is an opportunity to use
 
 3.  Set up an app on Firebase to use as your development environment.
 
-    - Go to https://console.firebase.google.com/ and click "Add project".
-    - Enter "Boxwise Development" into the name field and click "Create Project"
-    - Once that has completed, click "Add Firebase to your web app"
-    - Copy the configuration values in that code into a file called `.env.local`, without any quotes, in this format:
-
-          REACT_APP_FIREBASE_API_KEY=...
-          REACT_APP_FIREBASE_AUTH_DOMAIN=...
-          REACT_APP_FIREBASE_DATABASE_URL=...
-          REACT_APP_FIREBASE_PROJECT_ID=...
-          REACT_APP_FIREBASE_STORAGE_BUCKET=...
-          REACT_APP_FIREBASE_MESSAGING_SENDER_ID=...
-
-    - Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable".
+    - Go to https://console.firebase.google.com/ and click "Add project";
+    - Enter "Boxwise Development" into the name field and click "Create Project";
+    - Once that has completed, click "Add Firebase to your web app";
+    - Create a new local config running `yarn setup`, filling with the Firebase info. This will create a `env.local` file;
+    - Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable";
     - Click "Authentication" in the left hand menu, click "Email/Password", flip the first "Enable" switch, then click "Save".
 
 4.  Log into Firebase, then select the app you created in the previous step. Give it the alias "development".
