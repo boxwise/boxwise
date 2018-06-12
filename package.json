@@ -33,7 +33,9 @@
     "husky": "^0.14.3",
     "jest-enzyme": "^6.0.1",
     "lint-staged": "^7.1.3",
+    "minimist": "^1.2.0",
     "prettier": "^1.13.4",
+    "prompt": "^1.0.0",
     "yarnhook": "^0.2.0"
   },
   "scripts": {
@@ -46,7 +48,8 @@
     "deploy-firestore": "firebase deploy --only firestore",
     "postmerge": "node checkdeploy",
     "postcheckout": "node checkdeploy",
-    "postrewrite": "node checkdeploy"
+    "postrewrite": "node checkdeploy",
+    "setup": "node utils/generate-env.js"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
