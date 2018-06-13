@@ -10,7 +10,7 @@ import BoxesPage from "./pages/BoxesPage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
-import SignInPage from "./pages/SignInPage";
+import SignInPage from "./containers/pages/SignInPage";
 import InvitePage from "./pages/InvitePage";
 import JoinPage from "./pages/JoinPage";
 import MockupsPage from "./pages/MockupsPage";
