@@ -1,11 +1,9 @@
 import React from "react";
-import { Formik, Field } from "formik";
-import firebase from "../firebase";
+import { Field, Formik } from "formik";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
 import ButtonWithProgress from "./ButtonWithProgress";
-import { handleError } from "../utils";
 
 const styles = theme => ({
   submit: {
@@ -13,7 +11,7 @@ const styles = theme => ({
   }
 });
 
-const SignInForm = ({ classes, onSuccess }) => (
+const SignInForm = ({ classes, isFetching, userSignIn }) => (
   <Formik
     initialValues={{
       email: "",
@@ -29,21 +27,7 @@ const SignInForm = ({ classes, onSuccess }) => (
       }
       return errors;
     }}
-    onSubmit={({ email, password }, { setSubmitting, setErrors }) => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(email, password)
-        .then(({ user }) => {
-          setSubmitting(false);
-          onSuccess(user);
-        })
-        .catch(error => {
-          setSubmitting(false);
-          // TODO: handle user error, throw everything else
-          handleError(error);
-          setErrors({ form: error.message });
-        });
-    }}
+    onSubmit={userSignIn}
     render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
         {/* TODO: style errors */}
@@ -70,7 +54,7 @@ const SignInForm = ({ classes, onSuccess }) => (
           variant="raised"
           color="primary"
           type="submit"
-          loading={isSubmitting}
+          loading={isSubmitting || isFetching}
           className={classes.submit}
         >
           Sign In

@@ -1,8 +1,8 @@
-import { createStore, compose, applyMiddleware } from "redux";
+import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import firebase from "./firebase";
 import rootReducer from "./reducers";
-import { setUser } from "./actions/user";
+import { userSignInSuccess } from "./actions/auth";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -12,6 +12,9 @@ const store = createStore(
 );
 
 // Hook up firebase to Redux store
-firebase.auth().onAuthStateChanged(user => store.dispatch(setUser(user)));
+// FIXME: It should be turned in a action and registered at app bootstrap
+firebase
+  .auth()
+  .onAuthStateChanged(user => user && store.dispatch(userSignInSuccess(user)));
 
 export default store;
