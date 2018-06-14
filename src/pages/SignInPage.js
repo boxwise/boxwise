@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import Page from "../components/Page";
 
 const SignInPage = ({ history, user }) =>
-  user.isEmpty ? (
+  !user.data ? (
     <Page>
       <Grid container spacing={24} justify="center" alignItems="center">
         <Grid item xs={12} md={4}>
@@ -23,7 +23,7 @@ const SignInPage = ({ history, user }) =>
       </Grid>
     </Page>
   ) : (
-    <Redirect to={"/"} />
+    <Redirect to="/" />
   );
 
 export default SignInPage;

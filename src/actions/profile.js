@@ -7,11 +7,11 @@ export const setProfile = profile => {
   return { type: SET_PROFILE, profile: profile };
 };
 
-export const fetchProfile = user => {
+export const fetchProfile = userUID => {
   return dispatch => {
     firestore
       .collection("profiles")
-      .doc(user.uid)
+      .doc(userUID)
       .get()
       .then(function(doc) {
         if (!doc.exists) {

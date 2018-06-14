@@ -4,7 +4,7 @@ import { Redirect, Route } from "react-router-dom";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
 const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
-  const isLoggedIn = !user.isEmpty;
+  const isLoggedIn = !!user.data;
 
   return (
     <Route

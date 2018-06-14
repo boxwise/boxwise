@@ -3,7 +3,7 @@ import firebase, { firestore } from "./firebase";
 export const setProfile = (user, data) => {
   return firestore
     .collection("profiles")
-    .doc(user.uid)
+    .doc(user.data.uid)
     .set(data);
 };
 
