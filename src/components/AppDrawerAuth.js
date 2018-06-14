@@ -13,7 +13,7 @@ const AppDrawerAuth = ({ isFetching, user, profile, onSignOut, onClose }) => {
   return (
     <List>
       <ListItem>
-        <ListItemText secondary={`Signed in as ${user.email}`} />
+        <ListItemText secondary={`Signed in as ${user.data.email}`} />
       </ListItem>
       <ListItem>
         <ListItemText
