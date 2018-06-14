@@ -1,21 +1,23 @@
-import { SET_PROFILE } from "../actions/profile";
+import {
+  FETCH_PROFILE_ERROR,
+  FETCH_PROFILE_START,
+  FETCH_PROFILE_SUCCESS
+} from "../actions/profile";
 
-const initialState = { isFetching: true, isEmpty: true };
+export const profileReducer = (
+  state = { isFetching: true, data: null },
+  { type, payload }
+) => {
+  switch (type) {
+    case FETCH_PROFILE_START:
+      return { ...state, isFetching: true };
 
-export const profileReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SET_PROFILE:
-      if (!action.profile) {
-        return {
-          isFetching: false,
-          isEmpty: true
-        };
-      }
-      return {
-        isFetching: false,
-        isEmpty: false,
-        ...action.profile
-      };
+    case FETCH_PROFILE_SUCCESS:
+      return { ...state, data: payload, isFetching: false };
+
+    case FETCH_PROFILE_ERROR:
+      return { ...state, isFetching: false, error: payload };
+
     default:
       return state;
   }

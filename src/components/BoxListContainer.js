@@ -12,17 +12,19 @@ class BoxListContainer extends React.Component {
 
   render() {
     const { profile } = this.props;
+    const { selectedProductFilter } = this.state;
+
     if (profile.isFetching) {
       return <BoxList isLoading={true} boxes={[]} />;
     }
-    let filters = [
-      ["organization", "==", firestore.doc(profile.organization.ref)]
-    ];
-    if (this.state.selectedProductFilter) {
+    const { organization } = profile.data;
+
+    let filters = [["organization", "==", firestore.doc(organization.ref)]];
+    if (selectedProductFilter) {
       filters.push([
         "product",
         "==",
-        firestore.doc(`products/${this.state.selectedProductFilter}`)
+        firestore.doc(`products/${selectedProductFilter}`)
       ]);
     }
 
@@ -34,14 +36,14 @@ class BoxListContainer extends React.Component {
         render={boxresult => {
           return (
             <ProductsCollection
-              organizationRef={profile.organization.ref}
+              organizationRef={organization.ref}
               render={productresult => {
                 return (
                   <BoxList
                     isLoading={boxresult.isLoading || productresult.isLoading}
                     boxes={boxresult.data}
                     products={productresult.data}
-                    selectedProductFilter={this.state.selectedProductFilter}
+                    selectedProductFilter={selectedProductFilter}
                     onChangeProductFilter={value =>
                       this.setState({ selectedProductFilter: value })
                     }
