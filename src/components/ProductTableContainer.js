@@ -15,9 +15,11 @@ class ProductTableContainer extends React.Component {
     if (profile.isFetching) {
       return <ProductTable isLoading={true} products={[]} />;
     }
+    const { organization } = profile.data;
+
     return (
       <ProductsCollection
-        organizationRef={profile.organization.ref}
+        organizationRef={organization.ref}
         render={({ isLoading, data }) => {
           return (
             <ProductTable

@@ -11,7 +11,7 @@ const mergeProps = ({ profile, user }, dispatchProps, ownProps) => ({
   profile,
   ...dispatchProps,
   ...ownProps,
-  isFetching: !user || profile.isEmpty
+  isFetching: user.isFetching || profile.isFetching
 });
 
 export default connect(

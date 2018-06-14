@@ -10,15 +10,17 @@ const AppDrawerAuth = ({ isFetching, user, profile, onSignOut, onClose }) => {
   if (isFetching) {
     return <CircularProgress />;
   }
+
+  const { email } = user.data;
+  const { organization } = profile.data;
+
   return (
     <List>
       <ListItem>
-        <ListItemText secondary={`Signed in as ${user.data.email}`} />
+        <ListItemText secondary={`Signed in as ${email}`} />
       </ListItem>
       <ListItem>
-        <ListItemText
-          secondary={`Organization: ${profile.organization.name}`}
-        />
+        <ListItemText secondary={`Organization: ${organization.name}`} />
       </ListItem>
       <ListItem component={Link} to="/invite" onClick={onClose} button>
         <ListItemText primary="Invite people" />

@@ -6,7 +6,7 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 // wait for the damned thing to be ready in the redux state.
 export function waitForProfile(Component) {
   return function({ isLoading, ...props }) {
-    if (props.profile.isEmpty || props.profile.isFetching) {
+    if (!props.profile.data || props.profile.isFetching) {
       return <CircularProgress />;
     }
     return <Component {...props} />;

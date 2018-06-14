@@ -6,11 +6,14 @@ import uuidv4 from "uuid/v4";
 class CreateQRLabelsPage extends React.Component {
   render() {
     const numberOfLabels = 104;
+    const { profile } = this.props;
 
-    if (this.props.profile.isFetching) {
+    if (profile.isFetching) {
       // TODO: loading spinner
       return <p>Loading</p>;
     }
+
+    const { organization } = this.profile.data;
 
     return (
       <div className="CreateLabelsPage">
@@ -25,7 +28,7 @@ class CreateQRLabelsPage extends React.Component {
               alt="barcode"
               className="barcode"
             />
-            <div className="name">{this.props.profile.organization.name}</div>
+            <div className="name">{organization.name}</div>
             <div className="boxid">box number</div>
             <div className="count">count</div>
             <div className="product">product</div>

@@ -19,13 +19,15 @@ class AddBoxDialogContainer extends React.Component {
 
   render() {
     const { onClose, profile, ...props } = this.props;
-
-    if (profile.isFetching || profile.isEmpty) {
+    if (profile.isFetching || !profile) {
       return <AddBoxDialog isLoading={true} products={[]} />;
     }
+
+    const { organization, ref } = profile.data;
+
     return (
       <ProductsCollection
-        organizationRef={profile.organization.ref}
+        organizationRef={organization.ref}
         render={({ data }) => {
           return (
             <AddBoxDialog
@@ -35,10 +37,10 @@ class AddBoxDialogContainer extends React.Component {
               box={this.state.box}
               selectedProduct={this.state.selectedProduct}
               onSubmit={(values, { setSubmitting, setErrors }) => {
-                values.organization = firestore.doc(profile.organization.ref);
+                values.organization = firestore.doc(organization.ref);
                 values.product = firestore.doc("products/" + values.product);
                 values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-                values.createdBy = firestore.doc(profile.ref);
+                values.createdBy = firestore.doc(ref);
                 values.humanID = Math.floor(Math.random() * 1000000);
                 firestore
                   .collection("boxes")

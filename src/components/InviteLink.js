@@ -18,7 +18,7 @@ class InviteLink extends React.Component {
   };
 
   componentDidMount() {
-    getOrAddInvite(this.props.profile.organization.ref)
+    getOrAddInvite(this.props.profile.data.organization.ref)
       .then(invite => {
         this.setState({
           isFetching: false,
@@ -30,7 +30,9 @@ class InviteLink extends React.Component {
 
   render() {
     const { extra } = this.props;
-    if (this.state.isFetching) {
+    const { inviteLink, isFetching, snackbarOpen } = this.state;
+
+    if (isFetching) {
       return <CircularProgress />;
     }
     return (
@@ -38,9 +40,9 @@ class InviteLink extends React.Component {
         <Typography variant="body1" gutterBottom>
           To invite people to your organization, send them this link:
         </Typography>
-        <TextField value={this.state.inviteLink} fullWidth margin="normal" />
+        <TextField value={inviteLink} fullWidth margin="normal" />
         <CopyToClipboard
-          text={this.state.inviteLink}
+          text={inviteLink}
           onCopy={() => this.setState({ snackbarOpen: true })}
         >
           <Button color="primary">Copy to clipboard</Button>
@@ -50,7 +52,7 @@ class InviteLink extends React.Component {
             vertical: "bottom",
             horizontal: "center"
           }}
-          open={this.state.snackbarOpen}
+          open={snackbarOpen}
           autoHideDuration={2000}
           onClose={() => {
             this.setState({ snackbarOpen: false });

@@ -8,9 +8,9 @@ const AddProductDialogContainer = ({ onClose, profile, ...props }) => (
   <AddProductDialog
     onSubmit={values => {
       const firestore = firebase.firestore();
-      values.organization = firestore.doc(profile.organization.ref);
+      values.organization = firestore.doc(profile.data.organization.ref);
       values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-      values.createdBy = firestore.doc(profile.ref);
+      values.createdBy = firestore.doc(profile.data.ref);
       values.isDeleted = false;
       firestore
         .collection("products")
