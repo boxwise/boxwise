@@ -31,7 +31,7 @@ export const userSignIn = ({ email, password }) => dispatch => {
     .signInWithEmailAndPassword(email, password)
     .then(({ user }) => dispatch(userSignInSuccess(user)))
     .catch(error => {
-      handleError(error);
       dispatch({ type: USER_SIGN_ERROR, payload: error });
+      handleError(error);
     });
 };

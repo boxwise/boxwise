@@ -6,9 +6,18 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-const AppDrawerAuth = ({ isFetching, user, profile, onSignOut, onClose }) => {
+const AppDrawerAuth = ({
+  notAuthenticated,
+  isFetching,
+  user,
+  profile,
+  onSignOut,
+  onClose
+}) => {
   if (isFetching) {
     return <CircularProgress />;
+  } else if (notAuthenticated) {
+    return null;
   }
 
   const { email } = user.data;

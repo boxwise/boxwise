@@ -11,6 +11,7 @@ const mergeProps = ({ profile, user }, dispatchProps, ownProps) => ({
   profile,
   ...dispatchProps,
   ...ownProps,
+  notAuthenticated: !user.data || !profile.data,
   isFetching: user.isFetching || profile.isFetching
 });
 
