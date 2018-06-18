@@ -40,7 +40,7 @@ const App = () => (
     <BrowserRouter>
       <ScrollToTop>
         <Switch>
-          <AuthedRoute exact path="/" component={() => <HomePage />} />
+          <Route exact path="/" component={() => <HomePage />} />
           <AuthedRoute
             exact
             path="/dashboard"
