@@ -29,7 +29,7 @@ export const fetchProfile = userUID => dispatch => {
       });
     })
     .catch(err => {
+      handleError(err);
       dispatch({ type: FETCH_PROFILE_ERROR, payload: err });
-      handleError(err); // TODO: proper handling
     });
 };
