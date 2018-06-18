@@ -9,7 +9,7 @@ const HomePage = ({ user }) => {
       <div className="header">
         <div className="logo">Boxwise</div>
         <div className="login">
-          <a href="/dashboard">Login or sign up</a>
+          <a href="/signin">Login or sign up</a>
         </div>
       </div>
       <div className="content">
