@@ -23,7 +23,7 @@ const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
           )
         ) : (
           <Redirect
-            to={{ pathname: "/signin", state: { from: props.location } }}
+            to={{ pathname: "/home", state: { from: props.location } }}
           />
         )
       }

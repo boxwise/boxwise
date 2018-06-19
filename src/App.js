@@ -40,12 +40,8 @@ const App = () => (
     <BrowserRouter>
       <ScrollToTop>
         <Switch>
-          <Route exact path="/" component={() => <HomePage />} />
-          <AuthedRoute
-            exact
-            path="/dashboard"
-            component={() => <DashboardPage />}
-          />
+          <Route exact path="/home" component={() => <HomePage />} />
+          <AuthedRoute exact path="/" component={() => <DashboardPage />} />
           <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
           <AuthedRoute
             exact
