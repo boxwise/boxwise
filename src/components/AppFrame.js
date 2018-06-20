@@ -1,22 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from "@material-ui/core/styles";
+import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AppDrawer from "./AppDrawer";
-
-const drawerTheme = createMuiTheme({
-  palette: {
-    type: "dark"
-  }
-});
+import { drawerTheme } from "../theme";
 
 const styles = theme => ({
   root: {
@@ -24,6 +15,13 @@ const styles = theme => ({
     alignItems: "stretch",
     minHeight: "100vh",
     width: "100%"
+  },
+  rootLocked: {
+    display: "flex",
+    alignItems: "stretch",
+    minHeight: "100vh",
+    width: "100%",
+    overflow: "hidden"
   },
   grow: {
     flex: "1 1 auto"
@@ -75,9 +73,9 @@ class AppFrame extends React.Component {
 
   render() {
     const { children, classes, title } = this.props;
-
+    const divClass = this.mobileOpen ? classes.rootLocked : classes.root;
     return (
-      <div className={classes.root}>
+      <div className={divClass}>
         <AppBar className={classes.appBar} position="fixed">
           <Toolbar>
             <IconButton

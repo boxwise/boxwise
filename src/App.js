@@ -11,6 +11,7 @@ import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
 import SignInPage from "./containers/pages/SignInPage";
+import ResetPasswordPage from "./containers/pages/ResetPasswordPage";
 import InvitePage from "./pages/InvitePage";
 import JoinPage from "./pages/JoinPage";
 import MockupsPage from "./pages/MockupsPage";
@@ -21,6 +22,11 @@ import NotFound from "./components/NotFound";
 import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
+
+import { addLocaleData } from "react-intl";
+import en from "react-intl/locale-data/en";
+
+addLocaleData([...en]);
 
 if (Config.GOOGLE_ANALYTICS_CODE) {
   ReactGA.initialize(Config.GOOGLE_ANALYTICS_CODE);
@@ -58,6 +64,11 @@ const App = () => (
             component={() => <CreateOrganizationPage />}
           />
           <Route exact path="/signin" component={() => <SignInPage />} />
+          <Route
+            exact
+            path="/reset-password"
+            component={() => <ResetPasswordPage />}
+          />
           <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
 
           <Route exact path="/mockups" component={() => <MockupsPage />} />

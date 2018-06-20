@@ -34,10 +34,13 @@ const UserStep = ({ organizationData, onDone }) => {
   return (
     <SignUpForm
       submitButtonText="Continue"
-      onSubmit={(data, { setSubmitting, setErrors }) => {
+      onSubmit={({ name, email, password }, { setSubmitting, setErrors }) => {
         return addOrganization(organizationData)
           .then(organization => {
-            return createUserAndProfile(data, { organization });
+            return createUserAndProfile(
+              { email, password },
+              { name, organization }
+            );
           })
           .then(onDone)
           .catch(error => {

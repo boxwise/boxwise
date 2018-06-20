@@ -7,8 +7,10 @@ import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import IconButton from "@material-ui/core/IconButton";
+import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import ConfirmDeleteAlert from "./ConfirmDeleteAlert";
+import EditProductDialogContainer from "../components/EditProductDialogContainer";
 
 const styles = theme => ({
   root: {
@@ -25,70 +27,89 @@ const styles = theme => ({
   }
 });
 
-const ProductTable = ({
-  classes,
-  isProductsLoading,
-  products,
-  isCountsLoading,
-  counts,
-  onDelete,
-  onCancelConfirmDelete,
-  onConfirmDelete,
-  confirmDeleteOpen
-}) => {
-  return (
-    <div className={classes.root}>
-      <ConfirmDeleteAlert
-        text="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working."
-        open={confirmDeleteOpen}
-        onConfirm={onConfirmDelete}
-        onCancel={onCancelConfirmDelete}
-      />
-      {isProductsLoading ? (
-        <div className={classes.progress}>
-          <CircularProgress />
-        </div>
-      ) : (
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow>
-              <TableCell padding="dense">Category</TableCell>
-              <TableCell padding="dense">Name</TableCell>
-              <TableCell padding="dense">Count</TableCell>
-              <TableCell padding="dense" />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {products.map(product => {
-              const count = counts ? (
-                <span>{counts[product.id]}</span>
-              ) : (
-                <div className={classes.progress}>
-                  <CircularProgress />
-                </div>
-              );
+class ProductTable extends React.Component {
+  state = {
+    editProduct: null
+  };
 
-              return (
-                <TableRow key={product.id}>
-                  <TableCell padding="dense">{product.category}</TableCell>
-                  <TableCell padding="dense">{product.name}</TableCell>
-                  <TableCell padding="dense">{count}</TableCell>
-                  <TableCell padding="dense">
-                    <IconButton
-                      onClick={() => onDelete(product.id)}
-                      aria-label="Delete"
-                    >
-                      <DeleteIcon />
-                    </IconButton>
-                  </TableCell>
-                </TableRow>
-              );
-            })}
-          </TableBody>
-        </Table>
-      )}
-    </div>
-  );
-};
+  render = () => {
+    const {
+      classes,
+      isProductsLoading,
+      products,
+      isCountsLoading,
+      counts,
+      onDelete,
+      onCancelConfirmDelete,
+      onConfirmDelete,
+      confirmDeleteOpen
+    } = this.props;
+
+    return (
+      <div className={classes.root}>
+        <ConfirmDeleteAlert
+          text="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working."
+          open={confirmDeleteOpen}
+          onConfirm={onConfirmDelete}
+          onCancel={onCancelConfirmDelete}
+        />
+        {isProductsLoading ? (
+          <div className={classes.progress}>
+            <CircularProgress />
+          </div>
+        ) : (
+          <Table className={classes.table}>
+            <EditProductDialogContainer
+              open={!!this.state.editProduct}
+              product={this.state.editProduct}
+              onClose={() => this.setState({ editProduct: null })}
+            />
+            <TableHead>
+              <TableRow>
+                <TableCell padding="dense">Category</TableCell>
+                <TableCell padding="dense">Name</TableCell>
+                <TableCell padding="dense">Count</TableCell>
+                <TableCell padding="dense" />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {products.map(product => {
+                const count =
+                  !isCountsLoading && counts ? (
+                    <span>{counts[product.id]}</span>
+                  ) : (
+                    <div className={classes.progress}>
+                      <CircularProgress />
+                    </div>
+                  );
+                return (
+                  <TableRow key={product.id}>
+                    <TableCell padding="dense">{product.category}</TableCell>
+                    <TableCell padding="dense">{product.name}</TableCell>
+                    <TableCell padding="dense">{count}</TableCell>
+                    <TableCell padding="dense">
+                      <IconButton
+                        onClick={() => this.setState({ editProduct: product })}
+                        aria-label="Edit"
+                      >
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton
+                        onClick={() => onDelete(product.id)}
+                        aria-label="Delete"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        )}
+      </div>
+    );
+  };
+}
 
 export default withStyles(styles)(ProductTable);

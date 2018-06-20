@@ -46,4 +46,13 @@ const theme = createMuiTheme({
   }
 });
 
+export const drawerTheme = createMuiTheme({
+  typography: {
+    fontFamily: fontFamily
+  },
+  palette: {
+    type: "dark"
+  }
+});
+
 export default theme;
