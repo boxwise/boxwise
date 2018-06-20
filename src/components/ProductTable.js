@@ -76,7 +76,7 @@ class ProductTable extends React.Component {
               {products.map(product => {
                 const count =
                   !isCountsLoading && counts ? (
-                    <span>{counts[product.id]}</span>
+                    <span>{counts[product.id] || 0}</span>
                   ) : (
                     <div className={classes.progress}>
                       <CircularProgress />

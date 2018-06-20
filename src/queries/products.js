@@ -20,8 +20,6 @@ export const ProductsCount = ({ organizationRef, render, ...props }) => (
     filter={[["organization", "==", firestore.doc(organizationRef)]]}
     {...props}
     render={({ isLoading, data }) => {
-      console.log(`ProductsCount: isLoading=${isLoading}, data=${data}`);
-
       if (isLoading) {
         return render(isLoading, data);
       }
@@ -31,7 +29,6 @@ export const ProductsCount = ({ organizationRef, render, ...props }) => (
         counts[box.product.id] = (counts[box.product.id] || 0) + box.quantity;
       });
 
-      console.log("rendering w/ counts");
       return render({ isLoading, data: counts });
     }}
   />
