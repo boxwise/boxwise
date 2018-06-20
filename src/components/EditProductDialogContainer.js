@@ -4,17 +4,20 @@ import ProductDialog from "./ProductDialog";
 import firebase from "../firebase";
 import { handleError } from "../utils";
 
-const AddProductDialogContainer = ({ onClose, profile, ...props }) => (
+const EditProductDialogContainer = ({
+  onClose,
+  profile,
+  product,
+  ...props
+}) => (
   <ProductDialog
+    initialValue={product}
     onSubmit={values => {
-      const firestore = firebase.firestore();
-      values.organization = firestore.doc(profile.data.organization.ref);
-      values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-      values.createdBy = firestore.doc(profile.data.ref);
-      values.isDeleted = false;
-      firestore
+      firebase
+        .firestore()
         .collection("products")
-        .add(values)
+        .doc(product.id)
+        .update(values)
         .then(product => {
           onClose();
         })
@@ -27,4 +30,4 @@ const AddProductDialogContainer = ({ onClose, profile, ...props }) => (
 
 export default connect(state => ({
   profile: state.profile
-}))(AddProductDialogContainer);
+}))(EditProductDialogContainer);
