@@ -13,7 +13,7 @@ class CreateQRLabelsPage extends React.Component {
       return <p>Loading</p>;
     }
 
-    const { organization } = this.profile.data;
+    const { organization } = profile.data;
 
     return (
       <div className="CreateLabelsPage">
