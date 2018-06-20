@@ -8,6 +8,11 @@ export const USER_SIGN_IN_SUCCESS = USER_SIGN_`IN_SUCCESS`;
 export const USER_SIGN_ERROR = USER_SIGN_`ERROR`;
 export const USER_SIGN_OUT = USER_SIGN_`OUT`;
 
+const PASSWORD_RESET_ = TYPE => `PASSWORD_RESET_${TYPE}`;
+export const PASSWORD_RESET_START = PASSWORD_RESET_`START`;
+export const PASSWORD_RESET_SUCCESS = PASSWORD_RESET_`SUCCESS`;
+export const PASSWORD_RESET_ERROR = PASSWORD_RESET_`ERROR`;
+
 export const userSignOut = () => ({ type: USER_SIGN_OUT });
 
 export const firebaseSignOut = () => dispatch => {
@@ -33,5 +38,17 @@ export const userSignIn = ({ email, password }) => dispatch => {
     .catch(error => {
       handleError(error);
       dispatch({ type: USER_SIGN_ERROR, payload: error });
+    });
+};
+
+export const resetPassword = ({ email }) => dispatch => {
+  dispatch({ type: PASSWORD_RESET_START });
+  firebase
+    .auth()
+    .sendPasswordResetEmail(email)
+    .then(() => dispatch({ type: PASSWORD_RESET_SUCCESS }))
+    .catch(error => {
+      handleError(error);
+      dispatch({ type: PASSWORD_RESET_ERROR, payload: error });
     });
 };

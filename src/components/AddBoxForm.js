@@ -21,7 +21,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
         errors.product = "Select a product.";
       }
       if (!values.quantity) {
-        errors.quantity = "Enter the number of items in the box";
+        errors.quantity = "Enter the number of items in the box.";
       }
       return errors;
     }}
@@ -66,6 +66,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
                 component={TextField}
                 fullWidth
                 margin="dense"
+                inputProps={{ pattern: "[0-9]*", inputmode: "numeric" }}
               />
               <Field
                 label="Comments"
