@@ -5,6 +5,8 @@ import Slide from "@material-ui/core/Slide";
 import AddBoxForm from "./AddBoxForm";
 import AddBoxDone from "./AddBoxDone";
 
+export const DIALOG_NAME = "AddBox";
+
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import AddBoxDialog from "./AddBoxDialog";
+import AddBoxDialog, { DIALOG_NAME } from "./AddBoxDialog";
 import firebase, { firestore } from "../firebase";
 import { ProductsCollection } from "../queries/products";
 import { handleError } from "../utils";
@@ -79,5 +79,6 @@ class AddBoxDialogContainer extends React.Component {
 }
 
 export default connect(state => ({
-  profile: state.profile
+  profile: state.profile,
+  open: state.dialog.openDialog === DIALOG_NAME
 }))(AddBoxDialogContainer);

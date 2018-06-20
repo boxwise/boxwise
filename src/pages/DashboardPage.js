@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppFrame from "../components/AppFrame";
-import AddBoxDialogContainer from "../components/AddBoxDialogContainer";
 import Page from "../components/Page";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
+import { openDialog } from "../actions/dialog";
+import { DIALOG_NAME as AddBoxDialog } from "../components/AddBoxDialog";
 
 const styles = theme => ({
   paper: theme.mixins.gutters({
@@ -18,20 +19,12 @@ const styles = theme => ({
 });
 
 class DashboardPage extends React.Component {
-  state = {
-    addBoxDialogOpen: false
-  };
-
   render() {
     const { classes } = this.props;
 
     return (
       <AppFrame title="Dashboard">
         <Page>
-          <AddBoxDialogContainer
-            open={this.state.addBoxDialogOpen}
-            onClose={() => this.setState({ addBoxDialogOpen: false })}
-          />
           <Paper className={classes.paper}>
             <Typography variant="headline" paragraph={true}>
               Things to do
@@ -39,7 +32,7 @@ class DashboardPage extends React.Component {
             <Button
               variant="raised"
               color="secondary"
-              onClick={() => this.setState({ addBoxDialogOpen: true })}
+              onClick={() => openDialog(AddBoxDialog)}
             >
               Make a box
             </Button>
