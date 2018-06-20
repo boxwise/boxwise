@@ -5,6 +5,12 @@ cache: yarn
 script:
 - yarn build
 - yarn test
+# .env.production is kept out of the root directory, because if it were there
+# running "firebase deploy" would create a clone of our real production
+# environment. This is not something we can stop (they are public details) but
+# we should at least stop people from doing it accidentally.
+before_deploy:
+- cp .travis/.env.production ./
 deploy:
   provider: firebase
   project: boxwise-production
