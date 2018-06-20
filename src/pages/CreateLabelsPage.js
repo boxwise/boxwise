@@ -1,6 +1,7 @@
 import React from "react";
 import "./CreateLabelsPage.css";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import uuidv4 from "uuid/v4";
 
 class CreateLabelsPage extends React.Component {
@@ -38,7 +39,7 @@ class CreateLabelsPage extends React.Component {
           Print these labels on A4-sheets divided in a 2x2 layout. Use a Chrome
           browser to be sure that the layout prints well.<br />
           <br />
-          <a href="/dashboard">Go back</a>
+          <Link to="/">Go back</Link>
         </div>
       </div>
     );
