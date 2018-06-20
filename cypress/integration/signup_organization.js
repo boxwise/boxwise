@@ -1,5 +1,6 @@
-describe('My First Test', function() {
-    it('Does not do much!', function() {
-        expect(true).to.equal(true)
+describe('Add Organization', function() {
+    it('Adds an organization', function() {
+        cy.visit('http://localhost:3000/create-organization')
+        // TODO: finish creating an organization
     })
 })
