@@ -21,12 +21,12 @@ const AppDrawerAuth = ({
   }
 
   const { email } = user.data;
-  const { organization } = profile.data;
+  const { name, organization } = profile.data;
 
   return (
     <List>
       <ListItem>
-        <ListItemText secondary={`Signed in as ${email}`} />
+        <ListItemText secondary={`Signed in as ${name ? name : email}`} />
       </ListItem>
       <ListItem>
         <ListItemText secondary={`Organization: ${organization.name}`} />
