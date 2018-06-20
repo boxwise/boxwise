@@ -1,4 +1,4 @@
-import { OPEN_DIALOG } from "../actions/dialog";
+import { OPEN_DIALOG, CLOSE_DIALOG } from "../actions/dialog";
 
 export const dialogReducer = (
   state = { openDialog: false },
@@ -7,6 +7,9 @@ export const dialogReducer = (
   switch (type) {
     case OPEN_DIALOG:
       return { ...state, openDialog: payload };
+
+    case CLOSE_DIALOG:
+      return { ...state, openDialog: false };
 
     default:
       return state;

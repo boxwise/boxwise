@@ -17,7 +17,6 @@ import MockupsPage from "./pages/MockupsPage";
 import MakeBoxMockupPage from "./pages/MakeBoxMockupPage";
 import FindBoxMockupPage from "./pages/FindBoxMockupPage";
 import NotFound from "./components/NotFound";
-// import AddBoxDialogContainer from "./components/AddBoxDialogContainer";
 
 import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
@@ -37,10 +36,6 @@ const recordPageview = ({ location }) => {
 const App = () => (
   <MuiThemeProvider theme={theme}>
     <CssBaseline />
-    {/* <AddBoxDialogContainer
-            open={false}
-            onClose={() => this.setState({ addBoxDialogOpen: false })}
-          /> */}
     <BrowserRouter>
       <ScrollToTop>
         <Switch>

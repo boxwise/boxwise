@@ -4,6 +4,7 @@ import AddBoxDialog, { DIALOG_NAME } from "./AddBoxDialog";
 import firebase, { firestore } from "../firebase";
 import { ProductsCollection } from "../queries/products";
 import { handleError } from "../utils";
+import { closeDialog } from "../actions/dialog";
 
 const DEFAULT_STATE = {
   box: null,
@@ -66,7 +67,7 @@ class AddBoxDialogContainer extends React.Component {
               }}
               onClose={() => {
                 this.reset();
-                onClose();
+                this.props.closeDialog();
               }}
               onReset={this.reset}
               {...props}
@@ -78,7 +79,10 @@ class AddBoxDialogContainer extends React.Component {
   }
 }
 
-export default connect(state => ({
-  profile: state.profile,
-  open: state.dialog.openDialog === DIALOG_NAME
-}))(AddBoxDialogContainer);
+export default connect(
+  state => ({
+    profile: state.profile,
+    open: state.dialog.openDialog === DIALOG_NAME
+  }),
+  { closeDialog }
+)(AddBoxDialogContainer);

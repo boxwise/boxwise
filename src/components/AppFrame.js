@@ -11,6 +11,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AppDrawer from "./AppDrawer";
+import AddBoxDialogContainer from "./AddBoxDialogContainer";
 
 const drawerTheme = createMuiTheme({
   palette: {
@@ -111,6 +112,7 @@ class AppFrame extends React.Component {
           />
         </MuiThemeProvider>
         <div className={classes.children}>
+          <AddBoxDialogContainer />
           <Toolbar />
           {children}
         </div>

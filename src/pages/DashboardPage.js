@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppFrame from "../components/AppFrame";
-import AddBoxDialogContainer from "../components/AddBoxDialogContainer";
 import { DIALOG_NAME as AddBoxDialog } from "../components/AddBoxDialog";
-import { openDialog, closeDialog } from "../actions/dialog";
+import { openDialog } from "../actions/dialog";
 import Page from "../components/Page";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
@@ -31,10 +30,6 @@ class DashboardPage extends React.Component {
     return (
       <AppFrame title="Dashboard">
         <Page>
-          <AddBoxDialogContainer
-            // open={this.state.addBoxDialogOpen}
-            onClose={this.props.closeDialog}
-          />
           <Paper className={classes.paper}>
             <Typography variant="headline" paragraph={true}>
               Things to do
@@ -70,6 +65,6 @@ DashboardPage.propTypes = {
 export default withStyles(styles)(
   connect(
     null,
-    { openDialog, closeDialog }
+    { openDialog }
   )(DashboardPage)
 );
