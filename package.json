@@ -6,6 +6,7 @@
     "@firebase/app-types": "^0.3.2",
     "@material-ui/core": "^1.2.2",
     "@material-ui/icons": "^1.1.0",
+    "cypress": "^3.0.1",
     "firebase": "^5.0.4",
     "formik": "^0.11.11",
     "prop-types": "^15.6.2",
@@ -50,7 +51,8 @@
     "postmerge": "node checkdeploy",
     "postcheckout": "node checkdeploy",
     "postrewrite": "node checkdeploy",
-    "setup": "node utils/generate-env.js"
+    "setup": "node utils/generate-env.js",
+    "cypress:open": "cypress open"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
