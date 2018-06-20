@@ -21,7 +21,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
         errors.product = "Select a product.";
       }
       if (!values.quantity) {
-        errors.quantity = "Enter the number of items in the box";
+        errors.quantity = "Enter the number of items in the box.";
       }
       return errors;
     }}
