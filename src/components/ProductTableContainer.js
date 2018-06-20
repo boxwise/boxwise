@@ -12,7 +12,7 @@ class ProductTableContainer extends React.Component {
   };
   render() {
     const { profile } = this.props;
-    if (profile.isFetching) {
+    if (profile.loading) {
       return <ProductTable isLoading={true} products={[]} />;
     }
     const { organization } = profile.data;

@@ -8,25 +8,25 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const AppDrawerAuth = ({
   notAuthenticated,
-  isFetching,
+  loading,
   user,
   profile,
   onSignOut,
   onClose
 }) => {
-  if (isFetching) {
+  if (loading) {
     return <CircularProgress />;
   } else if (notAuthenticated) {
     return null;
   }
 
   const { email } = user.data;
-  const { organization } = profile.data;
+  const { name, organization } = profile.data;
 
   return (
     <List>
       <ListItem>
-        <ListItemText secondary={`Signed in as ${email}`} />
+        <ListItemText secondary={`Signed in as ${name ? name : email}`} />
       </ListItem>
       <ListItem>
         <ListItemText secondary={`Organization: ${organization.name}`} />
@@ -42,7 +42,7 @@ const AppDrawerAuth = ({
 };
 
 AppDrawerAuth.propTypes = {
-  isFetching: PropTypes.bool,
+  loading: PropTypes.bool,
   user: PropTypes.object,
   profile: PropTypes.object,
   onSignOut: PropTypes.func,

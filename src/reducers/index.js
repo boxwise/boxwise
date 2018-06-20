@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { profileReducer } from "./profile";
-import { userReducer } from "./user";
+import profile from "./profile";
+import user from "./user";
+import boxes from "./boxes";
 
-const rootReducer = combineReducers({
-  profile: profileReducer,
-  user: userReducer
+export default combineReducers({
+  profile,
+  user,
+  boxes
 });
-
-export default rootReducer;

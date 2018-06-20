@@ -46,12 +46,12 @@ const JoinPage = ({ history, match }) => (
                         </Typography>
                         <SignUpForm
                           onSubmit={(
-                            { email, password },
+                            { name, email, password },
                             { setSubmitting, setErrors }
                           ) => {
                             createUserAndProfile(
                               { email, password },
-                              { organization: invite.organization }
+                              { name, organization: invite.organization }
                             )
                               .then(user => {
                                 setSubmitting(false);

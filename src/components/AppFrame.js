@@ -1,22 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  withStyles,
-  createMuiTheme,
-  MuiThemeProvider
-} from "@material-ui/core/styles";
+import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AppDrawer from "./AppDrawer";
-
-const drawerTheme = createMuiTheme({
-  palette: {
-    type: "dark"
-  }
-});
+import { drawerTheme } from "../theme";
 
 const styles = theme => ({
   root: {

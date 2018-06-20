@@ -3,7 +3,6 @@
 import React from "react";
 import AppFrame from "../components/AppFrame";
 import Page from "../components/Page";
-import AddBoxDialogContainer from "../components/AddBoxDialogContainer";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Toolbar from "@material-ui/core/Toolbar";
