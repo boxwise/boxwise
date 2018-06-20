@@ -53,6 +53,7 @@
     "postcheckout": "node checkdeploy",
     "postrewrite": "node checkdeploy",
     "setup": "node utils/generate-env.js",
+    "add-test-data": "node utils/generate-test-data.js",  
     "cypress:open": "cypress open"
   },
   "lint-staged": {
