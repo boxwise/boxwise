@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import ProductTable from "./ProductTable";
-import { ProductsCollection } from "../queries/products";
+import { ProductsCollection, ProductsCount } from "../queries/products";
 import { firestore } from "../firebase";
 import { handleError } from "../utils";
 
@@ -20,39 +20,44 @@ class ProductTableContainer extends React.Component {
     return (
       <ProductsCollection
         organizationRef={organization.ref}
-        render={({ isLoading, data }) => {
-          return (
-            <ProductTable
-              isLoading={isLoading}
-              products={data}
-              onDelete={id => {
-                this.setState({
-                  confirmDeleteOpen: true,
-                  confirmDeleteProductId: id
-                });
-              }}
-              confirmDeleteOpen={this.state.confirmDeleteOpen}
-              onConfirmDelete={() => {
-                firestore
-                  .collection("products")
-                  .doc(this.state.confirmDeleteProductId)
-                  .update({ isDeleted: true })
-                  .catch(handleError);
+        render={({ isLoading: isProductsLoading, data: products }) => (
+          <ProductsCount
+            organizationRef={organization.ref}
+            render={({ isLoading: isCountsLoading, data: counts }) => (
+              <ProductTable
+                isProductsLoading={isProductsLoading}
+                products={products}
+                isCountsLoading={isCountsLoading}
+                counts={counts}
+                onDelete={id => {
+                  this.setState({
+                    confirmDeleteOpen: true,
+                    confirmDeleteProductId: id
+                  });
+                }}
+                confirmDeleteOpen={this.state.confirmDeleteOpen}
+                onConfirmDelete={() => {
+                  firestore
+                    .collection("products")
+                    .doc(this.state.confirmDeleteProductId)
+                    .update({ isDeleted: true })
+                    .catch(handleError);
 
-                this.setState({
-                  confirmDeleteOpen: false,
-                  confirmDeleteProductId: null
-                });
-              }}
-              onCancelConfirmDelete={() => {
-                this.setState({
-                  confirmDeleteOpen: false,
-                  confirmDeleteProductId: null
-                });
-              }}
-            />
-          );
-        }}
+                  this.setState({
+                    confirmDeleteOpen: false,
+                    confirmDeleteProductId: null
+                  });
+                }}
+                onCancelConfirmDelete={() => {
+                  this.setState({
+                    confirmDeleteOpen: false,
+                    confirmDeleteProductId: null
+                  });
+                }}
+              />
+            )}
+          />
+        )}
       />
     );
   }

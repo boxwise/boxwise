@@ -27,8 +27,10 @@ const styles = theme => ({
 
 const ProductTable = ({
   classes,
-  isLoading,
+  isProductsLoading,
   products,
+  isCountsLoading,
+  counts,
   onDelete,
   onCancelConfirmDelete,
   onConfirmDelete,
@@ -42,7 +44,7 @@ const ProductTable = ({
         onConfirm={onConfirmDelete}
         onCancel={onCancelConfirmDelete}
       />
-      {isLoading ? (
+      {isProductsLoading ? (
         <div className={classes.progress}>
           <CircularProgress />
         </div>
@@ -52,15 +54,25 @@ const ProductTable = ({
             <TableRow>
               <TableCell padding="dense">Category</TableCell>
               <TableCell padding="dense">Name</TableCell>
+              <TableCell padding="dense">Count</TableCell>
               <TableCell padding="dense" />
             </TableRow>
           </TableHead>
           <TableBody>
             {products.map(product => {
+              const count = counts ? (
+                <span>{counts[product.id]}</span>
+              ) : (
+                <div className={classes.progress}>
+                  <CircularProgress />
+                </div>
+              );
+
               return (
                 <TableRow key={product.id}>
                   <TableCell padding="dense">{product.category}</TableCell>
                   <TableCell padding="dense">{product.name}</TableCell>
+                  <TableCell padding="dense">{count}</TableCell>
                   <TableCell padding="dense">
                     <IconButton
                       onClick={() => onDelete(product.id)}
