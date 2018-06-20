@@ -7,7 +7,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import AppDrawer from "./AppDrawer";
-import theme from "./theme";
+import { drawerTheme } from "../theme";
 
 const styles = theme => ({
   root: {
@@ -92,7 +92,7 @@ class AppFrame extends React.Component {
             <div className={classes.grow} />
           </Toolbar>
         </AppBar>
-        <MuiThemeProvider theme={theme}>
+        <MuiThemeProvider theme={drawerTheme}>
           <AppDrawer
             className={classes.drawer}
             disablePermanent={false}
