@@ -4,21 +4,21 @@ import {
   FETCH_PROFILE_SUCCESS
 } from "../actions/profile";
 
-export const profileReducer = (
-  state = { isFetching: true, data: null },
+export default function profile(
+  state = { loading: true, data: null },
   { type, payload }
-) => {
+) {
   switch (type) {
     case FETCH_PROFILE_START:
-      return { ...state, isFetching: true };
+      return { ...state, loading: true };
 
     case FETCH_PROFILE_SUCCESS:
-      return { ...state, data: payload, isFetching: false };
+      return { ...state, data: payload, loading: false };
 
     case FETCH_PROFILE_ERROR:
-      return { ...state, isFetching: false, error: payload };
+      return { ...state, loading: false, error: payload };
 
     default:
       return state;
   }
-};
+}

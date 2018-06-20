@@ -11,7 +11,7 @@ const styles = theme => ({
   }
 });
 
-const SignInForm = ({ classes, isFetching, userSignIn }) => (
+const SignInForm = ({ classes, loading, userSignIn }) => (
   <Formik
     initialValues={{
       email: "",
@@ -54,7 +54,7 @@ const SignInForm = ({ classes, isFetching, userSignIn }) => (
           variant="raised"
           color="primary"
           type="submit"
-          loading={isSubmitting || isFetching}
+          loading={isSubmitting || loading}
           className={classes.submit}
         >
           Sign In

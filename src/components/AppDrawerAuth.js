@@ -8,13 +8,13 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 
 const AppDrawerAuth = ({
   notAuthenticated,
-  isFetching,
+  loading,
   user,
   profile,
   onSignOut,
   onClose
 }) => {
-  if (isFetching) {
+  if (loading) {
     return <CircularProgress />;
   } else if (notAuthenticated) {
     return null;
@@ -42,7 +42,7 @@ const AppDrawerAuth = ({
 };
 
 AppDrawerAuth.propTypes = {
-  isFetching: PropTypes.bool,
+  loading: PropTypes.bool,
   user: PropTypes.object,
   profile: PropTypes.object,
   onSignOut: PropTypes.func,
