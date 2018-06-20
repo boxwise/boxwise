@@ -6,7 +6,7 @@ const deployfile = "firestore.rules";
 const deployfilePath = join(currentDir, deployfile);
 
 try {
-  const { stdout: output1 } = execa.sync("yarn", ["yarnhook"]);
+  const { stdout: output1 } = execa.sync("yarnhook", [], {"env": {"YARNHOOK_DRYRUN": "true"}});
   console.log(output1);
 } catch (e) {
   if (e.message.includes('Command "yarnhook" not found')) {
