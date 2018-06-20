@@ -4,7 +4,7 @@ import { FirestoreDocument } from "react-firestore";
 import SignUpForm from "../components/SignUpForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Progress from "../components/Progress.js";
 import Page from "../components/Page";
 import { createUserAndProfile } from "../auth";
 import { handleError } from "../utils";
@@ -21,7 +21,7 @@ const JoinPage = ({ history, match }) => (
           path={`invites/${match.params.inviteId}`}
           render={({ isLoading, data: invite, snapshot }) => {
             if (isLoading) {
-              return <CircularProgress />;
+              return <Progress />;
             } else if (!snapshot.exists) {
               return (
                 <Typography variant="body1">
@@ -35,7 +35,7 @@ const JoinPage = ({ history, match }) => (
                 path={`organizations/${invite.organization.id}`}
                 render={({ isLoading, data: organization }) => {
                   if (isLoading) {
-                    return <CircularProgress />;
+                    return <Progress />;
                   } else {
                     return (
                       <React.Fragment>

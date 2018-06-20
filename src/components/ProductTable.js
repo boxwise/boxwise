@@ -1,6 +1,6 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Progress from "./Progress.js";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -44,7 +44,7 @@ const ProductTable = ({
       />
       {isLoading ? (
         <div className={classes.progress}>
-          <CircularProgress />
+          <Progress />
         </div>
       ) : (
         <Table className={classes.table}>
