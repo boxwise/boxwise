@@ -20,12 +20,12 @@ function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
-const AddProductDialog = ({
+const ProductDialog = ({
   classes,
-  firestore,
   open,
   fullScreen,
   onClose,
+  initialValue,
   onSubmit
 }) => (
   <Dialog
@@ -38,10 +38,7 @@ const AddProductDialog = ({
     TransitionComponent={Transition}
   >
     <Formik
-      initialValues={{
-        category: "",
-        name: ""
-      }}
+      initialValues={initialValue}
       validate={values => {
         let errors = {};
         if (!values.category) {
@@ -110,7 +107,7 @@ const AddProductDialog = ({
   </Dialog>
 );
 
-AddProductDialog.propTypes = {
+ProductDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   open: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
@@ -120,4 +117,4 @@ AddProductDialog.propTypes = {
 export default compose(
   withStyles(styles),
   withMobileDialog()
-)(AddProductDialog);
+)(ProductDialog);

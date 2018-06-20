@@ -25,6 +25,14 @@ class ProductTableContainer extends React.Component {
             <ProductTable
               isLoading={isLoading}
               products={data}
+              onEdit={id => {}}
+              // onConfirmEdit={() => {
+              //   firestore
+              //     .collection("products")
+              //     .doc(this.state.confirmDeleteProductId)
+              //     .update({ isDeleted: true })
+              //     .catch(handleError);
+              // }}
               onDelete={id => {
                 this.setState({
                   confirmDeleteOpen: true,
