@@ -49,6 +49,8 @@ We are always looking for help. Working on this project is an opportunity to use
 
     $ yarn start
 
+The first thing you'll want to do when running a new development environment is set up an organization. [The development environment currently has no test data.](https://github.com/boxwise/boxwise/issues/24)
+
 ## Running tests
 
     $ yarn test
