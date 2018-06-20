@@ -3,7 +3,7 @@ import "./CreateLabelsPage.css";
 import { connect } from "react-redux";
 import uuidv4 from "uuid/v4";
 
-class CreateQRLabelsPage extends React.Component {
+class CreateLabelsPage extends React.Component {
   render() {
     const numberOfLabels = 104;
     const { profile } = this.props;
@@ -47,4 +47,4 @@ class CreateQRLabelsPage extends React.Component {
 
 export default connect(state => ({
   profile: state.profile
-}))(CreateQRLabelsPage);
+}))(CreateLabelsPage);
