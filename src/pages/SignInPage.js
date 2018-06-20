@@ -11,7 +11,18 @@ const SignInPage = ({ history, user }) =>
       <Grid container spacing={24} justify="center" alignItems="center">
         <Grid item xs={12} md={4}>
           <Typography variant="display1">Sign In</Typography>
+          {user.hasTriggeredReset && (
+            <Typography variant="body1">
+              <br />
+              Your password reset email has been sent. Once you reset your
+              password, continue with the login below.
+            </Typography>
+          )}
           <SignInForm />
+          <br />
+          <Typography variant="body1">
+            <Link to="/reset-password">Forgot your password?</Link>
+          </Typography>
           <br />
           <Typography variant="body1">
             Don’t have an account?{" "}

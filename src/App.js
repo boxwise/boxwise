@@ -11,6 +11,7 @@ import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
 import SignInPage from "./containers/pages/SignInPage";
+import ResetPasswordPage from "./containers/pages/ResetPasswordPage";
 import InvitePage from "./pages/InvitePage";
 import JoinPage from "./pages/JoinPage";
 import MockupsPage from "./pages/MockupsPage";
@@ -58,6 +59,11 @@ const App = () => (
             component={() => <CreateOrganizationPage />}
           />
           <Route exact path="/signin" component={() => <SignInPage />} />
+          <Route
+            exact
+            path="/reset-password"
+            component={() => <ResetPasswordPage />}
+          />
           <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
 
           <Route exact path="/mockups" component={() => <MockupsPage />} />
