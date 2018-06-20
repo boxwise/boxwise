@@ -22,6 +22,11 @@ import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 
+import { addLocaleData } from "react-intl";
+import en from "react-intl/locale-data/en";
+
+addLocaleData([...en]);
+
 if (Config.GOOGLE_ANALYTICS_CODE) {
   ReactGA.initialize(Config.GOOGLE_ANALYTICS_CODE);
 }
