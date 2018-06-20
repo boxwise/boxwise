@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Progress from "../components/Progress.js";
 
 const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
   const isLoggedIn = !!user.data;
@@ -12,12 +12,12 @@ const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
       render={props =>
         // First, wait for user to load
         user.loading ? (
-          <CircularProgress />
+          <Progress />
         ) : // Are we logged in?
         isLoggedIn ? (
           // Wait for profile to load if logged in
           profile.loading ? (
-            <CircularProgress />
+            <Progress />
           ) : (
             <Component {...props} />
           )

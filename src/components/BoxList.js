@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Progress from "./Progress.js";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -50,7 +50,7 @@ const BoxList = ({
   if (isLoading) {
     list = (
       <div className={classes.progress}>
-        <CircularProgress />
+        <Progress />
       </div>
     );
   } else if (!boxes.length) {
