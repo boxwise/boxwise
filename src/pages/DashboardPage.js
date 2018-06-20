@@ -7,6 +7,7 @@ import Page from "../components/Page";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
+import { withOpenMakeBox } from "../containers/components/MakeBoxTrigger";
 
 const styles = theme => ({
   paper: theme.mixins.gutters({
@@ -15,6 +16,12 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 3
   })
 });
+
+const MakeBoxButton = withOpenMakeBox(({ openMakeBox, children, ...props }) => (
+  <Button onClick={openMakeBox} {...props}>
+    {children}
+  </Button>
+));
 
 class DashboardPage extends React.Component {
   state = {
@@ -31,13 +38,9 @@ class DashboardPage extends React.Component {
             <Typography variant="headline" paragraph={true}>
               Things to do
             </Typography>
-            <Button
-              variant="raised"
-              color="secondary"
-              onClick={this.props.openMakeBox}
-            >
+            <MakeBoxButton variant="raised" color="secondary">
               Make a box
-            </Button>
+            </MakeBoxButton>
             <br />
             <br />
             <Button
@@ -56,8 +59,7 @@ class DashboardPage extends React.Component {
 }
 
 DashboardPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  openMakeBox: PropTypes.object.isRequired
+  classes: PropTypes.object.isRequired
 };
 
 export default withStyles(styles)(DashboardPage);

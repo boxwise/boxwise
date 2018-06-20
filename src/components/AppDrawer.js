@@ -10,6 +10,7 @@ import Divider from "@material-ui/core/Divider";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
 import AppDrawerAuthContainer from "../containers/components/AppDrawerAuth";
+import { withOpenMakeBox } from "../containers/components/MakeBoxTrigger";
 
 const styles = theme => ({
   logo: {
@@ -45,6 +46,19 @@ const styles = theme => ({
 // dropping frames. The performance will be good enough.
 // So: <SwipeableDrawer disableBackdropTransition={false} />
 const iOS = process.browser && /iPad|iPhone|iPod/.test(navigator.userAgent);
+const MakeBoxListItem = withOpenMakeBox(
+  ({ openMakeBox, onClick, children, ...props }) => (
+    <ListItem
+      onClick={() => {
+        openMakeBox();
+        onClick();
+      }}
+      {...props}
+    >
+      {children}
+    </ListItem>
+  )
+);
 
 const AppDrawer = ({
   classes,
@@ -80,9 +94,9 @@ const AppDrawer = ({
         <ListItem component={Link} to="/create-labels" onClick={onClose} button>
           <ListItemText primary="Create labels" />
         </ListItem>
-        <ListItem onClick={onClose} button>
+        <MakeBoxListItem onClick={onClose} button>
           <ListItemText primary="Create a box" />
-        </ListItem>
+        </MakeBoxListItem>
       </List>
       <Divider />
       <AppDrawerAuthContainer onClose={onClose} />
