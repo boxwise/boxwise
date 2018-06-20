@@ -63,8 +63,7 @@ prompt.start();
 get(schema)
   .then(createConfig)
   .then(writeConfig)
-  .catch(err => console.log(err.message))
-  .finally(() => process.exit(0));
+  .catch(err => console.log(err.message));
 
 function createConfig(res) {
   const entry = key => `${key}=${res[key] || ""}`;
