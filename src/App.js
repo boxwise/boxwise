@@ -5,7 +5,7 @@ import Config from "./Config";
 import ScrollToTop from "./components/ScrollToTop";
 
 import AuthedRoute from "./router/AuthedRoute";
-import DashboardPage from "./pages/DashboardPage";
+import DashboardPage from "./containers/pages/DashboardPage";
 import BoxesPage from "./pages/BoxesPage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
