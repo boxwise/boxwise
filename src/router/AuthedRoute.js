@@ -11,12 +11,12 @@ const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
       {...rest}
       render={props =>
         // First, wait for user to load
-        user.isFetching ? (
+        user.loading ? (
           <CircularProgress />
         ) : // Are we logged in?
         isLoggedIn ? (
           // Wait for profile to load if logged in
-          profile.isFetching ? (
+          profile.loading ? (
             <CircularProgress />
           ) : (
             <Component {...props} />

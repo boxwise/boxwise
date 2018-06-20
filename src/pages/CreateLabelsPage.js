@@ -9,7 +9,7 @@ class CreateLabelsPage extends React.Component {
     const numberOfLabels = 104;
     const { profile } = this.props;
 
-    if (profile.isFetching) {
+    if (profile.loading) {
       // TODO: loading spinner
       return <p>Loading</p>;
     }

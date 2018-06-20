@@ -1,52 +1,94 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
+import { bool, func } from "prop-types";
 import Dialog from "@material-ui/core/Dialog";
-import Slide from "@material-ui/core/Slide";
+
 import AddBoxForm from "./AddBoxForm";
 import AddBoxDone from "./AddBoxDone";
 
-function Transition(props) {
-  return <Slide direction="up" {...props} />;
-}
+import { ProductsCollection } from "../queries/products";
 
-const AddBoxDialog = ({
-  classes,
-  open,
-  products,
-  box,
-  selectedProduct,
-  done,
-  onClose,
-  onReset,
-  onSubmit
-}) => (
-  <Dialog
-    fullScreen
-    open={open}
-    onClose={onClose}
-    aria-labelledby="form-dialog-title"
-    fullWidth
-    TransitionComponent={Transition}
-  >
-    {done ? (
-      <AddBoxDone
-        box={box}
-        selectedProduct={selectedProduct}
-        onClose={onClose}
-        onReset={onReset}
+export default class AddBoxDialogContainer extends PureComponent {
+  static propTypes = {
+    open: bool.isRequired,
+    onClose: func
+  };
+
+  state = {
+    box: null,
+    done: false
+  };
+
+  _reset() {
+    this.setState({ box: null, selectedProduct: null, done: false });
+  }
+
+  _onSubmit(values, { setSubmitting, setErrors }) {
+    const { profile, addBox } = this.props;
+    const { organization } = profile.data;
+
+    setSubmitting(true);
+    addBox({ ...values, organization, profile: profile.data }).then(
+      ({ error, data }) => {
+        setSubmitting(false);
+        error
+          ? setErrors(error)
+          : this.setState({
+              box: data,
+              done: true,
+              selectedProduct: data.product
+            });
+      }
+    );
+  }
+
+  _onClose() {
+    const { onClose } = this.props;
+    this._reset();
+    onClose && onClose();
+  }
+
+  _renderDialog(products) {
+    const { box, selectedProduct, done } = this.state;
+
+    return (
+      <Dialog
+        fullScreen
+        open={this.props.open}
+        onClose={this._onClose.bind(this)}
+        aria-labelledby="form-dialog-title"
+        fullWidth
+      >
+        {done ? (
+          <AddBoxDone
+            box={box}
+            selectedProduct={selectedProduct}
+            onClose={this._onClose.bind(this)}
+            onReset={this._reset.bind(this)}
+          />
+        ) : (
+          <AddBoxForm
+            products={products}
+            onClose={this._onClose.bind(this)}
+            onSubmit={this._onSubmit.bind(this)}
+          />
+        )}
+      </Dialog>
+    );
+  }
+
+  render() {
+    const { profile } = this.props;
+
+    if (profile.loading || !profile) {
+      return null; // TODO: Add a loading spinner
+    }
+
+    const { organization } = profile.data;
+    return (
+      <ProductsCollection
+        organizationRef={organization.ref}
+        render={({ data }) => this._renderDialog(data)}
       />
-    ) : (
-      <AddBoxForm products={products} onClose={onClose} onSubmit={onSubmit} />
-    )}
-  </Dialog>
-);
-
-AddBoxDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  box: PropTypes.object,
-  done: PropTypes.bool.isRequired
-};
-
-export default AddBoxDialog;
+    );
+  }
+}

@@ -12,7 +12,7 @@ const mergeProps = ({ profile, user }, dispatchProps, ownProps) => ({
   ...dispatchProps,
   ...ownProps,
   notAuthenticated: !user.data || !profile.data,
-  isFetching: user.isFetching || profile.isFetching
+  loading: user.loading || profile.loading
 });
 
 export default connect(
