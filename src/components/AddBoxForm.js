@@ -66,6 +66,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
                 component={TextField}
                 fullWidth
                 margin="dense"
+                inputProps={{ pattern: "[0-9]*", inputmode: "numeric" }}
               />
               <Field
                 label="Comments"
