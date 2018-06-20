@@ -8,7 +8,7 @@
     "@material-ui/icons": "^1.1.0",
     "firebase": "^5.0.4",
     "formik": "^0.11.11",
-    "prop-types": "^15.6.1",
+    "prop-types": "^15.6.2",
     "raven-js": "^3.26.2",
     "react": "^16.4.0",
     "react-copy-to-clipboard": "^5.0.1",
