@@ -7,15 +7,12 @@ const { resolve } = require("path");
 const get = promisify(prompt.get);
 const readFile = promisify(fs.readFile);
 
-
-var firebase = require('firebase/app');
-
-var auth = require("firebase/auth");
-var firestore2 = require("firebase/firestore");
+const firebase = require('firebase/app');
+const auth = require("firebase/auth");
+require("firebase/firestore");
 
 
-// TODO import this from .env.local
-
+// Mapping from .env.local values to firebase configuration values
 const configMapping = {
     REACT_APP_FIREBASE_API_KEY: 'apiKey',
     REACT_APP_FIREBASE_AUTH_DOMAIN: 'authDomain',
@@ -25,24 +22,51 @@ const configMapping = {
     REACT_APP_FIREBASE_MESSAGING_SENDER_ID: 'messagingSenderId',
 };
 
-const config = {};
+// Schema for values to gather with 'prompt'
+const schema = {
+    properties: {
+        email: {
+            required: true,
+        },
+        password: {
+            hidden: true,
+            required: true,
+        },
+        organization_name: {
+            required: true,
+        },
+    }
+};
 
+const config = {};
+var organization_id = null;
+var profile_id = null;
+var email = "testuser@boxwise.co";
+var password = "password3";
 
 function readConfig() {
-  const file = resolve(process.cwd(), `.env.local`);
+    const file = resolve(process.cwd(), `.env.local`);
     return readFile(file, 'utf8');
 }
 
-
-const handleError = (error, errorInfo) => {
-  console.error(error);
-  console.error(errorInfo);
+const parseConfig = (result) => {
+        for(let line of result.split('\n')) {
+            const [key, val] = line.split('=');
+            const firebaseKey = configMapping[key];
+            if(firebaseKey != null) {
+                config[firebaseKey] = val;
+            }
+        }
+        console.log(config);
+        initFirebase();
 };
 
-const handleSuccess = (data) => {
-  console.error(data);
+// From Mozilla MDN
+const getRandomInt = (min, max) => {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 };
-
 
 const initFirebase = () => {
     if (!firebase.apps.length) {
@@ -53,26 +77,17 @@ const initFirebase = () => {
     firestore.settings({ timestampsInSnapshots: true });
 };
 
-var organization_id = null;
-
-var profile_id = null;
-
-var email = "bwaite+55551@tripadvisor.com";
-
-var password = "password3";
-
-
 const setupAuth = () => {
- return firebase
-    .auth()
-    .signInWithEmailAndPassword(email, password);
+    return firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password);
 };
 
 const addOrganization = ({ name }) => {
-  return firestore.collection("organizations").add({
-    name: name,
-    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-  });
+    return firestore.collection("organizations").add({
+        name: name,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    });
 };
 
 const addBox = (product_id) => {
@@ -80,45 +95,45 @@ const addBox = (product_id) => {
 
     values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     values.createdBy = firestore.doc("profiles/" + profile_id);
-    values.organization = firestore.doc("organizations/" + organization_id); // firestore.doc(profile.data.organization.ref);
-    //humanID: 500913
+    values.organization = firestore.doc("organizations/" + organization_id);
+    values.humanID = getRandomInt(10000, 100000);
 
-    values.product = firestore.doc( product_id);
+    values.product = firestore.doc(product_id);
     
     return firestore
         .collection("boxes")
         .add(values);
 };
 
-    
-// TODO
-const setProfile = (uid , data) => {
-  // console.log("UID is: " + uid);
-  // console.log("DATA is: " + data);
 
+const setProfile = (uid , data) => {
+    console.log("UID is: " + uid);
+    console.log("DATA is: " + data);
     
-  return firestore
-    .collection("profiles")
-    .doc(uid)
-    .set(data);
+    return firestore
+        .collection("profiles")
+        .doc(uid)
+        .set(data);
 };
 
-const createUserAndProfile = ({ email, password }, profile) => {
-  return firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
+const createUserAndProfile = ({ email, password }, organization_id) => {
+    const profile = {organization: firestore.doc('organizations/' + organization_id)};
+    
+    return firebase
+        .auth()
+        .createUserWithEmailAndPassword(email, password)
         .then(({ user }) => setProfile(user.uid, profile));
 };
 
 const addProduct = (values, uid) => {
 
-    console.log("organizations/" + organization_id);
-    console.log("profiles/" + uid);
+    // console.log("organizations/" + organization_id);
+    // console.log("profiles/" + uid);
     
-    values.organization = firestore.doc("organizations/" + organization_id); // firestore.doc(profile.data.organization.ref);
+    values.organization = firestore.doc("organizations/" + organization_id); 
 
     values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-    values.createdBy = firestore.doc("profiles/" + uid); // firestore.doc(profile.data.ref);
+    values.createdBy = firestore.doc("profiles/" + uid); 
     values.isDeleted = false;
     
     return  firestore
@@ -126,87 +141,45 @@ const addProduct = (values, uid) => {
         .add(values);
 };
 
-
-
-// addOrganization({name: 'bryan test'})
-//     .then( (ref) => {
-//         var res = ref.id;
-//         organization_res = res;
-//         console.log(res);
-//     })
-//     .then( () => { return setupAuth(); })
-//     .then( () => { addProduct( { category: "Woman", name: "test15", }) })
-//     .then(() => { process.exit(); });
-
-// setupAuth()
-//     .then( () => { addOrganization({name: 'bryan test'}); })
-//     .then( (organizations) => {
-//         var res = Promise.resolve(organizations.docs[0].ref);
-//         organization_res = res;
-//     } )
-//     .then(() => { process.exit(); });
-
-
-// Add organization and profile
-console.info("trying to create a test org");
-
-
-prompt.start();
- 
-  //
-  // Get two properties from the user: username and email
-//
-
-const schema = {
-    properties: {
-      email: {
-        required: true
-      },
-      password: {
-        hidden: true
-      }
-    }
-  };
+const logErrorAndExit = (err) => {
+    console.log(err);
+    process.exit();
+};
 
 readConfig()
-    .then( (result) => {
-        for(let line of result.split('\n')) {
-            const [key, val] = line.split('=');
-            const firebaseKey = configMapping[key];
-            if(firebaseKey != null) {
-                config[firebaseKey] = val;
-            }
-        }
-        console.log(config);
-        initFirebase();
-    })
-    .catch( (r1) => { console.log(r1); process.exit(); } )
+    .then(parseConfig)
+    .catch(logErrorAndExit)
     .then( () => { return get(schema); })
     .then( (result) => {
         email = result.email;
         password = result.password;
         
-        return addOrganization({name: 'bryan test 3'});
+        return addOrganization({name: result.organization_name});
     })
-     .then( (ref) => {
-         organization_id = ref.id;
-         const orgRef = {organization: firestore.doc('organizations/' + ref.id)};
-         return createUserAndProfile({ email: email, password: password }, orgRef);
-     })
-    .then( () => {
-        return setupAuth();
+    .then( (ref) => {
+        organization_id = ref.id;
+        return createUserAndProfile({ email: email, password: password }, ref.id);
     })
-    .catch( (r1) => { console.log(r1); process.exit(); } )
+    .then(setupAuth)
+    .catch(logErrorAndExit)
     .then( ({ user }) => {
         profile_id = user.uid;
+
+        var promises = [];
+        for(let i = 0; i < 5; i++) {
+            let product = {
+                category: "Woman",
+                name: "test" + i,
+            };
+
+            promises.push(addProduct(product, profile_id));
+        }
         
-        return addProduct({
-            category: "Woman",
-            name: "test15",
-        }, user.uid);
+        return Promise.all(promises);
     })
-    .catch( (r1) => { console.log(r1); process.exit(); } )
-    .then( (res) => {
+    .catch(logErrorAndExit)
+    .then( (products) => {
+        var res = products[0];
         let product_id = res._key.path.segments.join('/');
         return addBox(product_id);
         
