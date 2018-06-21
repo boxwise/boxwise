@@ -1,11 +1,12 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Page from "../components/Page";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 
 const styles = {
+  //HELP HERE These were the classes body and a before in HomePage.css
   homepage: {
     border: "1px solid #eee",
     textAlign: "center",
@@ -14,6 +15,7 @@ const styles = {
   link: {
     color: "#009bd9"
   },
+  //
   grid: {
     margin: "0 auto"
   },
@@ -47,8 +49,8 @@ const styles = {
   }
 };
 
-const HomePage = classes => {
-  return (
+const HomePage = ({ user, classes }) =>
+  !user.data ? (
     <Page className={classes.homepage}>
       <Grid container className={classes.grid}>
         <div className={classes.header}>
@@ -97,8 +99,9 @@ const HomePage = classes => {
         </div>
       </Grid>
     </Page>
+  ) : (
+    <Redirect to={{ pathname: "/" }} />
   );
-};
 
 HomePage.propTypes = {
   classes: PropTypes.object.isRequired
