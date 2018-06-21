@@ -1,7 +1,18 @@
+
+const { promisify } = require("util");
+const fs = require("fs");
+const prompt = require("prompt");
+
+
+const get = promisify(prompt.get);
+const readFile = promisify(fs.readFile);
+
+
 var firebase = require('firebase/app');
 
 var auth = require("firebase/auth");
 var firestore2 = require("firebase/firestore");
+
 
 // TODO import this from .env.local
 const REACT_APP_FIREBASE_API_KEY="AIzaSyDBtbOWhMSbVQLw_QJ1ohgucUrlA_ODkCo";
@@ -19,6 +30,12 @@ const config = {
   storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
+
+function readConfig() {
+  const file = resolve(process.cwd(), `.env.${env}`);
+  return readFile(file);
+}
+
 
 const handleError = (error, errorInfo) => {
   console.error(error);
@@ -38,6 +55,8 @@ firestore = firebase.firestore();
 firestore.settings({ timestampsInSnapshots: true });
 
 
+  return writeFile(file, content);
+
 var organization_id = null;
 
 var profile_id = null;
@@ -45,6 +64,7 @@ var profile_id = null;
 var email = "bwaite+55551@tripadvisor.com";
 
 var password = "password3";
+
 
 const setupAuth = () => {
  return firebase
@@ -134,7 +154,31 @@ const addProduct = (values, uid) => {
 // Add organization and profile
 console.info("trying to create a test org");
 
-addOrganization({name: 'bryan test 3'})
+
+prompt.start();
+ 
+  //
+  // Get two properties from the user: username and email
+//
+
+const schema = {
+    properties: {
+      email: {
+        required: true
+      },
+      password: {
+        hidden: true
+      }
+    }
+  };
+
+get(schema)
+    .then( (result) => {
+        email = result.email;
+        password = result.password;
+        
+        return addOrganization({name: 'bryan test 3'});
+    })
      .then( (ref) => {
          organization_id = ref.id;
          const orgRef = {organization: firestore.doc('organizations/' + ref.id)};
