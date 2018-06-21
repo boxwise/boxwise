@@ -30,10 +30,15 @@ const SignInForm = ({ classes, error, loading, userSignIn }) => (
     onSubmit={userSignIn}
     render={({ handleSubmit, errors }) => (
       <form onSubmit={handleSubmit}>
-        {/* TODO: style errors */}
-        {error ? <Typography>{error.message}</Typography> : null}
+        {error ? (
+          <Typography color="error" variant="body1">
+            {error.message}
+          </Typography>
+        ) : null}
         {errors.form ? (
-          <Typography variant="body1">{errors.form}</Typography>
+          <Typography color="error" variant="body1">
+            {errors.form}
+          </Typography>
         ) : null}
         <Field
           type="email"
