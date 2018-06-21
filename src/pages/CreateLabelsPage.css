@@ -36,6 +36,7 @@
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
 }
 .CreateLabelsPage .barcode {
+  background-color: #f00;
   position: absolute;
   top: 8mm;
   right: 8mm;
@@ -47,8 +48,11 @@
   position: absolute;
   top: 8mm;
   left: 8mm;
+  width: 72mm;
+  height: 23mm;
+  overflow: hidden;
   font-weight: bold;
-  font-size: 18pt;
+  font-size: 16pt;
 }
 .CreateLabelsPage .product {
   position: absolute;
@@ -61,7 +65,7 @@
 }
 .CreateLabelsPage .count {
   position: absolute;
-  bottom: 36mm;
+  bottom: 30mm;
   left: 8mm;
   width: 60mm;
   padding-top: 1mm;
@@ -70,7 +74,7 @@
 }
 .CreateLabelsPage .boxid {
   position: absolute;
-  bottom: 56mm;
+  bottom: 50mm;
   left: 8mm;
   width: 60mm;
   padding-top: 1mm;
