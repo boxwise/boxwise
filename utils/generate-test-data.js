@@ -27,6 +27,7 @@ const schema = {
     properties: {
         email: {
             required: true,
+            message: 'Enter your email for signin',
         },
         password: {
             hidden: true,
@@ -34,6 +35,7 @@ const schema = {
         },
         organization_name: {
             required: true,
+            message: 'Enter the name of your test organization',
         },
     }
 };
@@ -45,6 +47,7 @@ var email = "testuser@boxwise.co";
 var password = "password3";
 
 function readConfig() {
+    console.log("Reading local firebase configuration");
     const file = resolve(process.cwd(), `.env.local`);
     return readFile(file, 'utf8');
 }
@@ -84,6 +87,8 @@ const setupAuth = () => {
 };
 
 const addOrganization = ({ name }) => {
+    console.log("Creating organization " + name);
+    
     return firestore.collection("organizations").add({
         name: name,
         createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -142,6 +147,8 @@ const addProduct = (values, uid) => {
 };
 
 const generateProducts = (profile_id) => {
+
+    console.log("Creating test products");
     const promises = [];
 
     const categories = ['Man', 'Woman', 'Adult', 'Boy', 'Girl', 'Child', 'Baby', 'Food', 'Hygiene', 'Other'];
@@ -160,6 +167,8 @@ const generateProducts = (profile_id) => {
 };
 
 const generateBoxes = (products) => {
+    console.log("Creating test boxes");
+    
     const promises = [];
     
     for(let i = 0; i < 5; i++) {
