@@ -3,7 +3,6 @@ import "./CreateLabelsPage.css";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import uuidv4 from "uuid/v4";
-import { Link } from "react-router-dom";
 
 class CreateLabelsPage extends React.Component {
   render() {
