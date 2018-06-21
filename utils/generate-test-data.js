@@ -91,7 +91,7 @@ const addOrganization = ({ name }) => {
 };
 
 const addBox = (product_id) => {
-    const values = { quantity: 8, comment: "test comment"};
+    const values = { quantity: getRandomInt(1, 20), comment: "test comment"};
 
     values.createdAt = firebase.firestore.FieldValue.serverTimestamp();
     values.createdBy = firestore.doc("profiles/" + profile_id);
@@ -107,8 +107,8 @@ const addBox = (product_id) => {
 
 
 const setProfile = (uid , data) => {
-    console.log("UID is: " + uid);
-    console.log("DATA is: " + data);
+    // console.log("UID is: " + uid);
+    // console.log("DATA is: " + data);
     
     return firestore
         .collection("profiles")
@@ -141,6 +141,37 @@ const addProduct = (values, uid) => {
         .add(values);
 };
 
+const generateProducts = (profile_id) => {
+    const promises = [];
+
+    const categories = ['Man', 'Woman', 'Adult', 'Boy', 'Girl', 'Child', 'Baby', 'Food', 'Hygiene', 'Other'];
+    
+    for(let i = 0; i < 10; i++) {
+        let category_index = getRandomInt(0, categories.length);
+        let product = {
+            category: categories[category_index],
+            name: "Test Product " + (i + 1),
+        };
+
+        promises.push(addProduct(product, profile_id));
+    }
+    
+    return Promise.all(promises);
+};
+
+const generateBoxes = (products) => {
+    const promises = [];
+    
+    for(let i = 0; i < 5; i++) {
+        let product_index = getRandomInt(0, products.length);
+        let product_id = products[product_index]._key.path.segments.join('/');
+        
+        promises.push(addBox(product_id));
+    }
+    
+    return Promise.all(promises);
+};
+
 const logErrorAndExit = (err) => {
     console.log(err);
     process.exit();
@@ -165,23 +196,8 @@ readConfig()
     .then( ({ user }) => {
         profile_id = user.uid;
 
-        var promises = [];
-        for(let i = 0; i < 5; i++) {
-            let product = {
-                category: "Woman",
-                name: "test" + i,
-            };
-
-            promises.push(addProduct(product, profile_id));
-        }
-        
-        return Promise.all(promises);
+        return generateProducts(profile_id);
     })
     .catch(logErrorAndExit)
-    .then( (products) => {
-        var res = products[0];
-        let product_id = res._key.path.segments.join('/');
-        return addBox(product_id);
-        
-    } )
+    .then( (products) => generateBoxes(products) )
     .then( () => {  process.exit(); });
