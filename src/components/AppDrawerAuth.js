@@ -12,6 +12,7 @@ const AppDrawerAuth = ({
   user,
   profile,
   onSignOut,
+  onPasswordChange,
   onClose
 }) => {
   if (loading) {
@@ -33,6 +34,9 @@ const AppDrawerAuth = ({
       </ListItem>
       <ListItem component={Link} to="/invite" onClick={onClose} button>
         <ListItemText primary="Invite people" />
+      </ListItem>
+      <ListItem component={Link} to="/password" onClick={onClose} button>
+        <ListItemText primary="Change password" />
       </ListItem>
       <ListItem button>
         <ListItemText primary="Sign out" onClick={onSignOut} />
