@@ -20,6 +20,10 @@ class CreateLabelsPage extends React.Component {
       <div className="CreateLabelsPage">
         {[...Array(numberOfLabels)].map((_, i) => (
           <div className="label" key={i}>
+            <div className="name">{organization.name}</div>
+            <div className="boxid">box number</div>
+            <div className="count">count</div>
+            <div className="product">product</div>
             <img
               src={
                 "https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=" +
@@ -29,10 +33,6 @@ class CreateLabelsPage extends React.Component {
               alt="barcode"
               className="barcode"
             />
-            <div className="name">{organization.name}</div>
-            <div className="boxid">box number</div>
-            <div className="count">count</div>
-            <div className="product">product</div>
           </div>
         ))}
         <div className="infobox no-print">
