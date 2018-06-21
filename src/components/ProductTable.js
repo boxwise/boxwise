@@ -35,8 +35,10 @@ class ProductTable extends React.Component {
   render = () => {
     const {
       classes,
-      isLoading,
+      isProductsLoading,
       products,
+      isCountsLoading,
+      counts,
       onDelete,
       onCancelConfirmDelete,
       onConfirmDelete,
@@ -51,7 +53,7 @@ class ProductTable extends React.Component {
           onConfirm={onConfirmDelete}
           onCancel={onCancelConfirmDelete}
         />
-        {isLoading ? (
+        {isProductsLoading ? (
           <div className={classes.progress}>
             <CircularProgress />
           </div>
@@ -66,15 +68,25 @@ class ProductTable extends React.Component {
               <TableRow>
                 <TableCell padding="dense">Category</TableCell>
                 <TableCell padding="dense">Name</TableCell>
+                <TableCell padding="dense">Count</TableCell>
                 <TableCell padding="dense" />
               </TableRow>
             </TableHead>
             <TableBody>
               {products.map(product => {
+                const count =
+                  !isCountsLoading && counts ? (
+                    <span>{counts[product.id] || 0}</span>
+                  ) : (
+                    <div className={classes.progress}>
+                      <CircularProgress />
+                    </div>
+                  );
                 return (
                   <TableRow key={product.id}>
                     <TableCell padding="dense">{product.category}</TableCell>
                     <TableCell padding="dense">{product.name}</TableCell>
+                    <TableCell padding="dense">{count}</TableCell>
                     <TableCell padding="dense">
                       <IconButton
                         onClick={() => this.setState({ editProduct: product })}

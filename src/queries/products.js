@@ -13,3 +13,23 @@ export const ProductsCollection = ({ organizationRef, ...props }) => (
     {...props}
   />
 );
+
+export const ProductsCount = ({ organizationRef, render, ...props }) => (
+  <FirestoreCollection
+    path="boxes"
+    filter={[["organization", "==", firestore.doc(organizationRef)]]}
+    {...props}
+    render={({ isLoading, data }) => {
+      if (isLoading) {
+        return render(isLoading, data);
+      }
+
+      let counts = {};
+      data.forEach(box => {
+        counts[box.product.id] = (counts[box.product.id] || 0) + box.quantity;
+      });
+
+      return render({ isLoading, data: counts });
+    }}
+  />
+);
