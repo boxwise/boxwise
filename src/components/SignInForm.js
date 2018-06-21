@@ -11,26 +11,27 @@ const styles = theme => ({
   }
 });
 
-const SignInForm = ({ classes, loading, userSignIn }) => (
+const SignInForm = ({ classes, error, loading, userSignIn }) => (
   <Formik
     initialValues={{
       email: "",
       password: ""
     }}
-    validate={values => {
+    validate={({ email, password }) => {
       let errors = {};
-      if (!values.email) {
+      if (!email) {
         errors.email = "Enter your email.";
       }
-      if (!values.password) {
+      if (!password) {
         errors.password = "Enter your password.";
       }
       return errors;
     }}
     onSubmit={userSignIn}
-    render={({ handleSubmit, isSubmitting, errors }) => (
+    render={({ handleSubmit, errors }) => (
       <form onSubmit={handleSubmit}>
         {/* TODO: style errors */}
+        {error ? <Typography>{error.message}</Typography> : null}
         {errors.form ? (
           <Typography variant="body1">{errors.form}</Typography>
         ) : null}
@@ -54,7 +55,7 @@ const SignInForm = ({ classes, loading, userSignIn }) => (
           variant="raised"
           color="primary"
           type="submit"
-          loading={isSubmitting || loading}
+          loading={loading}
           className={classes.submit}
         >
           Sign In

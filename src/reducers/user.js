@@ -17,7 +17,7 @@ export default function user(
 ) {
   switch (type) {
     case USER_SIGN_IN_START:
-      return { ...state, loading: true };
+      return { ...state, error: null, loading: true };
 
     case USER_SIGN_IN_SUCCESS:
       return { ...state, loading: false, data: payload };

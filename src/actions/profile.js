@@ -1,7 +1,7 @@
 import { firestore } from "../firebase";
 import { handleError } from "../utils";
 
-export const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
+const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
 export const FETCH_PROFILE_START = FETCH_PROFILE_`START`;
 export const FETCH_PROFILE_SUCCESS = FETCH_PROFILE_`SUCCESS`;
 export const FETCH_PROFILE_ERROR = FETCH_PROFILE_`ERROR`;
