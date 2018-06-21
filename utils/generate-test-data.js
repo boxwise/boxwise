@@ -2,7 +2,7 @@
 const { promisify } = require("util");
 const fs = require("fs");
 const prompt = require("prompt");
-
+const { resolve } = require("path");
 
 const get = promisify(prompt.get);
 const readFile = promisify(fs.readFile);
@@ -15,25 +15,22 @@ var firestore2 = require("firebase/firestore");
 
 
 // TODO import this from .env.local
-const REACT_APP_FIREBASE_API_KEY="AIzaSyDBtbOWhMSbVQLw_QJ1ohgucUrlA_ODkCo";
-const REACT_APP_FIREBASE_AUTH_DOMAIN="boxwise-development-de322.firebaseapp.com";
-const REACT_APP_FIREBASE_DATABASE_URL="https://boxwise-development-de322.firebaseio.com";
-const REACT_APP_FIREBASE_PROJECT_ID="boxwise-development-de322";
-const REACT_APP_FIREBASE_STORAGE_BUCKET="";
-const REACT_APP_FIREBASE_MESSAGING_SENDER_ID="7668499136";
-    
-const config = {
-  apiKey: REACT_APP_FIREBASE_API_KEY,
-  authDomain: REACT_APP_FIREBASE_AUTH_DOMAIN,
-  databaseURL: REACT_APP_FIREBASE_DATABASE_URL,
-  projectId: REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+
+const configMapping = {
+    REACT_APP_FIREBASE_API_KEY: 'apiKey',
+    REACT_APP_FIREBASE_AUTH_DOMAIN: 'authDomain',
+    REACT_APP_FIREBASE_DATABASE_URL: 'databaseURL',
+    REACT_APP_FIREBASE_PROJECT_ID: 'projectId' ,
+    REACT_APP_FIREBASE_STORAGE_BUCKET: 'storageBucket' ,
+    REACT_APP_FIREBASE_MESSAGING_SENDER_ID: 'messagingSenderId',
 };
 
+const config = {};
+
+
 function readConfig() {
-  const file = resolve(process.cwd(), `.env.${env}`);
-  return readFile(file);
+  const file = resolve(process.cwd(), `.env.local`);
+    return readFile(file, 'utf8');
 }
 
 
@@ -47,15 +44,14 @@ const handleSuccess = (data) => {
 };
 
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(config);
-}
+const initFirebase = () => {
+    if (!firebase.apps.length) {
+        firebase.initializeApp(config);
+    }
 
-firestore = firebase.firestore();
-firestore.settings({ timestampsInSnapshots: true });
-
-
-  return writeFile(file, content);
+    firestore = firebase.firestore();
+    firestore.settings({ timestampsInSnapshots: true });
+};
 
 var organization_id = null;
 
@@ -172,7 +168,20 @@ const schema = {
     }
   };
 
-get(schema)
+readConfig()
+    .then( (result) => {
+        for(let line of result.split('\n')) {
+            const [key, val] = line.split('=');
+            const firebaseKey = configMapping[key];
+            if(firebaseKey != null) {
+                config[firebaseKey] = val;
+            }
+        }
+        console.log(config);
+        initFirebase();
+    })
+    .catch( (r1) => { console.log(r1); process.exit(); } )
+    .then( () => { return get(schema); })
     .then( (result) => {
         email = result.email;
         password = result.password;
@@ -203,22 +212,3 @@ get(schema)
         
     } )
     .then( () => {  process.exit(); });
-
-// Adding products and boxes
-    
-// Good to go !!!    
-// setupAuth()
-//     .then(({ user }) => {
-//         profile_id = user.uid;
-        
-//         return addProduct({
-//             category: "Woman",
-//             name: "test15",
-//         }, user.uid);
-//     })
-    
- //     .then((res) => {
-//         let product_id = res._key.path.segments.join('/');
-//         return addBox(product_id);
-//     })
-//     .then( () => { process.exit(); });
