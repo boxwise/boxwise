@@ -13,6 +13,11 @@ export const PASSWORD_RESET_START = PASSWORD_RESET_`START`;
 export const PASSWORD_RESET_SUCCESS = PASSWORD_RESET_`SUCCESS`;
 export const PASSWORD_RESET_ERROR = PASSWORD_RESET_`ERROR`;
 
+const PASSWORD_CHANGE_ = TYPE => `USER_PASSWORD_CHANGE_${TYPE}`;
+export const PASSWORD_CHANGE_START = PASSWORD_CHANGE_`START`;
+export const PASSWORD_CHANGE_SUCCESS = PASSWORD_CHANGE_`SUCCESS`;
+export const PASSWORD_CHANGE_ERROR = PASSWORD_CHANGE_`ERROR`;
+
 export const userSignOut = () => ({ type: USER_SIGN_OUT });
 
 export const firebaseSignOut = () => dispatch => {
@@ -50,5 +55,31 @@ export const resetPassword = ({ email }) => dispatch => {
     .catch(error => {
       handleError(error);
       dispatch({ type: PASSWORD_RESET_ERROR, payload: error });
+    });
+};
+
+export const userPasswordChange = ({
+  email,
+  currentPassword,
+  newPassword
+}) => dispatch => {
+  dispatch({ type: PASSWORD_CHANGE_START });
+  return firebase
+    .auth()
+    .signInWithEmailAndPassword(email, currentPassword)
+    .then(({ user }) =>
+      user
+        .updatePassword(newPassword)
+        .then(() => dispatch({ type: PASSWORD_CHANGE_SUCCESS }))
+        .catch(error => {
+          handleError(error);
+          dispatch({ type: PASSWORD_CHANGE_ERROR, payload: error });
+          throw error;
+        })
+    )
+    .catch(error => {
+      handleError(error);
+      dispatch({ type: PASSWORD_CHANGE_ERROR, payload: error });
+      throw error;
     });
 };

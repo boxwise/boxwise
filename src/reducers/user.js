@@ -5,7 +5,10 @@ import {
   USER_SIGN_OUT,
   PASSWORD_RESET_START,
   PASSWORD_RESET_SUCCESS,
-  PASSWORD_RESET_ERROR
+  PASSWORD_RESET_ERROR,
+  PASSWORD_CHANGE_START,
+  PASSWORD_CHANGE_SUCCESS,
+  PASSWORD_CHANGE_ERROR
 } from "../actions/auth";
 
 export default function user(
@@ -38,6 +41,15 @@ export default function user(
         hasTriggeredReset: false,
         error: payload
       };
+
+    case PASSWORD_CHANGE_START:
+      return { ...state, isUpdating: true, error: null };
+
+    case PASSWORD_CHANGE_SUCCESS:
+      return { ...state, isUpdating: false, error: null };
+
+    case PASSWORD_CHANGE_ERROR:
+      return { ...state, isUpdating: false, error: payload };
 
     default:
       return state;
