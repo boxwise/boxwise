@@ -6,6 +6,7 @@ import ScrollToTop from "./components/ScrollToTop";
 
 import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
+import HomePage from "./containers/pages/HomePage";
 import BoxesPage from "./pages/BoxesPage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
@@ -46,6 +47,7 @@ const App = () => (
     <BrowserRouter>
       <ScrollToTop>
         <Switch>
+          <Route exact path="/home" component={() => <HomePage />} />
           <AuthedRoute exact path="/" component={() => <DashboardPage />} />
           <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
           <AuthedRoute
