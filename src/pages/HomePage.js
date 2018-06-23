@@ -6,16 +6,13 @@ import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 
 const styles = {
-  //HELP HERE These were the classes body and a before in HomePage.css
   homepage: {
     border: "1px solid #eee",
-    textAlign: "center",
-    fontFamily: '"Open Sans", Helvetica, Arial, sans-serif'
+    textAlign: "center"
   },
   link: {
     color: "#009bd9"
   },
-  //
   grid: {
     margin: "0 auto"
   },
@@ -56,7 +53,9 @@ const HomePage = ({ user, classes }) =>
         <div className={classes.header}>
           <div className={classes.logo}>Boxwise</div>
           <div className={classes.login}>
-            <Link to="/signin">Login or sign up</Link>
+            <Link className={classes.link} to="/signin">
+              Login or sign up
+            </Link>
           </div>
         </div>
         <div className={classes.content}>
@@ -65,7 +64,6 @@ const HomePage = ({ user, classes }) =>
             alt="warehouse"
             className={classes.image}
           />
-          {console.log(classes)}
           Boxwise is reincarnation of the Drop App, the revolutionary warehouse
           and distribution tool that was made for the Drop in the Ocean clothing
           distribution in the Nea Kavala refugee camp in Northern Greece.<br />
@@ -73,6 +71,7 @@ const HomePage = ({ user, classes }) =>
           Boxwise is for everyone, but now it is still in a very early stage of
           development. Join us on{" "}
           <a
+            className={classes.link}
             href="https://www.facebook.com/groups/1622978634422650/"
             target="_blank"
             rel="noopener noreferrer"
@@ -82,6 +81,7 @@ const HomePage = ({ user, classes }) =>
           to keep yourself informed. Do you want to take part in the development
           of Boxwise? Join us on{" "}
           <a
+            className={classes.link}
             href="https://join.slack.com/t/boxwise/shared_invite/enQtMzc2MDM5MjcyNTQ0LWQ2MDg3Y2NlNTFhMWUwYmNhMmQ4YzAyMTA4M2E5NDQwZWVmY2RmMDMzZDBiZmE4NWQzYzc4NjMyNjRiYzMyYWI"
             target="_blank"
             rel="noopener noreferrer"
@@ -90,6 +90,7 @@ const HomePage = ({ user, classes }) =>
           </a>{" "}
           and{" "}
           <a
+            className={classes.link}
             href="https://github.com/boxwise/boxwise"
             target="_blank"
             rel="noopener noreferrer"
