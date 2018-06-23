@@ -1,10 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect, Route } from "react-router-dom";
+import { Route } from "react-router-dom";
 import Progress from "../components/Progress.js";
+import HomePage from "../pages/HomePage.js";
 
-const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
+const AuthedRoute = ({
+  user,
+  profile,
+  authedComponent: AuthedComponent,
+  unauthedComponent: UnauthedComponent,
+  ...rest
+}) => {
   const isLoggedIn = !!user.data;
+  const renderDefault = !UnauthedComponent;
 
   return (
     <Route
@@ -19,12 +27,13 @@ const AuthedRoute = ({ user, profile, component: Component, ...rest }) => {
           profile.loading ? (
             <Progress />
           ) : (
-            <Component {...props} />
+            <AuthedComponent {...props} />
           )
+        ) : //Default behavior: Go to HomePage is not authed.
+        renderDefault ? (
+          <HomePage />
         ) : (
-          <Redirect
-            to={{ pathname: "/home", state: { from: props.location } }}
-          />
+          <UnauthedComponent {...props} />
         )
       }
     />

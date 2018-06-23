@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import Page from "../components/Page";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import PropTypes from "prop-types";
 
@@ -46,63 +46,60 @@ const styles = {
   }
 };
 
-const HomePage = ({ user, classes }) =>
-  !user.data ? (
-    <Page className={classes.homepage}>
-      <Grid container className={classes.grid}>
-        <div className={classes.header}>
-          <div className={classes.logo}>Boxwise</div>
-          <div className={classes.login}>
-            <Link className={classes.link} to="/signin">
-              Login or sign up
-            </Link>
-          </div>
+const HomePage = ({ classes }) => (
+  <Page className={classes.homepage}>
+    <Grid container className={classes.grid}>
+      <div className={classes.header}>
+        <div className={classes.logo}>Boxwise</div>
+        <div className={classes.login}>
+          <Link className={classes.link} to="/signin">
+            Login or sign up
+          </Link>
         </div>
-        <div className={classes.content}>
-          <img
-            src="/images/header-image.jpg"
-            alt="warehouse"
-            className={classes.image}
-          />
-          Boxwise is reincarnation of the Drop App, the revolutionary warehouse
-          and distribution tool that was made for the Drop in the Ocean clothing
-          distribution in the Nea Kavala refugee camp in Northern Greece.<br />
-          <br />
-          Boxwise is for everyone, but now it is still in a very early stage of
-          development. Join us on{" "}
-          <a
-            className={classes.link}
-            href="https://www.facebook.com/groups/1622978634422650/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Facebook
-          </a>{" "}
-          to keep yourself informed. Do you want to take part in the development
-          of Boxwise? Join us on{" "}
-          <a
-            className={classes.link}
-            href="https://join.slack.com/t/boxwise/shared_invite/enQtMzc2MDM5MjcyNTQ0LWQ2MDg3Y2NlNTFhMWUwYmNhMmQ4YzAyMTA4M2E5NDQwZWVmY2RmMDMzZDBiZmE4NWQzYzc4NjMyNjRiYzMyYWI"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Slack
-          </a>{" "}
-          and{" "}
-          <a
-            className={classes.link}
-            href="https://github.com/boxwise/boxwise"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Github
-          </a>!
-        </div>
-      </Grid>
-    </Page>
-  ) : (
-    <Redirect to={{ pathname: "/" }} />
-  );
+      </div>
+      <div className={classes.content}>
+        <img
+          src="/images/header-image.jpg"
+          alt="warehouse"
+          className={classes.image}
+        />
+        Boxwise is reincarnation of the Drop App, the revolutionary warehouse
+        and distribution tool that was made for the Drop in the Ocean clothing
+        distribution in the Nea Kavala refugee camp in Northern Greece.<br />
+        <br />
+        Boxwise is for everyone, but now it is still in a very early stage of
+        development. Join us on{" "}
+        <a
+          className={classes.link}
+          href="https://www.facebook.com/groups/1622978634422650/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Facebook
+        </a>{" "}
+        to keep yourself informed. Do you want to take part in the development
+        of Boxwise? Join us on{" "}
+        <a
+          className={classes.link}
+          href="https://join.slack.com/t/boxwise/shared_invite/enQtMzc2MDM5MjcyNTQ0LWQ2MDg3Y2NlNTFhMWUwYmNhMmQ4YzAyMTA4M2E5NDQwZWVmY2RmMDMzZDBiZmE4NWQzYzc4NjMyNjRiYzMyYWI"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Slack
+        </a>{" "}
+        and{" "}
+        <a
+          className={classes.link}
+          href="https://github.com/boxwise/boxwise"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Github
+        </a>!
+      </div>
+    </Grid>
+  </Page>
+);
 
 HomePage.propTypes = {
   classes: PropTypes.object.isRequired
