@@ -1,8 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import Progress from "../components/Progress.js";
-import HomePage from "../pages/HomePage.js";
 
 const AuthedRoute = ({
   user,
@@ -31,7 +30,9 @@ const AuthedRoute = ({
           )
         ) : //Default behavior: Go to HomePage is not authed.
         renderDefault ? (
-          <HomePage />
+          <Redirect
+            to={{ pathname: "/signin", state: { from: props.location } }}
+          />
         ) : (
           <UnauthedComponent {...props} />
         )

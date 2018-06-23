@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
 import BoxesPage from "./pages/BoxesPage";
+import HomePage from "./pages/HomePage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
@@ -50,6 +51,7 @@ const App = () => (
             exact
             path="/"
             authedComponent={() => <DashboardPage />}
+            unauthedComponent={() => <HomePage />}
           />
           <AuthedRoute
             exact
