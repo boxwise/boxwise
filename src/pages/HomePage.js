@@ -3,7 +3,9 @@ import Grid from "@material-ui/core/Grid";
 import Page from "../components/Page";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+import { fontFamily } from "../theme";
 
 const styles = {
   homepage: {
@@ -42,7 +44,8 @@ const styles = {
     lineHeight: "140%",
     margin: "25px 25px",
     width: "100%",
-    maxWidth: "910px"
+    maxWidth: "910px",
+    fontFamily: fontFamily
   }
 };
 
@@ -52,9 +55,11 @@ const HomePage = ({ classes }) => (
       <div className={classes.header}>
         <div className={classes.logo}>Boxwise</div>
         <div className={classes.login}>
-          <Link className={classes.link} to="/signin">
-            Login or sign up
-          </Link>
+          <Typography variant="body1">
+            <Link className={classes.link} to="/signin">
+              Login or sign up
+            </Link>
+          </Typography>
         </div>
       </div>
       <div className={classes.content}>
@@ -65,7 +70,8 @@ const HomePage = ({ classes }) => (
         />
         Boxwise is reincarnation of the Drop App, the revolutionary warehouse
         and distribution tool that was made for the Drop in the Ocean clothing
-        distribution in the Nea Kavala refugee camp in Northern Greece.<br />
+        distribution in the Nea Kavala refugee camp in Northern Greece.
+        <br />
         <br />
         Boxwise is for everyone, but now it is still in a very early stage of
         development. Join us on{" "}

@@ -1,6 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 
-const fontFamily = '"Open Sans", Helvetica, Arial, sans-serif';
+export const fontFamily = '"Open Sans", Helvetica, Arial, sans-serif';
 
 const theme = createMuiTheme({
   overrides: {
