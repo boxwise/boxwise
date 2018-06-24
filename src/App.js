@@ -7,6 +7,7 @@ import ScrollToTop from "./components/ScrollToTop";
 import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
 import BoxesPage from "./pages/BoxesPage";
+import HomePage from "./pages/HomePage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
@@ -46,19 +47,32 @@ const App = () => (
     <BrowserRouter>
       <ScrollToTop>
         <Switch>
-          <AuthedRoute exact path="/" component={() => <DashboardPage />} />
-          <AuthedRoute exact path="/boxes" component={() => <BoxesPage />} />
+          <AuthedRoute
+            exact
+            path="/"
+            authedComponent={() => <DashboardPage />}
+            unauthedComponent={() => <HomePage />}
+          />
+          <AuthedRoute
+            exact
+            path="/boxes"
+            authedComponent={() => <BoxesPage />}
+          />
           <AuthedRoute
             exact
             path="/create-labels"
-            component={() => <CreateLabelsPage />}
+            authedComponent={() => <CreateLabelsPage />}
           />
           <AuthedRoute
             exact
             path="/products"
-            component={() => <ProductsPage />}
+            authedComponent={() => <ProductsPage />}
           />
-          <AuthedRoute exact path="/invite" component={() => <InvitePage />} />
+          <AuthedRoute
+            exact
+            path="/invite"
+            authedComponent={() => <InvitePage />}
+          />
           <Route
             exact
             path="/create-organization"
@@ -73,7 +87,7 @@ const App = () => (
           <AuthedRoute
             exact
             path="/password"
-            component={() => <PasswordChangePage />}
+            authedComponent={() => <PasswordChangePage />}
           />
           <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
 
