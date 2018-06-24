@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import Progress from "./Progress.js";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = {
   root: {
@@ -29,7 +29,7 @@ const ButtonWithProgress = ({
     <Button disabled={loading} {...props}>
       {children}
     </Button>
-    {loading && <Progress size={24} className={classes.progress} />}
+    {loading && <CircularProgress size={24} className={classes.progress} />}
   </div>
 );
 
