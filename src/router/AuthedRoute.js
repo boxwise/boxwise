@@ -5,8 +5,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Progress from "../components/Progress.js";
 
 const styles = theme => ({
-    progress: {
-    margin: theme.spacing.unit * 4,
+  progress: {
+    margin: theme.spacing.unit * 2,
     display: "flex",
     justifyContent: "center"
   }

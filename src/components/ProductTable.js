@@ -52,7 +52,9 @@ class ProductTable extends React.Component {
           onCancel={onCancelConfirmDelete}
         />
         {isLoading ? (
-          <Progress />
+          <div className={classes.progress}>
+            <Progress />
+          </div>
         ) : (
           <Table className={classes.table}>
             <EditProductDialogContainer
