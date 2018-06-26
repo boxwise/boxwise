@@ -1,11 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
+import { withStyles } from "@material-ui/core/styles";
 import Progress from "../components/Progress.js";
 
+const styles = theme => ({
+  progress: {
+    margin: theme.spacing.unit * 2,
+    display: "flex",
+    justifyContent: "center"
+  }
+});
 const AuthedRoute = ({
   user,
   profile,
+  classes,
   authedComponent: AuthedComponent,
   unauthedComponent: UnauthedComponent,
   ...rest
@@ -19,12 +28,16 @@ const AuthedRoute = ({
       render={props =>
         // First, wait for user to load
         user.loading ? (
-          <Progress />
+          <div className={classes.progress}>
+            <Progress />
+          </div>
         ) : // Are we logged in?
         isLoggedIn ? (
           // Wait for profile to load if logged in
           profile.loading ? (
-            <Progress />
+            <div className={classes.progress}>
+              <Progress />
+            </div>
           ) : (
             <AuthedComponent {...props} />
           )
@@ -52,4 +65,4 @@ export default connect(
   null,
   null,
   { pure: false }
-)(AuthedRoute);
+)(withStyles(styles)(AuthedRoute));

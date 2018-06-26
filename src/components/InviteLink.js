@@ -2,6 +2,7 @@ import React from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { CopyToClipboard } from "react-copy-to-clipboard";
+import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -9,6 +10,21 @@ import Snackbar from "@material-ui/core/Snackbar";
 import Progress from "./Progress.js";
 import { getOrAddInvite, createInviteLink } from "../queries/invites";
 import { waitForProfile, handleError } from "../utils";
+
+const styles = theme => ({
+  root: {
+    overflowX: "auto"
+  },
+  table: {
+    marginBottom: theme.spacing.unit * 4,
+    width: "100%"
+  },
+  progress: {
+    margin: theme.spacing.unit * 4,
+    display: "flex",
+    justifyContent: "center"
+  }
+});
 
 class InviteLink extends React.Component {
   state = {
@@ -29,11 +45,15 @@ class InviteLink extends React.Component {
   }
 
   render() {
-    const { extra } = this.props;
+    const { extra, classes } = this.props;
     const { inviteLink, isFetching, snackbarOpen } = this.state;
 
     if (isFetching) {
-      return <Progress />;
+      return (
+        <div className={classes.progress}>
+          <Progress />
+        </div>
+      );
     }
     return (
       <div>
@@ -69,4 +89,4 @@ export default compose(
     profile: state.profile
   })),
   waitForProfile
-)(InviteLink);
+)(withStyles(styles)(InviteLink));
