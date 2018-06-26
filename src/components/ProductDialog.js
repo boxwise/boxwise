@@ -59,7 +59,7 @@ const ProductDialog = ({
       }) => (
         <form onSubmit={handleSubmit}>
           <DialogToolbar
-            title="Edit Product"
+            title="Add Product"
             onClose={onClose}
             buttonText="Done"
             buttonIsLoading={isSubmitting}
