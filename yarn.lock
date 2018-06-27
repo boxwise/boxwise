@@ -4044,9 +4044,9 @@ firebase-mock@^2.2.4:
     lodash.toarray "^4.4.0"
     rsvp "^3.6.2"
 
-firebase-tools@^3.19.0:
-  version "3.19.0"
-  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-3.19.0.tgz#2b6bff2eb31bda520119d0aad1e66279369a7765"
+firebase-tools@^3.19.1:
+  version "3.19.1"
+  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-3.19.1.tgz#70800d1590db7082419798069103ead275440791"
   dependencies:
     JSONStream "^1.2.1"
     archiver "^2.1.1"
@@ -4072,13 +4072,13 @@ firebase-tools@^3.19.0:
     jsonwebtoken "^8.2.1"
     lodash "^4.6.1"
     minimatch "^3.0.4"
-    open "^0.0.5"
+    opn "^5.3.0"
     ora "0.2.3"
     portfinder "^1.0.13"
     progress "^2.0.0"
     request "^2.58.0"
     semver "^5.0.3"
-    superstatic "^5.0.1"
+    superstatic "^5.0.2"
     tar "^4.3.0"
     tmp "0.0.33"
     universal-analytics "^0.4.16"
@@ -7525,17 +7525,13 @@ onetime@^2.0.0:
   dependencies:
     mimic-fn "^1.0.0"
 
-open@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/open/-/open-0.0.5.tgz#42c3e18ec95466b6bf0dc42f3a2945c3f0cad8fc"
-
 opn@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.2.0.tgz#71fdf934d6827d676cecbea1531f95d354641225"
   dependencies:
     is-wsl "^1.1.0"
 
-opn@^5.1.0:
+opn@^5.1.0, opn@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.3.0.tgz#64871565c863875f052cfdf53d3e3cb5adb53b1c"
   dependencies:
@@ -9821,9 +9817,9 @@ style-loader@0.19.0:
     loader-utils "^1.0.2"
     schema-utils "^0.3.0"
 
-superstatic@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/superstatic/-/superstatic-5.0.1.tgz#f0a83942ad8e93c5c53a98341c4a3de229dff94e"
+superstatic@^5.0.2:
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/superstatic/-/superstatic-5.0.2.tgz#d7ce9329ee30daaa762b01d43b548d0b7306ba54"
   dependencies:
     as-array "^2.0.0"
     async "^1.5.2"
