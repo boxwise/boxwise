@@ -25,9 +25,10 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
         <strong>{box.humanID}</strong>
       </Typography>
       <Typography variant="title" gutterBottom>
-        <strong>
-          {selectedProduct.category} {selectedProduct.name} {box.quantity}x
-        </strong>
+        <strong>{box.quantity}x</strong>
+      </Typography>
+      <Typography variant="title" gutterBottom>
+        <strong>{selectedProduct}</strong>
       </Typography>
       {/*
         <Button onClick={onReset} color="primary">

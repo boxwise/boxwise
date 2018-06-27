@@ -18,7 +18,7 @@ export const addBox = ({
     quantity,
     comment,
     organization: firestore.doc(organization.ref),
-    product: firestore.doc("products/" + product),
+    product: firestore.doc("products/" + product.id),
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
     createdBy: firestore.doc(profile.ref),
     humanID: Math.floor(Math.random() * 1000000)
