@@ -29,17 +29,20 @@ We are always looking for help. Working on this project is an opportunity to use
 
     - Go to https://console.firebase.google.com/ and click "Add project";
     - Enter "Boxwise Development" into the name field and click "Create Project";
-    - Once that has completed, click "Add Firebase to your web app". Ignore the prompt to copy and paste the entire snippet, and look at the fields in the `config` object;
-    - Create a new local config running `yarn setup`, filling with the Firebase info. This will create a `.env.local` file;
+    - Once that has completed, click "Add Firebase to your web app". Ignore the prompt to copy and paste the snippet for now;
     - Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable";
     - Click "Authentication" in the left hand menu, then the "Sign-in method" tab, then click "Email/Password", flip the first "Enable" switch, then click "Save".
 
-4.  Log into Firebase, then select the app you created in the previous step. Give it the alias "development".
+4. Create a new local config running `yarn setup`, filling with the Firebase project ID (you may be asked to login). This will create a `.env.local` file.
+    - **How to get the Firebase project ID:** Click on the settings gear next to "Project Overview". A dropdown menu will be shown, click on "Project Configuration".
+    The project ID will be listed on first card (Your project). Will be the item right over the API key.
+
+5.  Log into Firebase, then select the app you created in the previous step. Give it the alias "development".
 
         $ yarn run firebase login
         $ yarn run firebase use --add
 
-5.  Deploy database rules to your development app.
+6.  Deploy database rules to your development app.
 
         $ yarn run deploy-firestore
 
