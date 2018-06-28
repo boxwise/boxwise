@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 import DialogToolbar from "./DialogToolbar";
-import { CATEGORY_MAN, CATEGORIES } from "../constants/product";
+import { CATEGORIES } from "../constants/product";
 
 const styles = theme => ({
   root: {}
@@ -39,7 +39,7 @@ const ProductDialog = ({
     TransitionComponent={Transition}
   >
     <Formik
-      initialValues={initialValue}
+      initialValues={initialValue || { category: "" }}
       validate={values => {
         let errors = {};
         if (!values.category) {
@@ -76,7 +76,7 @@ const ProductDialog = ({
               name="category"
               component={TextField}
               select
-              value={values.category || CATEGORY_MAN}
+              value={values.category}
               onChange={handleChange}
               fullWidth
               margin="dense"

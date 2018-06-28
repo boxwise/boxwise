@@ -44,8 +44,8 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "precommit": "lint-staged",
     "prettier": "prettier --write \"src/**/*.{js,jsx,json,css}\"",
@@ -56,6 +56,9 @@
     "setup": "node utils/generate-env.js",
     "add-test-data": "node utils/generate-test-data.js",  
     "cypress:open": "cypress open"
+  },
+  "jest": {
+    "modulePaths": ["src"]
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [

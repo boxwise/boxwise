@@ -53,10 +53,11 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
                 autoFocus
                 margin="dense"
               >
-                {products.map(({id, name, category}) => (
+                {products.map(({ id, name, category }) => (
                   <MenuItem
                     key={id}
-                    value={JSON.stringify({ id, category, name})} >
+                    value={JSON.stringify({ id, category, name })}
+                  >
                     {category} / {name}
                   </MenuItem>
                 ))}

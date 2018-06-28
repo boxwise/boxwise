@@ -1,6 +1,5 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import { withStyles } from "@material-ui/core/styles";
-import Progress from "./Progress.js";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
@@ -11,6 +10,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import EditProductDialog from "../containers/components/EditProductDialog";
 import ProductDeleteConfirm from "../containers/components/ProductDeleteConfirm.js";
+import Progress from "./Progress.js";
 
 const styles = theme => ({
   root: {
@@ -27,57 +27,73 @@ const styles = theme => ({
   }
 });
 
-const ProductTable = ({
-  currentProduct,
-  products,
-  classes,
-  isLoading,
-  onEdit,
-  onDelete,
-  onClose
-}) => (
-  <div className={classes.root}>
-    <ProductDeleteConfirm text="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working." />
-    {isLoading ? (
-      <Progress />
-    ) : (
-      <Table className={classes.table}>
-        <EditProductDialog
-          open={!!currentProduct}
-          product={currentProduct}
-          onClose={onClose}
-        />
-        <TableHead>
-          <TableRow>
-            <TableCell padding="dense">Category</TableCell>
-            <TableCell padding="dense">Name</TableCell>
-            <TableCell padding="dense" />
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {products.map(product => {
-            return (
-              <TableRow key={product.id}>
-                <TableCell padding="dense">{product.category}</TableCell>
-                <TableCell padding="dense">{product.name}</TableCell>
-                <TableCell padding="dense">
-                  <IconButton onClick={() => onEdit(product)} aria-label="Edit">
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton
-                    onClick={() => onDelete(product.id)}
-                    aria-label="Delete"
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    )}
-  </div>
-);
+export default withStyles(styles)(
+  class extends PureComponent {
+    state = {
+      selectedProduct: null
+    };
 
-export default withStyles(styles)(ProductTable);
+    componentDidMount() {
+      this.props.productList();
+    }
+
+    render() {
+      const {
+        classes,
+        products: { loading, data },
+        productDeleteConfirm
+      } = this.props;
+
+      const isLoading = loading || !data;
+      const { selectedProduct } = this.state;
+
+      return (
+        <div className={classes.root}>
+          <ProductDeleteConfirm text="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working." />
+          {isLoading ? (
+            <Progress />
+          ) : (
+            <Table className={classes.table}>
+              <EditProductDialog
+                open={!!selectedProduct}
+                product={selectedProduct}
+                onClose={() => this.setState({ selectedProduct: null })}
+              />
+              <TableHead>
+                <TableRow>
+                  <TableCell padding="dense">Category</TableCell>
+                  <TableCell padding="dense">Name</TableCell>
+                  <TableCell padding="dense" />
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data.map((product, idx) => (
+                  <TableRow key={idx}>
+                    <TableCell padding="dense">{product.category}</TableCell>
+                    <TableCell padding="dense">{product.name}</TableCell>
+                    <TableCell padding="dense">
+                      <IconButton
+                        onClick={() =>
+                          this.setState({ selectedProduct: product })
+                        }
+                        aria-label="Edit"
+                      >
+                        <EditIcon />
+                      </IconButton>
+                      <IconButton
+                        onClick={() => productDeleteConfirm(product.id)}
+                        aria-label="Delete"
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
+        </div>
+      );
+    }
+  }
+);
