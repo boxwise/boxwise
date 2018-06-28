@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import DialogContent from "@material-ui/core/DialogContent";
 import Typography from "@material-ui/core/Typography";
 import DialogToolbar from "./DialogToolbar";
+import Button from "@material-ui/core/Button";
 
 const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
   <div>
@@ -25,15 +26,15 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
         <strong>{box.humanID}</strong>
       </Typography>
       <Typography variant="title" gutterBottom>
-        <strong>
-          {selectedProduct.category} {selectedProduct.name} {box.quantity}x
-        </strong>
+        <strong>{box.quantity}x</strong>
       </Typography>
-      {/*
-        <Button onClick={onReset} color="primary">
+      <Typography variant="title" gutterBottom>
+        <strong>{selectedProduct}</strong>
+      </Typography>
+      <br />
+      <Button variant="contained" onClick={onReset} color="primary">
         Create another box
       </Button>
-      */}
     </DialogContent>
   </div>
 );

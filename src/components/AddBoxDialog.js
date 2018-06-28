@@ -15,6 +15,7 @@ export default class AddBoxDialogContainer extends PureComponent {
 
   state = {
     box: null,
+    selectedProduct: null,
     done: false
   };
 
@@ -23,22 +24,27 @@ export default class AddBoxDialogContainer extends PureComponent {
   }
 
   _onSubmit(values, { setSubmitting, setErrors }) {
+    const selectedProduct = JSON.parse(values.product);
     const { profile, addBox } = this.props;
     const { organization } = profile.data;
 
     setSubmitting(true);
-    addBox({ ...values, organization, profile: profile.data }).then(
-      ({ error, data }) => {
-        setSubmitting(false);
-        error
-          ? setErrors(error)
-          : this.setState({
-              box: data,
-              done: true,
-              selectedProduct: data.product
-            });
-      }
-    );
+    addBox({
+      ...values,
+      organization,
+      product: selectedProduct,
+      profile: profile.data
+    }).then(({ error, data }) => {
+      setSubmitting(false);
+      error
+        ? setErrors(error)
+        : this.setState({
+            box: data,
+            done: true,
+            selectedProduct:
+              selectedProduct.category + " / " + selectedProduct.name
+          });
+    });
   }
 
   _onClose() {
