@@ -57,6 +57,9 @@
     "add-test-data": "node utils/generate-test-data.js",  
     "cypress:open": "cypress open"
   },
+  "jest": {
+    "modulePaths": ["src"]
+  },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
       "prettier --write",
