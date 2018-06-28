@@ -56,12 +56,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
                 {products.map(({id, name, category}) => (
                   <MenuItem
                     key={id}
-                    value={JSON.stringify({
-                      id: id,
-                      category: category,
-                      name: name
-                    })}
-                  >
+                    value={JSON.stringify({ id, category, name})} >
                     {category} / {name}
                   </MenuItem>
                 ))}
