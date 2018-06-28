@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 
 import AppFrame from "../components/AppFrame";
 import Page from "../components/Page";
-import ProductTableWrapper from "../containers/components/ProductTableWrapper";
+import ProductTable from "../containers/components/ProductTable";
 import AddProductDialog from "../containers/components/AddProductDialog";
 
 const styles = theme => ({
@@ -47,7 +47,7 @@ class ProductsPage extends React.Component {
                 Add Product
               </Button>
             </Toolbar>
-            <ProductTableWrapper />
+            <ProductTable />
           </Paper>
         </Page>
       </AppFrame>
