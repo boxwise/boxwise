@@ -11,6 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 import DialogToolbar from "./DialogToolbar";
+import { CATEGORY_MAN, CATEGORIES } from "../constants/product";
 
 const styles = theme => ({
   root: {}
@@ -75,21 +76,16 @@ const ProductDialog = ({
               name="category"
               component={TextField}
               select
-              value={values.category}
+              value={values.category || CATEGORY_MAN}
               onChange={handleChange}
               fullWidth
               margin="dense"
             >
-              <MenuItem value="Man">Man</MenuItem>
-              <MenuItem value="Woman">Woman</MenuItem>
-              <MenuItem value="Adult">Adult</MenuItem>
-              <MenuItem value="Boy">Boy</MenuItem>
-              <MenuItem value="Girl">Girl</MenuItem>
-              <MenuItem value="Child">Child</MenuItem>
-              <MenuItem value="Baby">Baby</MenuItem>
-              <MenuItem value="Food">Food</MenuItem>
-              <MenuItem value="Hygiene">Hygiene</MenuItem>
-              <MenuItem value="Other">Other</MenuItem>
+              {CATEGORIES.map(category => (
+                <MenuItem key={category} id="category" value={category}>
+                  {category}
+                </MenuItem>
+              ))}
             </Field>
             <Field
               label="Name"

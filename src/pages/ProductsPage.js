@@ -6,8 +6,8 @@ import Paper from "@material-ui/core/Paper";
 
 import AppFrame from "../components/AppFrame";
 import Page from "../components/Page";
-import AddProductDialogContainer from "../components/AddProductDialogContainer";
-import ProductTableContainer from "../components/ProductTableContainer";
+import ProductTableWrapper from "../containers/components/ProductTableWrapper";
+import AddProductDialog from "../containers/components/AddProductDialog";
 
 const styles = theme => ({
   table: {
@@ -34,7 +34,7 @@ class ProductsPage extends React.Component {
     return (
       <AppFrame title="Manage products">
         <Page className={classes.root}>
-          <AddProductDialogContainer
+          <AddProductDialog
             open={this.state.addDialogOpen}
             onClose={() => this.setState({ addDialogOpen: false })}
           />
@@ -47,7 +47,7 @@ class ProductsPage extends React.Component {
                 Add Product
               </Button>
             </Toolbar>
-            <ProductTableContainer />
+            <ProductTableWrapper />
           </Paper>
         </Page>
       </AppFrame>
