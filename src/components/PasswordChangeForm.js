@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, Formik } from "formik";
 import { withStyles } from "@material-ui/core/styles";
-import TextField from "../vendor/formik-material-ui/TextField";
+import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 import ButtonWithProgress from "./ButtonWithProgress";
 import { handleError } from "../utils";

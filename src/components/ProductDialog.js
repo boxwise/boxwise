@@ -6,7 +6,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "../vendor/formik-material-ui/TextField";
+import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import DialogContent from "@material-ui/core/DialogContent";
 import MenuItem from "@material-ui/core/MenuItem";
-import TextField from "../vendor/formik-material-ui/TextField";
+import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 import DialogToolbar from "./DialogToolbar";
 

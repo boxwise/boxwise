@@ -8,6 +8,7 @@
     "@material-ui/icons": "^1.1.0",
     "firebase": "^5.0.4",
     "formik": "^0.11.11",
+    "formik-material-ui": "^0.0.6",
     "prop-types": "^15.6.2",
     "raven-js": "^3.26.3",
     "react": "^16.4.1",
@@ -54,7 +55,7 @@
     "postcheckout": "node checkdeploy",
     "postrewrite": "node checkdeploy",
     "setup": "node utils/generate-env.js",
-    "add-test-data": "node utils/generate-test-data.js",  
+    "add-test-data": "node utils/generate-test-data.js",
     "cypress:open": "cypress open"
   },
   "jest": {
