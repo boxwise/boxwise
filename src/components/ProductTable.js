@@ -55,25 +55,23 @@ const ProductTable = ({
           </TableRow>
         </TableHead>
         <TableBody>
-          {products.map(product => {
-            return (
-              <TableRow key={product.id}>
-                <TableCell padding="dense">{product.category}</TableCell>
-                <TableCell padding="dense">{product.name}</TableCell>
-                <TableCell padding="dense">
-                  <IconButton onClick={() => onEdit(product)} aria-label="Edit">
-                    <EditIcon />
-                  </IconButton>
-                  <IconButton
-                    onClick={() => onDelete(product.id)}
-                    aria-label="Delete"
-                  >
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            );
-          })}
+          {products.map((product, idx) => (
+            <TableRow key={idx}>
+              <TableCell padding="dense">{product.category}</TableCell>
+              <TableCell padding="dense">{product.name}</TableCell>
+              <TableCell padding="dense">
+                <IconButton onClick={() => onEdit(product)} aria-label="Edit">
+                  <EditIcon />
+                </IconButton>
+                <IconButton
+                  onClick={() => onDelete(product.id)}
+                  aria-label="Delete"
+                >
+                  <DeleteIcon />
+                </IconButton>
+              </TableCell>
+            </TableRow>
+          ))}
         </TableBody>
       </Table>
     )}

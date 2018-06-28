@@ -1,9 +1,14 @@
 import firebase, { firestore } from "../firebase";
 import { handleError } from "../utils";
 
+const PRODUCT_LIST_ = TYPE => `PRODUCT_LIST_${TYPE}`;
 const PRODUCT_ADD_ = TYPE => `PRODUCT_ADD_${TYPE}`;
 const PRODUCT_EDIT_ = TYPE => `PRODUCT_EDIT_${TYPE}`;
 const PRODUCT_DELETE_ = TYPE => `PRODUCT_DELETE_${TYPE}`;
+
+export const PRODUCT_LIST_START = PRODUCT_LIST_`START`;
+export const PRODUCT_LIST_SUCCESS = PRODUCT_LIST_`SUCCESS`;
+export const PRODUCT_LIST_ERROR = PRODUCT_LIST_`ERROR`;
 
 export const PRODUCT_ADD_START = PRODUCT_ADD_`START`;
 export const PRODUCT_ADD_SUCCESS = PRODUCT_ADD_`SUCCESS`;
@@ -30,6 +35,25 @@ export const productDeleteCancel = () => ({ type: PRODUCT_DELETE_CANCEL });
 
 // ***** Thunks ***** //
 
+export const productList = () => (dispatch, getState) => {
+  const { organization } = getState().profile.data;
+  dispatch({ type: PRODUCT_LIST_START });
+
+  return firestore
+    .collection("products")
+    .where("organization", "==", firestore.doc(organization.ref))
+    .where("isDeleted", "==", false)
+    .orderBy("category", "asc")
+    .orderBy("name", "asc")
+    .get()
+    .then(({ docs }) => docs.map(doc => ({ id: doc.id, ...doc.data() })))
+    .then(payload => dispatch({ type: PRODUCT_LIST_SUCCESS, payload }))
+    .catch(err => {
+      handleError(err);
+      dispatch({ type: PRODUCT_LIST_ERROR, payload: err });
+    });
+};
+
 export const productAdd = product => (dispatch, getState) => {
   const { profile } = getState();
 
@@ -45,7 +69,8 @@ export const productAdd = product => (dispatch, getState) => {
   return firestore
     .collection("products")
     .add(values)
-    .then(payload => dispatch({ type: PRODUCT_ADD_SUCCESS, payload }))
+    .then(ref => ref.get())
+    .then(res => dispatch({ type: PRODUCT_ADD_SUCCESS, payload: res.data() }))
     .catch(err => {
       handleError(err); // TODO: actually handle the error
       dispatch({ type: PRODUCT_ADD_ERROR, payload: err });
@@ -54,11 +79,12 @@ export const productAdd = product => (dispatch, getState) => {
 
 export const productEdit = product => dispatch => {
   dispatch({ type: PRODUCT_EDIT_START });
-  return firestore
-    .collection("products")
-    .doc(product.id)
+  const ref = firestore.collection("products").doc(product.id);
+
+  return ref
     .update(product)
-    .then(res => dispatch({ type: PRODUCT_EDIT_SUCCESS, payload: res }))
+    .then(() => ref.get())
+    .then(res => dispatch({ type: PRODUCT_EDIT_SUCCESS, payload: res.data() }))
     .catch(err => {
       handleError(err); // TODO: actually handle the error
       dispatch({ type: PRODUCT_EDIT_ERROR, payload: err });

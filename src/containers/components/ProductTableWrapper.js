@@ -1,9 +1,9 @@
 import { connect } from "react-redux";
 import ProductTableWrapper from "../../components/ProductTableWrapper";
-import { productDeleteConfirm } from "../../actions/product";
+import { productDeleteConfirm, productList } from "../../actions/product";
 
-const mapStateToProps = ({ profile }) => ({ profile });
-const mapDispatchToProps = { productDeleteConfirm };
+const mapStateToProps = ({ products }) => ({ products });
+const mapDispatchToProps = { productDeleteConfirm, productList };
 
 export default connect(
   mapStateToProps,
