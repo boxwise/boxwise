@@ -19,6 +19,7 @@
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
+    "react-select": "^1.2.1",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0",
     "typeface-roboto": "^0.0.54",
@@ -54,7 +55,7 @@
     "postcheckout": "node checkdeploy",
     "postrewrite": "node checkdeploy",
     "setup": "node utils/generate-env.js",
-    "add-test-data": "node utils/generate-test-data.js",  
+    "add-test-data": "node utils/generate-test-data.js",
     "cypress:open": "cypress open"
   },
   "lint-staged": {

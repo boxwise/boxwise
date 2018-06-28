@@ -3,22 +3,22 @@ import { Formik, Field } from "formik";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import DialogContent from "@material-ui/core/DialogContent";
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "../vendor/formik-material-ui/TextField";
 import Typography from "@material-ui/core/Typography";
 import DialogToolbar from "./DialogToolbar";
+import SelectProduct from "./SelectProduct";
 
 const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
   <Formik
     initialValues={{
-      product: "",
+      productString: "",
       quantity: "",
       comment: ""
     }}
     validate={values => {
       let errors = {};
-      if (!values.product) {
-        errors.product = "Select a product.";
+      if (!values.productString) {
+        errors.productString = "Select a product.";
       }
       if (!values.quantity) {
         errors.quantity = "Enter the number of items in the box.";
@@ -42,25 +42,11 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
           ) : null}
           {products.length ? (
             <div>
-              <Field
-                label="Product"
-                name="product"
-                component={TextField}
-                select
-                value={values.product}
-                onChange={handleChange}
-                fullWidth
-                autoFocus
-                margin="dense"
-              >
-                {products.map(({id, name, category}) => (
-                  <MenuItem
-                    key={id}
-                    value={JSON.stringify({ id, category, name})} >
-                    {category} / {name}
-                  </MenuItem>
-                ))}
-              </Field>
+              <SelectProduct
+                handleChange={handleChange}
+                products={products}
+                values={values}
+              />
               <Field
                 label="Number of items"
                 name="quantity"
