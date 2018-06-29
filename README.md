@@ -68,3 +68,8 @@ Now, when you run `yarn test`, the database tests will run automatically.
 ## Community
 
 [We have a Slack for discussing development and for users to get support.](https://join.slack.com/t/boxwise/shared_invite/enQtMzE4NzExMjkxNTM2LTk0MzY2Mjg0MTY5ZmJjMjI1ODNmODZiNmJlNTAwM2Y4MmJkZDJjZWEyNzk0YTQyZGI0ZTYxMTc2NTgxNjk1ZTM)
+
+# Credits
+
+# Sound assets
+[Store Scanner Beep by Zero](https://freesound.org/s/144418/) by [zerolagtime](https://freesound.org/people/zerolagtime/)

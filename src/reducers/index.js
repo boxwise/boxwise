@@ -3,10 +3,12 @@ import profile from "./profile";
 import user from "./user";
 import boxes from "./boxes";
 import products from "./products";
+import { reducer as qrcode } from "modules/read-qr";
 
 export default combineReducers({
   products,
   profile,
   user,
-  boxes
+  boxes,
+  qrcode
 });

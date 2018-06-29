@@ -21,6 +21,8 @@ import MakeBoxMockupPage from "./pages/MakeBoxMockupPage";
 import FindBoxMockupPage from "./pages/FindBoxMockupPage";
 import NotFound from "./components/NotFound";
 
+import { Component as ReadQr } from "./modules/read-qr";
+
 import theme from "./theme";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -52,6 +54,11 @@ const App = () => (
             path="/"
             authedComponent={() => <DashboardPage />}
             unauthedComponent={() => <HomePage />}
+          />
+          <AuthedRoute
+            exact
+            path="/read-qr"
+            authedComponent={() => <ReadQr />}
           />
           <AuthedRoute
             exact

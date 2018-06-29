@@ -71,6 +71,9 @@ const AppDrawer = ({
         <ListItem component={Link} to="/" onClick={onClose} button>
           <ListItemText primary="Dashboard" />
         </ListItem>
+        <ListItem component={Link} to="/read-qr" onClick={onClose} button>
+          <ListItemText primary="Read QR Code" />
+        </ListItem>
         <ListItem component={Link} to="/boxes" onClick={onClose} button>
           <ListItemText primary="Find boxes" />
         </ListItem>

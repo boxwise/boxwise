@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { PureComponent } from "react";
+import { node, object, string } from "prop-types";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
@@ -58,7 +58,13 @@ const styles = theme => ({
   }
 });
 
-class AppFrame extends React.Component {
+class AppFrame extends PureComponent {
+  static propTypes = {
+    children: node.isRequired,
+    classes: object.isRequired,
+    title: string
+  };
+
   state = {
     mobileOpen: false
   };
@@ -116,11 +122,5 @@ class AppFrame extends React.Component {
     );
   }
 }
-
-AppFrame.propTypes = {
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string
-};
 
 export default withStyles(styles)(AppFrame);
