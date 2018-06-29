@@ -57,6 +57,15 @@ The first thing you'll want to do when running a new development environment is 
 
     $ yarn test
 
+If you encounter "Error: EMFILE: too many open files" error in this step, try to install [Watchman](https://facebook.github.io/watchman/docs/install.html). Make sure that `brew` is installed in your machine. 
+    
+    // install brew
+    $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    $ brew update
+    
+    // install Watchman
+    $ brew install watchman
+
 ## Running the database tests
 
 We have some tests that check the Firestore database security rules are set up correctly. They have to run against a real database.
