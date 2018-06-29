@@ -35,6 +35,7 @@ export default withStyles(styles)(
 
     render() {
       const { classes, qrcode, onScan } = this.props;
+      const { box } = qrcode;
 
       return (
         <Grid className={classes.media} container alignItems="center">
@@ -57,9 +58,13 @@ export default withStyles(styles)(
               )}
             </Cameras>
             <audio src={beep} ref={this._beep} />
-            <CardContent>
-              <Typography>{qrcode.current}</Typography>
-            </CardContent>
+            {box ? (
+              <CardContent>
+                <Typography>Id: {box.humanID}</Typography>
+                <Typography>Quantity: {box.quantity}</Typography>
+                <Typography>Comment: {box.comment}</Typography>
+              </CardContent>
+            ) : null}
           </Card>
         </Grid>
       );
