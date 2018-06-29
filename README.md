@@ -53,6 +53,10 @@ We are always looking for help. Working on this project is an opportunity to use
 
 The first thing you'll want to do when running a new development environment is set up an organization. [The development environment currently has no test data.](https://github.com/boxwise/boxwise/issues/24)
 
+## Creating a test account
+
+To be able to use the app locally you will need to create a user account. This can be accomplished by navigating to http://localhost:3000/create-organization and following the instructions on screen.
+
 ## Running tests
 
     $ yarn test
