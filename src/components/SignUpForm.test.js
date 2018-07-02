@@ -1,26 +1,22 @@
 import React from "react";
 import { mount } from "enzyme";
-import { SignUpFormUnconnected } from "./SignUpForm";
+import SignUpFormUnconnected from "./SignUpForm";
 
 describe("SignUpForm", () => {
-  // skip: hack in form to add users to org
-  it.skip("signs up users", done => {
-    const mockFirebase = {
-      createUser: jest.fn(() => Promise.resolve({ email: "test@example.com" }))
-    };
-    const component = mount(
-      <SignUpFormUnconnected
-        firebase={mockFirebase}
-        onSuccess={user => {
-          expect(mockFirebase.createUser).toBeCalledWith({
-            email: "test@example.com",
-            password: "password"
-          });
-          expect(user.email).toEqual("test@example.com");
-          done();
-        }}
-      />
-    );
+  const onSubmit = jest.fn(({ name, email, password }) => {
+    Promise.resolve();
+  });
+  let component;
+
+  beforeEach(() => {
+    component = mount(<SignUpFormUnconnected onSubmit={onSubmit} />);
+  });
+
+  it("signs up users when name, email and password are provided", () => {
+    component.find("input[name='name']").simulate("change", {
+      target: { name: "name", value: "test" },
+      persist: () => {}
+    });
     component.find("input[name='email']").simulate("change", {
       target: { name: "email", value: "test@example.com" },
       persist: () => {}
@@ -30,5 +26,14 @@ describe("SignUpForm", () => {
       persist: () => {}
     });
     component.find("button[type='submit']").simulate("submit");
+
+    expect(onSubmit).toBeCalledWith(
+      {
+        name: "test",
+        email: "test@example.com",
+        password: "password"
+      },
+      expect.any(Object)
+    );
   });
 });
