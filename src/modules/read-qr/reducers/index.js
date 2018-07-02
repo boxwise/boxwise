@@ -1,7 +1,7 @@
-import { QR_CODE_READ } from "../actions";
+import { QR_CODE_READ, TOGGLE_ADD_BOX_DIALOG } from "../actions";
 
 export default function qrcode(
-  state = { current: null, box: null },
+  state = { showAddBox: false, current: null, box: null },
   { type, payload }
 ) {
   switch (type) {
@@ -10,6 +10,9 @@ export default function qrcode(
 
     case QR_CODE_READ.SUCCESS:
       return { ...state, box: payload };
+
+    case TOGGLE_ADD_BOX_DIALOG:
+      return { ...state, showAddBox: payload || !state.showAddBox };
 
     default:
       return state;

@@ -8,6 +8,7 @@ import { Typography } from "@material-ui/core";
 import { object } from "prop-types";
 import classNames from "classnames";
 import beep from "commons/assets/audio/beep.mp3";
+import AddBoxDialog from "containers/components/AddBoxDialog";
 
 const styles = {
   card: {
@@ -34,11 +35,15 @@ export default withStyles(styles)(
     _beep = createRef();
 
     render() {
-      const { classes, qrcode, onScan } = this.props;
-      const { box } = qrcode;
+      const { classes, qrcode, onScan, toggleBoxDialog } = this.props;
+      const { box, showAddBox } = qrcode;
 
       return (
         <Grid className={classes.media} container alignItems="center">
+          <AddBoxDialog
+            open={showAddBox}
+            onClose={() => toggleBoxDialog(true)}
+          />
           <Card className={classes.card}>
             <Cameras>
               {([front, back]) => (

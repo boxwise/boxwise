@@ -1,5 +1,10 @@
-import { QR_CODE_READ } from ".";
+import { QR_CODE_READ, TOGGLE_ADD_BOX_DIALOG } from ".";
 import { firestore } from "../../../firebase";
+
+export const toggleBoxDialog = open => ({
+  type: TOGGLE_ADD_BOX_DIALOG,
+  payload: open
+});
 
 //FIXME: This should be a thunk inside box actions
 export const findBoxByQr = code => (dispatch, getState) => {
@@ -18,7 +23,10 @@ export const findBoxByQr = code => (dispatch, getState) => {
 
 export const qrCodeRead = code => dispatch => {
   dispatch({ type: QR_CODE_READ.START, payload: code });
-  dispatch(findBoxByQr(code)).then(res => {
-    dispatch({ type: QR_CODE_READ.SUCCESS, payload: res });
-  });
+  dispatch(findBoxByQr(code)).then(
+    res =>
+      res
+        ? dispatch({ type: QR_CODE_READ.SUCCESS, payload: res })
+        : dispatch({ type: TOGGLE_ADD_BOX_DIALOG, payload: true })
+  );
 };
