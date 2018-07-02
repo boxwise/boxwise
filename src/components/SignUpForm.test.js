@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import SignUpFormUnconnected from "./SignUpForm";
+import { setInputFieldValue } from "commons/utils/test-util";
 
 describe("SignUpForm", () => {
   const onSubmit = jest.fn(({ name, email, password }) => {
@@ -12,19 +13,38 @@ describe("SignUpForm", () => {
     component = mount(<SignUpFormUnconnected onSubmit={onSubmit} />);
   });
 
+  it("does not trigger submit when name is not provided", () => {
+    setInputFieldValue(component, "name", "");
+    setInputFieldValue(component, "email", "test@example.com");
+    setInputFieldValue(component, "password", "password");
+
+    component.find("button[type='submit']").simulate("submit");
+
+    expect(onSubmit).not.toBeCalled();
+  });
+  it("does not trigger submit when email is not provided", () => {
+    setInputFieldValue(component, "name", "test");
+    setInputFieldValue(component, "email", "");
+    setInputFieldValue(component, "password", "password");
+
+    component.find("button[type='submit']").simulate("submit");
+
+    expect(onSubmit).not.toBeCalled();
+  });
+  it("does not trigger submit when password is not provided", () => {
+    setInputFieldValue(component, "name", "test");
+    setInputFieldValue(component, "email", "test@example.com");
+    setInputFieldValue(component, "password", "");
+
+    component.find("button[type='submit']").simulate("submit");
+
+    expect(onSubmit).not.toBeCalled();
+  });
   it("signs up users when name, email and password are provided", () => {
-    component.find("input[name='name']").simulate("change", {
-      target: { name: "name", value: "test" },
-      persist: () => {}
-    });
-    component.find("input[name='email']").simulate("change", {
-      target: { name: "email", value: "test@example.com" },
-      persist: () => {}
-    });
-    component.find("input[name='password']").simulate("change", {
-      target: { name: "password", value: "password" },
-      persist: () => {}
-    });
+    setInputFieldValue(component, "name", "test");
+    setInputFieldValue(component, "email", "test@example.com");
+    setInputFieldValue(component, "password", "password");
+
     component.find("button[type='submit']").simulate("submit");
 
     expect(onSubmit).toBeCalledWith(
