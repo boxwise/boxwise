@@ -1,26 +1,18 @@
 import React from "react";
 import { mount } from "enzyme";
-import { SignInFormUnconnected } from "./SignInForm";
+import SignInFormUnconnected from "./SignInForm";
 
 describe("SignInForm", () => {
-  it.skip("signs in users", done => {
-    const mockFirebase = {
-      login: jest.fn(() => Promise.resolve({ email: "test@example.com" }))
-    };
-    const component = mount(
-      <SignInFormUnconnected
-        firebase={mockFirebase}
-        onSuccess={user => {
-          expect(mockFirebase.login).toBeCalledWith({
-            email: "test@example.com",
-            password: "password"
-          });
-          expect(user.email).toEqual("test@example.com");
-          done();
-        }}
-      />
+  let component;
+  const userSignIn = jest.fn(({ email, password }) => {
+    Promise.resolve();
+  });
+  beforeEach(() => {
+    component = mount(
+      <SignInFormUnconnected firebase={jest.fn()} userSignIn={userSignIn} />
     );
-
+  });
+  it("signs in user when form is submitted", () => {
     component.find("input[name='email']").simulate("change", {
       target: { name: "email", value: "test@example.com" },
       persist: () => {}
@@ -30,5 +22,13 @@ describe("SignInForm", () => {
       persist: () => {}
     });
     component.find("button[type='submit']").simulate("submit");
+
+    expect(userSignIn).toBeCalledWith(
+      {
+        email: "test@example.com",
+        password: "password"
+      },
+      expect.any(Object)
+    );
   });
 });
