@@ -8,9 +8,7 @@ describe("SignInForm", () => {
     Promise.resolve();
   });
   beforeEach(() => {
-    component = mount(
-      <SignInFormUnconnected firebase={jest.fn()} userSignIn={userSignIn} />
-    );
+    component = mount(<SignInFormUnconnected userSignIn={userSignIn} />);
   });
   it("signs in user when form is submitted", () => {
     component.find("input[name='email']").simulate("change", {
