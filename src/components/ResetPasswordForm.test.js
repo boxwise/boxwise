@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import ResetPassword from "./ResetPasswordForm";
+import { setInputFieldValue } from "commons/utils/test-util";
 
 describe("ResetPasswordForm", () => {
   const resetPassword = jest.fn(({ email }) => {
@@ -13,21 +14,13 @@ describe("ResetPasswordForm", () => {
   });
 
   it("does not trigger resetPassword when email is not provided", () => {
-    component.find("input[name='email']").simulate("change", {
-      target: { name: "email", value: "" },
-      persist: () => {}
-    });
-
+    setInputFieldValue(component, "email", "");
     component.find("button[type='submit']").simulate("submit");
 
     expect(resetPassword).not.toBeCalled();
   });
   it("triggers resetPassword when email is provided", () => {
-    component.find("input[name='email']").simulate("change", {
-      target: { name: "email", value: "test@example.com" },
-      persist: () => {}
-    });
-
+    setInputFieldValue(component, "email", "test@example.com");
     component.find("button[type='submit']").simulate("submit");
 
     expect(resetPassword).toBeCalledWith(
