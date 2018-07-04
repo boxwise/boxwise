@@ -1,5 +1,5 @@
 import React, { PureComponent } from "react";
-import { bool, func } from "prop-types";
+import { bool, func, string } from "prop-types";
 import Dialog from "@material-ui/core/Dialog";
 
 import AddBoxForm from "./AddBoxForm";
@@ -10,6 +10,7 @@ import { ProductsCollection } from "../queries/products";
 export default class AddBoxDialogContainer extends PureComponent {
   static propTypes = {
     open: bool.isRequired,
+    qrcode: string,
     onClose: func
   };
 
@@ -25,13 +26,14 @@ export default class AddBoxDialogContainer extends PureComponent {
 
   _onSubmit(values, { setSubmitting, setErrors }) {
     const selectedProduct = JSON.parse(values.product);
-    const { profile, addBox } = this.props;
+    const { profile, addBox, qrcode = null } = this.props;
     const { organization } = profile.data;
 
     setSubmitting(true);
     addBox({
       ...values,
       organization,
+      qrcode,
       product: selectedProduct,
       profile: profile.data
     }).then(({ error, data }) => {

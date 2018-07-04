@@ -4,7 +4,7 @@ import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
 import { withStyles } from "@material-ui/core/styles";
 import { Scanner, Cameras } from "react-instascan";
-import { Typography } from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
 import { object } from "prop-types";
 import classNames from "classnames";
 import beep from "commons/assets/audio/beep.mp3";
@@ -36,13 +36,14 @@ export default withStyles(styles)(
 
     render() {
       const { classes, qrcode, onScan, toggleBoxDialog } = this.props;
-      const { box, showAddBox } = qrcode;
+      const { box, current, showAddBox } = qrcode;
 
       return (
         <Grid className={classes.media} container alignItems="center">
           <AddBoxDialog
+            qrcode={current}
             open={showAddBox}
-            onClose={() => toggleBoxDialog(true)}
+            onClose={() => toggleBoxDialog(false)}
           />
           <Card className={classes.card}>
             <Cameras>

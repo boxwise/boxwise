@@ -7,6 +7,7 @@ export const BOX_ADD_SUCCESS = BOX_ADD_`SUCCESS`;
 export const BOX_ADD_ERROR = BOX_ADD_`ERROR`;
 
 export const addBox = ({
+  qrcode,
   product,
   profile,
   organization,
@@ -15,6 +16,7 @@ export const addBox = ({
 }) => dispatch => {
   dispatch({ type: BOX_ADD_START });
   const box = {
+    qrcode,
     quantity,
     comment,
     organization: firestore.doc(organization.ref),
