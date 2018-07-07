@@ -223,9 +223,9 @@
     string-format-obj "^1.0.0"
     through2 "^2.0.0"
 
-"@material-ui/core@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-1.3.0.tgz#cc06d2ddc594c5563e73c0364763b8502dbc260e"
+"@material-ui/core@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@material-ui/core/-/core-1.3.1.tgz#8b4e6db9ed4536e8ccbea0eeff3da0d524e6af2c"
   dependencies:
     "@babel/runtime" "^7.0.0-beta.42"
     "@types/jss" "^9.5.3"
