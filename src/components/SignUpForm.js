@@ -39,7 +39,7 @@ const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
           <Typography variant="body1">{errors.form}</Typography>
         ) : null}
         <Field
-          type="name"
+          type="text"
           label="Enter your name"
           name="name"
           component={TextField}
