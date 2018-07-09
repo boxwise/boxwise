@@ -12,6 +12,7 @@ import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
 import SignInPage from "./containers/pages/SignInPage";
+import SignOutPage from "./containers/pages/SignOutPage";
 import ResetPasswordPage from "./containers/pages/ResetPasswordPage";
 import PasswordChangePage from "./pages/PasswordChangePage";
 import InvitePage from "./pages/InvitePage";
@@ -79,6 +80,7 @@ const App = () => (
             component={() => <CreateOrganizationPage />}
           />
           <Route exact path="/signin" component={() => <SignInPage />} />
+          <Route exact path="/signout" component={() => <SignOutPage />} />
           <Route
             exact
             path="/reset-password"
