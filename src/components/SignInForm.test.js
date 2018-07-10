@@ -1,6 +1,7 @@
 import React from "react";
 import { mount } from "enzyme";
 import SignInFormUnconnected from "./SignInForm";
+import { setInputFieldValue } from "commons/utils/test-util";
 
 describe("SignInForm", () => {
   let component;
@@ -10,15 +11,23 @@ describe("SignInForm", () => {
   beforeEach(() => {
     component = mount(<SignInFormUnconnected userSignIn={userSignIn} />);
   });
+  it("does not trigger submission when email is not provided", () => {
+    setInputFieldValue(component, "email", "");
+    setInputFieldValue(component, "password", "password");
+    component.find("button[type='submit']").simulate("submit");
+
+    expect(userSignIn).not.toBeCalled();
+  });
+  it("does not trigger submission when password is not provided", () => {
+    setInputFieldValue(component, "email", "test@example.com");
+    setInputFieldValue(component, "password", "");
+    component.find("button[type='submit']").simulate("submit");
+
+    expect(userSignIn).not.toBeCalled();
+  });
   it("signs in user when form is submitted", () => {
-    component.find("input[name='email']").simulate("change", {
-      target: { name: "email", value: "test@example.com" },
-      persist: () => {}
-    });
-    component.find("input[name='password']").simulate("change", {
-      target: { name: "password", value: "password" },
-      persist: () => {}
-    });
+    setInputFieldValue(component, "email", "test@example.com");
+    setInputFieldValue(component, "password", "password");
     component.find("button[type='submit']").simulate("submit");
 
     expect(userSignIn).toBeCalledWith(
