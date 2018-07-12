@@ -2,6 +2,8 @@ import firebase from "../firebase";
 import { handleError } from "../utils";
 import { fetchProfile } from "./profile";
 
+export const USER_NOT_LOGGED = "USER_NOT_LOGGED";
+
 const USER_SIGN_ = TYPE => `USER_SIGN_IN_${TYPE}`;
 export const USER_SIGN_IN_START = USER_SIGN_`IN_START`;
 export const USER_SIGN_IN_SUCCESS = USER_SIGN_`IN_SUCCESS`;
@@ -82,4 +84,20 @@ export const userPasswordChange = ({
       dispatch({ type: PASSWORD_CHANGE_ERROR, payload: error });
       throw error;
     });
+};
+
+export const registerAuthStateObserver = () => (dispatch, getState) => {
+  const { loading } = getState().user;
+  if (loading === null) {
+    dispatch({ type: USER_SIGN_IN_START });
+
+    return firebase.auth().onAuthStateChanged(user => {
+      if (!user) {
+        dispatch({ type: USER_NOT_LOGGED });
+        userSignOut();
+      } else dispatch(userSignInSuccess(user));
+    });
+  }
+
+  return Promise.resolve();
 };

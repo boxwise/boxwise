@@ -27,6 +27,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
+import withAuthentication from "./commons/HOCs/withAuthentication";
 
 addLocaleData([...en]);
 
@@ -47,11 +48,10 @@ const App = () => (
     <BrowserRouter>
       <ScrollToTop>
         <Switch>
-          <AuthedRoute
+          <Route
             exact
             path="/"
-            authedComponent={() => <DashboardPage />}
-            unauthedComponent={() => <HomePage />}
+            component={withAuthentication(DashboardPage, HomePage)}
           />
           <AuthedRoute
             exact
