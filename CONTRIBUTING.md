@@ -41,3 +41,13 @@ If somebody hasn't already claimed a ticket, feel free to pick it up! It's proba
 <!-- ## How to write a unit test
 
 ## How to write a browser test -->
+
+## Development principles
+
+These are the principles that have guided our development so far. If you're making a major contribution, it may be worth keeping them in mind.
+
+- **Use boring, well-established technology.** Boxwise needs to keep on working for a long time with minimal work. We don't want to have to rewrite it every year because a technology we are using has gone out of fashion.
+- **Minimal maintenance.** We don't have an operations team, nor anyone who can commit to being on-call. The app should run with minimal server-poking.
+- **Keep it simple.** 50 lines of straightforward, readable code is better than 10 lines of magic that nobody can understand. ([source](https://github.com/moby/moby/blob/master/project/PRINCIPLES.md))
+- **Optimize for contributions.** The code needs to be approachable and easy to understand, particularly for junior developers. Consider whether that clever new technology is worth it if a junior developer will struggle to get their head around it.
+- **Move fast and don't break things.** We should ship continuously, but use browser tests to avoid breaking things. These tests should check the basic tasks users need to do to get their jobs done.
