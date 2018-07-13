@@ -4,7 +4,7 @@ import { fetchProfile } from "./profile";
 import { asyncAction, editAction } from "commons/utils/action-creators";
 
 export const USER_SIGN_IN = asyncAction("USER_SIGN_IN");
-export const USER_NOT_SIGN_IN = "USER_NOT_LOGGED";
+export const USER_NOT_SIGN_IN = "USER_NOT_SIGN_IN";
 export const USER_SIGN_OUT = "USER_SIGN_OUT";
 
 export const PASSWORD_RESET = asyncAction("PASSWORD_RESET");
