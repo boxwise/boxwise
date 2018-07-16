@@ -4,7 +4,6 @@ import ReactGA from "react-ga";
 import Config from "./Config";
 import ScrollToTop from "./components/ScrollToTop";
 
-import AuthedRoute from "./router/AuthedRoute";
 import DashboardPage from "./pages/DashboardPage";
 import BoxesPage from "./pages/BoxesPage";
 import HomePage from "./pages/HomePage";
@@ -27,6 +26,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
+import withAuthentication from "./commons/HOCs/withAuthentication";
 
 addLocaleData([...en]);
 
@@ -47,31 +47,30 @@ const App = () => (
     <BrowserRouter>
       <ScrollToTop>
         <Switch>
-          <AuthedRoute
+          <Route
             exact
             path="/"
-            authedComponent={() => <DashboardPage />}
-            unauthedComponent={() => <HomePage />}
+            component={withAuthentication(DashboardPage, HomePage)}
           />
-          <AuthedRoute
+          <Route
             exact
             path="/boxes"
-            authedComponent={() => <BoxesPage />}
+            component={withAuthentication(BoxesPage)}
           />
-          <AuthedRoute
+          <Route
             exact
             path="/create-labels"
-            authedComponent={() => <CreateLabelsPage />}
+            component={withAuthentication(CreateLabelsPage)}
           />
-          <AuthedRoute
+          <Route
             exact
             path="/products"
-            authedComponent={() => <ProductsPage />}
+            component={withAuthentication(ProductsPage)}
           />
-          <AuthedRoute
+          <Route
             exact
             path="/invite"
-            authedComponent={() => <InvitePage />}
+            component={withAuthentication(InvitePage)}
           />
           <Route
             exact
@@ -84,13 +83,12 @@ const App = () => (
             path="/reset-password"
             component={() => <ResetPasswordPage />}
           />
-          <AuthedRoute
+          <Route
             exact
             path="/password"
-            authedComponent={() => <PasswordChangePage />}
+            component={withAuthentication(PasswordChangePage)}
           />
           <Route exact path="/join/:inviteId" component={() => <JoinPage />} />
-
           <Route exact path="/mockups" component={() => <MockupsPage />} />
           <Route
             exact

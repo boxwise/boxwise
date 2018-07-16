@@ -1,40 +1,43 @@
 import {
-  USER_SIGN_ERROR,
-  USER_SIGN_IN_START,
-  USER_SIGN_IN_SUCCESS,
-  USER_SIGN_OUT,
-  PASSWORD_RESET_START,
-  PASSWORD_RESET_SUCCESS,
-  PASSWORD_RESET_ERROR,
-  PASSWORD_CHANGE_START,
-  PASSWORD_CHANGE_SUCCESS,
-  PASSWORD_CHANGE_ERROR
+  PASSWORD_EDIT,
+  PASSWORD_RESET,
+  USER_NOT_SIGN_IN,
+  USER_SIGN_IN,
+  USER_SIGN_OUT
 } from "../actions/auth";
 
 export default function user(
-  state = { loading: false, hasTriggeredReset: false, data: null, error: null },
+  state = {
+    loading: null,
+    hasTriggeredReset: false,
+    data: null,
+    error: null
+  },
   { type, payload }
 ) {
   switch (type) {
-    case USER_SIGN_IN_START:
+    case USER_SIGN_IN.START:
       return { ...state, error: null, loading: true };
 
-    case USER_SIGN_IN_SUCCESS:
+    case USER_SIGN_IN.SUCCESS:
       return { ...state, loading: false, data: payload };
 
-    case USER_SIGN_ERROR:
+    case USER_SIGN_IN.ERROR:
       return { ...state, loading: false, error: payload };
+
+    case USER_NOT_SIGN_IN:
+      return { ...state, loading: false };
 
     case USER_SIGN_OUT:
       return { ...state, data: null };
 
-    case PASSWORD_RESET_START:
+    case PASSWORD_RESET.START:
       return { ...state, loading: true, hasTriggeredReset: false };
 
-    case PASSWORD_RESET_SUCCESS:
+    case PASSWORD_RESET.SUCCESS:
       return { ...state, loading: false, hasTriggeredReset: true };
 
-    case PASSWORD_RESET_ERROR:
+    case PASSWORD_RESET.ERROR:
       return {
         ...state,
         loading: false,
@@ -42,13 +45,13 @@ export default function user(
         error: payload
       };
 
-    case PASSWORD_CHANGE_START:
+    case PASSWORD_EDIT.START:
       return { ...state, isUpdating: true, error: null };
 
-    case PASSWORD_CHANGE_SUCCESS:
+    case PASSWORD_EDIT.SUCCESS:
       return { ...state, isUpdating: false, error: null };
 
-    case PASSWORD_CHANGE_ERROR:
+    case PASSWORD_EDIT.ERROR:
       return { ...state, isUpdating: false, error: payload };
 
     default:
