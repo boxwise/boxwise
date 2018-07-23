@@ -100,12 +100,7 @@ class AppFrame extends React.Component {
             <div className={classes.grow} />
 
             <div> 
-              <IconButton
-                aria-owns={open ? 'menu-appbar' : null}
-                aria-haspopup="true"
-                onClick={this.handleMenu}
-                color="inherit"
-              >
+              <IconButton color="inherit">
                 <SearchIcon />
               </IconButton>
             </div>  
