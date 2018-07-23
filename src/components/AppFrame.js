@@ -5,6 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
+import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from "@material-ui/icons/Menu";
 import AppDrawer from "./AppDrawer";
 import { drawerTheme } from "../theme";
@@ -97,6 +98,18 @@ class AppFrame extends React.Component {
               </Typography>
             )}
             <div className={classes.grow} />
+
+            <div> 
+              <IconButton
+                aria-owns={open ? 'menu-appbar' : null}
+                aria-haspopup="true"
+                onClick={this.handleMenu}
+                color="inherit"
+              >
+                <SearchIcon />
+              </IconButton>
+            </div>  
+
           </Toolbar>
         </AppBar>
         <MuiThemeProvider theme={drawerTheme}>
