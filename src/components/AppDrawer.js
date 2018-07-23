@@ -38,6 +38,13 @@ const styles = theme => ({
     flexDirection: "column",
     alignItems: "flex-start",
     justifyContent: "center"
+  },
+  menuItem: {
+    paddingTop: 6,
+    paddingBottom: 6
+  },
+  itemGroup: {
+    paddingBottom: 20
   }
 });
 
@@ -67,21 +74,33 @@ const AppDrawer = ({
           </Link>
         </div>
       </div>
-      <List>
-        <ListItem component={Link} to="/" onClick={onClose} button>
+      <List className={classes.itemGroup}>
+        <ListItem component={Link} to="/" onClick={onClose} button className={classes.menuItem}>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem component={Link} to="/boxes" onClick={onClose} button>
+        <ListItem component={Link} to="/orders" onClick={onClose} button className={classes.menuItem}>
+          <ListItemText primary="View orders" />
+        </ListItem>
+        <ListItem component={Link} to="/" onClick={onClose} button className={classes.menuItem}>
           <ListItemText primary="Find boxes" />
         </ListItem>
-        <ListItem component={Link} to="/products" onClick={onClose} button>
-          <ListItemText primary="Manage products" />
+        <ListItem component={Link} to="/" onClick={onClose} button className={classes.menuItem}>
+          <ListItemText primary="Make boxes" />
         </ListItem>
-        <ListItem component={Link} to="/create-labels" onClick={onClose} button>
-          <ListItemText primary="Create labels" />
+        <ListItem component={Link} to="/labels" onClick={onClose} button className={classes.menuItem}>
+          <ListItemText primary="Print labels" />
         </ListItem>
       </List>
-      <Divider />
+      
+      <List className={classes.itemGroup}>
+        <ListItem component={Link} to="/" onClick={onClose} button className={classes.menuItem}>
+          <ListItemText primary="Settings" />
+        </ListItem>
+        <ListItem component={Link} to="/" onClick={onClose} button className={classes.menuItem}>
+          <ListItemText primary="Users" />
+        </ListItem>
+      </List>
+
       <AppDrawerAuthContainer onClose={onClose} />
     </div>
   );
