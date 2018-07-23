@@ -5,6 +5,23 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Progress from "./Progress.js";
+import { withStyles } from "@material-ui/core/styles";
+
+const styles = theme => ({
+  noPadding: {
+    paddingTop: 0,
+    paddingBottom: 0,
+  },
+  smallerTextGroup: {
+    paddingTop: 20,
+    paddingBottom: 20
+  },
+  smallerLink: {
+    '&:hover': {
+      cursor: "pointer"
+    }
+  }
+});  
 
 const AppDrawerAuth = ({
   notAuthenticated,
@@ -13,6 +30,7 @@ const AppDrawerAuth = ({
   profile,
   onSignOut,
   onPasswordChange,
+  classes,
   onClose
 }) => {
   if (loading) {
@@ -25,23 +43,22 @@ const AppDrawerAuth = ({
   const { name, organization } = profile.data;
 
   return (
-    <List>
-      <ListItem>
-        <ListItemText secondary={`Signed in as ${name ? name : email}`} />
-      </ListItem>
-      <ListItem>
-        <ListItemText secondary={`Organization: ${organization.name}`} />
-      </ListItem>
-      <ListItem component={Link} to="/invite" onClick={onClose} button>
-        <ListItemText primary="Invite people" />
-      </ListItem>
-      <ListItem component={Link} to="/password" onClick={onClose} button>
-        <ListItemText primary="Change password" />
-      </ListItem>
-      <ListItem button>
-        <ListItemText primary="Sign out" onClick={onSignOut} />
-      </ListItem>
-    </List>
+    <div>
+      <List className={classes.smallerTextGroup}>
+        <ListItem className={classes.noPadding}>
+          <ListItemText secondary={`Signed in as ${name ? name : email}`} />
+        </ListItem>
+        <ListItem className={classes.noPadding}>
+          <ListItemText secondary={`for ${organization.name}`} />
+        </ListItem>
+      </List>
+
+      <List className={classes.smallerTextGroup}>
+        <ListItem className={classes.noPadding}>
+          <ListItemText secondary="Sign out" className={classes.smallerLink} onClick={onSignOut} />
+        </ListItem>
+      </List>  
+    </div>
   );
 };
 
@@ -53,4 +70,4 @@ AppDrawerAuth.propTypes = {
   onClose: PropTypes.func
 };
 
-export default AppDrawerAuth;
+export default withStyles(styles)(AppDrawerAuth);
