@@ -55,7 +55,7 @@ const AppDrawerAuth = ({
 
       <List className={classes.smallerTextGroup}>
         <ListItem className={classes.noPadding}>
-          <ListItemText secondary="Sign out" className={classes.smallerLink} onClick={onSignOut} />
+          <ListItemText secondary="Logout" className={classes.smallerLink} onClick={onSignOut} />
         </ListItem>
       </List>  
     </div>
