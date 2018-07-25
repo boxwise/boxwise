@@ -4,6 +4,7 @@ import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
+import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from "@material-ui/icons/Menu";
@@ -36,8 +37,28 @@ const styles = theme => ({
       position: "absolute"
     },
     [theme.breakpoints.up("lg")]: {
-      width: "calc(100% - 250px)"
+      width: "calc(100% - 250px)",
+      height: 61
     }
+  },
+  secondaryBar: {
+    marginTop: 61,
+    height: 30,
+    transition: theme.transitions.create("width"),
+    "@media print": {
+      position: "absolute"
+    },
+    [theme.breakpoints.up("lg")]: {
+      width: "calc(100% - 250px)",
+    }
+  },
+  secondaryToolbar: {
+    height: 30,
+    minHeight: 0
+  },
+  secondaryDropdown: {
+    fontSize: 12,
+    color: "#b2e1f3"
   },
   drawer: {
     [theme.breakpoints.up("lg")]: {
@@ -107,6 +128,19 @@ class AppFrame extends React.Component {
 
           </Toolbar>
         </AppBar>
+
+        <AppBar className={classes.secondaryBar} position="fixed">
+          <Toolbar className={classes.secondaryToolbar}>
+            <Button color="inherit" className={classes.secondaryDropdown}>
+              Product
+            </Button>
+            <Button color="inherit" className={classes.secondaryDropdown}>
+              Status
+            </Button>
+          </Toolbar>
+        </AppBar>
+
+
         <MuiThemeProvider theme={drawerTheme}>
           <AppDrawer
             className={classes.drawer}
