@@ -13,6 +13,8 @@ import Menu from '@material-ui/core/Menu';
 import AppDrawer from "./AppDrawer";
 import { drawerTheme } from "../theme";
 
+const secondaryBarHeight = 30;
+
 const styles = theme => ({
   root: {
     display: "flex",
@@ -59,7 +61,7 @@ const styles = theme => ({
 
   },
   secondaryToolbar: {
-    height: 30,
+    height: secondaryBarHeight,
     minHeight: 0
   },
   secondaryDropdown: {
@@ -75,6 +77,7 @@ const styles = theme => ({
     flex: "1 1 100%",
     maxWidth: "100%",
     // margin: "0 auto",
+    marginTop: secondaryBarHeight,
     [theme.breakpoints.up("md")]: {
       maxWidth: theme.breakpoints.values.md
     }
