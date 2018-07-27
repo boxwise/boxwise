@@ -86,6 +86,10 @@ const styles = theme => ({
     [theme.breakpoints.up("lg")]: {
       display: "none"
     }
+  },
+  popupTitle: {
+    margin: "6 4",
+    fontSize: 15
   }
 });
 
@@ -177,7 +181,7 @@ class AppFrame extends React.Component {
                 }}
                 open={open}
               >
-                <p>Choose a category</p>
+                <div className={classes.popupTitle}>Choose a category</div>
                 <MenuItem onClick={this.handleClose}>Man</MenuItem>
                 <MenuItem onClick={this.handleClose}>Woman</MenuItem>
                 <MenuItem>Adult</MenuItem>
