@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from "@material-ui/icons/Menu";
+import MenuItem from '@material-ui/core/MenuItem';
+import Menu from '@material-ui/core/Menu';
 import AppDrawer from "./AppDrawer";
 import { drawerTheme } from "../theme";
 
@@ -82,7 +84,8 @@ const styles = theme => ({
 
 class AppFrame extends React.Component {
   state = {
-    mobileOpen: false
+    mobileOpen: false,
+    anchorEl: null
   };
 
   handleDrawerOpen = () => {
@@ -93,8 +96,22 @@ class AppFrame extends React.Component {
     this.setState({ mobileOpen: false });
   };
 
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
+  handleMenu = event => {
+    this.setState({ anchorEl: event.currentTarget });
+  };
+
+  handleClose = () => {
+    this.setState({ anchorEl: null });
+  };
+
   render() {
     const { children, classes, title } = this.props;
+    const { mobileOpen, anchorEl } = this.state;
+    const open = Boolean(anchorEl);
     const divClass = this.mobileOpen ? classes.rootLocked : classes.root;
     return (
       <div className={divClass}>
@@ -129,11 +146,37 @@ class AppFrame extends React.Component {
           </Toolbar>
         </AppBar>
 
+
         <AppBar className={classes.secondaryBar} position="fixed">
           <Toolbar className={classes.secondaryToolbar}>
-            <Button color="inherit" className={classes.secondaryDropdown}>
-              Product
-            </Button>
+            <div>
+              <Button 
+                color="inherit"
+                onClick={this.handleMenu} 
+                className={classes.secondaryDropdown}
+              >
+                Product
+              </Button>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={open}
+              >
+                <p>Choose a category</p>
+                <MenuItem onClick={this.handleClose}>Man</MenuItem>
+                <MenuItem onClick={this.handleClose}>Woman</MenuItem>
+                <MenuItem>Adult</MenuItem>
+                <MenuItem>...</MenuItem>
+              </Menu>
+            </div>  
             <Button color="inherit" className={classes.secondaryDropdown}>
               Status
             </Button>
