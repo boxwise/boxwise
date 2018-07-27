@@ -52,7 +52,11 @@ const styles = theme => ({
     },
     [theme.breakpoints.up("lg")]: {
       width: "calc(100% - 250px)",
-    }
+    },
+    [theme.breakpoints.only('xs')]: {
+      marginTop: 48,
+    },
+
   },
   secondaryToolbar: {
     height: 30,
