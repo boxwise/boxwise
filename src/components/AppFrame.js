@@ -121,7 +121,7 @@ class AppFrame extends React.Component {
 
   render() {
     const { children, classes, title } = this.props;
-    const { mobileOpen, anchorEl } = this.state;
+    const anchorEl = this.state.anchorEl;
     const open = Boolean(anchorEl);
     const divClass = this.mobileOpen ? classes.rootLocked : classes.root;
     return (
