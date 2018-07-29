@@ -47,7 +47,7 @@ const styles = theme => ({
   },
   secondaryBar: {
     marginTop: 61,
-    height: 30,
+    height: secondaryBarHeight,
     transition: theme.transitions.create("width"),
     "@media print": {
       position: "absolute"
