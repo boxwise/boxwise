@@ -4021,9 +4021,9 @@ firebase-mock@^2.2.4:
     lodash.toarray "^4.4.0"
     rsvp "^3.6.2"
 
-firebase-tools@^3.19.1:
-  version "3.19.1"
-  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-3.19.1.tgz#70800d1590db7082419798069103ead275440791"
+firebase-tools@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-4.0.1.tgz#e234a138ca82ee5181f28a929ab914b700c0eb1f"
   dependencies:
     JSONStream "^1.2.1"
     archiver "^2.1.1"
