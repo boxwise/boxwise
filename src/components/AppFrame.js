@@ -73,7 +73,11 @@ const styles = theme => ({
     color: "#b2e1f3"
   },
   secondaryMenu: {
-    width: 300
+    width: 300,
+    [theme.breakpoints.up('lg')]: {
+      top: 35,
+      left: 60
+    },
   },
   drawer: {
     [theme.breakpoints.up("lg")]: {
