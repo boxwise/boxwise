@@ -11,6 +11,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AppDrawer from "./AppDrawer";
+import ProductButton from "../components/ProductButton";
+import Grid from '@material-ui/core/Grid';
 import { drawerTheme } from "../theme";
 
 const secondaryBarHeight = 30;
@@ -21,6 +23,9 @@ const styles = theme => ({
     alignItems: "stretch",
     minHeight: "100vh",
     width: "100%"
+  },
+  productRoot: {
+    width: "240px"
   },
   rootLocked: {
     display: "flex",
@@ -68,6 +73,9 @@ const styles = theme => ({
     fontSize: 12,
     color: "#b2e1f3"
   },
+  secondaryMenu: {
+    width: 300
+  },
   drawer: {
     [theme.breakpoints.up("lg")]: {
       width: 250
@@ -88,8 +96,13 @@ const styles = theme => ({
     }
   },
   popupTitle: {
-    margin: "6 4",
-    fontSize: 15
+    margin: "6px 4px",
+    fontSize: 15,
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  productItem: {
+    margin: "3px"
   }
 });
 
@@ -168,7 +181,7 @@ class AppFrame extends React.Component {
               >
                 Product
               </Button>
-              <Menu
+              <Menu className={classes.secondaryMenu}
                 id="menu-appbar"
                 anchorEl={anchorEl}
                 anchorOrigin={{
@@ -182,10 +195,55 @@ class AppFrame extends React.Component {
                 open={open}
               >
                 <div className={classes.popupTitle}>Choose a category</div>
-                <MenuItem onClick={this.handleClose}>Man</MenuItem>
-                <MenuItem onClick={this.handleClose}>Woman</MenuItem>
-                <MenuItem>Adult</MenuItem>
-                <MenuItem>...</MenuItem>
+                <div className={classes.productRoot}>
+                  <Grid container>
+                    <Grid item xs={4}>
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Man" />
+                      </MenuItem>
+                    </Grid>
+                    <Grid item xs={4}>
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Woman" />
+                      </MenuItem>  
+                    </Grid>
+                    <Grid item xs={4}>
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Adult" />
+                      </MenuItem>  
+                    </Grid>
+                    <Grid item xs={4}>  
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Boy" />
+                      </MenuItem>  
+                    </Grid>
+                    <Grid item xs={4}>  
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Girl" />
+                      </MenuItem>  
+                    </Grid>
+                    <Grid item xs={4}>  
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Child" />
+                      </MenuItem>
+                    </Grid>
+                    <Grid item xs={4}>  
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Baby" />
+                      </MenuItem>
+                    </Grid>
+                    <Grid item xs={4}>  
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Food" />
+                      </MenuItem>
+                    </Grid>
+                    <Grid item xs={4}>  
+                      <MenuItem className={classes.productItem}>
+                        <ProductButton icon="" label="Hygiene" />
+                      </MenuItem>
+                    </Grid>
+                  </Grid>    
+                </div>  
               </Menu>
             </div>  
             <Button color="inherit" className={classes.secondaryDropdown}>
