@@ -8,10 +8,9 @@ import Button from '@material-ui/core/Button';
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from "@material-ui/icons/Menu";
-import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import AppDrawer from "./AppDrawer";
-import ProductButton from "../components/ProductButton";
+import ProductCategoryGridItem from "./ProductCategoryGridItem";
 import Grid from '@material-ui/core/Grid';
 import { drawerTheme } from "../theme";
 
@@ -197,51 +196,15 @@ class AppFrame extends React.Component {
                 <div className={classes.popupTitle}>Choose a category</div>
                 <div className={classes.productRoot}>
                   <Grid container>
-                    <Grid item xs={4}>
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Man" />
-                      </MenuItem>
-                    </Grid>
-                    <Grid item xs={4}>
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Woman" />
-                      </MenuItem>  
-                    </Grid>
-                    <Grid item xs={4}>
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Adult" />
-                      </MenuItem>  
-                    </Grid>
-                    <Grid item xs={4}>  
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Boy" />
-                      </MenuItem>  
-                    </Grid>
-                    <Grid item xs={4}>  
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Girl" />
-                      </MenuItem>  
-                    </Grid>
-                    <Grid item xs={4}>  
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Child" />
-                      </MenuItem>
-                    </Grid>
-                    <Grid item xs={4}>  
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Baby" />
-                      </MenuItem>
-                    </Grid>
-                    <Grid item xs={4}>  
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Food" />
-                      </MenuItem>
-                    </Grid>
-                    <Grid item xs={4}>  
-                      <MenuItem className={classes.productItem}>
-                        <ProductButton icon="" label="Hygiene" />
-                      </MenuItem>
-                    </Grid>
+                    <ProductCategoryGridItem icon="" label="Man" />
+                    <ProductCategoryGridItem icon="" label="Woman" />
+                    <ProductCategoryGridItem icon="" label="Adult" />
+                    <ProductCategoryGridItem icon="" label="Boy" />
+                    <ProductCategoryGridItem icon="" label="Girl" />
+                    <ProductCategoryGridItem icon="" label="Child" />
+                    <ProductCategoryGridItem icon="" label="Baby" />
+                    <ProductCategoryGridItem icon="" label="Food" />
+                    <ProductCategoryGridItem icon="" label="Hygiene" />
                   </Grid>    
                 </div>  
               </Menu>
