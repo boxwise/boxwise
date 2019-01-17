@@ -29,7 +29,8 @@ We are always looking for help. Working on this project is an opportunity to use
 
     - Go to https://console.firebase.google.com/ and click "Add project";
     - Enter "Boxwise Development" into the name field and click "Create Project";
-    - Click "Database" in the left hand menu, click "Get Started" underneath Cloud Firestore, then click "Enable";
+    - Click "Database" in the left hand menu, click "Create Database" underneath Cloud Firestore;
+    - Choose "Start in locked mode" in the "Security rules for Cloud Firestore' dialog;
     - Click "Authentication" in the left hand menu, then the "Sign-in method" tab, then click "Email/Password", flip the first "Enable" switch, then click "Save".
 
 4. Create a new local config running `yarn setup`, filling with the Firebase project ID (you may be asked to login). This will create a `.env.local` file.
