@@ -3716,14 +3716,9 @@ extend-shallow@^3.0.0, extend-shallow@^3.0.2:
     assign-symbols "^1.0.0"
     is-extendable "^1.0.1"
 
-extend@^3.0.0, extend@^3.0.1, extend@~3.0.1:
+extend@^3.0.0, extend@^3.0.1, extend@~3.0.1, extend@~3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
-
-extend@~3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/extend/-/extend-3.0.2.tgz#f8b1136b4071fbd8eb140aff858b1019ec2915fa"
-  integrity sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
 
 external-editor@^2.0.4:
   version "2.2.0"
@@ -3976,9 +3971,10 @@ firebase-auto-ids@~1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/firebase-auto-ids/-/firebase-auto-ids-1.1.0.tgz#378ffb8590888c37eb2dd8b704659ad0f49f9061"
 
-firebase-mock@^2.2.4:
-  version "2.2.4"
-  resolved "https://registry.yarnpkg.com/firebase-mock/-/firebase-mock-2.2.4.tgz#2b76fe22f5fb6fb373121c5692cd4adc5e3bf9ca"
+firebase-mock@^2.2.10:
+  version "2.2.10"
+  resolved "https://registry.yarnpkg.com/firebase-mock/-/firebase-mock-2.2.10.tgz#1d08aa90052f558d793d33763d442a11f5a0917e"
+  integrity sha512-T1J/VrmhU+xC0t+oZADKUQAwAuL0B0gPST8JQjJyemQUw88wJhc/B3Qg0f+KQPL2RACUFPNCDxmbr4FfPPj2SQ==
   dependencies:
     firebase-auto-ids "~1.1.0"
     lodash.assign "^4.2.0"
@@ -4013,6 +4009,7 @@ firebase-mock@^2.2.4:
     lodash.orderby "^4.6.0"
     lodash.reduce "^4.6.0"
     lodash.remove "^4.7.0"
+    lodash.set "^4.3.2"
     lodash.size "^4.2.0"
     lodash.toarray "^4.4.0"
     rsvp "^3.6.2"
@@ -6626,6 +6623,11 @@ lodash.reduce@^4.6.0:
 lodash.remove@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/lodash.remove/-/lodash.remove-4.7.0.tgz#f31d31e7c39a0690d5074ec0d3627162334ee626"
+
+lodash.set@^4.3.2:
+  version "4.3.2"
+  resolved "https://registry.yarnpkg.com/lodash.set/-/lodash.set-4.3.2.tgz#d8757b1da807dde24816b0d6a84bea1a76230b23"
+  integrity sha1-2HV7HagH3eJIFrDWqEvqGnYjCyM=
 
 lodash.size@^4.2.0:
   version "4.2.0"
