@@ -13,7 +13,7 @@
     "raven-js": "^3.27.0",
     "react": "^16.4.1",
     "react-copy-to-clipboard": "^5.0.1",
-    "react-dom": "^16.4.1",
+    "react-dom": "^16.8.6",
     "react-firestore": "https://github.com/bfirsh/react-firestore.git#dropapp-2",
     "react-ga": "^2.5.7",
     "react-intl": "^2.8.0",
