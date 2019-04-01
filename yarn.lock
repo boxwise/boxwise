@@ -10850,9 +10850,9 @@ yargs@~3.10.0:
     decamelize "^1.0.0"
     window-size "0.1.0"
 
-yarnhook@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.2.0.tgz#291e49db6066df2d8f745087c407362042a0d055"
+yarnhook@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.4.0.tgz#767b22f4ad446553c6eb86090c326d6e32ad0fe2"
   dependencies:
     execa "^0.8.0"
     find-parent-dir "^0.3.0"
