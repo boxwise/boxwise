@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/boxwise/boxwise.svg?branch=master)](https://travis-ci.com/boxwise/boxwise)
+
 # Boxwise
 
 Boxwise makes it easy for organizations (such as refugee camps) to distribute donated goods to people in need. It consists of:
