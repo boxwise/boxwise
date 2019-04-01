@@ -3,7 +3,9 @@ node_js:
 - '8'
 cache: yarn
 before_install:
-- if [[ -n "$encrypted_5b7b89e871be_key" ]]; then openssl aes-256-cbc -K $encrypted_5b7b89e871be_key -iv $encrypted_5b7b89e871be_iv -in .travis/.service-account-key.json.enc -out .service-account-key.json -d; fi
+- if [[ -n "$encrypted_5b7b89e871be_key" ]]; then openssl aes-256-cbc -K $encrypted_5b7b89e871be_key
+  -iv $encrypted_5b7b89e871be_iv -in .travis/.service-account-key.json.enc -out .service-account-key.json
+  -d; fi
 script:
 - yarn test
 # .env.production is kept out of the root directory, because if it were there
@@ -17,7 +19,7 @@ deploy:
   project: boxwise-production
   skip_cleanup: true
   token:
-    secure: PeYkDzVp3UlxLs+x/BPOy2yzwKMXLvCUsoPDD44VkJnAD9TDa+GM6WKztbRB58dBtc4bLzPwndnmti2UdXyiUsMZBwLkGzey1Bv/IT6I3mg5tvFLdFYyuw80M6eTwOagg8wMQKuarI5stRNOoAHPCqB4BAkLSL02oeDR3UTCByDP5fTE+SkeduAc3dR9AnyUIzozBUaaJCLHhXZNL7rnS4zDSak6Sz7Q3BtpaGobH+5NS9mbg/8cKCaz/BJ2tH1mksD2agWR3M4gpvj4z4GpEAxS52G4GSRALVc6RuC1qc2k9pbi9hr3typOrqqMvMR6B4jlOVjEibk68nOBMXYdn+2W2FETaO3wsV0SiMtP1rxZMB7xzRA6XHr5ZwaNQSm7S+GIlTgR7VpZXm2V/gu+FFiv1ZM1HUHCYVleb4U7H7pRdnQVKp+SW7HQFn4hAUl6t2lSLryyMRfY3fD52G0RgPzpZ0I6891r+evwbk9gwEK3jdeu2KnZEiSoJ5v1+XGiGB7cpqcbd1ihRoPibJU6FSZPNK+Ro6YgAU9DmcpVviZsZR2yzO8BPbC8OM0/SEVRIM/a6Z0kVmmGqLL6rhcBxqEv94TjD226MCWjJpWdEb/GblIDbu+8obZX5qiIFvkdgTXlkDrPMizyFeb6HeBd0BOwokMfVRsYlVtfO2ufiJI=
+    secure: srlkJSzK7PExs05ay2Fetv2pJ/ZNmTZLwFaXjLT5zldiL/Pf6Ve3gkePzI3AafplvcW8FFOviPTh3xk4LWmBOE40EDz/+L8DqoJoy8BEw1K/kH0oNKeLNpwZWi1BnSdeID01R/vslMJ4WdesKWrQE6+G5HFOwwxq1CbJF3RsZx62bgkbSSFVg/Ig1+Em/3Zv0DpAIo0uJAHqQGeEXRug4zC2AqmIMiAeqjxJJ+HaiCfC+QhfEPxLBc9qZJ5gjAmWmjzvDywHKWuXaazSg1YQr4MYcOuLLAoQcb25iZvcTezHOzR4Tud00tos/egACMQEOi/CIpWvsX20pIBgjv2F5+f5dqxldrCCkDkMmINqSEjLG6veU7cVDDdTngxduYCnjDjyJogPz4h+DupYF9FNM7wjw5Mf4orMJbXVma30u6x2yh37+MvABtwLba4pYXTp157iR4BgmJAUf3Pq08a12EsGTSEuq6ekwFagwCzDuDVXMevu8yTqNC/nulTwOijoo1emawjU0bFl8f2XlZyBWHx2X5Ea+Yykpmsb40W41bFozOQvu/8t+rDzX6LPrZyxiqoAbdQSsGCpuE7g67pVUTvgftgiCnsax4KZcan5o9+YyQSfEEo3Wx9ga6gB11b32COTK+SJ2Sb0w+VVNUcr2cJvDI9RbDM7s3NlYyX0/xk=
 notifications:
   slack:
     on_success: change
