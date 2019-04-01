@@ -14,6 +14,9 @@ script:
 # we should at least stop people from doing it accidentally.
 - cp .travis/.env.production ./
 - yarn build
+branches:
+  only:
+  - master
 deploy:
   provider: firebase
   project: boxwise-production
