@@ -77,7 +77,7 @@ const initFirebase = () => {
     }
 
     firestore = firebase.firestore();
-    firestore.settings({ timestampsInSnapshots: true });
+    firestore.settings({ });
 };
 
 const setupAuth = () => {
