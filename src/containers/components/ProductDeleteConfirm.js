@@ -1,4 +1,4 @@
-import connect from "react-redux/lib/connect/connect";
+import { connect } from "react-redux";
 import ConfirmDeleteAlert from "../../components/ConfirmDeleteAlert";
 import { productDelete, productDeleteCancel } from "../../actions/product";
 
