@@ -6,7 +6,7 @@
     "@firebase/app-types": "^0.3.7",
     "@firebase/util": "^0.2.11",
     "@material-ui/core": "^1.3.0",
-    "@material-ui/icons": "^1.1.0",
+    "@material-ui/icons": "^3.0.2",
     "firebase": "^5.9.2",
     "formik": "^0.11.11",
     "formik-material-ui": "^0.0.6",
