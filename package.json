@@ -9,6 +9,7 @@
     "firebase": "^5.9.2",
     "formik": "^0.11.11",
     "formik-material-ui": "^0.0.6",
+    "jest": "^24.6.0",
     "prop-types": "^15.6.2",
     "raven-js": "^3.27.0",
     "react": "^16.4.1",
