@@ -11381,9 +11381,10 @@ react-event-listener@^0.6.2:
     prop-types "^15.6.0"
     warning "^4.0.1"
 
-"react-firestore@https://github.com/bfirsh/react-firestore.git#dropapp-2":
-  version "0.0.0-semantically-released"
-  resolved "https://github.com/bfirsh/react-firestore.git#db67c94228a28bf0ed875613d30441f1ae1037f3"
+react-firestore@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-firestore/-/react-firestore-1.0.0.tgz#a464dbff30679aa70308714e093ea0a7d065d7de"
+  integrity sha512-iV4IxPEDiCSYYrWZYzx/l0K93gOrebPbWOitloOH8ubGdEZXUW9FpMzyo3xPIdV7ceCiRbzt6CORfS6/yzbzFg==
   dependencies:
     hoist-non-react-statics "^2.3.1"
 

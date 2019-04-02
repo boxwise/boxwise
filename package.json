@@ -15,7 +15,7 @@
     "react": "^16.4.1",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.4.1",
-    "react-firestore": "https://github.com/bfirsh/react-firestore.git#dropapp-2",
+    "react-firestore": "^1.0.0",
     "react-ga": "^2.5.7",
     "react-intl": "^2.8.0",
     "react-redux": "^5.0.7",
