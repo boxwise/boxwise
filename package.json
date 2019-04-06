@@ -15,7 +15,7 @@
     "react": "^16.4.1",
     "react-copy-to-clipboard": "^5.0.1",
     "react-dom": "^16.4.1",
-    "react-firestore": "^1.0.0",
+    "react-firestore": "^1.0.1",
     "react-ga": "^2.5.7",
     "react-intl": "^2.8.0",
     "react-redux": "^6.0.1",
