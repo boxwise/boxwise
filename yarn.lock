@@ -5390,10 +5390,10 @@ firebase-mock@^2.2.10:
     lodash.toarray "^4.4.0"
     rsvp "^3.6.2"
 
-firebase-tools@^6.5.0:
-  version "6.5.0"
-  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-6.5.0.tgz#05169730f7a8db02cb2666aa8a90b02e40144a98"
-  integrity sha512-Xwy1Ut1WVnG25OvdHOR1XlL1PIiCuRTSyJy3aQKvzkSzB1Vg12FuXwaZZvfLvxcl1KtA/81N9zMriwcKIKbL2w==
+firebase-tools@^6.6.0:
+  version "6.6.0"
+  resolved "https://registry.yarnpkg.com/firebase-tools/-/firebase-tools-6.6.0.tgz#02c17a0633c3fbd5985b34017782878c4f97f906"
+  integrity sha512-a15gw3kFBXNxPW7jBq6Tn3IajcoraQgbetbybOqAgNtUi+x7pMdbPMqrbQRLID/I7ViXm2utSAlEPm3KaRZwDQ==
   dependencies:
     JSONStream "^1.2.1"
     archiver "^2.1.1"
@@ -5419,7 +5419,7 @@ firebase-tools@^6.5.0:
     jsonwebtoken "^8.2.1"
     lodash "^4.17.10"
     minimatch "^3.0.4"
-    opn "^5.3.0"
+    opn "^5.5.0"
     ora "0.2.3"
     portfinder "^1.0.13"
     progress "^2.0.0"
@@ -9846,7 +9846,7 @@ opn@5.4.0:
   dependencies:
     is-wsl "^1.1.0"
 
-opn@^5.1.0, opn@^5.3.0:
+opn@^5.1.0, opn@^5.5.0:
   version "5.5.0"
   resolved "https://registry.yarnpkg.com/opn/-/opn-5.5.0.tgz#fc7164fab56d235904c51c3b27da6758ca3b9bfc"
   integrity sha512-PqHpggC9bLV0VeWcdKhkpxY+3JTzetLSqTCWL/z/tFIbI6G8JCjondXklT1JinczLz2Xib62sSp0T/gKT4KksA==
