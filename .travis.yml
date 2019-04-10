@@ -6,6 +6,9 @@ before_install:
 - if [[ -n "$encrypted_5b7b89e871be_key" ]]; then openssl aes-256-cbc -K $encrypted_5b7b89e871be_key
   -iv $encrypted_5b7b89e871be_iv -in .travis/.service-account-key.json.enc -out .service-account-key.json
   -d; fi
+# install specific version of yarn
+- curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
+- export PATH="$HOME/.yarn/bin:$PATH"
 script:
 - yarn test
 # .env.production is kept out of the root directory, because if it were there
