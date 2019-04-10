@@ -70,8 +70,8 @@ describeButSkipIfNoKey("firestore.rules", () => {
       );
     });
     // Not supported
-    test.skip("organizations cannot be listed");
-    test.skip("creating organizations");
+    test.skip("organizations cannot be listed", () => {});
+    test.skip("creating organizations", () => {});
     test("organizations cannot be updated", async () => {
       firestore.assert(
         await database.cannotUpdate({ uid: "org1" }, "organizations/1", {
