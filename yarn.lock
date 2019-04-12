@@ -859,6 +859,13 @@
   dependencies:
     regenerator-runtime "^0.13.2"
 
+"@babel/runtime@^7.3.4":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.4.3.tgz#79888e452034223ad9609187a0ad1fe0d2ad4bdc"
+  integrity sha512-9lsJwJLxDh/T3Q3SZszfWOTkk3pHbkmH+3KY+zwIDmsNlxsumuhS2TH3NIpktU4kNvfzy+k3eLT7aTJSPTo0OA==
+  dependencies:
+    regenerator-runtime "^0.13.2"
+
 "@babel/template@^7.0.0", "@babel/template@^7.1.0", "@babel/template@^7.2.2", "@babel/template@^7.4.0":
   version "7.4.0"
   resolved "https://registry.yarnpkg.com/@babel/template/-/template-7.4.0.tgz#12474e9c077bae585c5d835a95c0b0b790c25c8b"
@@ -11395,11 +11402,12 @@ react-event-listener@^0.6.2:
     warning "^4.0.1"
 
 react-firestore@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-firestore/-/react-firestore-1.0.0.tgz#a464dbff30679aa70308714e093ea0a7d065d7de"
-  integrity sha512-iV4IxPEDiCSYYrWZYzx/l0K93gOrebPbWOitloOH8ubGdEZXUW9FpMzyo3xPIdV7ceCiRbzt6CORfS6/yzbzFg==
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-firestore/-/react-firestore-1.0.1.tgz#4d3dadd6c1f5ade5efc01763610abeddf73a811f"
+  integrity sha512-gOsvXOJYx3LT8yugw1y0kbqEyL74IV8srjl/kRxktp9oqMJPhPjZ9ZJSBtM8osan7XAduK+orIVrh6dJe36WKA==
   dependencies:
-    hoist-non-react-statics "^2.3.1"
+    "@babel/runtime" "^7.3.4"
+    hoist-non-react-statics "^3.3.0"
 
 react-ga@^2.5.7:
   version "2.5.7"

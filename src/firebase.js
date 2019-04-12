@@ -17,5 +17,6 @@ if (!firebase.apps.length) {
 
 export const firestore = firebase.firestore();
 firestore.settings({});
+firestore.enablePersistence();
 
 export default firebase;
