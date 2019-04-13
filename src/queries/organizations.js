@@ -8,16 +8,3 @@ export const addOrganization = ({ name }) => {
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
   });
 };
-
-export const getOrAddDummyOrganization = () => {
-  return db
-    .collection("organizations")
-    .get()
-    .then(organizations => {
-      if (organizations.empty) {
-        return addOrganization({ name: "Boxaid" });
-      } else {
-        return Promise.resolve(organizations.docs[0].ref);
-      }
-    });
-};
