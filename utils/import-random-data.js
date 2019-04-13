@@ -12,8 +12,8 @@ Note: Import via UI worked for Firebase Realtime Database, but for firestore, th
 3) Install Firebase Admin SDK: 'npm install firebase-admin'
 
 4) Download Firebase Admin SDK private key
-  4.1: navigate to In the Firebase Console click on the settings wheel next to the Overview section 
-       and choose Service accounts tab -> select Node.js
+  4.1: navigate to Firebase Console of your project click on the settings wheel next to the Overview section 
+       and choose "Service accounts tab" -> select Node.js
   
   4.2: Copy-paste the code you see to the beginning of this script (replace the same looking code on lines 30-36)
 
