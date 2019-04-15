@@ -1,5 +1,5 @@
 import React from "react";
-import Raven from "raven-js";
+import * as Sentry from "@sentry/browser";
 import Progress from "./components/Progress.js";
 
 // HACK: some of our components need a profile, but there's no easy way to just
@@ -15,5 +15,5 @@ export function waitForProfile(Component) {
 
 export const handleError = (error, errorInfo) => {
   console.error(error);
-  Raven.captureException(error, { extra: errorInfo });
+  Sentry.captureException(error, { extra: errorInfo });
 };
