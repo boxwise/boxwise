@@ -3,6 +3,13 @@ import { mount } from "enzyme";
 import SignInFormUnconnected from "./SignInForm";
 import { setInputFieldValue } from "commons/utils/test-util";
 
+// temporary until JsDom/Jest supports MutationObserver
+// which is coming soon https://github.com/jsdom/jsdom/issues/639
+global.MutationObserver = class {
+  disconnect() {}
+  observe(element, initObject) {}
+};
+
 describe("SignInForm", () => {
   let component;
   const userSignIn = jest.fn(({ email, password }) => {
