@@ -50,12 +50,8 @@
     "build": "react-app-rewired build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged",
     "prettier": "prettier --write \"src/**/*.{js,jsx,json,css}\"",
     "deploy-firestore": "firebase deploy --only firestore",
-    "postmerge": "node checkdeploy",
-    "postcheckout": "node checkdeploy",
-    "postrewrite": "node checkdeploy",
     "setup": "node utils/generate-env.js",
     "add-test-data": "node utils/generate-test-data.js",
     "cypress:open": "cypress open"
@@ -80,5 +76,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "post-checkout": "node checkdeploy",
+      "post-merge": "node checkdeploy",
+      "post-rewrite": "node checkdeploy",
+      "pre-commit": "lint-staged"
+    }
+  }
 }
