@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -24,35 +24,25 @@ const styles = theme => ({
   }
 });
 
-class ProductsPage extends React.Component {
-  state = {
-    addDialogOpen: false
-  };
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <AppFrame title="Manage products">
-        <Page className={classes.root}>
-          <AddProductDialog
-            open={this.state.addDialogOpen}
-            onClose={() => this.setState({ addDialogOpen: false })}
-          />
-          <Paper>
-            <Toolbar>
-              <Button
-                color="primary"
-                onClick={() => this.setState({ addDialogOpen: true })}
-              >
-                Add Product
-              </Button>
-            </Toolbar>
-            <ProductTable />
-          </Paper>
-        </Page>
-      </AppFrame>
-    );
-  }
-}
+const ProductsPage = ({ classes }) => {
+  const [addDialogOpen, setAddDialogOpen] = useState(false);
+  const handleDialogClose = () => setAddDialogOpen(false);
+  const handleDialogOpen = () => setAddDialogOpen(true);
+  return (
+    <AppFrame title="Manage products">
+      <Page className={classes.root}>
+        <AddProductDialog open={addDialogOpen} onClose={handleDialogClose} />
+        <Paper>
+          <Toolbar>
+            <Button color="primary" onClick={handleDialogOpen}>
+              Add Product
+            </Button>
+          </Toolbar>
+          <ProductTable />
+        </Paper>
+      </Page>
+    </AppFrame>
+  );
+};
 
 export default withStyles(styles)(ProductsPage);
