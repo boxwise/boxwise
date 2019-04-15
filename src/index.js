@@ -6,7 +6,7 @@ import Raven from "raven-js";
 import { IntlProvider } from "react-intl";
 import App from "./App";
 import Config from "./Config";
-import registerServiceWorker from "./registerServiceWorker";
+import * as serviceWorker from "./serviceWorker";
 import firebase from "./firebase";
 import store from "./store";
 
@@ -25,5 +25,5 @@ Raven.context(function() {
     </FirestoreProvider>,
     document.getElementById("root")
   );
-  registerServiceWorker();
+  serviceWorker.register();
 });

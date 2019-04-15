@@ -1,7 +1,7 @@
 import firebase from "../firebase";
 import { handleError } from "../utils";
 import { fetchProfile } from "./profile";
-import { asyncAction, editAction } from "commons/utils/action-creators";
+import { asyncAction, editAction } from "../commons/utils/action-creators";
 
 export const USER_SIGN_IN = asyncAction("USER_SIGN_IN");
 export const USER_NOT_SIGN_IN = "USER_NOT_SIGN_IN";
