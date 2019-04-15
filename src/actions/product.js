@@ -4,7 +4,7 @@ import {
   listAction,
   editAction,
   deleteAction
-} from "commons/utils/action-creators";
+} from "../commons/utils/action-creators";
 import { handleError } from "../utils";
 
 export const PRODUCT_LIST = listAction("product");
