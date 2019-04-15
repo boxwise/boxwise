@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { FirestoreProvider } from "react-firestore";
-import Raven from "raven-js";
+import * as Sentry from "@sentry/browser";
 import { IntlProvider } from "react-intl";
 import App from "./App";
 import Config from "./Config";
@@ -11,19 +11,19 @@ import firebase from "./firebase";
 import store from "./store";
 
 if (Config.SENTRY_URI) {
-  Raven.config(Config.SENTRY_URI).install();
+  Sentry.init({
+    dsn: Config.SENTRY_URI
+  });
 }
 
-Raven.context(function() {
-  ReactDOM.render(
-    <FirestoreProvider firebase={firebase}>
-      <Provider store={store}>
-        <IntlProvider locale="en">
-          <App />
-        </IntlProvider>
-      </Provider>
-    </FirestoreProvider>,
-    document.getElementById("root")
-  );
-  serviceWorker.register();
-});
+ReactDOM.render(
+  <FirestoreProvider firebase={firebase}>
+    <Provider store={store}>
+      <IntlProvider locale="en">
+        <App />
+      </IntlProvider>
+    </Provider>
+  </FirestoreProvider>,
+  document.getElementById("root")
+);
+serviceWorker.register();
