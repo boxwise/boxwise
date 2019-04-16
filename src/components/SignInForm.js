@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
 import ButtonWithProgress from "./ButtonWithProgress";
-import useForm from "react-hook-form";
+import { useMaterialUIForm } from "../hooks/forms";
 
 const styles = theme => ({
   submit: {
@@ -12,9 +12,23 @@ const styles = theme => ({
 });
 
 const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
-  const { register, handleSubmit, errors } = useForm();
+  const validate = values => {
+    let errors = {};
+    if (!values.email) {
+      errors.email = "Email address is required.";
+    }
+    if (!values.password) {
+      errors.password = "Password is required.";
+    }
+    return errors;
+  };
+  const { handleSubmit, attachValidation } = useMaterialUIForm(
+    userSignIn,
+    validate
+  );
+
   return (
-    <form onSubmit={handleSubmit(userSignIn)}>
+    <form onSubmit={handleSubmit}>
       {serverError ? (
         <FormHelperText error={true} variant="body1">
           {serverError.message}
@@ -26,22 +40,18 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
         label="Email address"
         name="email"
         autoComplete="email"
-        helperText={errors.email && "Please enter your email address"}
-        error={errors.email}
-        inputRef={register({ required: true })}
         fullWidth
         margin="normal"
+        {...attachValidation("email")}
       />
       <TextField
         id="password"
         type="password"
         label="Password"
         name="password"
-        helperText={errors.password && "Please enter your password"}
-        error={errors.password}
-        inputRef={register({ required: true })}
         fullWidth
         margin="normal"
+        {...attachValidation("password")}
       />
       <ButtonWithProgress
         variant="raised"
