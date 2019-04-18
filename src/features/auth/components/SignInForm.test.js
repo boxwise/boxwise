@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import SignInFormUnconnected from "./SignInForm";
+import { StyledSignInForm } from "./SignInForm";
 import { setInputFieldValue } from "commons/utils/test-util";
 
 describe("SignInForm", () => {
@@ -9,7 +9,7 @@ describe("SignInForm", () => {
     Promise.resolve();
   });
   beforeEach(() => {
-    component = mount(<SignInFormUnconnected userSignIn={userSignIn} />);
+    component = mount(<StyledSignInForm userSignIn={userSignIn} />);
   });
   it("does not trigger submission when email is not provided", () => {
     setInputFieldValue(component, "email", "");

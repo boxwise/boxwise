@@ -1,6 +1,6 @@
 import React from "react";
 import { mount } from "enzyme";
-import ResetPassword from "./ResetPasswordForm";
+import { StyledResetPasswordForm } from "./ResetPasswordForm";
 import { setInputFieldValue } from "commons/utils/test-util";
 
 describe("ResetPasswordForm", () => {
@@ -10,7 +10,9 @@ describe("ResetPasswordForm", () => {
   let component;
 
   beforeEach(() => {
-    component = mount(<ResetPassword resetPassword={resetPassword} />);
+    component = mount(
+      <StyledResetPasswordForm resetPassword={resetPassword} />
+    );
   });
 
   it("does not trigger resetPassword when email is not provided", () => {

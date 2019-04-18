@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { resetPassword } from "../../auth";
 import { Field, Formik } from "formik";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
-import ButtonWithProgress from "./ButtonWithProgress";
+import ButtonWithProgress from "../../../components/ButtonWithProgress";
 
 const styles = theme => ({
   submit: {
@@ -50,4 +52,11 @@ const ResetPasswordForm = ({ classes, loading, resetPassword }) => (
   />
 );
 
-export default withStyles(styles)(ResetPasswordForm);
+export const StyledResetPasswordForm = withStyles(styles)(ResetPasswordForm);
+
+const mapState = ({ user: { loading } }) => ({ loading });
+
+export default connect(
+  mapState,
+  { resetPassword }
+)(StyledResetPasswordForm);

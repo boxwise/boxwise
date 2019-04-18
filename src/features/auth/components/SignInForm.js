@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { userSignIn } from "../../auth";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import ButtonWithProgress from "./ButtonWithProgress";
-import { useMaterialUIForm } from "../hooks/forms";
+import ButtonWithProgress from "../../../components/ButtonWithProgress";
+import { useMaterialUIForm } from "../../../hooks/forms";
 
 const styles = theme => ({
   submit: {
@@ -64,4 +66,14 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
   );
 };
 
-export default withStyles(styles)(SignInForm);
+export const StyledSignInForm = withStyles(styles)(SignInForm);
+
+const mapState = ({ user: { error, loading } }) => ({
+  serverError: error,
+  loading
+});
+
+export default connect(
+  mapState,
+  { userSignIn }
+)(StyledSignInForm);

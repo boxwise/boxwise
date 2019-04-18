@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { Link, Redirect } from "react-router-dom";
-import SignInForm from "../containers/components/SignInForm";
+import SignInForm from "./components/SignInForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Page from "../components/Page";
+import Page from "../../components/Page";
 
 const SignInPage = ({ history, user }) =>
   !user.data ? (
@@ -37,4 +39,8 @@ const SignInPage = ({ history, user }) =>
     <Redirect to="/" />
   );
 
-export default SignInPage;
+const mapState = ({ user }) => ({ user });
+export default connect(
+  mapState,
+  {}
+)(withRouter(SignInPage));

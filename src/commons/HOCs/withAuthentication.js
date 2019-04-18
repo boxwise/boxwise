@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
-import { registerAuthStateObserver } from "../../actions/auth";
+import { registerAuthStateObserver } from "../../features/auth";
 import Progress from "../../components/Progress";
 
 export default function withAuthentication(Comp, FallbackComp) {

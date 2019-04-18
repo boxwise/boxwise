@@ -1,9 +1,10 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-import ResetPasswordForm from "../containers/components/ResetPasswordForm";
+import ResetPasswordForm from "./components/ResetPasswordForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Page from "../components/Page";
+import Page from "../../components/Page";
 
 const ResetPasswordPage = ({ history, user }) =>
   !user.hasTriggeredReset ? (
@@ -28,4 +29,8 @@ const ResetPasswordPage = ({ history, user }) =>
     <Redirect to="/signin" />
   );
 
-export default ResetPasswordPage;
+const mapState = ({ user }) => ({ user });
+export default connect(
+  mapState,
+  {}
+)(ResetPasswordPage);
