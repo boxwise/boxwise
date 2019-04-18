@@ -58,22 +58,18 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
     render={({ handleSubmit, isSubmitting, errors, touched, status }) => (
       <form onSubmit={handleSubmit}>
         {status === 0 ? (
-          <Typography variant="body1" color="primary">
+          <Typography color="primary">
             Your password has been updated successfully.
           </Typography>
         ) : null}
 
         {/* TODO: style errors */}
         {errors.form ? (
-          <Typography variant="body1" color="error">
-            {errors.form}
-          </Typography>
+          <Typography color="error">{errors.form}</Typography>
         ) : null}
 
         {touched.currentPassword && errors.currentPassword ? (
-          <Typography variant="body1" color="error">
-            {errors.currentPassword}
-          </Typography>
+          <Typography color="error">{errors.currentPassword}</Typography>
         ) : null}
         <Field
           type="password"
@@ -84,9 +80,7 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
           margin="normal"
         />
         {touched.newPassword && errors.newPassword ? (
-          <Typography variant="body1" color="error">
-            {errors.newPassword}
-          </Typography>
+          <Typography color="error">{errors.newPassword}</Typography>
         ) : null}
         <Field
           type="password"
@@ -97,9 +91,7 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
           margin="normal"
         />
         {touched.confirmedPassword && errors.confirmedPassword ? (
-          <Typography variant="body1" color="error">
-            {errors.confirmedPassword}
-          </Typography>
+          <Typography color="error">{errors.confirmedPassword}</Typography>
         ) : null}
         <Field
           type="password"
@@ -112,19 +104,15 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
         {touched.newPassword &&
         touched.confirmedPassword &&
         errors.mismatchedPassword ? (
-          <Typography variant="body1" color="error">
-            {errors.mismatchedPassword}
-          </Typography>
+          <Typography color="error">{errors.mismatchedPassword}</Typography>
         ) : null}
         {touched.newPassword &&
         touched.confirmedPassword &&
         errors.malformedPassword ? (
-          <Typography variant="body1" color="error">
-            {errors.malformedPassword}
-          </Typography>
+          <Typography color="error">{errors.malformedPassword}</Typography>
         ) : null}
         <ButtonWithProgress
-          variant="raised"
+          variant="contained"
           color="primary"
           type="submit"
           loading={isSubmitting || user.isUpdating}

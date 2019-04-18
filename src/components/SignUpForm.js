@@ -35,9 +35,7 @@ const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
     render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
         {/* TODO: style errors */}
-        {errors.form ? (
-          <Typography variant="body1">{errors.form}</Typography>
-        ) : null}
+        {errors.form ? <Typography>{errors.form}</Typography> : null}
         <Field
           type="name"
           label="Enter your name"
@@ -63,7 +61,7 @@ const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
           margin="normal"
         />
         <ButtonWithProgress
-          variant="raised"
+          variant="contained"
           color="primary"
           type="submit"
           loading={isSubmitting}

@@ -10,15 +10,15 @@ const ResetPasswordPage = ({ history, user }) =>
     <Page>
       <Grid container spacing={24} justify="center" alignItems="center">
         <Grid item xs={12} md={4}>
-          <Typography variant="display1">Reset Password</Typography>
+          <Typography variant="h4">Reset Password</Typography>
           <br />
-          <Typography variant="body1">
+          <Typography>
             Enter the email address you signed up with, and we’ll send you a
             link to reset your password.
           </Typography>
           <ResetPasswordForm />
           <br />
-          <Typography variant="body1">
+          <Typography>
             Remember your password? <Link to="/signin">Sign In!</Link>
           </Typography>
         </Grid>

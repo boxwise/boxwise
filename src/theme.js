@@ -14,8 +14,9 @@ const theme = createMuiTheme({
     }
   },
   typography: {
+    useNextVariants: true,
     fontFamily: fontFamily,
-    headline: {
+    h5: {
       fontFamily: fontFamily,
       fontWeight: 700
     },
@@ -23,10 +24,10 @@ const theme = createMuiTheme({
       fontFamily: fontFamily,
       fontWeight: 700
     },
-    title: {
+    h6: {
       fontFamily: fontFamily
     },
-    subheading: {
+    subtitle1: {
       fontFamily: fontFamily
     }
   },
@@ -48,6 +49,7 @@ const theme = createMuiTheme({
 
 export const drawerTheme = createMuiTheme({
   typography: {
+    useNextVariants: true,
     fontFamily: fontFamily
   },
   palette: {

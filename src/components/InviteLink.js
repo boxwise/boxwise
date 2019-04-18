@@ -37,7 +37,7 @@ class InviteLink extends React.Component {
     }
     return (
       <div>
-        <Typography variant="body1" gutterBottom>
+        <Typography gutterBottom>
           To invite people to your organization, send them this link:
         </Typography>
         <TextField value={inviteLink} fullWidth margin="normal" />

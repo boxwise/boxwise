@@ -37,9 +37,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
         />
         <DialogContent>
           {/* TODO: style errors */}
-          {errors.form ? (
-            <Typography variant="body1">{errors.form}</Typography>
-          ) : null}
+          {errors.form ? <Typography>{errors.form}</Typography> : null}
           {products.length ? (
             <div>
               <Field
@@ -83,11 +81,11 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
             </div>
           ) : (
             <div>
-              <Typography variant="headline" paragraph={true}>
+              <Typography variant="h5" paragraph={true}>
                 You must add products before you can create a box
               </Typography>
               <Button
-                variant="raised"
+                variant="contained"
                 color="secondary"
                 component={Link}
                 to="/products"

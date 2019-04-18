@@ -15,20 +15,18 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
     />
     <DialogContent>
       <br />
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Box created
       </Typography>
-      <Typography variant="body1" gutterBottom>
-        Write on the label:
-      </Typography>
+      <Typography gutterBottom>Write on the label:</Typography>
       <br />
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         <strong>{box.humanID}</strong>
       </Typography>
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         <strong>{box.quantity}x</strong>
       </Typography>
-      <Typography variant="title" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         <strong>{selectedProduct}</strong>
       </Typography>
       <br />

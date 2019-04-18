@@ -11,10 +11,10 @@ import { handleError } from "../utils";
 const OrganizationStep = ({ onDone }) => {
   return (
     <div>
-      <Typography variant="body1" gutterBottom>
+      <Typography gutterBottom>
         Start using Boxwise to manage your warehouse by signing up here.
       </Typography>
-      <Typography variant="body1" gutterBottom>
+      <Typography gutterBottom>
         After giving us a few details about your organization, you'll then be
         able to invite your co-workers to join you in using Boxwise.
       </Typography>
@@ -64,7 +64,7 @@ const InviteStep = ({ onDone }) => {
             <br />
             <br />
 
-            <Button variant="raised" color="primary" onClick={onDone}>
+            <Button variant="contained" color="primary" onClick={onDone}>
               Continue
             </Button>
           </React.Fragment>
@@ -77,12 +77,12 @@ const InviteStep = ({ onDone }) => {
 const DoneStep = ({ onDone }) => {
   return (
     <div>
-      <Typography variant="body1" gutterBottom>
+      <Typography gutterBottom>
         That’s it! You’re all set up. Let’s start making some boxes...
       </Typography>
       <br />
       <br />
-      <Button variant="raised" color="primary" onClick={onDone}>
+      <Button variant="contained" color="primary" onClick={onDone}>
         Start using Boxwise
       </Button>
     </div>

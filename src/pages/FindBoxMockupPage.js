@@ -102,19 +102,19 @@ class FindBoxMockupPage extends React.Component {
         <Page>
           <Grid container className={classes.root} xs={12} sm={9} md={7}>
             <Paper className={classes.paper}>
-              <Typography variant="subheading" paragraph>
+              <Typography variant="subtitle1" paragraph>
                 Choose a product category
               </Typography>
               <CategorySelector />
             </Paper>
 
             <Paper className={classes.paper}>
-              <Typography variant="subheading" paragraph>
+              <Typography variant="subtitle1" paragraph>
                 Current category:
               </Typography>
               <ProductButton icon="male" label="Man" />
               <div style={{ clear: "both" }} />
-              <Typography variant="subheading" paragraph>
+              <Typography variant="subtitle1" paragraph>
                 Choose a product
               </Typography>
               <ProductSelectorMockup />

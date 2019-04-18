@@ -55,7 +55,7 @@ const BoxList = ({
     );
   } else if (!boxes.length) {
     list = (
-      <Typography className={classes.empty} variant="body1">
+      <Typography className={classes.empty}>
         No boxes. <Link to="/">Make some?</Link>
       </Typography>
     );

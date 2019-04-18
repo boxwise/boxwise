@@ -12,13 +12,13 @@ exports[`renders correctly 1`] = `
         component={[Function]}
         to="/signin"
       >
-        <pure(ArrowBack) />
+        <pure(ArrowBackIcon) />
       </WithStyles(IconButton)>
       <WithStyles(Typography)
         className="styles"
         color="inherit"
         noWrap={true}
-        variant="title"
+        variant="h6"
       >
         Set up Boxwise
       </WithStyles(Typography)>
