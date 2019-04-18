@@ -54,11 +54,11 @@ class DashboardPage extends React.Component {
             onClose={() => this.setState({ addBoxDialogOpen: false })}
           />
           <Paper className={classes.paper}>
-            <Typography variant="headline" paragraph={true}>
+            <Typography variant="h5" paragraph={true}>
               <FormattedMessage {...messages.headline} />
             </Typography>
             <Button
-              variant="raised"
+              variant="contained"
               color="secondary"
               onClick={() => this.setState({ addBoxDialogOpen: true })}
             >
@@ -67,7 +67,7 @@ class DashboardPage extends React.Component {
             <br />
             <br />
             <Button
-              variant="raised"
+              variant="contained"
               color="secondary"
               component={Link}
               to="/boxes"

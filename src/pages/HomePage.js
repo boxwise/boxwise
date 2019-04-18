@@ -55,7 +55,7 @@ const HomePage = ({ classes }) => (
       <div className={classes.header}>
         <div className={classes.logo}>Boxwise</div>
         <div className={classes.login}>
-          <Typography variant="body1">
+          <Typography>
             <Link className={classes.link} to="/signin">
               Login or sign up
             </Link>
@@ -101,7 +101,8 @@ const HomePage = ({ classes }) => (
           rel="noopener noreferrer"
         >
           Github
-        </a>!
+        </a>
+        !
       </div>
     </Grid>
   </Page>

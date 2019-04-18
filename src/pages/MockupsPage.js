@@ -8,7 +8,7 @@ const JoinPage = () => (
   <Page>
     <Grid container spacing={24} justify="center" alignItems="center">
       <Grid item xs={12} md={4}>
-        <Typography variant="headline">Mockups</Typography>
+        <Typography variant="h5">Mockups</Typography>
         <ul>
           <li>
             <Link to="/mockups/make-box">Make box</Link>

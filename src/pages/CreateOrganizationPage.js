@@ -33,7 +33,7 @@ export const CreateOrganizationPage = ({ classes, history }) => (
         </IconButton>
         <Typography
           className={classes.titleText}
-          variant="title"
+          variant="h6"
           color="inherit"
           noWrap
         >

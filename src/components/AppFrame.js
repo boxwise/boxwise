@@ -89,7 +89,7 @@ class AppFrame extends React.Component {
             {title !== null && (
               <Typography
                 className={classes.title}
-                variant="title"
+                variant="h6"
                 color="inherit"
                 noWrap
               >

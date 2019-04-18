@@ -27,9 +27,7 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
     render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
         {/* TODO: style errors */}
-        {errors.form ? (
-          <Typography variant="body1">{errors.form}</Typography>
-        ) : null}
+        {errors.form ? <Typography>{errors.form}</Typography> : null}
         <Field
           type="text"
           label="What’s the name of your organization?"
@@ -39,7 +37,7 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
           margin="normal"
         />
         <ButtonWithProgress
-          variant="raised"
+          variant="contained"
           color="primary"
           type="submit"
           loading={isSubmitting}

@@ -68,9 +68,7 @@ const ProductDialog = ({
           />
           <DialogContent>
             {/* TODO: style errors */}
-            {errors.form ? (
-              <Typography variant="body1">{errors.form}</Typography>
-            ) : null}
+            {errors.form ? <Typography>{errors.form}</Typography> : null}
             <Field
               label="Category"
               name="category"

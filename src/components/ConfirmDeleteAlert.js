@@ -27,7 +27,7 @@ const ConfirmDeleteAlert = ({ open = false, onCancel, onConfirm, text }) => {
         <Button
           onClick={onConfirm}
           color="secondary"
-          variant="raised"
+          variant="contained"
           autoFocus
         >
           Delete

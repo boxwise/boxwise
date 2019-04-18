@@ -40,12 +40,13 @@ class NotFound extends React.Component {
           <Grid container>
             <Paper className={classes.paper}>
               <img src="/images/empty-box.png" className={classes.image} />
-              <Typography variant="headline" paragraph>
+              <Typography variant="h5" paragraph>
                 There is nothing here
               </Typography>
               <Typography component="p" paragraph>
-                What you are looking for might<br />be in the main menu on the
-                left.
+                What you are looking for might
+                <br />
+                be in the main menu on the left.
               </Typography>
             </Paper>
           </Grid>

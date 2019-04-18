@@ -88,32 +88,32 @@ class MakeBoxMockupPage extends React.Component {
                 Barcodes are not yet operational. Press "Next Step" to proceed
                 making a box without a barcode
               </Typography>
-              <Button variant="raised" color="secondary">
+              <Button variant="contained" color="secondary">
                 Next step
               </Button>
             </Paper>
 
             <Paper className={classes.paper}>
-              <Typography variant="subheading" paragraph="true">
+              <Typography variant="subtitle1" paragraph="true">
                 Choose a product category for this box
               </Typography>
               <CategorySelector />
             </Paper>
 
             <Paper className={classes.paper}>
-              <Typography variant="subheading" paragraph="true">
+              <Typography variant="subtitle1" paragraph="true">
                 Current category:
               </Typography>
               <ProductButton icon="male" label="Man" />
               <div style={{ clear: "both" }} />
-              <Typography variant="subheading" paragraph="true">
+              <Typography variant="subtitle1" paragraph="true">
                 Choose a product
               </Typography>
               <ProductSelectorMockup />
             </Paper>
 
             <Paper className={classes.paper}>
-              <Typography variant="subheading" paragraph="true">
+              <Typography variant="subtitle1" paragraph="true">
                 Fill in the rest of the details for this box
               </Typography>
               <ProductButton icon="male" label="Man" />
@@ -133,28 +133,30 @@ class MakeBoxMockupPage extends React.Component {
                 className={classes.inputComments}
                 margin="normal"
               />
-              <Button variant="raised" color="secondary">
+              <Button variant="contained" color="secondary">
                 Save this box
               </Button>
             </Paper>
 
             <Paper className={classes.paper}>
-              <Typography variant="subheading" paragraph="true">
+              <Typography variant="subtitle1" paragraph="true">
                 Finish the box
               </Typography>
               <Typography component="p" paragraph="true">
                 Write this information on the label:
               </Typography>
-              <Typography variant="headline" paragraph="true">
-                642213<br />
-                40x<br />
+              <Typography variant="h5" paragraph="true">
+                642213
+                <br />
+                40x
+                <br />
                 T-Shirts Man
               </Typography>
               <Typography component="p" paragraph="true">
                 Attach the label to the box, close it and store it on the right
                 position in the warehouse.
               </Typography>
-              <Button variant="raised" color="secondary">
+              <Button variant="contained" color="secondary">
                 Make another box
               </Button>
             </Paper>

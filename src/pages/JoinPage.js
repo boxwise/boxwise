@@ -15,7 +15,7 @@ const JoinPage = ({ history, match }) => (
   <Page>
     <Grid container spacing={24} justify="center" alignItems="center">
       <Grid item xs={12} md={4}>
-        <Typography variant="display1">Join Boxwise</Typography>
+        <Typography variant="h4">Join Boxwise</Typography>
         <br />
         <FirestoreDocument
           path={`invites/${match.params.inviteId}`}
@@ -24,7 +24,7 @@ const JoinPage = ({ history, match }) => (
               return <Progress />;
             } else if (!snapshot.exists) {
               return (
-                <Typography variant="body1">
+                <Typography>
                   This invite link is invalid. Ask the person who sent it to you
                   to try making it again.
                 </Typography>
@@ -39,7 +39,7 @@ const JoinPage = ({ history, match }) => (
                   } else {
                     return (
                       <React.Fragment>
-                        <Typography variant="body1">
+                        <Typography>
                           You have been invited by{" "}
                           <strong>{organization.name}</strong> to join them on
                           Boxwise.

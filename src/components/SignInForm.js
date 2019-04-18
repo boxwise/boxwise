@@ -30,9 +30,7 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
   return (
     <form onSubmit={handleSubmit}>
       {serverError ? (
-        <FormHelperText error={true} variant="body1">
-          {serverError.message}
-        </FormHelperText>
+        <FormHelperText error={true}>{serverError.message}</FormHelperText>
       ) : null}
       <TextField
         id="email"
@@ -54,7 +52,7 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
         {...attachValidation("password")}
       />
       <ButtonWithProgress
-        variant="raised"
+        variant="contained"
         color="primary"
         type="submit"
         loading={loading || false}
