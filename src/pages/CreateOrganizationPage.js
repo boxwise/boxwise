@@ -1,5 +1,6 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useRouter } from "../hooks/routing";
 import { withStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -19,43 +20,45 @@ const styles = theme => ({
   }
 });
 
-export const CreateOrganizationPage = ({ classes, history }) => (
-  <div>
-    <AppBar position="fixed">
-      <Toolbar>
-        <IconButton
-          color="inherit"
-          aria-label="go back"
-          component={Link}
-          to="/signin"
-        >
-          <ArrowBack />
-        </IconButton>
-        <Typography
-          className={classes.titleText}
-          variant="title"
-          color="inherit"
-          noWrap
-        >
-          {"Set up Boxwise"}
-        </Typography>
-      </Toolbar>
-    </AppBar>
-    <Toolbar />
-    <Page>
-      <Grid container spacing={24} justify="center" alignItems="center">
-        <Grid item xs={12} md={4}>
-          <br />
-          <br />
-          <CreateOrganizationFlow
-            onDone={() => {
-              history.push("/");
-            }}
-          />
+export const CreateOrganizationPage = ({ classes, history = useRouter() }) => {
+  return (
+    <div>
+      <AppBar position="fixed">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="go back"
+            component={Link}
+            to="/signin"
+          >
+            <ArrowBack />
+          </IconButton>
+          <Typography
+            className={classes.titleText}
+            variant="title"
+            color="inherit"
+            noWrap
+          >
+            {"Set up Boxwise"}
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Toolbar />
+      <Page>
+        <Grid container spacing={24} justify="center" alignItems="center">
+          <Grid item xs={12} md={4}>
+            <br />
+            <br />
+            <CreateOrganizationFlow
+              onDone={() => {
+                history.push("/");
+              }}
+            />
+          </Grid>
         </Grid>
-      </Grid>
-    </Page>
-  </div>
-);
+      </Page>
+    </div>
+  );
+};
 
-export default withStyles(styles)(withRouter(CreateOrganizationPage));
+export default withStyles(styles)(CreateOrganizationPage);
