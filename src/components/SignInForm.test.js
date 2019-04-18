@@ -30,12 +30,9 @@ describe("SignInForm", () => {
     setInputFieldValue(component, "password", "password");
     component.find("button[type='submit']").simulate("submit");
 
-    expect(userSignIn).toBeCalledWith(
-      {
-        email: "test@example.com",
-        password: "password"
-      },
-      expect.any(Object)
-    );
+    expect(userSignIn).toBeCalledWith({
+      email: "test@example.com",
+      password: "password"
+    });
   });
 });
