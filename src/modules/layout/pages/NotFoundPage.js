@@ -4,7 +4,8 @@ import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 
-import { Page, AppFrame } from "modules/layout";
+import Page from "../components/Page";
+import AppFrame from "../components/AppFrame";
 
 const styles = theme => ({
   div: {
