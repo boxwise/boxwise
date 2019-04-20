@@ -1,4 +1,4 @@
-{
+module.exports = {
   // these rules should only be run when we are auto-fixing
   // don't bother hassling anyone during development
   "rules": {

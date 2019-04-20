@@ -5,7 +5,7 @@ import { FirestoreCollection } from "react-firestore";
 import { ProductsCollection } from "modules/products/queries";
 import { firestore } from "firebase.js";
 
-import BoxList from "./BoxList";
+import BoxList from "../components/BoxList";
 
 class BoxListContainer extends React.Component {
   state = {
