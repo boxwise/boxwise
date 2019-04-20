@@ -1,0 +1,33 @@
+{
+  "plugins": ["eslint-plugin-import"],
+  "extends": ["react-app","plugin:import/errors"],
+  "env": {
+    "jasmine": true
+  },
+  "rules": {
+    "import/order": [ "error", 
+      {
+        "newlines-between": "always",
+        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
+      }],
+    "no-restricted-imports": [ "error",
+      {
+        "patterns": [
+          /* don't allow imports of internal modules */
+          //"\\./modules/*/**",
+          /* don't allow relative imports that go up the tree */
+          //"../**",
+          /* don't allow ./ imports - instead just use the name */
+          //"./**"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "moduleDirectory": ["node_modules", "src/"]
+      }
+    }
+  }
+}
