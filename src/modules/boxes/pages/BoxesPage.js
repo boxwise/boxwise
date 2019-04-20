@@ -2,7 +2,7 @@ import React from "react";
 
 import AppFrame from "components/AppFrame";
 
-import BoxListContainer from "../components/BoxListContainer";
+import BoxListContainer from "../containers/BoxListContainer";
 
 class BoxesPage extends React.Component {
   render() {

@@ -7,7 +7,7 @@ import { ProductsCollection } from "modules/products/queries";
 import AddBoxForm from "./AddBoxForm";
 import AddBoxDone from "./AddBoxDone";
 
-export default class AddBoxDialogContainer extends PureComponent {
+export default class AddBoxDialog extends PureComponent {
   static propTypes = {
     open: bool.isRequired,
     onClose: func
