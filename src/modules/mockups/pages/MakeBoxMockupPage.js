@@ -9,9 +9,10 @@ import TextField from "@material-ui/core/TextField";
 
 import Page from "components/Page";
 import AppFrame from "components/AppFrame";
-import CategorySelector from "components/CategorySelector";
-import ProductSelectorMockup from "components/ProductSelectorMockup";
-import ProductButton from "components/ProductButton";
+
+import CategorySelector from "../components/CategorySelector";
+import ProductSelectorMockup from "../components/ProductSelectorMockup";
+import ProductButton from "../components/ProductButton";
 
 const styles = theme => ({
   formControl: {
