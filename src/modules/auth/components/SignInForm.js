@@ -14,7 +14,7 @@ const styles = theme => ({
 
 const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
   const validate = values => {
-    let errors = {};
+    const errors = {};
     if (!values.email) {
       errors.email = "Email address is required.";
     }

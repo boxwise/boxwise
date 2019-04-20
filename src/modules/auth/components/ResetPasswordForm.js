@@ -18,7 +18,7 @@ const ResetPasswordForm = ({ classes, loading, resetPassword }) => (
       email: ""
     }}
     validate={values => {
-      let errors = {};
+      const errors = {};
       if (!values.email) {
         errors.email = "Enter your email.";
       }

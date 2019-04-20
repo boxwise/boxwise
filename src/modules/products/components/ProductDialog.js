@@ -1,4 +1,3 @@
-
 import React from "react";
 import PropTypes from "prop-types";
 import { Formik, Field } from "formik";
@@ -44,7 +43,7 @@ const ProductDialog = ({
     <Formik
       initialValues={initialValue || { category: "" }}
       validate={values => {
-        let errors = {};
+        const errors = {};
         if (!values.category) {
           errors.category = "Select a category.";
         }

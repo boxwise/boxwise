@@ -17,7 +17,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
       comment: ""
     }}
     validate={values => {
-      let errors = {};
+      const errors = {};
       if (!values.product) {
         errors.product = "Select a product.";
       }

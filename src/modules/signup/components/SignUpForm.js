@@ -20,7 +20,7 @@ const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
       password: ""
     }}
     validate={values => {
-      let errors = {};
+      const errors = {};
       if (!values.name) {
         errors.name = "Enter your name.";
       }
