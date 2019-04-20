@@ -4,8 +4,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 
-import AppFrame from "components/AppFrame";
-import Page from "components/Page";
+import { Page, AppFrame } from "modules/layout";
 
 import ProductTable from "../containers/ProductTable";
 import AddProductDialog from "../containers/AddProductDialog";

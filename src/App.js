@@ -28,8 +28,7 @@ import { BoxesPage, CreateLabelsPage } from "./modules/boxes";
 import Config from "./Config";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
-import DashboardPage from "./pages/DashboardPage";
-import NotFound from "./components/NotFound";
+import { NotFoundPage, DashboardPage } from "./modules/layout";
 import theme from "./theme";
 import withAuthentication from "./commons/HOCs/withAuthentication";
 
@@ -110,7 +109,7 @@ const App = () => (
               path="/mockups/find-box"
               component={() => <FindBoxMockupPage />}
             />
-            <Route component={NotFound} />
+            <Route component={NotFoundPage} />
           </Switch>
           {/* this is outside the switch so the 404 works */}
           <Route path="/" render={recordPageview} />

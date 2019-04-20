@@ -35,11 +35,11 @@ module.exports = {
               /* 
                 rule: don't allow relative imports that go up the tree
                 why: these components should be self-contained */
-              "../**"
+              "../**",
               /* 
                 rule: don't allow imports of modules
                 why: these components should be standalone */
-              //"modules/**"
+              "modules/**"
             ]
           }
         ]

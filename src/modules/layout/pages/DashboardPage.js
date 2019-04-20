@@ -13,8 +13,9 @@ import {
 } from "react-intl";
 
 import { AddBoxDialog } from "modules/boxes";
-import Page from "components/Page";
-import AppFrame from "components/AppFrame";
+
+import Page from "../components/Page";
+import AppFrame from "../components/AppFrame";
 
 const styles = theme => ({
   paper: theme.mixins.gutters({

@@ -1,6 +1,6 @@
 import React from "react";
 
-import AppFrame from "components/AppFrame";
+import { AppFrame } from "modules/layout";
 
 import BoxListContainer from "../containers/BoxListContainer";
 
