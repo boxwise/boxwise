@@ -12,8 +12,8 @@ import {
   defineMessages
 } from "react-intl";
 
+import { AddBoxDialog } from "modules/boxes";
 import Page from "components/Page";
-import AddBoxDialog from "containers/components/AddBoxDialog";
 import AppFrame from "components/AppFrame";
 
 const styles = theme => ({

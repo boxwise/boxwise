@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import AddBoxDialog from "components/AddBoxDialog";
-import { addBox } from "actions/box";
+import AddBoxDialog from "../components/AddBoxDialog";
+import { addBox } from "../actions";
 
 const mapStateToProps = ({ profile }) => ({ profile });
 const mapDispatchToProps = { addBox };
