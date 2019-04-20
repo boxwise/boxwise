@@ -4,11 +4,12 @@ import { FirestoreDocument } from "react-firestore";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import SignUpForm from "components/SignUpForm";
 import Progress from "components/Progress.js";
 import Page from "components/Page";
 import { createUserAndProfile } from "auth";
 import { handleError } from "utils";
+
+import SignUpForm from "../components/SignUpForm";
 
 // TODO: clean this up. needs some separate components and containers.
 

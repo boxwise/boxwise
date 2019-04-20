@@ -9,7 +9,8 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
 import Page from "components/Page";
-import CreateOrganizationFlow from "components/CreateOrganizationFlow";
+
+import CreateOrganizationFlow from "./CreateOrganizationFlow";
 
 const styles = theme => ({
   titleText: {
