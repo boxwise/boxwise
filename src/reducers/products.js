@@ -3,7 +3,7 @@ import {
   PRODUCT_LIST,
   PRODUCT_EDIT,
   PRODUCT_ADD
-} from "../actions/product";
+} from "actions/product";
 
 export default function products(
   state = {

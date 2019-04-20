@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "enzyme";
 
-import ResetPassword from "./ResetPasswordForm";
-
 import { setInputFieldValue } from "commons/utils/test-util";
+
+import ResetPassword from "./ResetPasswordForm";
 
 describe("ResetPasswordForm", () => {
   const resetPassword = jest.fn(({ email }) => {

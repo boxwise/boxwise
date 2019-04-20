@@ -7,8 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 
-import { getOrAddInvite, createInviteLink } from "../queries/invites";
-import { waitForProfile, handleError } from "../utils";
+import { getOrAddInvite, createInviteLink } from "queries/invites";
+import { waitForProfile, handleError } from "utils";
 
 import Progress from "./Progress.js";
 

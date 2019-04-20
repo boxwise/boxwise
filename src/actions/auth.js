@@ -1,6 +1,6 @@
-import firebase from "../firebase";
-import { handleError } from "../utils";
-import { asyncAction, editAction } from "../commons/utils/action-creators";
+import { handleError } from "utils";
+import { asyncAction, editAction } from "commons/utils/action-creators";
+import firebase from "firebase.js";
 
 import { fetchProfile } from "./profile";
 

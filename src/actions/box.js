@@ -1,5 +1,5 @@
-import firebase, { firestore } from "../firebase";
-import { handleError } from "../utils";
+import { handleError } from "utils";
+import firebase, { firestore } from "firebase.js";
 
 const BOX_ADD_ = TYPE => `BOX_ADD_${TYPE}`;
 export const BOX_ADD_START = BOX_ADD_`START`;

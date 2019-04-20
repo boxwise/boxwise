@@ -4,10 +4,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 
-import AppFrame from "../components/AppFrame";
-import Page from "../components/Page";
-import ProductTable from "../containers/components/ProductTable";
-import AddProductDialog from "../containers/components/AddProductDialog";
+import AppFrame from "components/AppFrame";
+import Page from "components/Page";
+import ProductTable from "containers/components/ProductTable";
+import AddProductDialog from "containers/components/AddProductDialog";
 
 const styles = theme => ({
   table: {

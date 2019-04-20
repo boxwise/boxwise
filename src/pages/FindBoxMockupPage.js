@@ -1,35 +1,19 @@
-/* eslint-disable */
-
 import React from "react";
-import AppFrame from "../components/AppFrame";
-import Page from "../components/Page";
-import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
-import Toolbar from "@material-ui/core/Toolbar";
-import BoxListContainer from "../components/BoxListContainer";
-
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import FormControl from "@material-ui/core/FormControl";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import ButtonBase from "@material-ui/core/ButtonBase";
-import TextField from "@material-ui/core/TextField";
-
-import CategorySelector from "../components/CategorySelector";
-import ProductSelectorMockup from "../components/ProductSelectorMockup";
-import ProductButton from "../components/ProductButton";
-
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import IconButton from "@material-ui/core/IconButton";
-import CommentIcon from "@material-ui/icons/Comment";
 import Checkbox from "@material-ui/core/Checkbox";
+
+import ProductButton from "components/ProductButton";
+import ProductSelectorMockup from "components/ProductSelectorMockup";
+import CategorySelector from "components/CategorySelector";
+import Page from "components/Page";
+import AppFrame from "components/AppFrame";
 
 const styles = theme => ({
   categorySelect: {
@@ -95,7 +79,6 @@ class FindBoxMockupPage extends React.Component {
 
   render() {
     const { classes } = this.props;
-    const { spacing } = this.state;
 
     return (
       <AppFrame title="Find a box">

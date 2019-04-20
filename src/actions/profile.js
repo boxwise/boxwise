@@ -1,5 +1,5 @@
-import { firestore } from "../firebase";
-import { handleError } from "../utils";
+import { handleError } from "utils";
+import { firestore } from "firebase.js";
 
 const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
 export const FETCH_PROFILE_START = FETCH_PROFILE_`START`;

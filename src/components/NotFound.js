@@ -1,13 +1,11 @@
-/* eslint-disable */
-
 import React from "react";
-import AppFrame from "../components/AppFrame";
-import Page from "../components/Page";
 import Typography from "@material-ui/core/Typography";
-
 import { withStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
+
+import Page from "components/Page";
+import AppFrame from "components/AppFrame";
 
 const styles = theme => ({
   div: {
@@ -39,7 +37,11 @@ class NotFound extends React.Component {
         <Page>
           <Grid container>
             <Paper className={classes.paper}>
-              <img src="/images/empty-box.png" className={classes.image} />
+              <img
+                src="/images/empty-box.png"
+                alt="empty box"
+                className={classes.image}
+              />
               <Typography variant="h5" paragraph>
                 There is nothing here
               </Typography>

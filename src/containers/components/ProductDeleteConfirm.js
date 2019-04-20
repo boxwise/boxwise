@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import ConfirmDeleteAlert from "../../components/ConfirmDeleteAlert";
-import { productDelete, productDeleteCancel } from "../../actions/product";
+import ConfirmDeleteAlert from "components/ConfirmDeleteAlert";
+import { productDelete, productDeleteCancel } from "actions/product";
 
 const mapStateToProps = ({ products: { confirmDeleteOf } }) => ({
   confirmDeleteOf

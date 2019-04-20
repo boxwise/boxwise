@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { FirestoreCollection } from "react-firestore";
 
-import { ProductsCollection } from "../queries/products";
-import { firestore } from "../firebase";
+import { ProductsCollection } from "queries/products";
+import { firestore } from "firebase.js";
 
 import BoxList from "./BoxList";
 

@@ -6,7 +6,7 @@ import * as firestore from "expect-firestore";
 let describeButSkipIfNoKey = describe;
 let serviceAccountKey;
 try {
-  serviceAccountKey = require("../../.service-account-key.json");
+  serviceAccountKey = require(".service-account-key.json");
 } catch (e) {
   describeButSkipIfNoKey = describe.skip;
 }

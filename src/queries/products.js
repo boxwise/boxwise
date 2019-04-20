@@ -1,7 +1,7 @@
 import React from "react";
 import { FirestoreCollection } from "react-firestore";
 
-import { firestore } from "../firebase";
+import { firestore } from "firebase.js";
 
 export const ProductsCollection = ({ organizationRef, ...props }) => (
   <FirestoreCollection

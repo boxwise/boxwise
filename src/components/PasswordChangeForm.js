@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 
-import { handleError } from "../utils";
+import { handleError } from "utils";
 
 import ButtonWithProgress from "./ButtonWithProgress";
 

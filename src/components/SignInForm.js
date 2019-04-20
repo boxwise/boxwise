@@ -3,7 +3,7 @@ import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
-import { useMaterialUIForm } from "../hooks/forms";
+import { useMaterialUIForm } from "hooks/forms";
 
 import ButtonWithProgress from "./ButtonWithProgress";
 
