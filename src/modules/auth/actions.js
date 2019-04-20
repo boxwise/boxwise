@@ -1,6 +1,6 @@
+import { fetchProfile } from "modules/profile/actions";
 import { handleError } from "utils";
 import { asyncAction, editAction } from "commons/utils/action-creators";
-import { fetchProfile } from "actions/profile";
 import firebase from "firebase.js";
 
 export const USER_SIGN_IN = asyncAction("USER_SIGN_IN");
