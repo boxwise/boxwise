@@ -8,8 +8,10 @@ import TableRow from "@material-ui/core/TableRow";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+
 import EditProductDialog from "../containers/components/EditProductDialog";
 import ProductDeleteConfirm from "../containers/components/ProductDeleteConfirm.js";
+
 import Progress from "./Progress.js";
 
 const styles = theme => ({

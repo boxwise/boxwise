@@ -1,5 +1,6 @@
 import React from "react";
 import * as Sentry from "@sentry/browser";
+
 import Progress from "./components/Progress.js";
 
 // HACK: some of our components need a profile, but there's no easy way to just

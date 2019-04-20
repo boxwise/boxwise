@@ -2,8 +2,10 @@ import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
-import ButtonWithProgress from "./ButtonWithProgress";
+
 import { useMaterialUIForm } from "../hooks/forms";
+
+import ButtonWithProgress from "./ButtonWithProgress";
 
 const styles = theme => ({
   submit: {

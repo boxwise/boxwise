@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import SignInForm from "../containers/components/SignInForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+
+import SignInForm from "../containers/components/SignInForm";
 import Page from "../components/Page";
 
 const SignInPage = ({ history, user }) =>

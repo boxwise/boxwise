@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { FirestoreProvider } from "react-firestore";
 import * as Sentry from "@sentry/browser";
 import { IntlProvider } from "react-intl";
+
 import App from "./App";
 import Config from "./Config";
 import * as serviceWorker from "./serviceWorker";

@@ -1,10 +1,11 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import Page from "../components/Page";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
+
+import Page from "../components/Page";
 import { fontFamily } from "../theme";
 
 const styles = {
