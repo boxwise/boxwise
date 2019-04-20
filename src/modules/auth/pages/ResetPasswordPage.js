@@ -3,7 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import Page from "components/Page";
+import { Page } from "modules/layout";
 
 import ResetPasswordForm from "../components/ResetPasswordForm";
 

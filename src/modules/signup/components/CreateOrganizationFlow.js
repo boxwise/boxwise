@@ -6,9 +6,10 @@ import { createUserAndProfile } from "auth";
 import { handleError } from "utils";
 
 import { addOrganization } from "../queries/organizations";
-import CreateOrganizationForm from "../components/CreateOrganizationForm";
-import SignUpForm from "../components/SignUpForm";
 import InviteLink from "../containers/InviteLink";
+
+import CreateOrganizationForm from "./CreateOrganizationForm";
+import SignUpForm from "./SignUpForm";
 
 const OrganizationStep = ({ onDone }) => {
   return (

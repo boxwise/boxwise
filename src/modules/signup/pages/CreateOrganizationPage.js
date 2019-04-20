@@ -8,9 +8,9 @@ import ArrowBack from "@material-ui/icons/ArrowBack";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import Page from "components/Page";
+import { Page } from "modules/layout";
 
-import CreateOrganizationFlow from "./CreateOrganizationFlow";
+import CreateOrganizationFlow from "../components/CreateOrganizationFlow";
 
 const styles = theme => ({
   titleText: {

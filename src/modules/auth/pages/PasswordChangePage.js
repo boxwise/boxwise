@@ -1,7 +1,6 @@
 import React from "react";
 
-import AppFrame from "components/AppFrame";
-import Page from "components/Page";
+import { Page, AppFrame } from "modules/layout";
 
 import PasswordChangeForm from "../components/PasswordChangeForm";
 
