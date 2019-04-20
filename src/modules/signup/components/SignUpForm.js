@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 
-import ButtonWithProgress from "./ButtonWithProgress";
+import ButtonWithProgress from "components/ButtonWithProgress";
 
 const styles = theme => ({
   submit: {
@@ -12,15 +12,23 @@ const styles = theme => ({
   }
 });
 
-const CreateOrganizationForm = ({ classes, onSubmit }) => (
+const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
   <Formik
     initialValues={{
-      name: ""
+      name: "",
+      email: "",
+      password: ""
     }}
     validate={values => {
       let errors = {};
       if (!values.name) {
-        errors.name = "Enter a name.";
+        errors.name = "Enter your name.";
+      }
+      if (!values.email) {
+        errors.email = "Enter your email.";
+      }
+      if (!values.password) {
+        errors.password = "Enter a password.";
       }
       return errors;
     }}
@@ -30,9 +38,25 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
         {/* TODO: style errors */}
         {errors.form ? <Typography>{errors.form}</Typography> : null}
         <Field
-          type="text"
-          label="What’s the name of your organization?"
+          type="name"
+          label="Enter your name"
           name="name"
+          component={TextField}
+          fullWidth
+          margin="normal"
+        />
+        <Field
+          type="email"
+          label="What is your email?"
+          name="email"
+          component={TextField}
+          fullWidth
+          margin="normal"
+        />
+        <Field
+          type="password"
+          label="Choose a password"
+          name="password"
           component={TextField}
           fullWidth
           margin="normal"
@@ -44,11 +68,15 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
           loading={isSubmitting}
           className={classes.submit}
         >
-          Continue
+          {submitButtonText}
         </ButtonWithProgress>
       </form>
     )}
   />
 );
 
-export default withStyles(styles)(CreateOrganizationForm);
+SignUpForm.defaultProps = {
+  submitButtonText: "Sign Up"
+};
+
+export default withStyles(styles)(SignUpForm);

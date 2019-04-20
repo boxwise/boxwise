@@ -17,16 +17,18 @@ import {
   PasswordChangePage
 } from "modules/auth";
 
+import {
+  InvitePage,
+  CreateOrganizationPage,
+  JoinPage,
+  HomePage
+} from "./modules/signup";
+import { ProductsPage } from "./modules/products";
+import { BoxesPage, CreateLabelsPage } from "./modules/boxes";
 import Config from "./Config";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
 import DashboardPage from "./pages/DashboardPage";
-import { BoxesPage, CreateLabelsPage } from "./modules/boxes";
-import HomePage from "./pages/HomePage";
-import { ProductsPage } from "./modules/products";
-import CreateOrganizationPage from "./pages/CreateOrganizationPage";
-import InvitePage from "./pages/InvitePage";
-import JoinPage from "./pages/JoinPage";
 import NotFound from "./components/NotFound";
 import theme from "./theme";
 import withAuthentication from "./commons/HOCs/withAuthentication";
