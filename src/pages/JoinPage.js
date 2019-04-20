@@ -1,9 +1,10 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { FirestoreDocument } from "react-firestore";
-import SignUpForm from "../components/SignUpForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+
+import SignUpForm from "../components/SignUpForm";
 import Progress from "../components/Progress.js";
 import Page from "../components/Page";
 import { createUserAndProfile } from "../auth";

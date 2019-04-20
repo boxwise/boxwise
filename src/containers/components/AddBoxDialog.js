@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+
 import AddBoxDialog from "../../components/AddBoxDialog";
 import { addBox } from "../../actions/box";
 

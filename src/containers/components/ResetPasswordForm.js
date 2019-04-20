@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+
 import { resetPassword } from "../../actions/auth";
 import ResetPasswordForm from "../../components/ResetPasswordForm";
 

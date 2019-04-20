@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+
 import ProductTableWrapper from "../../components/ProductTable";
 import { productDeleteConfirm, productList } from "../../actions/product";
 

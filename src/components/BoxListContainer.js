@@ -1,9 +1,11 @@
 import React from "react";
-import BoxList from "./BoxList";
 import { connect } from "react-redux";
 import { FirestoreCollection } from "react-firestore";
+
 import { ProductsCollection } from "../queries/products";
 import { firestore } from "../firebase";
+
+import BoxList from "./BoxList";
 
 class BoxListContainer extends React.Component {
   state = {

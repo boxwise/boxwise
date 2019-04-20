@@ -1,6 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReactGA from "react-ga";
+import { MuiThemeProvider } from "@material-ui/core/styles";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { addLocaleData } from "react-intl";
+import en from "react-intl/locale-data/en";
+
 import Config from "./Config";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -19,13 +24,7 @@ import MockupsPage from "./pages/MockupsPage";
 import MakeBoxMockupPage from "./pages/MakeBoxMockupPage";
 import FindBoxMockupPage from "./pages/FindBoxMockupPage";
 import NotFound from "./components/NotFound";
-
 import theme from "./theme";
-import { MuiThemeProvider } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-
-import { addLocaleData } from "react-intl";
-import en from "react-intl/locale-data/en";
 import withAuthentication from "./commons/HOCs/withAuthentication";
 
 addLocaleData([...en]);

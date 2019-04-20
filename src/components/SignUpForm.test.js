@@ -1,6 +1,8 @@
 import React from "react";
 import { mount } from "enzyme";
+
 import SignUpFormUnconnected from "./SignUpForm";
+
 import { setInputFieldValue } from "commons/utils/test-util";
 
 describe("SignUpForm", () => {

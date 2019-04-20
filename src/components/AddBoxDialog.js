@@ -2,10 +2,10 @@ import React, { PureComponent } from "react";
 import { bool, func } from "prop-types";
 import Dialog from "@material-ui/core/Dialog";
 
+import { ProductsCollection } from "../queries/products";
+
 import AddBoxForm from "./AddBoxForm";
 import AddBoxDone from "./AddBoxDone";
-
-import { ProductsCollection } from "../queries/products";
 
 export default class AddBoxDialogContainer extends PureComponent {
   static propTypes = {

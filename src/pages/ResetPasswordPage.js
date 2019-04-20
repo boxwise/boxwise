@@ -1,8 +1,9 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import ResetPasswordForm from "../containers/components/ResetPasswordForm";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
+
+import ResetPasswordForm from "../containers/components/ResetPasswordForm";
 import Page from "../components/Page";
 
 const ResetPasswordPage = ({ history, user }) =>

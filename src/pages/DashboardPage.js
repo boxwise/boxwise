@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import AppFrame from "../components/AppFrame";
-import AddBoxDialog from "../containers/components/AddBoxDialog";
-import Page from "../components/Page";
 import Paper from "@material-ui/core/Paper";
 import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
@@ -14,6 +11,10 @@ import {
   FormattedMessage,
   defineMessages
 } from "react-intl";
+
+import Page from "../components/Page";
+import AddBoxDialog from "../containers/components/AddBoxDialog";
+import AppFrame from "../components/AppFrame";
 
 const styles = theme => ({
   paper: theme.mixins.gutters({

@@ -10,8 +10,10 @@ import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
-import DialogToolbar from "./DialogToolbar";
+
 import { CATEGORIES } from "../constants/product";
+
+import DialogToolbar from "./DialogToolbar";
 
 const styles = theme => ({
   root: {}

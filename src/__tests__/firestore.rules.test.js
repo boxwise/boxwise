@@ -1,6 +1,7 @@
 import "babel-polyfill";
-import * as firestore from "expect-firestore";
 import path from "path";
+
+import * as firestore from "expect-firestore";
 
 let describeButSkipIfNoKey = describe;
 let serviceAccountKey;

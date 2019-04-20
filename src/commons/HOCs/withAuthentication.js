@@ -1,6 +1,7 @@
 import React, { PureComponent } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
+
 import { registerAuthStateObserver } from "../../actions/auth";
 import Progress from "../../components/Progress";
 

@@ -1,12 +1,14 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import CreateOrganizationForm from "./CreateOrganizationForm";
-import SignUpForm from "./SignUpForm";
-import InviteLink from "./InviteLink";
+
 import { addOrganization } from "../queries/organizations";
 import { createUserAndProfile } from "../auth";
 import { handleError } from "../utils";
+
+import CreateOrganizationForm from "./CreateOrganizationForm";
+import SignUpForm from "./SignUpForm";
+import InviteLink from "./InviteLink";
 
 const OrganizationStep = ({ onDone }) => {
   return (
