@@ -6,8 +6,9 @@ import Paper from "@material-ui/core/Paper";
 
 import AppFrame from "components/AppFrame";
 import Page from "components/Page";
-import ProductTable from "containers/components/ProductTable";
-import AddProductDialog from "containers/components/AddProductDialog";
+
+import ProductTable from "../components/ProductTable";
+import AddProductDialog from "../containers/AddProductDialog";
 
 const styles = theme => ({
   table: {
