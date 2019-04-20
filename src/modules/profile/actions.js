@@ -17,7 +17,7 @@ export const fetchProfile = userUID => dispatch => {
       }
       // Populate organization
       // TODO: this could be a general helper to populate objects
-      let profile = doc.data();
+      const profile = doc.data();
       profile.ref = `profiles/${doc.id}`;
       return profile.organization.get().then(doc => {
         profile.organization = {

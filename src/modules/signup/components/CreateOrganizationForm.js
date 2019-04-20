@@ -18,7 +18,7 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
       name: ""
     }}
     validate={values => {
-      let errors = {};
+      const errors = {};
       if (!values.name) {
         errors.name = "Enter a name.";
       }

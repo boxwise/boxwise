@@ -5,7 +5,7 @@ export const useForm = (callback, validate) => {
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
-    let errors = validate(values);
+    const errors = validate(values);
     setErrors(errors);
     return Object.keys(errors).length === 0;
   };

@@ -21,7 +21,7 @@ class BoxListContainer extends React.Component {
     }
     const { organization } = profile.data;
 
-    let filters = [["organization", "==", firestore.doc(organization.ref)]];
+    const filters = [["organization", "==", firestore.doc(organization.ref)]];
     if (selectedProductFilter) {
       filters.push([
         "product",

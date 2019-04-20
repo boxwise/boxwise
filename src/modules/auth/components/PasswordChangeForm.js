@@ -21,7 +21,7 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
       confirmedPassword: ""
     }}
     validate={values => {
-      let errors = {};
+      const errors = {};
       if (!values.currentPassword) {
         errors.currentPassword = "Enter your current password.";
       }
