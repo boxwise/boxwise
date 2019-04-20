@@ -24,7 +24,7 @@ import DashboardPage from "./pages/DashboardPage";
 import BoxesPage from "./pages/BoxesPage";
 import HomePage from "./pages/HomePage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
-import ProductsPage from "./pages/ProductsPage";
+import { ProductsPage } from "./modules/products";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
 import InvitePage from "./pages/InvitePage";
 import JoinPage from "./pages/JoinPage";

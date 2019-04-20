@@ -1,4 +1,3 @@
-import { CATEGORIES } from "constants/product";
 
 import React from "react";
 import PropTypes from "prop-types";
@@ -13,7 +12,9 @@ import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 
-import DialogToolbar from "./DialogToolbar";
+import DialogToolbar from "components/DialogToolbar";
+
+import { CATEGORIES } from "../categories";
 
 const styles = theme => ({
   root: {}
