@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.com/boxwise/boxwise.svg?branch=master)](https://travis-ci.com/boxwise/boxwise)
+[![Codecov Coverage](https://img.shields.io/codecov/c/github/boxwise/boxwise/master.svg?style=flat-square)](https://codecov.io/gh/boxwise/boxwise/)
 
 # Boxwise
 

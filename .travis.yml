@@ -10,13 +10,15 @@ before_install:
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
 - export PATH="$HOME/.yarn/bin:$PATH"
 script:
-- yarn test
+- yarn test-with-coverage
 # .env.production is kept out of the root directory, because if it were there
 # running "firebase deploy" would create a clone of our real production
 # environment. This is not something we can stop (they are public details) but
 # we should at least stop people from doing it accidentally.
 - cp .travis/.env.production ./
 - yarn build
+after_success:
+- yarn upload-coverage-report
 branches:
   only:
   - master
