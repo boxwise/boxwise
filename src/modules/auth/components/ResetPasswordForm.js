@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 
-import ButtonWithProgress from "./ButtonWithProgress";
+import ButtonWithProgress from "components/ButtonWithProgress";
 
 const styles = theme => ({
   submit: {

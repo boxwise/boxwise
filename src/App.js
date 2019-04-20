@@ -15,9 +15,11 @@ import HomePage from "./pages/HomePage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
-import SignInPage from "./containers/pages/SignInPage";
-import ResetPasswordPage from "./containers/pages/ResetPasswordPage";
-import PasswordChangePage from "./pages/PasswordChangePage";
+import {
+  SignInPage,
+  ResetPasswordPage,
+  PasswordChangePage
+} from "./modules/auth";
 import InvitePage from "./pages/InvitePage";
 import JoinPage from "./pages/JoinPage";
 import MockupsPage from "./pages/MockupsPage";
