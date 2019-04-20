@@ -16,9 +16,7 @@
           /* don't allow imports of internal modules */
           //"\\./modules/*/**",
           /* don't allow relative imports that go up the tree */
-          //"../**",
-          /* don't allow ./ imports - instead just use the name */
-          //"./**"
+          "../**"
         ]
       }
     ]

@@ -1,9 +1,9 @@
 import React from "react";
 import { mount } from "enzyme";
 
-import SignUpFormUnconnected from "./SignUpForm";
-
 import { setInputFieldValue } from "commons/utils/test-util";
+
+import SignUpFormUnconnected from "./SignUpForm";
 
 describe("SignUpForm", () => {
   const onSubmit = jest.fn(({ name, email, password }) => {

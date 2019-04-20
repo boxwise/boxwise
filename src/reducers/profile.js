@@ -2,7 +2,7 @@ import {
   FETCH_PROFILE_ERROR,
   FETCH_PROFILE_START,
   FETCH_PROFILE_SUCCESS
-} from "../actions/profile";
+} from "actions/profile";
 
 export default function profile(
   state = { loading: true, data: null },

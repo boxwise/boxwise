@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import { userSignIn } from "../../actions/auth";
-import SignInForm from "../../components/SignInForm";
+import { userSignIn } from "actions/auth";
+import SignInForm from "components/SignInForm";
 
 const mapStateToProps = ({ user: { error, loading } }) => ({
   serverError: error,

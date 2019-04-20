@@ -1,11 +1,11 @@
-import firebase, { firestore } from "../firebase";
 import {
   addAction,
   listAction,
   editAction,
   deleteAction
-} from "../commons/utils/action-creators";
-import { handleError } from "../utils";
+} from "commons/utils/action-creators";
+import { handleError } from "utils";
+import firebase, { firestore } from "firebase.js";
 
 export const PRODUCT_LIST = listAction("product");
 export const PRODUCT_ADD = addAction("product");
