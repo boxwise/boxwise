@@ -4,7 +4,7 @@ import {
   USER_NOT_SIGN_IN,
   USER_SIGN_IN,
   USER_SIGN_OUT
-} from "actions/auth";
+} from "./actions";
 
 export default function user(
   state = {

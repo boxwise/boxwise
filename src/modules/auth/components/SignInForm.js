@@ -4,8 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import FormHelperText from "@material-ui/core/FormHelperText";
 
 import { useMaterialUIForm } from "hooks/forms";
-
-import ButtonWithProgress from "./ButtonWithProgress";
+import ButtonWithProgress from "components/ButtonWithProgress";
 
 const styles = theme => ({
   submit: {

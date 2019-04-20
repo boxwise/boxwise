@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
-import { userPasswordChange } from "actions/auth";
-import PasswordChangeForm from "components/PasswordChangeForm";
+import PasswordChangeForm from "../components/PasswordChangeForm";
+import { userPasswordChange } from "../actions";
 
 const mapStateToProps = ({ user }) => ({ user });
 const mapDispatchToProps = { userPasswordChange };

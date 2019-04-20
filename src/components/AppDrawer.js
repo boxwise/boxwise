@@ -10,7 +10,7 @@ import Divider from "@material-ui/core/Divider";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
 
-import AppDrawerAuthContainer from "containers/components/AppDrawerAuth";
+import { AppDrawerAuth } from "modules/auth";
 
 const styles = theme => ({
   logo: {
@@ -83,7 +83,7 @@ const AppDrawer = ({
         </ListItem>
       </List>
       <Divider />
-      <AppDrawerAuthContainer onClose={onClose} />
+      <AppDrawerAuth onClose={onClose} />
     </div>
   );
 

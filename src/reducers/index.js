@@ -1,7 +1,8 @@
 import { combineReducers } from "redux";
 
+import user from "modules/auth/reducer";
+
 import profile from "./profile";
-import user from "./user";
 import boxes from "./boxes";
 import products from "./products";
 
