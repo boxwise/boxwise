@@ -5,18 +5,14 @@
     "jasmine": true
   },
   "rules": {
-    "import/order": [ "error", 
-      {
-        "newlines-between": "always",
-        "groups": ["builtin", "external", "internal", "parent", "sibling", "index"]
-      }],
+    "import/order": ["off"],
     "no-restricted-imports": [ "error",
       {
         "patterns": [
+          /* don't allow relative imports that go up the tree more than one level */
+          "../../**",
           /* don't allow imports of internal modules */
-          //"\\./modules/*/**",
-          /* don't allow relative imports that go up the tree */
-          "../**"
+          "modules/*/*/**"
         ]
       }
     ]
