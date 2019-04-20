@@ -4,7 +4,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-import DialogToolbar from "./DialogToolbar";
+import DialogToolbar from "components/DialogToolbar";
 
 const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
   <div>

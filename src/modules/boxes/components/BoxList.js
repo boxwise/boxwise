@@ -8,8 +8,7 @@ import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
 import { ProductSelect } from "modules/products";
-
-import Progress from "./Progress.js";
+import Progress from "components/Progress";
 
 const styles = theme => ({
   root: {

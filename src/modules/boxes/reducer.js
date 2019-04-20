@@ -1,4 +1,4 @@
-import { BOX_ADD_ERROR, BOX_ADD_START, BOX_ADD_SUCCESS } from "actions/box";
+import { BOX_ADD_ERROR, BOX_ADD_START, BOX_ADD_SUCCESS } from "./actions";
 
 export default function boxes(
   state = { data: [], loading: false, error: null },

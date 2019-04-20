@@ -37,7 +37,8 @@ class CreateLabelsPage extends React.Component {
         ))}
         <div className="infobox no-print">
           Print these labels on A4-sheets divided in a 2x2 layout. Use a Chrome
-          browser to be sure that the layout prints well.<br />
+          browser to be sure that the layout prints well.
+          <br />
           <br />
           <Link to="/">Go back</Link>
         </div>

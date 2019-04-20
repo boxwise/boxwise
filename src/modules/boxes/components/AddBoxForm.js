@@ -7,7 +7,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 
-import DialogToolbar from "./DialogToolbar";
+import DialogToolbar from "components/DialogToolbar";
 
 const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
   <Formik
