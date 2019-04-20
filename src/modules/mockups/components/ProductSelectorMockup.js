@@ -1,6 +1,6 @@
 import React from "react";
 
-import ProductButton from "components/ProductButton";
+import ProductButton from "./ProductButton";
 
 const ProductSelectorMockup = () => {
   return (

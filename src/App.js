@@ -6,6 +6,17 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import { addLocaleData } from "react-intl";
 import en from "react-intl/locale-data/en";
 
+import {
+  MockupsPage,
+  MakeBoxMockupPage,
+  FindBoxMockupPage
+} from "modules/mockups";
+import {
+  SignInPage,
+  ResetPasswordPage,
+  PasswordChangePage
+} from "modules/auth";
+
 import Config from "./Config";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -15,16 +26,8 @@ import HomePage from "./pages/HomePage";
 import CreateLabelsPage from "./pages/CreateLabelsPage";
 import ProductsPage from "./pages/ProductsPage";
 import CreateOrganizationPage from "./pages/CreateOrganizationPage";
-import {
-  SignInPage,
-  ResetPasswordPage,
-  PasswordChangePage
-} from "./modules/auth";
 import InvitePage from "./pages/InvitePage";
 import JoinPage from "./pages/JoinPage";
-import MockupsPage from "./pages/MockupsPage";
-import MakeBoxMockupPage from "./pages/MakeBoxMockupPage";
-import FindBoxMockupPage from "./pages/FindBoxMockupPage";
 import NotFound from "./components/NotFound";
 import theme from "./theme";
 import withAuthentication from "./commons/HOCs/withAuthentication";
