@@ -17,7 +17,7 @@ class BoxListContainer extends React.Component {
     const { selectedProductFilter } = this.state;
 
     if (profile.loading) {
-      return <BoxList isLoading={true} boxes={[]} />;
+      return <BoxList isLoading boxes={[]} />;
     }
     const { organization } = profile.data;
 

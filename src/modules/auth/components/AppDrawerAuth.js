@@ -28,7 +28,7 @@ const AppDrawerAuth = ({
   return (
     <List>
       <ListItem>
-        <ListItemText secondary={`Signed in as ${name ? name : email}`} />
+        <ListItemText secondary={`Signed in as ${name || email}`} />
       </ListItem>
       <ListItem>
         <ListItemText secondary={`Organization: ${organization.name}`} />

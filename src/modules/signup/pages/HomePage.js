@@ -46,7 +46,7 @@ const styles = {
     margin: "25px 25px",
     width: "100%",
     maxWidth: "910px",
-    fontFamily: fontFamily
+    fontFamily
   }
 };
 
