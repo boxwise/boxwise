@@ -1,12 +1,11 @@
-import firebase from "firebase.js";
+import firebase from "firebase/app";
 
 import { getOrAddInvite } from "./actions";
 
-const db = firebase.firestore();
-
 // firebase mock doesn't support querying by reference
 test.skip("getOrAddInvite", () => {
-  return db
+  return firebase
+    .firestore()
     .collection("organizations")
     .add({ name: "Boxaid" })
     .then(org => {

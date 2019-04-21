@@ -11,12 +11,13 @@ const config = {
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
 };
 
-if (!firebase.apps.length) {
+export default function initialize() {
   firebase.initializeApp(config);
+
+  firebase
+    .firestore()
+    .settings({})
+    .enablePersistence();
+
+  return firebase;
 }
-
-export const firestore = firebase.firestore();
-firestore.settings({});
-firestore.enablePersistence();
-
-export default firebase;

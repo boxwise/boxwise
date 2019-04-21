@@ -1,5 +1,4 @@
-import firebase from "firebase.js";
-
+import firebase from "firebase/app";
 const db = firebase.firestore();
 
 const setProfile = ({ uid }, data) => {

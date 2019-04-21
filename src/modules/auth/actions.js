@@ -1,7 +1,8 @@
+import firebase from "firebase/app";
+
 import { fetchProfile } from "modules/profile/actions";
 import { captureException } from "errorHandling";
 import { asyncAction, editAction } from "commons/utils/action-creators";
-import firebase from "firebase.js";
 
 export const USER_SIGN_IN = asyncAction("USER_SIGN_IN");
 export const USER_NOT_SIGN_IN = "USER_NOT_SIGN_IN";

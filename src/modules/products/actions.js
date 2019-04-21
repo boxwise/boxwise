@@ -1,3 +1,5 @@
+import firebase from "firebase/app";
+
 import {
   addAction,
   listAction,
@@ -5,12 +7,13 @@ import {
   deleteAction
 } from "commons/utils/action-creators";
 import { captureException } from "errorHandling";
-import firebase, { firestore } from "firebase.js";
 
 export const PRODUCT_LIST = listAction("product");
 export const PRODUCT_ADD = addAction("product");
 export const PRODUCT_EDIT = editAction("product");
 export const PRODUCT_DELETE = deleteAction("product");
+
+const db = firebase.firestore();
 
 // ***** Plain Actions ***** //
 
@@ -27,9 +30,9 @@ export const productList = () => (dispatch, getState) => {
   const { organization } = getState().profile.data;
   dispatch({ type: PRODUCT_LIST.START });
 
-  return firestore
+  return db
     .collection("products")
-    .where("organization", "==", firestore.doc(organization.ref))
+    .where("organization", "==", db.doc(organization.ref))
     .where("isDeleted", "==", false)
     .orderBy("category", "asc")
     .orderBy("name", "asc")
@@ -47,14 +50,14 @@ export const productAdd = product => (dispatch, getState) => {
 
   const values = {
     ...product,
-    organization: firestore.doc(profile.data.organization.ref),
+    organization: db.doc(profile.data.organization.ref),
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    createdBy: firestore.doc(profile.data.ref),
+    createdBy: db.doc(profile.data.ref),
     isDeleted: false
   };
 
   dispatch({ type: PRODUCT_ADD.START });
-  return firestore
+  return db
     .collection("products")
     .add(values)
     .then(ref => ref.get())
@@ -67,7 +70,7 @@ export const productAdd = product => (dispatch, getState) => {
 
 export const productEdit = product => dispatch => {
   dispatch({ type: PRODUCT_EDIT.START });
-  const ref = firestore.collection("products").doc(product.id);
+  const ref = db.collection("products").doc(product.id);
 
   return ref
     .update(product)
@@ -82,7 +85,7 @@ export const productEdit = product => dispatch => {
 export const productDelete = productId => dispatch => {
   dispatch({ type: PRODUCT_DELETE.START });
 
-  return firestore
+  return db
     .collection("products")
     .doc(productId)
     .update({ isDeleted: true })
