@@ -10,7 +10,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import { waitForProfile, handleError } from "utils";
 import Progress from "components/Progress";
 
-import { getOrAddInvite, createInviteLink } from "../queries/invites";
+import { getOrAddInvite, createInviteLink } from "../actions";
 
 class InviteLink extends React.Component {
   state = {

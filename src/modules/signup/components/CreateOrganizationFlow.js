@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 import { createUserAndProfile } from "auth";
 import { handleError } from "utils";
 
-import { addOrganization } from "../queries/organizations";
+import { addOrganization } from "../actions";
 import InviteLink from "../containers/InviteLink";
 
 import CreateOrganizationForm from "./CreateOrganizationForm";
