@@ -3,7 +3,7 @@ import { FirestoreCollection } from "react-firestore";
 
 import { firestore } from "firebase.js";
 
-export const ProductsCollection = ({ organizationRef, ...props }) => (
+const ProductsCollection = ({ organizationRef, ...props }) => (
   <FirestoreCollection
     path="products"
     filter={[
@@ -14,3 +14,4 @@ export const ProductsCollection = ({ organizationRef, ...props }) => (
     {...props}
   />
 );
+export default ProductsCollection;
