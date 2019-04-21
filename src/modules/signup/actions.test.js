@@ -1,6 +1,6 @@
 import firebase from "firebase.js";
 
-import { getOrAddInvite } from "./invites";
+import { getOrAddInvite } from "./actions";
 
 const db = firebase.firestore();
 

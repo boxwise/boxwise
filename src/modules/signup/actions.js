@@ -26,3 +26,10 @@ export const createInviteLink = invite => {
   const url = window.location;
   return `${url.protocol}//${url.host}/join/${invite.id}`;
 };
+
+export const addOrganization = ({ name }) => {
+  return db.collection("organizations").add({
+    name: name,
+    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+  });
+};
