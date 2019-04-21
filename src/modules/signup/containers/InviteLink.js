@@ -7,11 +7,21 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 
-import { waitForProfile } from "utils";
 import { captureException } from "errorHandling";
 import Progress from "components/Progress";
 
 import { getOrAddInvite, createInviteLink } from "../actions";
+
+// HACK: some of our components need a profile, but there's no easy way to just
+// wait for the damned thing to be ready in the redux state.
+function waitForProfile(Component) {
+  return function({ isLoading, ...props }) {
+    if (!props.profile.data || props.profile.loading) {
+      return <Progress />;
+    }
+    return <Component {...props} />;
+  };
+}
 
 class InviteLink extends React.Component {
   state = {
