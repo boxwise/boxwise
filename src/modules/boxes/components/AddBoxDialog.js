@@ -2,7 +2,7 @@ import React, { PureComponent } from "react";
 import { bool, func } from "prop-types";
 import Dialog from "@material-ui/core/Dialog";
 
-import { ProductsCollection } from "modules/products/queries";
+import { ProductsCollection } from "modules/products/components";
 
 import AddBoxForm from "./AddBoxForm";
 import AddBoxDone from "./AddBoxDone";
