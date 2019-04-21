@@ -10,25 +10,25 @@ import {
   MockupsPage,
   MakeBoxMockupPage,
   FindBoxMockupPage
-} from "modules/mockups";
+} from "modules/mockups/pages";
 import {
   SignInPage,
   ResetPasswordPage,
   PasswordChangePage
-} from "modules/auth";
+} from "modules/auth/pages";
 
 import {
   InvitePage,
   CreateOrganizationPage,
   JoinPage,
   HomePage
-} from "./modules/signup";
-import { ProductsPage } from "./modules/products";
-import { BoxesPage, CreateLabelsPage } from "./modules/boxes";
+} from "./modules/signup/pages";
+import { ProductsPage } from "./modules/products/pages";
+import { BoxesPage, CreateLabelsPage } from "./modules/boxes/pages";
 import Config from "./Config";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
-import { NotFoundPage, DashboardPage } from "./modules/layout";
+import { NotFoundPage, DashboardPage } from "./modules/layout/pages";
 import theme from "./theme";
 import withAuthentication from "./commons/HOCs/withAuthentication";
 

@@ -4,7 +4,7 @@ import { FirestoreDocument } from "react-firestore";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import { Page } from "modules/layout";
+import { Page } from "modules/layout/components";
 import Progress from "components/Progress.js";
 import { createUserAndProfile } from "auth";
 import { handleError } from "utils";

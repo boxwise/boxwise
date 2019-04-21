@@ -12,7 +12,7 @@ import {
   defineMessages
 } from "react-intl";
 
-import { AddBoxDialog } from "modules/boxes";
+import { AddBoxDialog } from "modules/boxes/components";
 
 import Page from "../components/Page";
 import AppFrame from "../components/AppFrame";

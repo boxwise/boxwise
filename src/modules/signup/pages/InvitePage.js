@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Page, AppFrame } from "modules/layout";
+import { Page, AppFrame } from "modules/layout/components";
 
 import InviteLink from "../containers/InviteLink";
 

@@ -10,7 +10,7 @@ import Divider from "@material-ui/core/Divider";
 import Hidden from "@material-ui/core/Hidden";
 import { Link } from "react-router-dom";
 
-import { AppDrawerAuth } from "modules/auth";
+import { AppDrawerAuth } from "modules/auth/components";
 
 const styles = theme => ({
   logo: {

@@ -8,7 +8,7 @@ import ArrowBack from "@material-ui/icons/ArrowBack";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 
-import { Page } from "modules/layout";
+import { Page } from "modules/layout/components";
 
 import CreateOrganizationFlow from "../components/CreateOrganizationFlow";
 

@@ -7,7 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
-import { ProductSelect } from "modules/products";
+import { ProductSelect } from "modules/products/components";
 import Progress from "components/Progress";
 
 const styles = theme => ({

@@ -5,7 +5,7 @@ import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import PropTypes from "prop-types";
 
-import { Page } from "modules/layout";
+import { Page } from "modules/layout/components";
 import { fontFamily } from "theme";
 
 const styles = {
