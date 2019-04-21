@@ -82,7 +82,7 @@ const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
             </div>
           ) : (
             <div>
-              <Typography variant="h5" paragraph={true}>
+              <Typography variant="h5" paragraph>
                 You must add products before you can create a box
               </Typography>
               <Button

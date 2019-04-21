@@ -41,8 +41,9 @@ export default class AddBoxDialog extends PureComponent {
         : this.setState({
             box: data,
             done: true,
-            selectedProduct:
-              selectedProduct.category + " / " + selectedProduct.name
+            selectedProduct: `${selectedProduct.category} / ${
+              selectedProduct.name
+            }`
           });
     });
   }

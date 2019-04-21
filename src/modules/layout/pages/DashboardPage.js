@@ -56,7 +56,7 @@ class DashboardPage extends React.Component {
             onClose={() => this.setState({ addBoxDialogOpen: false })}
           />
           <Paper className={classes.paper}>
-            <Typography variant="h5" paragraph={true}>
+            <Typography variant="h5" paragraph>
               <FormattedMessage {...messages.headline} />
             </Typography>
             <Button

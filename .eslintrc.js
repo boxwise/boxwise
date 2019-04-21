@@ -11,12 +11,20 @@ const denyImportPatterns = {
 
 module.exports = {
   "plugins": ["eslint-plugin-import","react-hooks"],
-  "extends": ["react-app","plugin:import/recommended"],
+  "extends": ["react-app","airbnb","plugin:import/recommended","prettier"],
   "env": {
     "jasmine": true
   },
   "rules": {
+    // these are disabled here, and re-enabled for .eslintrc-fixonly.js
+    // as they can be handled automatically we don't bug anyone about it
+    // the rest of auto-formatting is dealth with prettier instead
     "import/order": "off",
+    // these are needed to avoid conflicts with prettier
+    // and are not disabled by the prettier extension itself
+    "react/jsx-one-expression-per-line": "off",
+    "react/jsx-wrap-multilines": "off",
+    // others
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
     "no-restricted-imports": [ "error",

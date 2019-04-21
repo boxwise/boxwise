@@ -41,7 +41,7 @@ export const createInviteLink = invite => {
 
 export const addOrganization = ({ name }) => {
   return db.collection("organizations").add({
-    name: name,
+    name,
     createdAt: firebase.firestore.FieldValue.serverTimestamp()
   });
 };

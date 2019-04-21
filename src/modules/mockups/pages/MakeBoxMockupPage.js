@@ -73,7 +73,7 @@ class MakeBoxMockupPage extends React.Component {
               <Typography component="p" paragraph="true">
                 Make sure you have counted the items in the box.
               </Typography>
-              {/*         	<Typography component="p" paragraph="true">Take a new barcode label and scan the code with your phone</Typography>*/}
+              {/*         	<Typography component="p" paragraph="true">Take a new barcode label and scan the code with your phone</Typography> */}
               <Typography component="p" paragraph="true">
                 Barcodes are not yet operational. Press "Next Step" to proceed
                 making a box without a barcode

@@ -31,7 +31,7 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
   return (
     <form onSubmit={handleSubmit}>
       {serverError ? (
-        <FormHelperText error={true}>{serverError.message}</FormHelperText>
+        <FormHelperText error>{serverError.message}</FormHelperText>
       ) : null}
       <TextField
         id="email"

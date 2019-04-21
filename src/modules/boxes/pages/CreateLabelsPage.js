@@ -25,11 +25,7 @@ class CreateLabelsPage extends React.Component {
             <div className="count">count</div>
             <div className="product">product</div>
             <img
-              src={
-                "https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=" +
-                uuidv4() +
-                "&chld=L|0"
-              }
+              src={`https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=${uuidv4()}&chld=L|0`}
               alt="barcode"
               className="barcode"
             />

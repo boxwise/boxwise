@@ -15,20 +15,20 @@ const theme = createMuiTheme({
   },
   typography: {
     useNextVariants: true,
-    fontFamily: fontFamily,
+    fontFamily,
     h5: {
-      fontFamily: fontFamily,
+      fontFamily,
       fontWeight: 700
     },
     button: {
-      fontFamily: fontFamily,
+      fontFamily,
       fontWeight: 700
     },
     h6: {
-      fontFamily: fontFamily
+      fontFamily
     },
     subtitle1: {
-      fontFamily: fontFamily
+      fontFamily
     }
   },
   palette: {
@@ -50,7 +50,7 @@ const theme = createMuiTheme({
 export const drawerTheme = createMuiTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: fontFamily
+    fontFamily
   },
   palette: {
     type: "dark"

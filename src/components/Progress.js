@@ -6,7 +6,7 @@ const Progress = ({ size, className }) => (
     src="/images/loading-boxes.gif"
     alt="progress"
     className={className}
-    style={{ height: size + "px", width: size + "px" }}
+    style={{ height: `${size}px`, width: `${size}px` }}
   />
 );
 
