@@ -9,7 +9,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import Checkbox from "@material-ui/core/Checkbox";
 
-import { Page, AppFrame } from "modules/layout";
+import { Page, AppFrame } from "modules/layout/components";
 
 import ProductButton from "../components/ProductButton";
 import ProductSelectorMockup from "../components/ProductSelectorMockup";

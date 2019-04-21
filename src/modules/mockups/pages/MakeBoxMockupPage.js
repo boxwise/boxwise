@@ -7,7 +7,7 @@ import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 
-import { Page, AppFrame } from "modules/layout";
+import { Page, AppFrame } from "modules/layout/components";
 
 import CategorySelector from "../components/CategorySelector";
 import ProductSelectorMockup from "../components/ProductSelectorMockup";
