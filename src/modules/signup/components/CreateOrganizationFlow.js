@@ -2,7 +2,7 @@ import React from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
-import { handleError } from "utils";
+import { captureException } from "errorHandling";
 
 import { addOrganization, createUserAndProfile } from "../actions";
 import InviteLink from "../containers/InviteLink";
@@ -48,7 +48,7 @@ const UserStep = ({ organizationData, onDone }) => {
           .catch(error => {
             setSubmitting(false);
             // TODO: handle user errors, log everything else
-            handleError(error);
+            captureException(error);
             setErrors({ form: error.message });
           });
       }}

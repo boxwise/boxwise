@@ -1,5 +1,4 @@
 import React from "react";
-import * as Sentry from "@sentry/browser";
 
 import Progress from "./components/Progress.js";
 
@@ -13,8 +12,3 @@ export function waitForProfile(Component) {
     return <Component {...props} />;
   };
 }
-
-export const handleError = (error, errorInfo) => {
-  console.error(error);
-  Sentry.captureException(error, { extra: errorInfo });
-};

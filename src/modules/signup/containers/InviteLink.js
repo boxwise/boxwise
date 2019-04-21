@@ -7,7 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Snackbar from "@material-ui/core/Snackbar";
 
-import { waitForProfile, handleError } from "utils";
+import { waitForProfile } from "utils";
+import { captureException } from "errorHandling";
 import Progress from "components/Progress";
 
 import { getOrAddInvite, createInviteLink } from "../actions";
@@ -27,7 +28,7 @@ class InviteLink extends React.Component {
           inviteLink: createInviteLink(invite)
         });
       })
-      .catch(handleError); // TODO: actually handle errors
+      .catch(captureException); // TODO: actually handle errors
   }
 
   render() {

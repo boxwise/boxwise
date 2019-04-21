@@ -4,7 +4,7 @@ import {
   editAction,
   deleteAction
 } from "commons/utils/action-creators";
-import { handleError } from "utils";
+import { captureException } from "errorHandling";
 import firebase, { firestore } from "firebase.js";
 
 export const PRODUCT_LIST = listAction("product");
@@ -37,7 +37,7 @@ export const productList = () => (dispatch, getState) => {
     .then(({ docs }) => docs.map(doc => ({ id: doc.id, ...doc.data() })))
     .then(payload => dispatch({ type: PRODUCT_LIST.SUCCESS, payload }))
     .catch(err => {
-      handleError(err);
+      captureException(err);
       dispatch({ type: PRODUCT_LIST.ERROR, payload: err });
     });
 };
@@ -60,7 +60,7 @@ export const productAdd = product => (dispatch, getState) => {
     .then(ref => ref.get())
     .then(res => dispatch({ type: PRODUCT_ADD.SUCCESS, payload: res.data() }))
     .catch(err => {
-      handleError(err); // TODO: actually handle the error
+      captureException(err); // TODO: actually handle the error
       dispatch({ type: PRODUCT_ADD.ERROR, payload: err });
     });
 };
@@ -74,7 +74,7 @@ export const productEdit = product => dispatch => {
     .then(() => ref.get())
     .then(res => dispatch({ type: PRODUCT_EDIT.SUCCESS, payload: res.data() }))
     .catch(err => {
-      handleError(err); // TODO: actually handle the error
+      captureException(err); // TODO: actually handle the error
       dispatch({ type: PRODUCT_EDIT.ERROR, payload: err });
     });
 };
@@ -88,7 +88,7 @@ export const productDelete = productId => dispatch => {
     .update({ isDeleted: true })
     .then(() => dispatch({ type: PRODUCT_DELETE.SUCCESS }))
     .catch(err => {
-      handleError(err);
+      captureException(err);
       dispatch({ type: PRODUCT_DELETE.ERROR });
     });
 };
