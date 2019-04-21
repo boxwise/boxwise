@@ -25,7 +25,7 @@ import {
 } from "./modules/signup/pages";
 import { ProductsPage } from "./modules/products/pages";
 import { BoxesPage, CreateLabelsPage } from "./modules/boxes/pages";
-import Config from "./Config";
+import config from "./config";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { NotFoundPage, DashboardPage } from "./modules/layout/pages";
@@ -34,12 +34,12 @@ import withAuthentication from "./commons/HOCs/withAuthentication";
 
 addLocaleData([...en]);
 
-if (Config.GOOGLE_ANALYTICS_CODE) {
-  ReactGA.initialize(Config.GOOGLE_ANALYTICS_CODE);
+if (config.GOOGLE_ANALYTICS_CODE) {
+  ReactGA.initialize(config.GOOGLE_ANALYTICS_CODE);
 }
 
 const recordPageview = ({ location }) => {
-  if (Config.GOOGLE_ANALYTICS_CODE) {
+  if (config.GOOGLE_ANALYTICS_CODE) {
     ReactGA.pageview(location.pathname);
   }
   return null;

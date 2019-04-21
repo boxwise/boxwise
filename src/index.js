@@ -6,14 +6,14 @@ import * as Sentry from "@sentry/browser";
 import { IntlProvider } from "react-intl";
 
 import App from "./App";
-import Config from "./Config";
+import config from "./config";
 import * as serviceWorker from "./serviceWorker";
 import firebase from "./firebase";
 import store from "./store";
 
-if (Config.SENTRY_URI) {
+if (config.SENTRY_URI) {
   Sentry.init({
-    dsn: Config.SENTRY_URI
+    dsn: config.SENTRY_URI
   });
 }
 
