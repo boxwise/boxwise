@@ -1,10 +1,13 @@
+import firebase from "firebase/app";
+
 import { captureException } from "errorHandling";
-import firebase, { firestore } from "firebase.js";
 
 const BOX_ADD_ = TYPE => `BOX_ADD_${TYPE}`;
 export const BOX_ADD_START = BOX_ADD_`START`;
 export const BOX_ADD_SUCCESS = BOX_ADD_`SUCCESS`;
 export const BOX_ADD_ERROR = BOX_ADD_`ERROR`;
+
+const db = firebase.firestore();
 
 export const addBox = ({
   product,
@@ -17,14 +20,14 @@ export const addBox = ({
   const box = {
     quantity,
     comment,
-    organization: firestore.doc(organization.ref),
-    product: firestore.doc("products/" + product.id),
+    organization: db.doc(organization.ref),
+    product: db.doc("products/" + product.id),
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    createdBy: firestore.doc(profile.ref),
+    createdBy: db.doc(profile.ref),
     humanID: Math.floor(Math.random() * 1000000)
   };
 
-  return firestore
+  return db
     .collection("boxes")
     .add(box)
     .then(ref => ref.get())

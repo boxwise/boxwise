@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import { FirestoreCollection } from "react-firestore";
+import firebase from "firebase/app";
 
 import { ProductsCollection } from "modules/products/components";
-import { firestore } from "firebase.js";
 
 import BoxList from "../components/BoxList";
 
@@ -21,12 +21,14 @@ class BoxListContainer extends React.Component {
     }
     const { organization } = profile.data;
 
-    const filters = [["organization", "==", firestore.doc(organization.ref)]];
+    const filters = [
+      ["organization", "==", firebase.firestore().doc(organization.ref)]
+    ];
     if (selectedProductFilter) {
       filters.push([
         "product",
         "==",
-        firestore.doc(`products/${selectedProductFilter}`)
+        firebase.firestore().doc(`products/${selectedProductFilter}`)
       ]);
     }
 

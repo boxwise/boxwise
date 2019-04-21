@@ -1,14 +1,16 @@
+import firebase from "firebase/app";
+
 import { captureException } from "errorHandling";
-import { firestore } from "firebase.js";
 
 const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
+const db = firebase.firestore();
+
 export const FETCH_PROFILE_START = FETCH_PROFILE_`START`;
 export const FETCH_PROFILE_SUCCESS = FETCH_PROFILE_`SUCCESS`;
 export const FETCH_PROFILE_ERROR = FETCH_PROFILE_`ERROR`;
 
 export const fetchProfile = userUID => dispatch => {
-  firestore
-    .collection("profiles")
+  db.collection("profiles")
     .doc(userUID)
     .get()
     .then(function(doc) {
