@@ -1,7 +1,6 @@
 import React from "react";
-import { mount } from "enzyme";
 
-import { setInputFieldValue } from "commons/utils/test-util";
+import { mount, setInputFieldValue } from "enzymeHelpers";
 
 import SignUpFormUnconnected from "./SignUpForm";
 

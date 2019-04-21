@@ -1,5 +1,6 @@
 import React from "react";
-import { shallow } from "enzyme";
+
+import { shallow } from "enzymeHelpers";
 
 import { CreateOrganizationPage } from "./CreateOrganizationPage";
 
