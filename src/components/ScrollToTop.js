@@ -6,7 +6,7 @@ const ScrollToTop = ({ location, children }) => {
     if (!(location.state && location.state.resetScroll === false)) {
       window.scrollTo(0, 0);
     }
-  }, ["location"]);
+  }, [location.state]);
 
   return children;
 };

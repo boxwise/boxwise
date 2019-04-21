@@ -1,11 +1,13 @@
 module.exports = {
-  "plugins": ["eslint-plugin-import"],
+  "plugins": ["eslint-plugin-import","react-hooks"],
   "extends": ["react-app","plugin:import/errors"],
   "env": {
     "jasmine": true
   },
   "rules": {
     "import/order": ["off"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
     "no-restricted-imports": [ "error",
       {
         "patterns": [
