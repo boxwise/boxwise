@@ -6,9 +6,9 @@ import Grid from "@material-ui/core/Grid";
 
 import { Page } from "modules/layout/components";
 import Progress from "components/Progress.js";
-import { createUserAndProfile } from "auth";
 import { handleError } from "utils";
 
+import { createUserAndProfile } from "../actions";
 import SignUpForm from "../components/SignUpForm";
 
 // TODO: clean this up. needs some separate components and containers.

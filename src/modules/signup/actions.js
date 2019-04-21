@@ -2,6 +2,20 @@ import firebase from "firebase.js";
 
 const db = firebase.firestore();
 
+const setProfile = ({ uid }, data) => {
+  return db
+    .collection("profiles")
+    .doc(uid)
+    .set(data);
+};
+
+export const createUserAndProfile = ({ email, password }, profile) => {
+  return firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    .then(({ user }) => setProfile(user.toJSON(), profile));
+};
+
 export const addInvite = organizationRef => {
   return db.collection("invites").add({
     organization: db.doc(organizationRef),
