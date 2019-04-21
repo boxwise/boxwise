@@ -10,7 +10,7 @@
 // To learn more about the benefits of this model and instructions on how to
 // opt-in, read https://bit.ly/CRA-PWA
 
-import { handleError } from "./utils";
+import { captureException } from "errorHandling";
 
 const isLocalhost = Boolean(
   window.location.hostname === "localhost" ||
@@ -96,7 +96,7 @@ function registerValidSW(swUrl, config) {
       };
     })
     .catch(error => {
-      handleError("Error during service worker registration:", error);
+      captureException("Error during service worker registration:", error);
     });
 }
 

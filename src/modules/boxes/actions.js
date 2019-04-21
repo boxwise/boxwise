@@ -1,4 +1,4 @@
-import { handleError } from "utils";
+import { captureException } from "errorHandling";
 import firebase, { firestore } from "firebase.js";
 
 const BOX_ADD_ = TYPE => `BOX_ADD_${TYPE}`;
@@ -34,7 +34,7 @@ export const addBox = ({
       return { error: false, data: box };
     })
     .catch(error => {
-      handleError(error);
+      captureException(error);
       dispatch({ type: BOX_ADD_ERROR, payload: error });
       return { error };
     });

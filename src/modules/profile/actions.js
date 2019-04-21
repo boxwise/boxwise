@@ -1,4 +1,4 @@
-import { handleError } from "utils";
+import { captureException } from "errorHandling";
 import { firestore } from "firebase.js";
 
 const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
@@ -29,7 +29,7 @@ export const fetchProfile = userUID => dispatch => {
       });
     })
     .catch(err => {
-      handleError(err);
+      captureException(err);
       dispatch({ type: FETCH_PROFILE_ERROR, payload: err });
     });
 };

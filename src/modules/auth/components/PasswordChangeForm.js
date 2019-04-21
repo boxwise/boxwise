@@ -4,7 +4,7 @@ import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 
-import { handleError } from "utils";
+import { captureException } from "errorHandling";
 import ButtonWithProgress from "components/ButtonWithProgress";
 
 const styles = theme => ({
@@ -52,7 +52,7 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
         })
         .catch(error => {
           setSubmitting(false);
-          handleError(error);
+          captureException(error);
           setErrors({ form: error.message });
         });
     }}

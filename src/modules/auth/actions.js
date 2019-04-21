@@ -1,5 +1,5 @@
 import { fetchProfile } from "modules/profile/actions";
-import { handleError } from "utils";
+import { captureException } from "errorHandling";
 import { asyncAction, editAction } from "commons/utils/action-creators";
 import firebase from "firebase.js";
 
@@ -33,7 +33,7 @@ export const userSignIn = ({ email, password }) => dispatch => {
     .signInWithEmailAndPassword(email, password)
     .then(({ user }) => dispatch(userSignInSuccess(user)))
     .catch(error => {
-      handleError(error);
+      captureException(error);
       dispatch({ type: USER_SIGN_IN.ERROR, payload: error });
     });
 };
@@ -45,7 +45,7 @@ export const resetPassword = ({ email }) => dispatch => {
     .sendPasswordResetEmail(email)
     .then(() => dispatch({ type: PASSWORD_RESET.SUCCESS }))
     .catch(error => {
-      handleError(error);
+      captureException(error);
       dispatch({ type: PASSWORD_RESET.ERROR, payload: error });
     });
 };
@@ -64,13 +64,13 @@ export const userPasswordChange = ({
         .updatePassword(newPassword)
         .then(() => dispatch({ type: PASSWORD_EDIT.SUCCESS }))
         .catch(error => {
-          handleError(error);
+          captureException(error);
           dispatch({ type: PASSWORD_EDIT.ERROR, payload: error });
           throw error;
         })
     )
     .catch(error => {
-      handleError(error);
+      captureException(error);
       dispatch({ type: PASSWORD_EDIT.ERROR, payload: error });
       throw error;
     });

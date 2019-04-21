@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 
 import { Page } from "modules/layout/components";
 import Progress from "components/Progress.js";
-import { handleError } from "utils";
+import { captureException } from "errorHandling";
 
 import { createUserAndProfile } from "../actions";
 import SignUpForm from "../components/SignUpForm";
@@ -63,7 +63,7 @@ const JoinPage = ({ history, match }) => (
                               .catch(error => {
                                 setSubmitting(false);
                                 // TODO: handle user error, throw everything else
-                                handleError(error);
+                                captureException(error);
                                 setErrors({ form: error.message });
                               });
                           }}
