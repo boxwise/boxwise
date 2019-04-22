@@ -1,6 +1,7 @@
 import { db } from "firebaseFactory";
 import { captureException } from "errorHandling";
 
+// eslint-disable-next-line no-underscore-dangle
 const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
 
 export const FETCH_PROFILE_START = FETCH_PROFILE_`START`;
@@ -11,7 +12,7 @@ export const fetchProfile = userUID => dispatch => {
   db.collection("profiles")
     .doc(userUID)
     .get()
-    .then(function(doc) {
+    .then(doc => {
       if (!doc.exists) {
         return dispatch(fetchProfile(null));
       }

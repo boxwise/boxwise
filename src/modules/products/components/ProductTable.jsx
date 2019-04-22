@@ -9,10 +9,10 @@ import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 
-import Progress from "components/Progress.js";
+import Progress from "components/Progress";
 
 import EditProductDialog from "../containers/EditProductDialog";
-import ProductDeleteConfirm from "../containers/ProductDeleteConfirm.js";
+import ProductDeleteConfirm from "../containers/ProductDeleteConfirm";
 
 const styles = theme => ({
   root: {
@@ -69,8 +69,8 @@ export default withStyles(styles)(
                 </TableRow>
               </TableHead>
               <TableBody>
-                {data.map((product, idx) => (
-                  <TableRow key={idx}>
+                {data.map(product => (
+                  <TableRow key={product.id}>
                     <TableCell padding="dense">{product.category}</TableCell>
                     <TableCell padding="dense">{product.name}</TableCell>
                     <TableCell padding="dense">

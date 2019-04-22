@@ -12,10 +12,10 @@ import Progress from "components/Progress";
 
 import { getOrAddInvite, createInviteLink } from "../actions";
 
-// HACK: some of our components need a profile, but there's no easy way to just
+// HACK: some of our components need a profile, but there's no easy way to just
 // wait for the damned thing to be ready in the redux state.
 function waitForProfile(Component) {
-  return function({ isLoading, ...props }) {
+  return ({ isLoading, ...props }) => {
     if (!props.profile.data || props.profile.loading) {
       return <Progress />;
     }

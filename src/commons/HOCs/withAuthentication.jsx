@@ -28,7 +28,8 @@ export default function withAuthentication(Comp, FallbackComp) {
         ) : (
           <Redirect to="/signin" />
         );
-      } else if (user.loading === null || (user.loading || profile.loading))
+      }
+      if (user.loading === null || (user.loading || profile.loading))
         return <Progress />;
 
       return <Comp {...ownProps} />;

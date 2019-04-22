@@ -11,16 +11,19 @@ export default class ErrorBoundary extends Component {
     this.setState({ error });
     Sentry.withScope(scope => {
       scope.setExtras(errorInfo);
-      const eventId = Sentry.captureException(error);
-      this.setState({ eventId });
+      this.setState({ eventId: Sentry.captureException(error) });
     });
   }
 
   render() {
     if (this.state.error) {
-      return <p>Sorry, an unexpected problem occured.</p>;
-    } else {
-      return this.props.children;
+      return (
+        <p>
+          Sorry, an unexpected problem occured. Please quote Sentry eventId{" "}
+          {this.state.eventId}.
+        </p>
+      );
     }
+    return this.props.children;
   }
 }

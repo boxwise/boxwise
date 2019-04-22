@@ -5,7 +5,7 @@ import { mount, setInputFieldValue } from "enzymeHelpers";
 import SignUpFormUnconnected from "./SignUpForm";
 
 describe("SignUpForm", () => {
-  const onSubmit = jest.fn(({ name, email, password }) => {
+  const onSubmit = jest.fn(() => {
     Promise.resolve();
   });
   let component;

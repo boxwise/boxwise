@@ -12,12 +12,12 @@ const AppDrawerAuth = ({
   user,
   profile,
   onSignOut,
-  onPasswordChange,
   onClose
 }) => {
   if (loading) {
     return <Progress />;
-  } else if (notAuthenticated) {
+  }
+  if (notAuthenticated) {
     return null;
   }
 

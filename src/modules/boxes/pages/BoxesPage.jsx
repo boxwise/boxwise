@@ -4,14 +4,10 @@ import { AppFrame } from "modules/layout/components";
 
 import BoxListContainer from "../containers/BoxListContainer";
 
-class BoxesPage extends React.Component {
-  render() {
-    return (
-      <AppFrame title="Find boxes">
-        <BoxListContainer />
-      </AppFrame>
-    );
-  }
-}
+const BoxesPage = () => (
+  <AppFrame title="Find boxes">
+    <BoxListContainer />
+  </AppFrame>
+);
 
 export default BoxesPage;

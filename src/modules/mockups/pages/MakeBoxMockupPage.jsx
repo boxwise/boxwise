@@ -43,10 +43,6 @@ const styles = theme => ({
 });
 
 class MakeBoxMockupPage extends React.Component {
-  state = {
-    spacing: "16"
-  };
-
   handleChange = key => (event, value) => {
     this.setState({
       [key]: value
@@ -74,8 +70,8 @@ class MakeBoxMockupPage extends React.Component {
               </Typography>
               {/*         	<Typography component="p" paragraph="true">Take a new barcode label and scan the code with your phone</Typography> */}
               <Typography component="p" paragraph="true">
-                Barcodes are not yet operational. Press "Next Step" to proceed
-                making a box without a barcode
+                Barcodes are not yet operational. Press &quot;Next Step&quot; to
+                proceed making a box without a barcode
               </Typography>
               <Button variant="contained" color="secondary">
                 Next step

@@ -1,6 +1,7 @@
 import { firebase, db } from "firebaseFactory";
 import { captureException } from "errorHandling";
 
+// eslint-disable-next-line no-underscore-dangle
 const BOX_ADD_ = TYPE => `BOX_ADD_${TYPE}`;
 export const BOX_ADD_START = BOX_ADD_`START`;
 export const BOX_ADD_SUCCESS = BOX_ADD_`SUCCESS`;

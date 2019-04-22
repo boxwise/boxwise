@@ -6,7 +6,7 @@ import SignInFormUnconnected from "./SignInForm";
 
 describe("SignInForm", () => {
   let component;
-  const userSignIn = jest.fn(({ email, password }) => {
+  const userSignIn = jest.fn(() => {
     Promise.resolve();
   });
   beforeEach(() => {
