@@ -60,18 +60,15 @@ const InviteStep = ({ onDone }) => {
   return (
     <div>
       {/* put the button inside the component so it doesn't show while loading */}
-      <InviteLink
-        extra={
-          <React.Fragment>
-            <br />
-            <br />
-
-            <Button variant="contained" color="primary" onClick={onDone}>
-              Continue
-            </Button>
-          </React.Fragment>
-        }
-      />
+      <InviteLink>
+        <React.Fragment>
+          <br />
+          <br />
+          <Button variant="contained" color="primary" onClick={onDone}>
+            Continue
+          </Button>
+        </React.Fragment>
+      </InviteLink>
     </div>
   );
 };
