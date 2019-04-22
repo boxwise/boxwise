@@ -1,18 +1,11 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 
-import ButtonWithProgress from "components/ButtonWithProgress";
+import SubmitButton from "components/SubmitButton";
 import FormErrorText from "components/FormErrorText";
 
-const styles = theme => ({
-  submit: {
-    marginTop: theme.spacing.unit * 2
-  }
-});
-
-const CreateOrganizationForm = ({ classes, onSubmit }) => (
+const CreateOrganizationForm = ({ onSubmit }) => (
   <Formik
     initialValues={{
       name: ""
@@ -36,18 +29,10 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
           fullWidth
           margin="normal"
         />
-        <ButtonWithProgress
-          variant="contained"
-          color="primary"
-          type="submit"
-          loading={isSubmitting}
-          className={classes.submit}
-        >
-          Continue
-        </ButtonWithProgress>
+        <SubmitButton isSubmitting={isSubmitting}>Continue</SubmitButton>
       </form>
     )}
   />
 );
 
-export default withStyles(styles)(CreateOrganizationForm);
+export default CreateOrganizationForm;

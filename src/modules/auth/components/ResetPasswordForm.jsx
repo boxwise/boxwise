@@ -1,18 +1,11 @@
 import React from "react";
 import { Field, Formik } from "formik";
-import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 
 import FormErrorText from "components/FormErrorText";
-import ButtonWithProgress from "components/ButtonWithProgress";
+import SubmitButton from "components/SubmitButton";
 
-const styles = theme => ({
-  submit: {
-    marginTop: theme.spacing.unit * 2
-  }
-});
-
-const ResetPasswordForm = ({ classes, loading, resetPassword }) => (
+const ResetPasswordForm = ({ loading, resetPassword }) => (
   <Formik
     initialValues={{
       email: ""
@@ -36,18 +29,12 @@ const ResetPasswordForm = ({ classes, loading, resetPassword }) => (
           fullWidth
           margin="normal"
         />
-        <ButtonWithProgress
-          variant="contained"
-          color="primary"
-          type="submit"
-          loading={isSubmitting || loading}
-          className={classes.submit}
-        >
+        <SubmitButton isSubmitting={isSubmitting || loading}>
           Reset Password
-        </ButtonWithProgress>
+        </SubmitButton>
       </form>
     )}
   />
 );
 
-export default withStyles(styles)(ResetPasswordForm);
+export default ResetPasswordForm;
