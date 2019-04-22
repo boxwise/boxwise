@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 
 import { Page } from "modules/layout/components";
 
-import SignInForm from "../components/SignInForm";
+import SignInForm from "../containers/SignInForm";
 
 const SignInPage = ({ history, user }) =>
   !user.data ? (
