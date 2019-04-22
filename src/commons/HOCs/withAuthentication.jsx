@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 
@@ -9,32 +9,28 @@ export default function withAuthentication(Comp, FallbackComp) {
   const mapStateToProps = ({ user, profile }) => ({ user, profile });
   const mapDispatchToProps = { registerAuthStateObserver };
 
-  class WithAuth extends PureComponent {
-    componentDidMount() {
-      this.props.registerAuthStateObserver();
+  const WithAuth = ({
+    user,
+    profile,
+    registerAuthStateObserver,
+    ...ownProps
+  }) => {
+    useEffect(() => {
+      registerAuthStateObserver();
+    }, [registerAuthStateObserver]);
+
+    if (user.loading === false && !user.data) {
+      return FallbackComp ? (
+        <FallbackComp {...ownProps} />
+      ) : (
+        <Redirect to="/signin" />
+      );
     }
+    if (user.loading === null || (user.loading || profile.loading))
+      return <Progress />;
 
-    render() {
-      const {
-        user,
-        profile,
-        registerAuthStateObserver,
-        ...ownProps
-      } = this.props;
-
-      if (user.loading === false && !user.data) {
-        return FallbackComp ? (
-          <FallbackComp {...ownProps} />
-        ) : (
-          <Redirect to="/signin" />
-        );
-      }
-      if (user.loading === null || (user.loading || profile.loading))
-        return <Progress />;
-
-      return <Comp {...ownProps} />;
-    }
-  }
+    return <Comp {...ownProps} />;
+  };
 
   return connect(
     mapStateToProps,

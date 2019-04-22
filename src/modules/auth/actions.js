@@ -88,6 +88,5 @@ export const registerAuthStateObserver = () => (dispatch, getState) => {
       } else dispatch(userSignInSuccess(user));
     });
   }
-
   return Promise.resolve();
 };

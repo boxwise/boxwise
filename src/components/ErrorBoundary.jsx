@@ -16,14 +16,16 @@ export default class ErrorBoundary extends Component {
   }
 
   render() {
-    if (this.state.error) {
+    const { error, eventId } = this.state;
+    const { children } = this.props;
+    if (error) {
       return (
         <p>
           Sorry, an unexpected problem occured. Please quote Sentry eventId{" "}
-          {this.state.eventId}.
+          {eventId}.
         </p>
       );
     }
-    return this.props.children;
+    return children;
   }
 }
