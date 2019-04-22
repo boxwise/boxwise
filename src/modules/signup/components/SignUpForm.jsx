@@ -1,18 +1,11 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 
 import FormErrorText from "components/FormErrorText";
-import ButtonWithProgress from "components/ButtonWithProgress";
+import SubmitButton from "components/SubmitButton";
 
-const styles = theme => ({
-  submit: {
-    marginTop: theme.spacing.unit * 2
-  }
-});
-
-const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
+const SignUpForm = ({ onSubmit, submitButtonText = "Sign up" }) => (
   <Formik
     initialValues={{
       name: "",
@@ -60,22 +53,12 @@ const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
           fullWidth
           margin="normal"
         />
-        <ButtonWithProgress
-          variant="contained"
-          color="primary"
-          type="submit"
-          loading={isSubmitting}
-          className={classes.submit}
-        >
+        <SubmitButton isSubmitting={isSubmitting}>
           {submitButtonText}
-        </ButtonWithProgress>
+        </SubmitButton>
       </form>
     )}
   />
 );
 
-SignUpForm.defaultProps = {
-  submitButtonText: "Sign Up"
-};
-
-export default withStyles(styles)(SignUpForm);
+export default SignUpForm;

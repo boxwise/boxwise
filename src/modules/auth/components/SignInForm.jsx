@@ -1,18 +1,11 @@
 import React from "react";
-import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
 import { useMaterialUIForm } from "hooks/forms";
-import ButtonWithProgress from "components/ButtonWithProgress";
+import SubmitButton from "components/SubmitButton";
 import FormErrorText from "components/FormErrorText";
 
-const styles = theme => ({
-  submit: {
-    marginTop: theme.spacing.unit * 2
-  }
-});
-
-const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
+const SignInForm = ({ serverError, loading, userSignIn }) => {
   const validate = values => {
     const errors = {};
     if (!values.email) {
@@ -50,17 +43,9 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
         margin="normal"
         {...attachValidation("password")}
       />
-      <ButtonWithProgress
-        variant="contained"
-        color="primary"
-        type="submit"
-        loading={loading || false}
-        className={classes.submit}
-      >
-        Sign In
-      </ButtonWithProgress>
+      <SubmitButton isSubmitting={loading || false}>Sign In</SubmitButton>
     </form>
   );
 };
 
-export default withStyles(styles)(SignInForm);
+export default SignInForm;

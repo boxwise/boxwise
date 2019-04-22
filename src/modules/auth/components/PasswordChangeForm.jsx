@@ -1,20 +1,13 @@
 import React from "react";
 import { Field, Formik } from "formik";
-import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 
 import { captureException } from "errorHandling";
-import ButtonWithProgress from "components/ButtonWithProgress";
+import SubmitButton from "components/SubmitButton";
 import FormErrorText from "components/FormErrorText";
 
-const styles = theme => ({
-  submit: {
-    marginTop: theme.spacing.unit * 2
-  }
-});
-
-const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
+const PasswordChangeForm = ({ user, userPasswordChange }) => (
   <Formik
     initialValues={{
       currentPassword: "",
@@ -108,18 +101,12 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
         errors.malformedPassword ? (
           <Typography color="error">{errors.malformedPassword}</Typography>
         ) : null}
-        <ButtonWithProgress
-          variant="contained"
-          color="primary"
-          type="submit"
-          loading={isSubmitting || user.isUpdating}
-          className={classes.submit}
-        >
+        <SubmitButton isSubmitting={isSubmitting || user.isUpdating}>
           Update Password
-        </ButtonWithProgress>
+        </SubmitButton>
       </form>
     )}
   />
 );
 
-export default withStyles(styles)(PasswordChangeForm);
+export default PasswordChangeForm;

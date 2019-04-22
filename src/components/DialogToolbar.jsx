@@ -6,7 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 
-import ButtonWithProgress from "./ButtonWithProgress";
+import SubmitButton from "./SubmitButton";
 
 const styles = theme => ({
   appBar: {
@@ -34,13 +34,13 @@ const DialogToolbar = ({
       <Typography variant="h6" color="inherit" className={classes.flex}>
         {title}
       </Typography>
-      <ButtonWithProgress
-        color="primary"
+      <SubmitButton
+        isInDialog
         onClick={onClickButton}
-        loading={buttonIsLoading}
+        isSubmitting={buttonIsLoading}
       >
         {buttonText}
-      </ButtonWithProgress>
+      </SubmitButton>
     </Toolbar>
   </AppBar>
 );
