@@ -17,13 +17,13 @@ const OrganizationStep = ({ onDone }) => {
         Start using Boxwise to manage your warehouse by signing up here.
       </Typography>
       <Typography gutterBottom>
-        After giving us a few details about your organization, you'll then be
-        able to invite your co-workers to join you in using Boxwise.
+        After giving us a few details about your organization, you&apos;ll then
+        be able to invite your co-workers to join you in using Boxwise.
       </Typography>
       <br />
       <br />
       <CreateOrganizationForm
-        onSubmit={(data, { setSubmitting, setErrors }) => {
+        onSubmit={(data, { setSubmitting }) => {
           setSubmitting(false);
           onDone(data);
         }}
@@ -92,13 +92,17 @@ const DoneStep = ({ onDone }) => {
 };
 
 class CreateOrganizationFlow extends React.Component {
-  state = {
-    step: "organization",
-    organizationData: null
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      step: "organization",
+      organizationData: null
+    };
+  }
 
   render() {
-    switch (this.state.step) {
+    const { step, organizationData, onDone } = this.state;
+    switch (step) {
       case "organization":
         return (
           <OrganizationStep
@@ -110,14 +114,14 @@ class CreateOrganizationFlow extends React.Component {
       case "user":
         return (
           <UserStep
-            organizationData={this.state.organizationData}
-            onDone={user => this.setState({ step: "invite" })}
+            organizationData={organizationData}
+            onDone={() => this.setState({ step: "invite" })}
           />
         );
       case "invite":
         return <InviteStep onDone={() => this.setState({ step: "done" })} />;
       case "done":
-        return <DoneStep onDone={this.props.onDone} />;
+        return <DoneStep onDone={onDone} />;
       default:
         throw new Error("unknown step");
     }

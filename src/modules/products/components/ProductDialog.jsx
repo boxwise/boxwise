@@ -1,7 +1,6 @@
 import React from "react";
 import { Formik, Field } from "formik";
 import { compose } from "redux";
-import { withStyles } from "@material-ui/core/styles";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -14,16 +13,11 @@ import DialogToolbar from "components/DialogToolbar";
 
 import { CATEGORIES } from "../categories";
 
-const styles = theme => ({
-  root: {}
-});
-
 function Transition(props) {
   return <Slide direction="up" {...props} />;
 }
 
 const ProductDialog = ({
-  classes,
   open,
   fullScreen,
   onClose,
@@ -31,7 +25,6 @@ const ProductDialog = ({
   onSubmit
 }) => (
   <Dialog
-    className={classes.root}
     open={open}
     onClose={onClose}
     aria-labelledby="form-dialog-title"
@@ -102,7 +95,4 @@ const ProductDialog = ({
   </Dialog>
 );
 
-export default compose(
-  withStyles(styles),
-  withMobileDialog()
-)(ProductDialog);
+export default compose(withMobileDialog())(ProductDialog);

@@ -1,9 +1,8 @@
 import { connect } from "react-redux";
 
 import ProductDialog from "../components/ProductDialog";
-import { productEdit } from "../actions";
+import * as actions from "../actions";
 
-const mapDispatchToProps = { productEdit };
 const mergeProps = (
   stateProps,
   { productEdit },
@@ -18,6 +17,6 @@ const mergeProps = (
 
 export default connect(
   null,
-  mapDispatchToProps,
+  actions,
   mergeProps
 )(ProductDialog);

@@ -1,6 +1,6 @@
 import React from "react";
 
-const Progress = ({ size, className }) => (
+const Progress = ({ size = 40, className = "" }) => (
   <img
     src="/images/loading-boxes.gif"
     alt="progress"

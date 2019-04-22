@@ -62,10 +62,6 @@ const styles = theme => ({
 });
 
 class FindBoxMockupPage extends React.Component {
-  state = {
-    spacing: "16"
-  };
-
   handleChange = key => (event, value) => {
     this.setState({
       [key]: value

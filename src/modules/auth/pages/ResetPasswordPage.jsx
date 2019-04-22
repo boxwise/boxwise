@@ -7,7 +7,7 @@ import { Page } from "modules/layout/components";
 
 import ResetPasswordForm from "../components/ResetPasswordForm";
 
-const ResetPasswordPage = ({ history, user }) =>
+const ResetPasswordPage = ({ user }) =>
   !user.hasTriggeredReset ? (
     <Page>
       <Grid container spacing={24} justify="center" alignItems="center">

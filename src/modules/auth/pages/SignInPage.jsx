@@ -7,7 +7,7 @@ import { Page } from "modules/layout/components";
 
 import SignInForm from "../containers/SignInForm";
 
-const SignInPage = ({ history, user }) =>
+const SignInPage = ({ user }) =>
   !user.data ? (
     <Page>
       <Grid container spacing={24} justify="center" alignItems="center">

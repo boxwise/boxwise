@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 
 import DialogToolbar from "components/DialogToolbar";
 
-const AddBoxForm = ({ classes, onClose, onSubmit, products }) => (
+const AddBoxForm = ({ onClose, onSubmit, products }) => (
   <Formik
     initialValues={{
       product: "",

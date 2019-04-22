@@ -6,8 +6,7 @@ export const asyncAction = (name, extras = []) => ({
   CANCEL: `${name}_CANCEL`,
   ...extras.reduce((prev, curr) => {
     const key = curr.toUpperCase();
-    prev[key] = `${name}_${key}`;
-    return prev;
+    return { key: `${name}_${key}`, ...prev };
   }, {})
 });
 

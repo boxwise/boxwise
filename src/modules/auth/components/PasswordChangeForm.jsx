@@ -44,7 +44,7 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
       { currentPassword, newPassword },
       { setSubmitting, setErrors, setStatus }
     ) => {
-      const email = user.data.email;
+      const { email } = user.data;
       userPasswordChange({ email, currentPassword, newPassword })
         .then(() => {
           setSubmitting(false);

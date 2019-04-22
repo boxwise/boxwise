@@ -5,7 +5,7 @@ import { mount, setInputFieldValue } from "enzymeHelpers";
 import ResetPassword from "./ResetPasswordForm";
 
 describe("ResetPasswordForm", () => {
-  const resetPassword = jest.fn(({ email }) => {
+  const resetPassword = jest.fn(() => {
     Promise.resolve();
   });
   let component;
