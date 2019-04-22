@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const Progress = ({ size, className }) => (
   <img
@@ -9,15 +8,5 @@ const Progress = ({ size, className }) => (
     style={{ height: `${size}px`, width: `${size}px` }}
   />
 );
-
-Progress.propTypes = {
-  size: PropTypes.number,
-  className: PropTypes.string
-};
-
-Progress.defaultProps = {
-  size: 40,
-  className: ""
-};
 
 export default Progress;

@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
@@ -32,13 +31,5 @@ const ButtonWithProgress = ({
     {loading && <CircularProgress size={24} className={classes.progress} />}
   </div>
 );
-
-ButtonWithProgress.propTypes = {
-  loading: PropTypes.bool.isRequired
-};
-
-ButtonWithProgress.defaultProps = {
-  loading: false
-};
 
 export default withStyles(styles)(ButtonWithProgress);

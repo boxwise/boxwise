@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import PropTypes from "prop-types";
 
 import { Page } from "modules/layout/components";
 import { fontFamily } from "theme";
@@ -108,9 +107,5 @@ const HomePage = ({ classes }) => (
     </Grid>
   </Page>
 );
-
-HomePage.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(HomePage);

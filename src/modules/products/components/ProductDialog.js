@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Formik, Field } from "formik";
 import { compose } from "redux";
 import { withStyles } from "@material-ui/core/styles";
@@ -102,13 +101,6 @@ const ProductDialog = ({
     />
   </Dialog>
 );
-
-ProductDialog.propTypes = {
-  classes: PropTypes.object.isRequired,
-  open: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
-  fullScreen: PropTypes.bool.isRequired
-};
 
 export default compose(
   withStyles(styles),

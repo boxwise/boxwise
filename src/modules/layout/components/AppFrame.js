@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
@@ -118,11 +117,5 @@ class AppFrame extends React.Component {
     );
   }
 }
-
-AppFrame.propTypes = {
-  children: PropTypes.node.isRequired,
-  classes: PropTypes.object.isRequired,
-  title: PropTypes.string
-};
 
 export default withStyles(styles)(AppFrame);
