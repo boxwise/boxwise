@@ -8,6 +8,7 @@ import { TextField } from "formik-material-ui";
 import Typography from "@material-ui/core/Typography";
 
 import DialogToolbar from "components/DialogToolbar";
+import FormErrorText from "components/FormErrorText";
 
 const AddBoxForm = ({ onClose, onSubmit, products }) => (
   <Formik
@@ -37,8 +38,7 @@ const AddBoxForm = ({ onClose, onSubmit, products }) => (
           onClickButton={products.length ? handleSubmit : onClose}
         />
         <DialogContent>
-          {/* TODO: style errors */}
-          {errors.form ? <Typography>{errors.form}</Typography> : null}
+          <FormErrorText message={errors.form} />
           {products.length ? (
             <div>
               <Field

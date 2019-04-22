@@ -2,8 +2,8 @@ import React from "react";
 import { Formik, Field } from "formik";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
-import Typography from "@material-ui/core/Typography";
 
+import FormErrorText from "components/FormErrorText";
 import ButtonWithProgress from "components/ButtonWithProgress";
 
 const styles = theme => ({
@@ -35,8 +35,7 @@ const SignUpForm = ({ classes, onSubmit, submitButtonText }) => (
     onSubmit={onSubmit}
     render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
-        {/* TODO: style errors */}
-        {errors.form ? <Typography>{errors.form}</Typography> : null}
+        <FormErrorText message={errors.form} />
         <Field
           type="name"
           label="Enter your name"

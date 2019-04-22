@@ -5,11 +5,11 @@ import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import MenuItem from "@material-ui/core/MenuItem";
 import { TextField } from "formik-material-ui";
-import Typography from "@material-ui/core/Typography";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 
 import DialogToolbar from "components/DialogToolbar";
+import FormErrorText from "components/FormErrorText";
 
 import { CATEGORIES } from "../categories";
 
@@ -61,8 +61,7 @@ const ProductDialog = ({
             onClickButton={handleSubmit}
           />
           <DialogContent>
-            {/* TODO: style errors */}
-            {errors.form ? <Typography>{errors.form}</Typography> : null}
+            <FormErrorText message={errors.form} />
             <Field
               label="Category"
               name="category"
