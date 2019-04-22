@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 
 import { captureException } from "errorHandling";
 import ButtonWithProgress from "components/ButtonWithProgress";
+import FormErrorText from "components/FormErrorText";
 
 const styles = theme => ({
   submit: {
@@ -63,14 +64,9 @@ const PasswordChangeForm = ({ classes, user, userPasswordChange }) => (
             Your password has been updated successfully.
           </Typography>
         ) : null}
-
-        {/* TODO: style errors */}
-        {errors.form ? (
-          <Typography color="error">{errors.form}</Typography>
-        ) : null}
-
+        <FormErrorText message={errors.form} />
         {touched.currentPassword && errors.currentPassword ? (
-          <Typography color="error">{errors.currentPassword}</Typography>
+          <FormErrorText message="{errors.currentPassword}" />
         ) : null}
         <Field
           type="password"

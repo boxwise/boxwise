@@ -2,9 +2,9 @@ import React from "react";
 import { Formik, Field } from "formik";
 import { withStyles } from "@material-ui/core/styles";
 import { TextField } from "formik-material-ui";
-import Typography from "@material-ui/core/Typography";
 
 import ButtonWithProgress from "components/ButtonWithProgress";
+import FormErrorText from "components/FormErrorText";
 
 const styles = theme => ({
   submit: {
@@ -27,8 +27,7 @@ const CreateOrganizationForm = ({ classes, onSubmit }) => (
     onSubmit={onSubmit}
     render={({ handleSubmit, isSubmitting, errors }) => (
       <form onSubmit={handleSubmit}>
-        {/* TODO: style errors */}
-        {errors.form ? <Typography>{errors.form}</Typography> : null}
+        <FormErrorText message={errors.form} />
         <Field
           type="text"
           label="What’s the name of your organization?"

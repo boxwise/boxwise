@@ -1,10 +1,10 @@
 import React from "react";
 import { withStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import FormHelperText from "@material-ui/core/FormHelperText";
 
 import { useMaterialUIForm } from "hooks/forms";
 import ButtonWithProgress from "components/ButtonWithProgress";
+import FormErrorText from "components/FormErrorText";
 
 const styles = theme => ({
   submit: {
@@ -30,9 +30,7 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      {serverError ? (
-        <FormHelperText error>{serverError.message}</FormHelperText>
-      ) : null}
+      <FormErrorText message={serverError && serverError.message} />
       <TextField
         id="email"
         type="email"
