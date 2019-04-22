@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
@@ -44,14 +43,6 @@ const AppDrawerAuth = ({
       </ListItem>
     </List>
   );
-};
-
-AppDrawerAuth.propTypes = {
-  loading: PropTypes.bool,
-  user: PropTypes.object,
-  profile: PropTypes.object,
-  onSignOut: PropTypes.func,
-  onClose: PropTypes.func
 };
 
 export default AppDrawerAuth;

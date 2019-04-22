@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import PropTypes from "prop-types";
 import Button from "@material-ui/core/Button";
 import {
   intlShape,
@@ -82,10 +81,5 @@ class DashboardPage extends React.Component {
     );
   }
 }
-
-DashboardPage.propTypes = {
-  classes: PropTypes.object.isRequired,
-  intl: intlShape.isRequired
-};
 
 export default withStyles(styles)(injectIntl(DashboardPage));
