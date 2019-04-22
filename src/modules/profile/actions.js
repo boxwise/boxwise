@@ -1,9 +1,7 @@
-import firebase from "firebase/app";
-
+import { db } from "firebaseFactory";
 import { captureException } from "errorHandling";
 
 const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
-const db = firebase.firestore();
 
 export const FETCH_PROFILE_START = FETCH_PROFILE_`START`;
 export const FETCH_PROFILE_SUCCESS = FETCH_PROFILE_`SUCCESS`;

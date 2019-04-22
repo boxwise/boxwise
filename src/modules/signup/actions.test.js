@@ -1,11 +1,10 @@
-import firebase from "firebase/app";
+import { db } from "firebaseFactory";
 
 import { getOrAddInvite } from "./actions";
 
 // firebase mock doesn't support querying by reference
 test.skip("getOrAddInvite", () => {
-  return firebase
-    .firestore()
+  return db
     .collection("organizations")
     .add({ name: "Boxaid" })
     .then(org => {
