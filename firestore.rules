@@ -19,7 +19,7 @@ service cloud.firestore {
     }
 
     match /profiles/{userId} {
-      allow read, create: if request.auth.uid == userId;
+      allow read, create: if true
       allow update: if false;
       allow delete: if false;
     }
