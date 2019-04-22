@@ -1,5 +1,4 @@
-import firebase from "firebase/app";
-const db = firebase.firestore();
+import { firebase, db } from "firebaseFactory";
 
 const setProfile = ({ uid }, data) => {
   return db

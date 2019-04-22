@@ -3,20 +3,20 @@
 import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import "jest-enzyme";
+import firebaseMock from "firebase-mock";
 
 Enzyme.configure({ adapter: new Adapter() });
 
-jest.mock("firebase/app", () => {
-  const firebasemock = require("firebase-mock");
-  const mockauth = new firebasemock.MockAuthentication();
-  const mockfirestore = new firebasemock.MockFirestore();
-  const mocksdk = new firebasemock.MockFirebaseSdk(
+jest.doMock("firebaseFactory", () => {
+  const mockAuth = new firebaseMock.MockAuthentication();
+  const mockFirestore = new firebaseMock.MockFirestore();
+  const mockSdk = new firebaseMock.MockFirebaseSdk(
     null, // RTDB
-    () => mockauth,
-    () => mockfirestore
+    () => mockAuth,
+    () => mockFirestore
   );
-  const firebase = mocksdk.initializeApp();
+  const firebase = mockSdk.initializeApp();
   firebase.auth().autoFlush(true);
   firebase.firestore().autoFlush(true);
-  return firebase;
+  return { db: firebase.firestore(), firebase };
 });

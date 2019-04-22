@@ -1,5 +1,4 @@
-import firebase from "firebase/app";
-
+import { firebase, db } from "firebaseFactory";
 import {
   addAction,
   listAction,
@@ -12,8 +11,6 @@ export const PRODUCT_LIST = listAction("product");
 export const PRODUCT_ADD = addAction("product");
 export const PRODUCT_EDIT = editAction("product");
 export const PRODUCT_DELETE = deleteAction("product");
-
-const db = firebase.firestore();
 
 // ***** Plain Actions ***** //
 

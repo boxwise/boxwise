@@ -1,13 +1,10 @@
-import firebase from "firebase/app";
-
+import { firebase, db } from "firebaseFactory";
 import { captureException } from "errorHandling";
 
 const BOX_ADD_ = TYPE => `BOX_ADD_${TYPE}`;
 export const BOX_ADD_START = BOX_ADD_`START`;
 export const BOX_ADD_SUCCESS = BOX_ADD_`SUCCESS`;
 export const BOX_ADD_ERROR = BOX_ADD_`ERROR`;
-
-const db = firebase.firestore();
 
 export const addBox = ({
   product,

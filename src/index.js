@@ -9,15 +9,13 @@ import App from "./App";
 import config from "./config";
 import * as serviceWorker from "./serviceWorker";
 import store from "./store";
-import firebaseConfig from "./firebaseConfig";
+import { firebase } from "./firebaseFactory";
 
 if (config.SENTRY_URI) {
   Sentry.init({
     dsn: config.SENTRY_URI
   });
 }
-
-const firebase = firebaseConfig.initializeApp();
 
 ReactDOM.render(
   <FirestoreProvider firebase={firebase}>

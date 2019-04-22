@@ -1,12 +1,13 @@
 import React from "react";
 import { FirestoreCollection } from "react-firestore";
-import firebase from "firebase/app";
+
+import { db } from "firebaseFactory";
 
 const ProductsCollection = ({ organizationRef, ...props }) => (
   <FirestoreCollection
     path="products"
     filter={[
-      ["organization", "==", firebase.firestore().doc(organizationRef)],
+      ["organization", "==", db.doc(organizationRef)],
       ["isDeleted", "==", false]
     ]}
     sort="category:asc,name:asc"

@@ -1,5 +1,4 @@
-import firebase from "firebase/app";
-
+import { firebase } from "firebaseFactory";
 import { fetchProfile } from "modules/profile/actions";
 import { captureException } from "errorHandling";
 import { asyncAction, editAction } from "commons/utils/action-creators";
