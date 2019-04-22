@@ -23,7 +23,7 @@ const SignInForm = ({ classes, serverError, loading, userSignIn }) => {
     }
     return errors;
   };
-  const { handleSubmit, attachValidation } = useMaterialUIForm(
+  const { attachValidation, handleSubmit } = useMaterialUIForm(
     userSignIn,
     validate
   );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
@@ -59,63 +59,53 @@ const styles = theme => ({
   }
 });
 
-class AppFrame extends React.Component {
-  state = {
-    mobileOpen: false
-  };
+const AppFrame = ({ children, classes, title }) => {
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-  handleDrawerOpen = () => {
-    this.setState({ mobileOpen: true });
-  };
+  const handleDrawerOpen = () => setMobileOpen(true);
+  const handleDrawerClose = () => setMobileOpen(false);
 
-  handleDrawerClose = () => {
-    this.setState({ mobileOpen: false });
-  };
-
-  render() {
-    const { children, classes, title } = this.props;
-    const divClass = this.mobileOpen ? classes.rootLocked : classes.root;
-    return (
-      <div className={divClass}>
-        <AppBar className={classes.appBar} position="fixed">
-          <Toolbar>
-            <IconButton
+  const divClass = mobileOpen ? classes.rootLocked : classes.root;
+  return (
+    <div className={divClass}>
+      <AppBar className={classes.appBar} position="fixed">
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            className={classes.hamburger}
+          >
+            <MenuIcon />
+          </IconButton>
+          {title !== null && (
+            <Typography
+              className={classes.title}
+              variant="h6"
               color="inherit"
-              aria-label="open drawer"
-              onClick={this.handleDrawerOpen}
-              className={classes.hamburger}
+              noWrap
             >
-              <MenuIcon />
-            </IconButton>
-            {title !== null && (
-              <Typography
-                className={classes.title}
-                variant="h6"
-                color="inherit"
-                noWrap
-              >
-                {title}
-              </Typography>
-            )}
-            <div className={classes.grow} />
-          </Toolbar>
-        </AppBar>
-        <MuiThemeProvider theme={drawerTheme}>
-          <AppDrawer
-            className={classes.drawer}
-            disablePermanent={false}
-            onClose={this.handleDrawerClose}
-            onOpen={this.handleDrawerOpen}
-            mobileOpen={this.state.mobileOpen}
-          />
-        </MuiThemeProvider>
-        <div className={classes.children}>
-          <Toolbar />
-          {children}
-        </div>
+              {title}
+            </Typography>
+          )}
+          <div className={classes.grow} />
+        </Toolbar>
+      </AppBar>
+      <MuiThemeProvider theme={drawerTheme}>
+        <AppDrawer
+          className={classes.drawer}
+          disablePermanent={false}
+          onClose={handleDrawerClose}
+          onOpen={handleDrawerOpen}
+          mobileOpen={mobileOpen}
+        />
+      </MuiThemeProvider>
+      <div className={classes.children}>
+        <Toolbar />
+        {children}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default withStyles(styles)(AppFrame);

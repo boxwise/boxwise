@@ -56,11 +56,12 @@ export default class AddBoxDialog extends PureComponent {
 
   renderDialog(products) {
     const { box, selectedProduct, done } = this.state;
+    const { open } = this.props;
 
     return (
       <Dialog
         fullScreen
-        open={this.props.open}
+        open={open}
         onClose={this.handleClose}
         aria-labelledby="form-dialog-title"
         fullWidth

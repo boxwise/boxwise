@@ -35,7 +35,7 @@ const messages = defineMessages({
 });
 
 const DashboardPage = ({ classes }) => {
-  const { addBoxDialogOpen, setAddBoxDialogOpen } = useState(false);
+  const [addBoxDialogOpen, setAddBoxDialogOpen] = useState(false);
   return (
     <AppFrame title="Dashboard">
       <Page>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import { CopyToClipboard } from "react-copy-to-clipboard";
@@ -16,67 +16,62 @@ import { getOrAddInvite, createInviteLink } from "../actions";
 // wait for the damned thing to be ready in the redux state.
 function waitForProfile(Component) {
   return ({ isLoading, ...props }) => {
-    if (!props.profile.data || props.profile.loading) {
+    const { profile } = props;
+    if (!profile.data || profile.loading) {
       return <Progress />;
     }
     return <Component {...props} />;
   };
 }
 
-class InviteLink extends React.Component {
-  state = {
-    snackbarOpen: false,
+const InviteLink = ({ profile, extra }) => {
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [inviteData, setInviteData] = useState({
     isFetching: true,
     inviteLink: null
-  };
+  });
 
-  componentDidMount() {
-    getOrAddInvite(this.props.profile.data.organization.ref)
+  useEffect(() => {
+    getOrAddInvite(profile.data.organization.ref)
       .then(invite => {
-        this.setState({
+        setInviteData({
           isFetching: false,
           inviteLink: createInviteLink(invite)
         });
       })
       .catch(captureException); // TODO: actually handle errors
-  }
+  }, [profile.data.organization.ref, setInviteData]);
 
-  render() {
-    const { extra } = this.props;
-    const { inviteLink, isFetching, snackbarOpen } = this.state;
-
-    if (isFetching) {
-      return <Progress />;
-    }
-    return (
-      <div>
-        <Typography gutterBottom>
-          To invite people to your organization, send them this link:
-        </Typography>
-        <TextField value={inviteLink} fullWidth margin="normal" />
-        <CopyToClipboard
-          text={inviteLink}
-          onCopy={() => this.setState({ snackbarOpen: true })}
-        >
-          <Button color="primary">Copy to clipboard</Button>
-        </CopyToClipboard>
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "center"
-          }}
-          open={snackbarOpen}
-          autoHideDuration={2000}
-          onClose={() => {
-            this.setState({ snackbarOpen: false });
-          }}
-          message="Link copied!"
-        />
-        {extra}
-      </div>
-    );
+  if (inviteData.isFetching) {
+    return <Progress />;
   }
-}
+  return (
+    <div>
+      <Typography gutterBottom>
+        To invite people to your organization, send them this link:
+      </Typography>
+      <TextField value={inviteData.inviteLink} fullWidth margin="normal" />
+      <CopyToClipboard
+        text={inviteData.inviteLink}
+        onCopy={() => setSnackbarOpen(true)}
+      >
+        <Button color="primary">Copy to clipboard</Button>
+      </CopyToClipboard>
+      <Snackbar
+        anchorOrigin={{
+          vertical: "bottom",
+          horizontal: "center"
+        }}
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={() => setSnackbarOpen(false)}
+        message="Link copied!"
+      />
+      {extra}
+    </div>
+  );
+};
+
 export default compose(
   connect(state => ({
     profile: state.profile
