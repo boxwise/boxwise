@@ -5,7 +5,7 @@ import Grid from "@material-ui/core/Grid";
 
 import { Page } from "modules/layout/components";
 
-import ResetPasswordForm from "../components/ResetPasswordForm";
+import ResetPasswordForm from "../containers/ResetPasswordForm";
 
 const ResetPasswordPage = ({ user }) =>
   !user.hasTriggeredReset ? (

@@ -14,7 +14,7 @@ const SignInPage = ({ user }) =>
         <Grid item xs={12} md={4}>
           <Typography variant="h4">Sign In</Typography>
           {user.hasTriggeredReset && (
-            <Typography>
+            <Typography color="primary">
               <br />
               Your password reset email has been sent. Once you reset your
               password, continue with the login below.

@@ -24,11 +24,8 @@ describe("ResetPasswordForm", () => {
     setInputFieldValue(component, "email", "test@example.com");
     component.find("button[type='submit']").simulate("submit");
 
-    expect(resetPassword).toBeCalledWith(
-      {
-        email: "test@example.com"
-      },
-      expect.any(Object)
-    );
+    expect(resetPassword).toBeCalledWith({
+      email: "test@example.com"
+    });
   });
 });
