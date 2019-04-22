@@ -1,20 +1,15 @@
 import "babel-polyfill";
 import path from "path";
-import fs from "fs";
 
 import * as firestore from "expect-firestore";
 
-const serviceAccountKey = fs.existsSync(".service-account-key.json")
-  ? // eslint-disable-next-line import/no-unresolved
-    require(".service-account-key.json")
-  : null;
-
-const describeButSkipIfNoKey = serviceAccountKey ? describe : describe.skip;
-if (!serviceAccountKey) {
-  // eslint-disable-next-line no-console
-  console.warn(
-    "Skipping firestore rule tests. Provide .service-account-key.json to run these."
-  );
+let describeButSkipIfNoKey = describe;
+let serviceAccountKey;
+try {
+  // eslint-disable-next-line global-require
+  serviceAccountKey = require("../.service-account-key.json");
+} catch (e) {
+  describeButSkipIfNoKey = describe.skip;
 }
 
 const TEST_DATA = {
@@ -54,7 +49,7 @@ describeButSkipIfNoKey("firestore.rules", () => {
       credential: serviceAccountKey
     });
     await database.authorize();
-    database.setRulesFromFile(path.join(__dirname, "../../firestore.rules"));
+    database.setRulesFromFile(path.join(__dirname, "../firestore.rules"));
   });
 
   afterAll(async () => {
