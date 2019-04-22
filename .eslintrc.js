@@ -13,17 +13,26 @@ module.exports = {
   "plugins": ["eslint-plugin-import","react-hooks"],
   "extends": ["react-app","airbnb","plugin:import/recommended","prettier"],
   "env": {
-    "jasmine": true
+    "jasmine": true,
   },
   "rules": {
+    // before modifying these, https://github.com/airbnb/javascript has
+    // a great guide as to why airbnb recommend their presets
+
     // these are disabled here, and re-enabled for .eslintrc-fixonly.js
     // as they can be handled automatically we don't bug anyone about it
     // the rest of auto-formatting is dealth with prettier instead
     "import/order": "off",
+    // turning these off (just opinion)
+    "import/prefer-default-export": "off",
     // these are needed to avoid conflicts with prettier
     // and are not disabled by the prettier extension itself
     "react/jsx-one-expression-per-line": "off",
     "react/jsx-wrap-multilines": "off",
+    // we're not consistently using prop types at the moment
+    "react/prop-types": "off",
+    // these should be turned on ultimately but require significant changes
+    "no-shadow": "off",
     // others
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
@@ -40,6 +49,13 @@ module.exports = {
     ]
   },
   "overrides": [
+    {
+      // allow dependencies in test files to be devDependencies only
+      "files": ["src/**/*.test.js","src/setupTests.js"],
+      "rules": {
+        "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+      }
+    },
     {
       "files": ["src/components/**"],
       "rules": {
@@ -83,6 +99,7 @@ module.exports = {
   "settings": {
     "import/resolver": {
       "node": {
+        // we need /src included to resolve absolute paths
         "moduleDirectory": ["node_modules", "src/"]
       }
     }
