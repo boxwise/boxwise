@@ -10,7 +10,7 @@ const ProductSelect = ({ products, value, onChange }) => (
       <option value="" />
       {products.map(n => (
         <option key={n.id} value={n.id}>
-          {n.category} / {n.name}
+          {n.category} / {n.name}
         </option>
       ))}
     </Select>
