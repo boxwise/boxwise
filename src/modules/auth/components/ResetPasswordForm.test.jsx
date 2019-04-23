@@ -20,6 +20,7 @@ describe("ResetPasswordForm", () => {
 
     expect(resetPassword).not.toBeCalled();
   });
+
   it("triggers resetPassword when email is provided", () => {
     setInputFieldValue(component, "email", "test@example.com");
     component.find("button[type='submit']").simulate("submit");
@@ -27,5 +28,9 @@ describe("ResetPasswordForm", () => {
     expect(resetPassword).toBeCalledWith({
       email: "test@example.com"
     });
+  });
+
+  it("renders correctly", () => {
+    expect(component).toMatchSnapshot();
   });
 });
