@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import ReactGA from "react-ga";
 import { MuiThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { addLocaleData } from "react-intl";
@@ -25,25 +24,14 @@ import {
 } from "./modules/signup/pages";
 import { ProductsPage } from "./modules/products/pages";
 import { BoxesPage, CreateLabelsPage } from "./modules/boxes/pages";
-import config from "./config";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { GoogleAnalytics } from "./modules/layout/components";
 import { NotFoundPage, DashboardPage } from "./modules/layout/pages";
 import theme from "./theme";
 import withAuthentication from "./commons/HOCs/withAuthentication";
 
 addLocaleData([...en]);
-
-if (config.GOOGLE_ANALYTICS_CODE) {
-  ReactGA.initialize(config.GOOGLE_ANALYTICS_CODE);
-}
-
-const recordPageview = ({ location }) => {
-  if (config.GOOGLE_ANALYTICS_CODE) {
-    ReactGA.pageview(location.pathname);
-  }
-  return null;
-};
 
 const App = () => (
   <ErrorBoundary>
@@ -112,7 +100,7 @@ const App = () => (
             <Route component={NotFoundPage} />
           </Switch>
           {/* this is outside the switch so the 404 works */}
-          <Route path="/" render={recordPageview} />
+          <Route path="/" component={GoogleAnalytics} />
         </ScrollToTop>
       </BrowserRouter>
     </MuiThemeProvider>
