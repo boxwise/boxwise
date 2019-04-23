@@ -21,7 +21,7 @@ const styles = theme => ({
   }
 });
 
-const SubmitButton = ({
+export const SubmitButton = ({
   classes,
   children,
   isSubmitting = false,
