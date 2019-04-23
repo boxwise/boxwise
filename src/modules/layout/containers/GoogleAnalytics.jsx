@@ -1,9 +1,11 @@
 import { connect } from "react-redux";
 
 export const GoogleAnalytics = ({ userId, location }) => {
-  window.gtag("set", "page", location.pathname + location.search);
-  window.gtag("set", "userid", userId);
-  window.gtag("send", "pageview");
+  if (window.gtag) {
+    window.gtag("set", "page", location.pathname + location.search);
+    window.gtag("set", "userid", userId);
+    window.gtag("send", "pageview");
+  }
   return null;
 };
 
