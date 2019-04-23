@@ -24,12 +24,12 @@ const messages = defineMessages({
     id: "dashboard.headline",
     defaultMessage: "Things to do"
   },
-  create_box: {
-    id: "dashboard.create_box",
+  createBox: {
+    id: "dashboard.createBox",
     defaultMessage: "Make a box"
   },
-  find_box: {
-    id: "dashboard.find_box",
+  findBox: {
+    id: "dashboard.findBox",
     defaultMessage: "Find boxes"
   }
 });
@@ -52,7 +52,7 @@ const DashboardPage = ({ classes }) => {
             color="secondary"
             onClick={() => setAddBoxDialogOpen(true)}
           >
-            <FormattedMessage {...messages.create_box} />
+            <FormattedMessage {...messages.createBox} />
           </Button>
           <br />
           <br />
@@ -62,7 +62,7 @@ const DashboardPage = ({ classes }) => {
             component={Link}
             to="/boxes"
           >
-            <FormattedMessage {...messages.find_box} />
+            <FormattedMessage {...messages.findBox} />
           </Button>
         </Paper>
       </Page>

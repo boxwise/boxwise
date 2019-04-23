@@ -57,7 +57,7 @@ const AddBoxForm = ({ onClose, onSubmit, products }) => (
                     key={id}
                     value={JSON.stringify({ id, category, name })}
                   >
-                    {category} / {name}
+                    {category} / {name}
                   </MenuItem>
                 ))}
               </Field>
