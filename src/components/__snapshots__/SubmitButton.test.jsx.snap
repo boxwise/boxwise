@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SubmitButton /> renders correctly 1`] = `
+<div
+  className=" "
+>
+  <WithStyles(Button)
+    color="primary"
+    disabled={false}
+    type="submit"
+    variant="contained"
+  >
+    Hello
+  </WithStyles(Button)>
+</div>
+`;
+
+exports[`<SubmitButton /> renders correctly when in dialog: dialog 1`] = `
+<div
+  className=" "
+>
+  <WithStyles(Button)
+    color="primary"
+    disabled={false}
+    type="submit"
+    variant="text"
+  >
+    Hello
+  </WithStyles(Button)>
+</div>
+`;
+
+exports[`<SubmitButton /> renders correctly when submitting: submitting 1`] = `
+<div
+  className=" "
+>
+  <WithStyles(Button)
+    color="primary"
+    disabled={true}
+    type="submit"
+    variant="contained"
+  >
+    Hello
+  </WithStyles(Button)>
+  <WithStyles(CircularProgress)
+    size={24}
+  />
+</div>
+`;
