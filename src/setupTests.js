@@ -6,6 +6,9 @@ import "jest-enzyme";
 import firebaseMock from "firebase-mock";
 
 Enzyme.configure({ adapter: new Adapter() });
+// jest/jsdom throws a not implemented exception for this
+// instead, we just stub it out
+global.scrollTo = jest.fn();
 
 jest.doMock("firebaseFactory", () => {
   const mockAuth = new firebaseMock.MockAuthentication();
