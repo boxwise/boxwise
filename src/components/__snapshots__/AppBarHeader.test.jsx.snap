@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AppBarHeader /> renders correctly 1`] = `
+<WithStyles(AppBar)
+  position="fixed"
+>
+  <WithStyles(Toolbar)>
+    <WithStyles(IconButton)
+      aria-label="go back"
+      color="inherit"
+      component={[Function]}
+      to="/dummy"
+    >
+      <pure(ArrowBackIcon) />
+    </WithStyles(IconButton)>
+    <WithStyles(Typography)
+      color="inherit"
+      noWrap={true}
+      variant="h6"
+    >
+      Hello
+    </WithStyles(Typography)>
+  </WithStyles(Toolbar)>
+</WithStyles(AppBar)>
+`;
