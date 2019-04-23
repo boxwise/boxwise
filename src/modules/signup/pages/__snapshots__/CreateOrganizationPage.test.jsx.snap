@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<Fragment>
+  <WithStyles(AppBarHeader)
+    backUrl="/signin"
+    title="Set up Boxwise"
+  />
+  <WithStyles(Page)>
+    <WithStyles(Grid)
+      alignItems="center"
+      container={true}
+      justify="center"
+      spacing={24}
+    >
+      <WithStyles(Grid)
+        item={true}
+        md={4}
+        xs={12}
+      >
+        <br />
+        <br />
+        <CreateOrganizationFlow
+          onDone={[Function]}
+        />
+      </WithStyles(Grid)>
+    </WithStyles(Grid)>
+  </WithStyles(Page)>
+</Fragment>
+`;
