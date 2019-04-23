@@ -10,7 +10,7 @@ const denyImportPatterns = {
 }
 
 module.exports = {
-  "plugins": ["eslint-plugin-import","react-hooks"],
+  "plugins": ["eslint-plugin-import"],
   "extends": ["react-app","airbnb","plugin:import/recommended","prettier"],
   "env": {
     "jasmine": true,
