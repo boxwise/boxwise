@@ -19,12 +19,15 @@ module.exports = {
     // before modifying these, https://github.com/airbnb/javascript has
     // a great guide as to why airbnb recommend their presets
 
-    // these are disabled here, and re-enabled for .eslintrc-fixonly.js
+    // import/order is disabled here, and re-enabled for .eslintrc-fixonly.js
     // as they can be handled automatically we don't bug anyone about it
     // the rest of auto-formatting is dealth with prettier instead
     "import/order": "off",
-    // turning these off (just opinion)
-    "import/prefer-default-export": "off",
+    // import/no-named-as-default disabled as it prevents a common pattern of exporting
+    // non-connected redux components for testing and then exporting
+    // the connected component as the default export
+    // see https://github.com/benmosher/eslint-plugin-import/issues/544
+    "import/no-named-as-default": "off",
     // these are needed to avoid conflicts with prettier
     // and are not disabled by the prettier extension itself
     "react/jsx-one-expression-per-line": "off",
@@ -72,6 +75,16 @@ module.exports = {
             ]
           }
         ]
+      }
+    },
+    {
+      "files": ["src/modules/*/*"],
+      "rules": {
+        // import/prefer-default-export disabled in modules
+        // as we have a pattern of exporting that we want to keep
+        // consistent across all modules even if there is only one
+        // component to export
+        "import/prefer-default-export": "off"
       }
     },
     {

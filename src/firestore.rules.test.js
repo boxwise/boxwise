@@ -6,7 +6,7 @@ import * as firestore from "expect-firestore";
 let describeButSkipIfNoKey = describe;
 let serviceAccountKey;
 try {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line global-require,import/no-unresolved
   serviceAccountKey = require("../.service-account-key.json");
 } catch (e) {
   describeButSkipIfNoKey = describe.skip;
