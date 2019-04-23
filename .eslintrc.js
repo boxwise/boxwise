@@ -11,7 +11,15 @@ const denyImportPatterns = {
 
 module.exports = {
   "plugins": ["eslint-plugin-import"],
-  "extends": ["react-app","airbnb","plugin:import/recommended","prettier"],
+  "extends": [
+    "react-app",
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:import/typescript",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
   "env": {
     "jasmine": true,
   },
@@ -36,6 +44,7 @@ module.exports = {
     "react/prop-types": "off",
     // these should be turned on ultimately but require significant changes
     "no-shadow": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
     // others
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
