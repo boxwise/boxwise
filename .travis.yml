@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- 'node' # latest stable build
+- '11.14.0' # pin to stable version
 cache: yarn
 before_install:
 - if [[ -n "$encrypted_5b7b89e871be_key" ]]; then openssl aes-256-cbc -K $encrypted_5b7b89e871be_key
