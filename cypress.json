@@ -1,1 +1,9 @@
-{}
+{
+    "env":{
+        "testOrg": "BoxwiseCypressTestOrg",
+        "testUser": "BoxwiseCypressTestUser",
+        "testUserMail": "testUser@example.com",
+        "testPwd": "BoxwiseCypressTestPwd",
+        "testProduct": "BoxwiseCypressTestProduct"
+    }
+}
