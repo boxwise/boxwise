@@ -18,7 +18,11 @@ const ProductsPage = () => {
         <AddProductDialog open={addDialogOpen} onClose={handleDialogClose} />
         <Paper>
           <Toolbar>
-            <Button color="primary" onClick={handleDialogOpen}>
+            <Button
+              data-cy="addProductButton"
+              color="primary"
+              onClick={handleDialogOpen}
+            >
               Add Product
             </Button>
           </Toolbar>
