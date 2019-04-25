@@ -8,7 +8,7 @@
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@sentry/browser": "^5.1.0",
-    "firebase": "^5.10.0",
+    "firebase": "^5.10.1",
     "formik": "^0.11.11",
     "formik-material-ui": "^0.0.6",
     "prop-types": "^15.6.2",
