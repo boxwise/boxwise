@@ -66,7 +66,7 @@ module.exports = {
           {
             // rule: don't allow use of redux 
             // why: these components should be self-contained
-            "paths": ["react-redux"],
+            "paths": ["react-redux","redux"],
             "patterns": [
               // why: these components should be self-contained
               denyImportPatterns.relativeImportsUpAnyLevel,
@@ -96,7 +96,7 @@ module.exports = {
             // rule: don't allow use of redux 
             // why: these are unconnected components that shouldn't
             //      be hooked up to redux. use containers instead.
-            "paths": ["react-redux"],
+            "paths": ["react-redux","redux"],
             "patterns": [
               // why: preventing weird hierarchies for files
               denyImportPatterns.relativeImportsUpMoreThanOneLevel,
