@@ -1,6 +1,5 @@
 import React from "react";
 import { Formik, Field } from "formik";
-import { compose } from "redux";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -94,4 +93,4 @@ const ProductDialog = ({
   </Dialog>
 );
 
-export default compose(withMobileDialog())(ProductDialog);
+export default withMobileDialog()(ProductDialog);
