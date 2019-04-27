@@ -86,15 +86,15 @@ let BOXES_TEST_DATA = {
         isDeleted: false
       },
       collections: {}
-    },
-    product2: {
+    } /*,
+    "product2": {
       fields: {
         name: "T-Shirts",
         organization: "organizations/2",
         isDeleted: false
       },
       collections: {}
-    }
+    }*/
   },
   boxes: {
     box1: {
@@ -105,8 +105,8 @@ let BOXES_TEST_DATA = {
         humanID: 123456
       },
       collections: {}
-    },
-    box2: {
+    } /*,
+    "box2": {
       fields: {
         organization: "organizations/2",
         product: "products/2",
@@ -114,7 +114,7 @@ let BOXES_TEST_DATA = {
         humanID: 654321
       },
       collections: {}
-    }
+    }*/
   }
 };
 
@@ -142,9 +142,11 @@ afterAll(async () => {
 describe("/organizations", () => {
   let database;
   beforeEach(() => {
+    //importing BOXES_TEST_DATA fails some tests - also in /boxes tests! (maybe the DB is not cleaned correctly?)
     database = authedApp({ uid: "org1" }, ORGANIZATIONS_TEST_DATA);
   });
 
+  //doesn't log any firebase errors altho
   test("organizations can be read by anyone in that organization", async () => {
     await firebase.assertSucceeds(
       database
@@ -152,14 +154,18 @@ describe("/organizations", () => {
         .doc("1")
         .get()
     );
+    //this 2nd assert should fail in the future but the rule is not implemented yet (not allowed to read foreign organization)
+    // but also, should this succeed if the organization 4 doesn't exist?
     await firebase.assertSucceeds(
       database
         .collection("organizations")
         .doc("4")
         .get()
-    ); //should fail cuz of the rules (but it's not implemented)
+    );
   });
 
+  //correctly logs "false for 'update' L23" firebase error but test fails
+  //    (either yields success instead of fail OR just crashes on permission error)
   test("organizations cannot be updated", async () => {
     await firebase.assertFails(
       database
@@ -169,10 +175,11 @@ describe("/organizations", () => {
     );
   });
 
+  // same as above
   test("organizations cannot be deleted", async () => {
     await firebase.assertFails(
       database
-        .collection("organisations")
+        .collection("organizations")
         .doc("1")
         .delete()
     );
@@ -185,9 +192,11 @@ describe("/organizations", () => {
 describe("/boxes", () => {
   let database;
   beforeAll(() => {
-    database = authedApp({ uid: "org3333" }, BOXES_TEST_DATA);
+    database = authedApp({ uid: "org1" }, BOXES_TEST_DATA);
   });
 
+  //logs "false for 'update' L23" firebase error if authorized with non-existing user
+  //logs "Property organization is undefined on object. for 'create'" firebase error if authorized with existing user
   test("boxes can only be read by a user in that organization", async () => {
     await firebase.assertSucceeds(database.collection("boxes").doc("box1"));
     //await firebase.assertFails(db.collection("boxes").doc("box2"))

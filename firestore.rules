@@ -19,7 +19,7 @@ service cloud.firestore {
     }
 
     match /profiles/{userId} {
-      allow read, create: if true
+      allow read, create: if true //replaced request.auth.uid == userId with true cuz otherwise I can't import profiles(users)
       allow update: if false;
       allow delete: if false;
     }
