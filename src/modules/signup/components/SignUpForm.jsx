@@ -54,7 +54,10 @@ const SignUpForm = ({
         margin="normal"
         {...attachValidation("password")}
       />
-      <SubmitButton isSubmitting={isSubmitting}>
+      <SubmitButton 
+        data-cy="createUserButton"
+        isSubmitting={isSubmitting}
+      >
         {submitButtonText}
       </SubmitButton>
     </form>

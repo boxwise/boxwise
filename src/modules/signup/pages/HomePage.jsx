@@ -56,7 +56,7 @@ const HomePage = ({ classes }) => (
         <div className={classes.logo}>Boxwise</div>
         <div className={classes.login}>
           <Typography>
-            <Link className={classes.link} to="/signin">
+            <Link className={classes.link} to="/signin" data-cy="loginLink">
               Login or sign up
             </Link>
           </Typography>

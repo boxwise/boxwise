@@ -55,7 +55,7 @@ const AppDrawer = ({
   onOpen
 }) => {
   const drawer = (
-    <div className={classes.nav}>
+    <div className={classes.nav} data-cy="appDrawerDiv">
       <div className={classes.toolbarIe11}>
         <div className={classes.toolbar}>
           <Link className={classes.title} to="/" onClick={onClose}>
@@ -71,13 +71,31 @@ const AppDrawer = ({
         <ListItem component={Link} to="/" onClick={onClose} button>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem component={Link} to="/boxes" onClick={onClose} button>
+        <ListItem
+          component={Link}
+          to="/boxes"
+          onClick={onClose}
+          data-cy="boxesDrawerButton"
+          button
+        >
           <ListItemText primary="Find boxes" />
         </ListItem>
-        <ListItem component={Link} to="/products" onClick={onClose} button>
+        <ListItem
+          component={Link}
+          to="/products"
+          onClick={onClose}
+          data-cy="productsDrawerButton"
+          button
+        >
           <ListItemText primary="Manage products" />
         </ListItem>
-        <ListItem component={Link} to="/create-labels" onClick={onClose} button>
+        <ListItem
+          component={Link}
+          to="/create-labels"
+          onClick={onClose}
+          data-cy="labelsDrawerButton"
+          button
+        >
           <ListItemText primary="Create labels" />
         </ListItem>
       </List>
