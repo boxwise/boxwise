@@ -5,9 +5,18 @@ import {
   PRODUCT_ADD
 } from "./actions";
 
+export function getAllProducts({ products }) {
+  return {
+    loading: products.loading,
+    error: products.error,
+    data: products.allIds.map(id => products.byId[id])
+  };
+}
+
 export default function products(
   state = {
-    data: null,
+    byId: {},
+    allIds: [],
     loading: false,
     error: null
   },
@@ -15,16 +24,31 @@ export default function products(
 ) {
   switch (type) {
     case PRODUCT_ADD.SUCCESS:
-      return { ...state, loading: false, data: [payload, ...state.data] };
+      return {
+        ...state,
+        loading: false,
+        allIds: [...state.byId, payload.id],
+        byId: { ...state.byId, [payload.id]: payload }
+      };
 
     case PRODUCT_LIST.SUCCESS:
-      return { ...state, data: payload, loading: false };
+      // eslint-disable-next-line no-case-declarations
+      const indexedById = payload.reduce((obj, row) => {
+        return { ...obj, [row.id]: row };
+      }, {});
+
+      return {
+        ...state,
+        allIds: payload.map(item => item.id),
+        byId: indexedById,
+        loading: false
+      };
 
     case PRODUCT_EDIT.SUCCESS:
       return {
         ...state,
         loading: false,
-        data: state.data.map(prod => (prod.id === payload.id ? payload : prod))
+        byId: { ...state.byId, [payload.id]: payload }
       };
 
     case PRODUCT_LIST.ERROR:
@@ -39,10 +63,17 @@ export default function products(
       return { ...state, isDeletingId: payload };
 
     case PRODUCT_DELETE.SUCCESS:
+      // eslint-disable-next-line no-case-declarations
+      const {
+        [state.isDeletingId]: value,
+        ...remainingProductsById
+      } = state.byId;
+
       return {
         ...state,
         isDeletingId: null,
-        data: state.data.filter(prod => prod.id !== state.isDeletingId)
+        allIds: state.allIds.filter(id => id !== state.isDeletingId),
+        byId: remainingProductsById
       };
 
     case PRODUCT_DELETE.ERROR:
