@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-export const useForm = (callback, validate) => {
-  const [values, setValues] = useState({});
+export const useForm = (callback, validate, defaultValues) => {
+  const [values, setValues] = useState(defaultValues || {});
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
@@ -40,12 +40,17 @@ export const useForm = (callback, validate) => {
   return {
     attachEvents,
     handleSubmit,
-    errors
+    errors,
+    values
   };
 };
 
-export const useMaterialUIForm = (callback, validate) => {
-  const { attachEvents, handleSubmit, errors } = useForm(callback, validate);
+export const useMaterialUIForm = (callback, validate, defaultValues) => {
+  const { attachEvents, handleSubmit, errors, values } = useForm(
+    callback,
+    validate,
+    defaultValues
+  );
   const attachValidation = name => {
     // these are fields specific to MaterialUI that we
     // are attaching in order to trigger validation
@@ -55,5 +60,5 @@ export const useMaterialUIForm = (callback, validate) => {
       error: errors[name] !== undefined
     };
   };
-  return { attachValidation, handleSubmit };
+  return { attachValidation, handleSubmit, values };
 };

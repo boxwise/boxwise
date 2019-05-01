@@ -67,7 +67,7 @@ const ProductTable = ({
                 <TableCell padding="dense">{product.name}</TableCell>
                 <TableCell padding="dense">
                   <IconButton
-                    onClick={() => this.setState({ selectedProduct: product })}
+                    onClick={() => setSelectedProduct(product)}
                     aria-label="Edit"
                   >
                     <EditIcon />
