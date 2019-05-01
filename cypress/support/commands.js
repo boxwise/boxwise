@@ -30,7 +30,14 @@ Cypress.Commands.add("getTestData", () => {
     let testUserMail = Cypress.env('testUserMail');
     let testPwd = Cypress.env('testPwd');
     let testProduct = Cypress.env('testProduct');
-    return {testOrg: testOrg, testUser: testUser, testUserMail, testUserMail, testPwd: testPwd, testProduct: testProduct};
+    return {testOrg: testOrg, testUser: testUser, testUserMail: testUserMail, testPwd: testPwd, testProduct: testProduct};
+});
+
+Cypress.Commands.add("getChangePwdData", () => {
+    let changePwdUserMail = Cypress.env('changePwdUserMail');
+    let changePwdPwd = Cypress.env('changePwdPwd');
+    let newPwd = Cypress.env('newPwd');
+    return {changePwdUserMail: changePwdUserMail, changePwdPwd: changePwdPwd, newPwd: newPwd};
 });
 
 Cypress.Commands.add("reLogin", (userMail, userPassword) => { 
@@ -39,6 +46,27 @@ Cypress.Commands.add("reLogin", (userMail, userPassword) => {
     cy.get("input[name=email]").type(`${userMail}`);
     cy.get("input[name=password]").type(`${userPassword}`);
     cy.get("button[type=submit]").click();
+});
+
+Cypress.Commands.add("openAppDrawer", () => { 
+    cy.get("button[data-cy=appDrawerOpener]").click();
+    cy.get("div[data-cy=appDrawerDiv]").should('be.visible');
+});
+
+Cypress.Commands.add("navigateToChangePasswordForm", () => {
+    cy.openAppDrawer();
+    cy.get("a[data-cy=changePasswordDrawerButton]").last().click();
+});
+
+
+Cypress.Commands.add("navigateToProductsPage", () => {
+    cy.openAppDrawer();
+    cy.get("a[data-cy=productsDrawerButton]").last().click();
+});
+
+Cypress.Commands.add("navigateToInvitePage", () => {
+    cy.openAppDrawer();
+    cy.get("a[data-cy=inviteDrawerButton]").last().click();
 });
 
 //https://github.com/cypress-io/cypress/issues/761

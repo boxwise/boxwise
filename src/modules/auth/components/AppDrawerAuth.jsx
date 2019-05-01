@@ -27,18 +27,33 @@ const AppDrawerAuth = ({
   return (
     <List>
       <ListItem>
-        <ListItemText secondary={`Signed in as ${name || email}`} />
+        <ListItemText 
+          data-cy="signedInAsLabel"
+          secondary={`Signed in as ${name || email}`} 
+        />
       </ListItem>
       <ListItem>
         <ListItemText secondary={`Organization: ${organization.name}`} />
       </ListItem>
-      <ListItem component={Link} to="/invite" onClick={onClose} button>
+      <ListItem
+        component={Link}
+        to="/invite"
+        onClick={onClose}
+        data-cy="inviteDrawerButton"
+        button
+      >
         <ListItemText primary="Invite people" />
       </ListItem>
-      <ListItem component={Link} to="/password" onClick={onClose} button>
+      <ListItem
+        component={Link}
+        to="/password"
+        onClick={onClose}
+        data-cy="changePasswordDrawerButton"
+        button
+      >
         <ListItemText primary="Change password" />
       </ListItem>
-      <ListItem button>
+      <ListItem data-cy="signoutDrawerButton" button>
         <ListItemText primary="Sign out" onClick={onSignOut} />
       </ListItem>
     </List>

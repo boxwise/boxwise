@@ -34,7 +34,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
   return (
     <form onSubmit={handleSubmit}>
       {hasSubmittedForm && !user.error ? (
-        <Typography color="primary">
+        <Typography color="primary" data-cy="pwdChangeConfirmation">
           Your password has been updated successfully.
         </Typography>
       ) : null}

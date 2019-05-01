@@ -12,6 +12,7 @@ import {
 } from "modules/mockups/pages";
 import {
   SignInPage,
+  SignOutPage,
   ResetPasswordPage,
   PasswordChangePage
 } from "modules/auth/pages";
@@ -71,6 +72,7 @@ const App = () => (
               component={() => <CreateOrganizationPage />}
             />
             <Route exact path="/signin" component={() => <SignInPage />} />
+            <Route exact path="/signout" component={() => <SignOutPage />} />
             <Route
               exact
               path="/reset-password"

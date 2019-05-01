@@ -46,6 +46,7 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
               fullWidth
               autoFocus
               margin="dense"
+              data-cy="makeBoxButton"
               {...attachValidation("product")}
             >
               {products.map(({ id, name, category }) => (

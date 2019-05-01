@@ -50,7 +50,9 @@ const InviteLink = ({ profile, children, registerAuthStateObserver }) => {
         text={inviteData.inviteLink}
         onCopy={() => setSnackbarOpen(true)}
       >
-        <Button color="primary">Copy to clipboard</Button>
+        <Button color="primary" data-cy="copyToClipboardButton">
+          Copy to clipboard
+        </Button>
       </CopyToClipboard>
       <Snackbar
         anchorOrigin={{
