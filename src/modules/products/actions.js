@@ -14,6 +14,21 @@ export const PRODUCT_DELETE = deleteAction("product");
 
 // ***** Thunks ***** //
 
+const getProductFromData = doc => {
+  const data = doc.data();
+  // we don't want to just store raw firebase data in here
+  // else you get a load of firebase variables in the redux store
+  return {
+    id: doc.id,
+    name: data.name,
+    category: data.category,
+    organizationId: data.organization.id,
+    createdAt: data.createdAt,
+    createdById: data.createdBy.id,
+    isDeleted: data.isDeleted
+  };
+};
+
 export const productList = () => (dispatch, getState) => {
   const { organization } = getState().profile.data;
   dispatch({ type: PRODUCT_LIST.START });
@@ -25,7 +40,7 @@ export const productList = () => (dispatch, getState) => {
     .orderBy("category", "asc")
     .orderBy("name", "asc")
     .get()
-    .then(({ docs }) => docs.map(doc => ({ id: doc.id, ...doc.data() })))
+    .then(({ docs }) => docs.map(getProductFromData))
     .then(payload => dispatch({ type: PRODUCT_LIST.SUCCESS, payload }))
     .catch(err => {
       captureException(err);
@@ -49,7 +64,9 @@ export const productAdd = product => (dispatch, getState) => {
     .collection("products")
     .add(values)
     .then(ref => ref.get())
-    .then(res => dispatch({ type: PRODUCT_ADD.SUCCESS, payload: res.data() }))
+    .then(res =>
+      dispatch({ type: PRODUCT_ADD.SUCCESS, payload: getProductFromData(res) })
+    )
     .catch(err => {
       captureException(err); // TODO: actually handle the error
       dispatch({ type: PRODUCT_ADD.ERROR, payload: err });
@@ -63,7 +80,9 @@ export const productEdit = product => dispatch => {
   return ref
     .update(product)
     .then(() => ref.get())
-    .then(res => dispatch({ type: PRODUCT_EDIT.SUCCESS, payload: res.data() }))
+    .then(res =>
+      dispatch({ type: PRODUCT_EDIT.SUCCESS, payload: getProductFromData(res) })
+    )
     .catch(err => {
       captureException(err); // TODO: actually handle the error
       dispatch({ type: PRODUCT_EDIT.ERROR, payload: err });
@@ -71,13 +90,13 @@ export const productEdit = product => dispatch => {
 };
 
 export const productDelete = productId => dispatch => {
-  dispatch({ type: PRODUCT_DELETE.START });
+  dispatch({ type: PRODUCT_DELETE.START, payload: productId });
 
   return db
     .collection("products")
     .doc(productId)
     .update({ isDeleted: true })
-    .then(() => dispatch({ type: PRODUCT_DELETE.SUCCESS }))
+    .then(() => dispatch({ type: PRODUCT_DELETE.SUCCESS, payload: productId }))
     .catch(err => {
       captureException(err);
       dispatch({ type: PRODUCT_DELETE.ERROR });

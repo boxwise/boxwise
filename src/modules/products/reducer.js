@@ -34,14 +34,15 @@ export default function products(
     case PRODUCT_ADD.START:
     case PRODUCT_LIST.START:
     case PRODUCT_EDIT.START:
+      return { ...state };
     case PRODUCT_DELETE.START:
-      return { ...state, loading: true };
+      return { ...state, isDeletingId: payload };
 
     case PRODUCT_DELETE.SUCCESS:
       return {
         ...state,
-        loading: false,
-        data: state.data.filter(prod => prod.id !== state.confirmDeleteOf)
+        isDeletingId: null,
+        data: state.data.filter(prod => prod.id !== state.isDeletingId)
       };
 
     case PRODUCT_DELETE.ERROR:
