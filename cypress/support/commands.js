@@ -25,12 +25,10 @@
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
 Cypress.Commands.add("getTestData", () => { 
-    let testOrg = Cypress.env('testOrg');
     let testUser = Cypress.env('testUser');
     let testUserMail = Cypress.env('testUserMail');
     let testPwd = Cypress.env('testPwd');
-    let testProduct = Cypress.env('testProduct');
-    return {testOrg: testOrg, testUser: testUser, testUserMail: testUserMail, testPwd: testPwd, testProduct: testProduct};
+    return {testUser: testUser, testUserMail: testUserMail, testPwd: testPwd};
 });
 
 Cypress.Commands.add("getChangePwdData", () => {
