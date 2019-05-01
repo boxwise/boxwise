@@ -6,7 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const ConfirmDeleteAlert = ({ open = false, onCancel, onConfirm, text }) => {
+const ConfirmDeleteAlert = ({ open, onCancel, onConfirm, children }) => {
   return (
     <Dialog
       open={open}
@@ -17,7 +17,7 @@ const ConfirmDeleteAlert = ({ open = false, onCancel, onConfirm, text }) => {
       <DialogTitle id="alert-dialog-title">Are you sure?</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-description">
-          {text}
+          {children}
         </DialogContentText>
       </DialogContent>
       <DialogActions>
@@ -37,4 +37,4 @@ const ConfirmDeleteAlert = ({ open = false, onCancel, onConfirm, text }) => {
   );
 };
 
-export default ConfirmDeleteAlert;
+export default React.memo(ConfirmDeleteAlert);

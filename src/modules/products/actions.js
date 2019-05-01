@@ -12,15 +12,6 @@ export const PRODUCT_ADD = addAction("product");
 export const PRODUCT_EDIT = editAction("product");
 export const PRODUCT_DELETE = deleteAction("product");
 
-// ***** Plain Actions ***** //
-
-export const productDeleteConfirm = productId => ({
-  type: PRODUCT_DELETE.CONFIRM,
-  payload: productId
-});
-
-export const productDeleteCancel = () => ({ type: PRODUCT_DELETE.CANCEL });
-
 // ***** Thunks ***** //
 
 export const productList = () => (dispatch, getState) => {

@@ -8,14 +8,13 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
 
 import Progress from "components/Progress";
+import DeleteButton from "components/DeleteButton";
 
-import { productDeleteConfirm, productList } from "../actions";
+import { productDelete, productList } from "../actions";
 
 import EditProductDialog from "./EditProductDialog";
-import ProductDeleteConfirm from "./ProductDeleteConfirm";
 
 const styles = theme => ({
   root: {
@@ -30,7 +29,7 @@ const styles = theme => ({
 const ProductTable = ({
   classes,
   products: { loading, data },
-  productDeleteConfirm,
+  productDelete,
   productList
 }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -43,7 +42,6 @@ const ProductTable = ({
 
   return (
     <div className={classes.root}>
-      <ProductDeleteConfirm text="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working." />
       {isLoading ? (
         <Progress />
       ) : (
@@ -72,12 +70,10 @@ const ProductTable = ({
                   >
                     <EditIcon />
                   </IconButton>
-                  <IconButton
-                    onClick={() => productDeleteConfirm(product.id)}
-                    aria-label="Delete"
-                  >
-                    <DeleteIcon />
-                  </IconButton>
+                  <DeleteButton
+                    confirmationText="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working."
+                    onDelete={() => productDelete(product.id)}
+                  />
                 </TableCell>
               </TableRow>
             ))}
@@ -92,5 +88,5 @@ export const ProductTableWithStyles = withStyles(styles)(ProductTable);
 
 export default connect(
   ({ products }) => ({ products }),
-  { productDeleteConfirm, productList }
+  { productDelete, productList }
 )(ProductTableWithStyles);
