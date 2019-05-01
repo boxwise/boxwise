@@ -1,10 +1,9 @@
 {
     "env":{
-        "testOrg": "firstOrg",
-        "testUser": "firstorguser",
-        "testUserMail": "firstorguser@gmail.com",
-        "testPwd": "firstorguser",
-        "testProduct": "BoxwiseCypressTestProduct",
+        "testOrg": "browserTestOrganization",
+        "testUser": "browsertestuser",
+        "testUserMail": "browsertestuser@example.com",
+        "testPwd": "browsertestuser",
 
         "changePwdUserMail": "changePwdUser@example.com",
         "changePwdPwd": "changePwdPwd",
