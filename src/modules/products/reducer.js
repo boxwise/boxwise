@@ -8,7 +8,6 @@ import {
 export default function products(
   state = {
     data: null,
-    confirmDeleteOf: null,
     loading: false,
     error: null
   },
@@ -32,12 +31,6 @@ export default function products(
     case PRODUCT_EDIT.ERROR:
       return { ...state, error: payload };
 
-    case PRODUCT_DELETE.CONFIRM:
-      return { ...state, confirmDeleteOf: payload };
-
-    case PRODUCT_DELETE.CANCEL:
-      return { ...state, confirmDeleteOf: null };
-
     case PRODUCT_ADD.START:
     case PRODUCT_LIST.START:
     case PRODUCT_EDIT.START:
@@ -47,7 +40,6 @@ export default function products(
     case PRODUCT_DELETE.SUCCESS:
       return {
         ...state,
-        confirmDeleteOf: null,
         loading: false,
         data: state.data.filter(prod => prod.id !== state.confirmDeleteOf)
       };
@@ -56,7 +48,6 @@ export default function products(
       return {
         ...state,
         loading: false,
-        confirmDeleteOf: null,
         error: payload
       };
 

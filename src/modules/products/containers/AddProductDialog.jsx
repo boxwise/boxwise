@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ProductDialog from "../components/ProductDialog";
 import { productAdd } from "../actions";
 
+// You should almost never be using mergeProps
 const mapDispatchToProps = { productAdd };
 const mergeProps = (stateProps, { productAdd }, { onClose, ...props }) => ({
   ...props,
