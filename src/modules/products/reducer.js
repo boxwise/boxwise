@@ -1,3 +1,4 @@
+/* eslint-disable no-case-declarations */
 import {
   PRODUCT_DELETE,
   PRODUCT_LIST,
@@ -32,7 +33,6 @@ export default function products(
       };
 
     case PRODUCT_LIST.SUCCESS:
-      // eslint-disable-next-line no-case-declarations
       const indexedById = payload.reduce((obj, row) => {
         return { ...obj, [row.id]: row };
       }, {});
@@ -63,9 +63,9 @@ export default function products(
       return { ...state, isDeletingId: payload };
 
     case PRODUCT_DELETE.SUCCESS:
-      // eslint-disable-next-line no-case-declarations
       const {
-        [state.isDeletingId]: value,
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        [state.isDeletingId]: _,
         ...remainingProductsById
       } = state.byId;
 
