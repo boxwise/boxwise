@@ -69,8 +69,7 @@
     "lint-fix": "eslint \"src/**/*.{js,jsx,ts,tsx}\" --fix --max-warnings 0 --config \".eslintrc-fixonly.js\"",
     "deploy-firestore": "firebase deploy --only firestore",
     "setup": "node utils/generate-env.js",
-    "add-test-data": "node utils/generate-test-data.js",
-    "cypress:open": "cypress open"
+    "add-test-data": "node utils/generate-test-data.js"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx,json,css}": [
