@@ -10,7 +10,7 @@ const denyImportPatterns = {
 }
 
 module.exports = {
-  "plugins": ["eslint-plugin-import"],
+  "plugins": ["eslint-plugin-import","cypress"],
   "extends": [
     "react-app",
     "airbnb",
@@ -18,9 +18,11 @@ module.exports = {
     "plugin:import/recommended",
     "plugin:import/typescript",
     "prettier",
-    "prettier/@typescript-eslint"
+    "prettier/@typescript-eslint",
+    "plugin:cypress/recommended"
   ],
   "env": {
+    "cypress/globals": true,
     "jasmine": true,
   },
   "rules": {
