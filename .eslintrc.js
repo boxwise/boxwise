@@ -48,6 +48,8 @@ module.exports = {
     // others
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
+    // enable support for tsx
+    "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
     "no-restricted-imports": [ "error",
       {
         "paths": [],
