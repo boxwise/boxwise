@@ -13,7 +13,7 @@ script:
 - yarn test-with-coverage
 - yarn test-no-cycles
 - yarn lint
-- cp .travis/.env.feature-tests ./
+- cp .travis/.env.feature-tests ./.env.local
 - yarn start &
 - cypress run
 # .env.production is kept out of the root directory, because if it were there
