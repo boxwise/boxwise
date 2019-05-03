@@ -27,7 +27,7 @@ describe('Create and delete boxes', function() {
         cy.get('li[tabindex=0]').click();
         cy.get('input[name=name]').type(`${productName}`);
         cy.get('button').contains('Done').click({ timeout: 10000 }).then(() => {
-            cy.get('td').contains(`${productName}`).should('be.visible');  //cell with product name should be visible
+            cy.get('td').contains(`${productName}`).should('exist');  //cell with product name should be visible
         });            
     });
 
