@@ -35,11 +35,7 @@ describe('Add Organization', function() {
         cy.get("input[name=name]").type(`${testUser}`);
         cy.get("input[name=email]").type(`${testUser}@example.com`);
         cy.get("input[name=password]").type(`${testPwd}{enter}`);
-        cy.visit("http://localhost:3000").then(() => {
-            // TO DECIDE: what should be tested here? What is expected outome/page?
-            //cy.get("div[data-cy=signedInAsLabel]").should("exist");
-            cy.location('pathname', {timeout: 60000}).should('not.include', '/create-organization');
-        });
+        cy.get("button[data-cy=copyToClipboardButton]").should("exist");
     });
 
     it('Adds an organization confirmed by submit button', function() {
@@ -50,8 +46,7 @@ describe('Add Organization', function() {
         cy.get("button[type=submit]").click({timeout:10000}).then(() => {
             // TO DECIDE: what should be tested here? What is expected outome/page?
             //cy.get("div[data-cy=signedInAsLabel]").should("exist");
-            //cy.get("button[data-cy=copyToClipboardButton]").should("exist");
-            cy.location('pathname', {timeout: 60000}).should('not.include', '/create-organization');
+            cy.get("button[data-cy=copyToClipboardButton]").should("exist");
         });
     });
 });
