@@ -23,7 +23,7 @@ describe('Create and delete boxes', function() {
         let productName = uuidv4().substring(0,6);
         cy.navigateToProductsPage();
         cy.get('button[data-cy=addProductButton]').click();
-        cy.get('#select-category').click();
+        cy.get('div[data-cy=selectCategory]').click();
         cy.get('li[tabindex=0]').click();
         cy.get('input[name=name]').type(`${productName}`);
         cy.get('button').contains('Done').click({ timeout: 10000 }).then(() => {
@@ -35,7 +35,7 @@ describe('Create and delete boxes', function() {
         let testCount = Math.floor(Math.random() * 6) + 1;
         let testComment = uuidv4().substring(0,6);
         cy.get('button[data-cy=makeBoxButton]').click();
-        cy.get('#select-product').click();
+        cy.get('div[data-cy=selectProduct]').click();
         cy.get('form').should('exist');      //form to add box should pop up
         cy.get('li[tabindex=0]').click();
         cy.get('input[name=quantity]').type(`${testCount}`);
@@ -49,7 +49,7 @@ describe('Create and delete boxes', function() {
         let testCount = Math.floor(Math.random() * 6) + 1;
         let testComment = uuidv4().substring(0,6);
         cy.get('button[data-cy=makeBoxButton]').click();
-        cy.get('#select-product').click();
+        cy.get('div[data-cy=selectProduct]').click();
         cy.get('form').should('exist');      //form to add box should pop up
         cy.get('li[tabindex=0]').click();
         cy.get('input[name=quantity]').type(`${testCount}`);
@@ -58,7 +58,7 @@ describe('Create and delete boxes', function() {
             cy.get("h6[data-cy='boxCreatedLabel']").should('exist');  //"Box created" label with box details should be visible
             cy.get("h6[data-cy='boxCreatedQuantityLabel']").should('contain', `${testCount}x`);   //count of items should be displayed
             cy.get("button[data-cy='createAnotherBoxButton']").click();
-            cy.get('#select-product').click();
+            cy.get('div[data-cy=selectProduct]').click();
             cy.get('form').should('exist');      //form to add box should pop up
             cy.get('li[tabindex=0]').click();
             cy.get('input[name=quantity]').type(`${testCount+1}`);
@@ -74,7 +74,7 @@ describe('Create and delete boxes', function() {
         let testComment = uuidv4().substring(0,6);
         cy.get('button[data-cy=makeBoxButton]').should('be.visible');
         cy.get('button[data-cy=makeBoxButton]').click();
-        cy.get('#select-product').click();
+        cy.get('div[data-cy=selectProduct]').click();
         cy.get('form').should('exist');      //form to add box should pop up
         cy.get('li[tabindex=0]').click();
         cy.get('textarea[name=comment]').type(`${testComment}`);
