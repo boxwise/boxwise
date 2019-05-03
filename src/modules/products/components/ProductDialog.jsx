@@ -63,7 +63,7 @@ const ProductDialog = ({
             select
             fullWidth
             margin="dense"
-            data-cy="select-category"
+            data-cy="selectCategory"
             {...attachValidation("category")}
           >
             {CATEGORIES.map(category => (

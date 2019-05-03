@@ -62,6 +62,7 @@
     "test": "react-scripts test --modulePaths=src",
     "test-with-coverage": "react-scripts test --modulePaths=src --coverage",
     "test-no-cycles": "madge \"src/index.jsx\" --circular",
+    "browser-test": "cypress open",
     "upload-coverage-report": "./node_modules/.bin/codecov",
     "eject": "react-scripts eject",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css}\"",
