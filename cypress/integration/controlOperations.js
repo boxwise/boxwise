@@ -34,7 +34,7 @@ describe('Control operations', function() {
         });
     });
 
-    it('Change password -> Relogin -> Change password', () => {
+    /*it('Change password -> Relogin -> Change password', () => {
         cy.reLogin(changePwdUserMail, changePwdPwd);        
         cy.navigateToChangePasswordForm();
         cy.get("input[name=currentPassword]").type(`${changePwdPwd}`);
@@ -86,5 +86,5 @@ describe('Control operations', function() {
         //cy.on('window:alert', stub);
         //how to access text buffer? - https://github.com/cypress-io/cypress/issues/2386
         
-    });
+    });*/
 });
