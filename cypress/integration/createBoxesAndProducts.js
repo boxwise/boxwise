@@ -31,7 +31,7 @@ describe('Create and delete boxes', function() {
         });            
     });
 
-    it('Create new box', () => {
+    /*it('Create new box', () => {
         let testCount = Math.floor(Math.random() * 6) + 1;
         let testComment = uuidv4().substring(0,6);
         cy.get('button[data-cy=makeBoxButton]').click();
@@ -81,7 +81,7 @@ describe('Create and delete boxes', function() {
         cy.get('button').contains('Create').click({ timeout: 10000 }).then(() => {
             cy.get('input[name=quantity]').should('exist');  //number of items input should be visible
         });            
-    });
+    });*/
 
     // afterEach(function() {
     //     cy.visit("blank.html");

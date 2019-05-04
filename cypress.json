@@ -1,12 +1,12 @@
 {
-    "env":{
-        "testOrg": "browserTestOrganization",
-        "testUser": "browsertestuser",
-        "testUserMail": "browsertestuser@example.com",
-        "testPwd": "browsertestuser",
-
-        "changePwdUserMail": "changePwdUser@example.com",
-        "changePwdPwd": "changePwdPwd",
-        "newPwd": "newPwd"
-    }
+  "env": {
+    "testOrg": "browserTestOrganization",
+    "testUser": "browsertestuser",
+    "testUserMail": "browsertestuser@example.com",
+    "testPwd": "browsertestuser",
+    "changePwdUserMail": "changePwdUser@example.com",
+    "changePwdPwd": "changePwdPwd",
+    "newPwd": "newPwd"
+  },
+  "projectId": "e6jvz9"
 }

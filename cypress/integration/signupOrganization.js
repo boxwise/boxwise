@@ -21,7 +21,7 @@ describe('Add Organization', function() {
         });
     });
 
-    it('Password cannot be empty', () => {
+    /*it('Password cannot be empty', () => {
         cy.get("input[name=name]").type(`${testOrg}{enter}`);
         cy.get("input[name=name]").type(`${testUser}`);
         cy.get("input[name=email]").type(`${testUser}@example.com`);
@@ -48,5 +48,5 @@ describe('Add Organization', function() {
             //cy.get("div[data-cy=signedInAsLabel]").should("exist");
             cy.get("button[data-cy=copyToClipboardButton]").should("exist");
         });
-    });
+    });*/
 });
