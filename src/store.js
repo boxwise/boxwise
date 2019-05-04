@@ -5,7 +5,7 @@ import user from "modules/auth/reducer";
 import products from "modules/products/reducer";
 import boxes from "modules/boxes/reducer";
 import profile from "modules/profile/reducer";
-import { logErrorActionsAsExceptions } from "errorHandling";
+import { logErrorActionsAsExceptions, sentryMiddleware } from "errorHandling";
 
 const rootReducer = combineReducers({
   products,
@@ -19,7 +19,9 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(thunk, logErrorActionsAsExceptions))
+  composeEnhancers(
+    applyMiddleware(thunk, sentryMiddleware, logErrorActionsAsExceptions)
+  )
 );
 
 export default store;
