@@ -23,8 +23,7 @@ const OrganizationStep = ({ onDone }) => {
       <br />
       <br />
       <CreateOrganizationForm
-        onSubmit={(data, { setSubmitting }) => {
-          setSubmitting(false);
+        onSubmit={data => {
           onDone(data);
         }}
       />
