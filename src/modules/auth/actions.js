@@ -47,11 +47,11 @@ export const resetPassword = ({ email }) => dispatch => {
     );
 };
 
-export const userPasswordChange = ({
-  email,
-  currentPassword,
-  newPassword
-}) => dispatch => {
+export const userPasswordChange = ({ currentPassword, newPassword }) => (
+  dispatch,
+  getState
+) => {
+  const { email } = getState().user.data;
   dispatch({ type: PASSWORD_EDIT.START });
   return firebase
     .auth()
