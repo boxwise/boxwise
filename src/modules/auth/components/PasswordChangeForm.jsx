@@ -27,17 +27,9 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
     return errors;
   };
   const [hasSubmittedForm, setHasSubmittedForm] = useState(false);
-  const { attachValidation, handleSubmit } = useMaterialUIForm(
-    values => {
-      userPasswordChange(values).then(() => setHasSubmittedForm(true));
-    },
-    handleValidation,
-    {
-      currentPassword: "",
-      newPassword: "",
-      confirmedPassword: ""
-    }
-  );
+  const { attachValidation, handleSubmit } = useMaterialUIForm(values => {
+    userPasswordChange(values).then(() => setHasSubmittedForm(true));
+  }, handleValidation);
 
   return (
     <form onSubmit={handleSubmit}>
