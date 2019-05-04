@@ -56,14 +56,9 @@ export const userPasswordChange = ({
   return firebase
     .auth()
     .signInWithEmailAndPassword(email, currentPassword)
+    .then(({ user }) => user.updatePassword(newPassword))
     .then(
-      ({ user }) =>
-        user
-          .updatePassword(newPassword)
-          .then(
-            () => dispatch({ type: PASSWORD_EDIT.SUCCESS }),
-            error => dispatch({ type: PASSWORD_EDIT.ERROR, payload: error })
-          ),
+      () => dispatch({ type: PASSWORD_EDIT.SUCCESS }),
       error => dispatch({ type: PASSWORD_EDIT.ERROR, payload: error })
     );
 };
