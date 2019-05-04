@@ -18,7 +18,7 @@ For everything else, please read on...
 - **Be bold!** If there is something that needs fixing, go for it. We are always looking for help.
 - **Make sure your idea has support.** Before spending a lot of time on a feature, it's worth checking that it is wanted first. Ask around in Slack, or create a feature request issue to get feedback.
 - **Write tests, if you can.** We are a young project, so we move fast (and break things, unfortunately). But, if you have time, it is worth writing tests for your work. That way we can confirm that the code you are contributing does what you say it does, and we can ensure it doesn't break in the future.
-- **Constructive criticism** If you do not like a contribution, feel free to air it. However, before doing so think first about how to improve and propse alternative solutions.
+- **Constructive criticism** If you do not like a contribution, feel free to air it. However, before doing so think first about how to improve and propose alternative solutions.
 
 ## Making a contribution
 
