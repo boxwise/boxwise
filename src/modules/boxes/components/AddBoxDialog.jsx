@@ -6,37 +6,40 @@ import { ProductsCollection } from "modules/products/components";
 import AddBoxForm from "./AddBoxForm";
 import AddBoxDone from "./AddBoxDone";
 
+const getInitialState = () => {
+  return {
+    box: null,
+    selectedProduct: null,
+    done: false,
+    serverError: null
+  };
+};
+
 export default class AddBoxDialog extends PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      box: null,
-      selectedProduct: null,
-      done: false
-    };
+    this.state = getInitialState();
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
   }
 
   handleReset() {
-    this.setState({ box: null, selectedProduct: null, done: false });
+    this.setState(getInitialState);
   }
 
-  handleSubmit(values, { setSubmitting, setErrors }) {
+  handleSubmit(values) {
     const selectedProduct = JSON.parse(values.product);
     const { profile, addBox } = this.props;
     const { organization } = profile.data;
 
-    setSubmitting(true);
     addBox({
       ...values,
       organization,
       product: selectedProduct,
       profile: profile.data
     }).then(({ error, data }) => {
-      setSubmitting(false);
-      if (error) setErrors(error);
+      if (error) this.setState({ serverError: error });
       else
         this.setState({
           box: data,
@@ -55,7 +58,7 @@ export default class AddBoxDialog extends PureComponent {
   }
 
   renderDialog(products) {
-    const { box, selectedProduct, done } = this.state;
+    const { box, selectedProduct, done, serverError } = this.state;
     const { open } = this.props;
 
     return (
@@ -78,6 +81,7 @@ export default class AddBoxDialog extends PureComponent {
             products={products}
             onClose={this.handleClose}
             onSubmit={this.handleSubmit}
+            serverError={serverError}
           />
         )}
       </Dialog>
