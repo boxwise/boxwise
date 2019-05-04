@@ -33,7 +33,7 @@ export const sentryMiddleware = store => {
 
 export const logErrorActionsAsExceptions = () => next => action => {
   if (action.type.endsWith("_ERROR")) {
-    Sentry.captureException(action.payload);
+    captureException(action.payload);
   }
   return next(action);
 };
