@@ -6,3 +6,10 @@ export function captureException(error, errorInfo) {
   console.error(error);
   Sentry.captureException(error, { extra: errorInfo });
 }
+
+export const logErrorActionsAsExceptions = () => next => action => {
+  if (action.type.endsWith("_ERROR")) {
+    Sentry.captureException(action.payload);
+  }
+  return next(action);
+};
