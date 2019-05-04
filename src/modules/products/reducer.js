@@ -28,7 +28,7 @@ export default function products(
       return {
         ...state,
         loading: false,
-        allIds: [...state.byId, payload.id],
+        allIds: [...state.allIds, payload.id],
         byId: { ...state.byId, [payload.id]: payload }
       };
 
