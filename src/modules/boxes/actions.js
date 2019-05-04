@@ -1,5 +1,4 @@
 import { firebase, db } from "firebaseFactory";
-import { captureException } from "errorHandling";
 
 // eslint-disable-next-line no-underscore-dangle
 const BOX_ADD_ = TYPE => `BOX_ADD_${TYPE}`;
@@ -30,13 +29,14 @@ export const addBox = ({
     .add(box)
     .then(ref => ref.get())
     .then(box => box.data())
-    .then(box => {
-      dispatch({ type: BOX_ADD_SUCCESS, payload: box });
-      return { error: false, data: box };
-    })
-    .catch(error => {
-      captureException(error);
-      dispatch({ type: BOX_ADD_ERROR, payload: error });
-      return { error };
-    });
+    .then(
+      box => {
+        dispatch({ type: BOX_ADD_SUCCESS, payload: box });
+        return { error: false, data: box };
+      },
+      error => {
+        dispatch({ type: BOX_ADD_ERROR, payload: error });
+        return { error };
+      }
+    );
 };

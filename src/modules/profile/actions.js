@@ -1,5 +1,4 @@
 import { db } from "firebaseFactory";
-import { captureException } from "errorHandling";
 
 // eslint-disable-next-line no-underscore-dangle
 const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
@@ -29,8 +28,5 @@ export const fetchProfile = userUID => dispatch => {
         dispatch({ type: FETCH_PROFILE_SUCCESS, payload: profile });
       });
     })
-    .catch(err => {
-      captureException(err);
-      dispatch({ type: FETCH_PROFILE_ERROR, payload: err });
-    });
+    .catch(err => dispatch({ type: FETCH_PROFILE_ERROR, payload: err }));
 };

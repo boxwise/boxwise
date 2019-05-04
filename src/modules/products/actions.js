@@ -5,7 +5,6 @@ import {
   editAction,
   deleteAction
 } from "commons/utils/action-creators";
-import { captureException } from "errorHandling";
 
 export const PRODUCT_LIST = listAction("product");
 export const PRODUCT_ADD = addAction("product");
@@ -41,11 +40,10 @@ export const productList = () => (dispatch, getState) => {
     .orderBy("name", "asc")
     .get()
     .then(({ docs }) => docs.map(getProductFromData))
-    .then(payload => dispatch({ type: PRODUCT_LIST.SUCCESS, payload }))
-    .catch(err => {
-      captureException(err);
-      dispatch({ type: PRODUCT_LIST.ERROR, payload: err });
-    });
+    .then(
+      payload => dispatch({ type: PRODUCT_LIST.SUCCESS, payload }),
+      err => dispatch({ type: PRODUCT_LIST.ERROR, payload: err })
+    );
 };
 
 export const productAdd = product => (dispatch, getState) => {
@@ -64,13 +62,14 @@ export const productAdd = product => (dispatch, getState) => {
     .collection("products")
     .add(values)
     .then(ref => ref.get())
-    .then(res =>
-      dispatch({ type: PRODUCT_ADD.SUCCESS, payload: getProductFromData(res) })
-    )
-    .catch(err => {
-      captureException(err); // TODO: actually handle the error
-      dispatch({ type: PRODUCT_ADD.ERROR, payload: err });
-    });
+    .then(
+      res =>
+        dispatch({
+          type: PRODUCT_ADD.SUCCESS,
+          payload: getProductFromData(res)
+        }),
+      err => dispatch({ type: PRODUCT_ADD.ERROR, payload: err })
+    );
 };
 
 export const productEdit = product => dispatch => {
@@ -80,13 +79,14 @@ export const productEdit = product => dispatch => {
   return ref
     .update(product)
     .then(() => ref.get())
-    .then(res =>
-      dispatch({ type: PRODUCT_EDIT.SUCCESS, payload: getProductFromData(res) })
-    )
-    .catch(err => {
-      captureException(err); // TODO: actually handle the error
-      dispatch({ type: PRODUCT_EDIT.ERROR, payload: err });
-    });
+    .then(
+      res =>
+        dispatch({
+          type: PRODUCT_EDIT.SUCCESS,
+          payload: getProductFromData(res)
+        }),
+      err => dispatch({ type: PRODUCT_EDIT.ERROR, payload: err })
+    );
 };
 
 export const productDelete = productId => dispatch => {
@@ -96,9 +96,8 @@ export const productDelete = productId => dispatch => {
     .collection("products")
     .doc(productId)
     .update({ isDeleted: true })
-    .then(() => dispatch({ type: PRODUCT_DELETE.SUCCESS, payload: productId }))
-    .catch(err => {
-      captureException(err);
-      dispatch({ type: PRODUCT_DELETE.ERROR });
-    });
+    .then(
+      () => dispatch({ type: PRODUCT_DELETE.SUCCESS, payload: productId }),
+      err => dispatch({ type: PRODUCT_DELETE.ERROR, paylod: err })
+    );
 };

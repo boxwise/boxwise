@@ -1,6 +1,5 @@
 import { firebase } from "firebaseFactory";
 import { fetchProfile } from "modules/profile/actions";
-import { captureException } from "errorHandling";
 import { asyncAction, editAction } from "commons/utils/action-creators";
 
 export const USER_SIGN_IN = asyncAction("USER_SIGN_IN");
@@ -31,11 +30,10 @@ export const userSignIn = ({ email, password }) => dispatch => {
   firebase
     .auth()
     .signInWithEmailAndPassword(email, password)
-    .then(({ user }) => dispatch(userSignInSuccess(user)))
-    .catch(error => {
-      captureException(error);
-      dispatch({ type: USER_SIGN_IN.ERROR, payload: error });
-    });
+    .then(
+      ({ user }) => dispatch(userSignInSuccess(user)),
+      error => dispatch({ type: USER_SIGN_IN.ERROR, payload: error })
+    );
 };
 
 export const resetPassword = ({ email }) => dispatch => {
@@ -43,11 +41,10 @@ export const resetPassword = ({ email }) => dispatch => {
   firebase
     .auth()
     .sendPasswordResetEmail(email)
-    .then(() => dispatch({ type: PASSWORD_RESET.SUCCESS }))
-    .catch(error => {
-      captureException(error);
-      dispatch({ type: PASSWORD_RESET.ERROR, payload: error });
-    });
+    .then(
+      () => dispatch({ type: PASSWORD_RESET.SUCCESS }),
+      error => dispatch({ type: PASSWORD_RESET.ERROR, payload: error })
+    );
 };
 
 export const userPasswordChange = ({
@@ -59,21 +56,16 @@ export const userPasswordChange = ({
   return firebase
     .auth()
     .signInWithEmailAndPassword(email, currentPassword)
-    .then(({ user }) =>
-      user
-        .updatePassword(newPassword)
-        .then(() => dispatch({ type: PASSWORD_EDIT.SUCCESS }))
-        .catch(error => {
-          captureException(error);
-          dispatch({ type: PASSWORD_EDIT.ERROR, payload: error });
-          throw error;
-        })
-    )
-    .catch(error => {
-      captureException(error);
-      dispatch({ type: PASSWORD_EDIT.ERROR, payload: error });
-      throw error;
-    });
+    .then(
+      ({ user }) =>
+        user
+          .updatePassword(newPassword)
+          .then(
+            () => dispatch({ type: PASSWORD_EDIT.SUCCESS }),
+            error => dispatch({ type: PASSWORD_EDIT.ERROR, payload: error })
+          ),
+      error => dispatch({ type: PASSWORD_EDIT.ERROR, payload: error })
+    );
 };
 
 export const registerAuthStateObserver = () => (dispatch, getState) => {
