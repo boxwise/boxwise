@@ -15,7 +15,7 @@ script:
 - yarn lint
 - cp .travis/.env.feature-tests ./.env.local
 - yarn start &
-- cypress run --record --key f76b77d4-b71f-4b5d-8f07-564c76dda5e7"
+- cypress run --record --key f76b77d4-b71f-4b5d-8f07-564c76dda5e7
 # .env.production is kept out of the root directory, because if it were there
 # running "firebase deploy" would create a clone of our real production
 # environment. This is not something we can stop (they are public details) but
