@@ -48,13 +48,10 @@ describe("SignUpForm", () => {
 
     component.find("button[type='submit']").simulate("submit");
 
-    expect(onSubmit).toBeCalledWith(
-      {
-        name: "test",
-        email: "test@example.com",
-        password: "password"
-      },
-      expect.any(Object)
-    );
+    expect(onSubmit).toBeCalledWith({
+      name: "test",
+      email: "test@example.com",
+      password: "password"
+    });
   });
 });
