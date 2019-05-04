@@ -19,7 +19,7 @@ function Transition(props) {
 const ProductDialog = ({
   open,
   onClose,
-  initialValue = { category: "" },
+  initialValue,
   onSubmit,
   isSubmitting,
   serverErrorMessage
@@ -34,8 +34,7 @@ const ProductDialog = ({
     }
     return errors;
   };
-
-  const { attachValidation, handleSubmit, values } = useMaterialUIForm(
+  const { attachValidation, handleSubmit } = useMaterialUIForm(
     onSubmit,
     validate,
     initialValue
@@ -50,7 +49,7 @@ const ProductDialog = ({
     >
       <form onSubmit={handleSubmit}>
         <DialogToolbar
-          title="Add Product"
+          title={initialValue ? "Edit Product" : "Add Product"}
           onClose={onClose}
           buttonText="Done"
           buttonIsLoading={isSubmitting}
@@ -62,7 +61,6 @@ const ProductDialog = ({
             label="Category"
             name="category"
             select
-            value={values.category}
             fullWidth
             margin="dense"
             {...attachValidation("category")}
