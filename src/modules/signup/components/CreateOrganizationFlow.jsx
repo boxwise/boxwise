@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 
@@ -33,10 +33,12 @@ const OrganizationStep = ({ onDone }) => {
 };
 
 const UserStep = ({ organizationData, onDone }) => {
+  const [serverError, setServerError] = useState("");
   return (
     <SignUpForm
       submitButtonText="Continue"
-      onSubmit={({ name, email, password }, { setSubmitting, setErrors }) => {
+      serverError={serverError}
+      onSubmit={({ name, email, password }) => {
         return addOrganization(organizationData)
           .then(organization => {
             return createUserAndProfile(
@@ -46,10 +48,9 @@ const UserStep = ({ organizationData, onDone }) => {
           })
           .then(onDone)
           .catch(error => {
-            setSubmitting(false);
             // TODO: handle user errors, log everything else
             captureException(error);
-            setErrors({ form: error.message });
+            setServerError(error.message);
           });
       }}
     />

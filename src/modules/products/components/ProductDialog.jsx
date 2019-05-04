@@ -24,7 +24,7 @@ const ProductDialog = ({
   isSubmitting,
   serverErrorMessage
 }) => {
-  const validate = values => {
+  const handleValidation = values => {
     const errors = {};
     if (!values.category) {
       errors.category = "Select a category.";
@@ -36,7 +36,7 @@ const ProductDialog = ({
   };
   const { attachValidation, handleSubmit } = useMaterialUIForm(
     onSubmit,
-    validate,
+    handleValidation,
     initialValue
   );
   return (
