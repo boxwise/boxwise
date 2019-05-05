@@ -1,3 +1,4 @@
+import uuidv4 from "uuid/v4";
 // ***********************************************
 // This example commands.js shows you how to
 // create various custom commands and overwrite
@@ -41,9 +42,9 @@ Cypress.Commands.add("getChangePwdData", () => {
 Cypress.Commands.add("reLogin", (userMail, userPassword) => { 
     cy.visit("http://localhost:3000/signout");
     cy.visit("http://localhost:3000/signin");
-    cy.get("input[name=email]").type(`${userMail}`);
-    cy.get("input[name=password]").type(`${userPassword}`);
-    cy.get("button[type=submit]").click();
+    cy.get("div[data-cy=email] input").type(`${userMail}`);
+    cy.get("div[data-cy=password] input").type(`${userPassword}`);
+    cy.get("button[data-cy=signInButton]").click();
 });
 
 Cypress.Commands.add("openAppDrawer", () => { 
@@ -68,11 +69,15 @@ Cypress.Commands.add("navigateToInvitePage", () => {
 });
 
 // 'Delete product' helper function
-Cypress.Commands.add("getDuplicateProductsCount", (productName) => {
-    cy.get('td[data-cy=productNameCell]').then(($nameCells) => {
-        let productsWithSameName = Cypress.$.grep($nameCells, function( n, i ) {return ( n.innerText == productName );});
-        return productsWithSameName.length;
-    });
+Cypress.Commands.add("createTestProduct", () => {
+    let productName = uuidv4().substring(0,6);
+    cy.get('button[data-cy=addProductButton]').click();
+    cy.get('div[data-cy=selectCategory]').click();
+    cy.get('li[id=category]').first().click();
+    cy.get('div[data-cy=productName] input').type(`${productName}`);
+    cy.get('button[data-cy=submitCreateProduct').click({ timeout: 10000 });
+    cy.wait(2000);   //give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
+    cy.get('td[data-cy=productNameCell]').contains(`${productName}`).should('exist');  //cell with product name should be visible
 });
 
 //https://github.com/cypress-io/cypress/issues/761
