@@ -1,16 +1,26 @@
-import {
-  addAction,
-  listAction,
-  editAction,
-  deleteAction
-} from "commons/utils/action-creators";
-
 import * as api from "./api";
+import { createAsyncAction } from "redux/actionCreators";
 
-export const PRODUCT_LIST = listAction("product");
-export const PRODUCT_ADD = addAction("product");
-export const PRODUCT_EDIT = editAction("product");
-export const PRODUCT_DELETE = deleteAction("product");
+export const PRODUCT_LIST = createAsyncAction(
+  "PRODUCT_LIST_START",
+  "PRODUCT_LIST_SUCCESS",
+  "PRODUCT_LIST_ERROR"
+);
+export const PRODUCT_ADD = createAsyncAction(
+  "PRODUCT_ADD_START",
+  "PRODUCT_ADD_SUCCESS",
+  "PRODUCT_ADD_ERROR"
+);
+export const PRODUCT_EDIT = createAsyncAction(
+  "PRODUCT_EDIT_START",
+  "PRODUCT_EDIT_SUCCESS",
+  "PRODUCT_EDIT_ERROR"
+);
+export const PRODUCT_DELETE = createAsyncAction(
+  "PRODUCT_DELETE_START",
+  "PRODUCT_DELETE_SUCCESS",
+  "PRODUCT_DELETE_ERROR"
+);
 
 const getCurrentUserFromState = getState => () => {
   const { profile } = getState();

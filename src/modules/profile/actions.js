@@ -1,13 +1,14 @@
 import { db } from "firebaseFactory";
+import { createAsyncAction } from "redux/actionCreators";
 
-// eslint-disable-next-line no-underscore-dangle
-const FETCH_PROFILE_ = TYPE => `FETCH_PROFILE_${TYPE}`;
-
-export const FETCH_PROFILE_START = FETCH_PROFILE_`START`;
-export const FETCH_PROFILE_SUCCESS = FETCH_PROFILE_`SUCCESS`;
-export const FETCH_PROFILE_ERROR = FETCH_PROFILE_`ERROR`;
+export const FETCH_PROFILE = createAsyncAction(
+  "FETCH_PROFILE_START",
+  "FETCH_PROFILE_SUCCESS",
+  "FETCH_PROFILE_ERROR"
+);
 
 export const fetchProfile = userUID => dispatch => {
+  dispatch({ type: FETCH_PROFILE.START, paylod: userUID });
   db.collection("profiles")
     .doc(userUID)
     .get()
@@ -25,8 +26,8 @@ export const fetchProfile = userUID => dispatch => {
           ref: `organizations/${doc.id}`,
           ...doc.data()
         };
-        dispatch({ type: FETCH_PROFILE_SUCCESS, payload: profile });
+        dispatch({ type: FETCH_PROFILE.SUCCESS, payload: profile });
       });
     })
-    .catch(err => dispatch({ type: FETCH_PROFILE_ERROR, payload: err }));
+    .catch(err => dispatch({ type: FETCH_PROFILE.ERROR, payload: err }));
 };
