@@ -1,13 +1,25 @@
 import { firebase } from "firebaseFactory";
 import { fetchProfile } from "modules/profile/actions";
-import { asyncAction, editAction } from "commons/utils/action-creators";
+import { createAsyncAction } from "redux/actionCreators";
 
-export const USER_SIGN_IN = asyncAction("USER_SIGN_IN");
+export const USER_SIGN_IN = createAsyncAction(
+  "USER_SIGN_IN_START",
+  "USER_SIGN_IN_SUCCESS",
+  "USER_SIGN_IN_ERROR"
+);
 export const USER_NOT_SIGN_IN = "USER_NOT_SIGN_IN";
 export const USER_SIGN_OUT = "USER_SIGN_OUT";
 
-export const PASSWORD_RESET = asyncAction("PASSWORD_RESET");
-export const PASSWORD_EDIT = editAction("password");
+export const PASSWORD_RESET = createAsyncAction(
+  "PASSWORD_RESET_START",
+  "PASSWORD_RESET_SUCCESS",
+  "PASSWORD_RESET_ERROR"
+);
+export const PASSWORD_EDIT = createAsyncAction(
+  "PASSWORD_EDIT_START",
+  "PASSWORD_EDIT_SUCCESS",
+  "PASSWORD_EDIT_ERROR"
+);
 
 export const userSignOut = () => ({ type: USER_SIGN_OUT });
 

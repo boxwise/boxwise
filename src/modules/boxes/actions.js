@@ -1,10 +1,12 @@
 import { firebase, db } from "firebaseFactory";
+import { createAsyncAction } from "redux/actionCreators";
 
 // eslint-disable-next-line no-underscore-dangle
-const BOX_ADD_ = TYPE => `BOX_ADD_${TYPE}`;
-export const BOX_ADD_START = BOX_ADD_`START`;
-export const BOX_ADD_SUCCESS = BOX_ADD_`SUCCESS`;
-export const BOX_ADD_ERROR = BOX_ADD_`ERROR`;
+export const BOX_ADD = createAsyncAction(
+  "BOX_ADD_START",
+  "BOX_ADD_SUCCESS",
+  "BOX_ADD_ERROR"
+);
 
 export const addBox = ({
   product,
@@ -13,7 +15,7 @@ export const addBox = ({
   quantity,
   comment
 }) => dispatch => {
-  dispatch({ type: BOX_ADD_START });
+  dispatch({ type: BOX_ADD.START });
   const box = {
     quantity,
     comment,
@@ -31,11 +33,11 @@ export const addBox = ({
     .then(box => box.data())
     .then(
       box => {
-        dispatch({ type: BOX_ADD_SUCCESS, payload: box });
+        dispatch({ type: BOX_ADD.SUCCESS, payload: box });
         return { error: false, data: box };
       },
       error => {
-        dispatch({ type: BOX_ADD_ERROR, payload: error });
+        dispatch({ type: BOX_ADD.ERROR, payload: error });
         return { error };
       }
     );

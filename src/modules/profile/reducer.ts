@@ -1,23 +1,19 @@
 import { AnyAction } from "redux";
 
-import {
-  FETCH_PROFILE_ERROR,
-  FETCH_PROFILE_START,
-  FETCH_PROFILE_SUCCESS
-} from "./actions";
+import { FETCH_PROFILE } from "./actions";
 
 export default function profile(
   state = { loading: true, data: undefined },
   { type, payload }: AnyAction
 ) {
   switch (type) {
-    case FETCH_PROFILE_START:
+    case FETCH_PROFILE.START:
       return { ...state, loading: true };
 
-    case FETCH_PROFILE_SUCCESS:
+    case FETCH_PROFILE.SUCCESS:
       return { ...state, data: payload, loading: false };
 
-    case FETCH_PROFILE_ERROR:
+    case FETCH_PROFILE.ERROR:
       return { ...state, loading: false, error: payload };
 
     default:
