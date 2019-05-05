@@ -1,3 +1,5 @@
+import { RootAction } from "storeTypes";
+
 import {
   PASSWORD_EDIT,
   PASSWORD_RESET,
@@ -13,7 +15,7 @@ export default function user(
     data: null,
     error: null
   },
-  { type, payload }
+  { type, payload }: RootAction
 ) {
   switch (type) {
     case USER_SIGN_IN.START:

@@ -12,7 +12,7 @@ export const PRODUCT_ADD = addAction("product");
 export const PRODUCT_EDIT = editAction("product");
 export const PRODUCT_DELETE = deleteAction("product");
 
-const getCurrentUserFromState = getState => {
+const getCurrentUserFromState = getState => () => {
   const { profile } = getState();
   return {
     organizationRef: profile.data.organization.ref,
