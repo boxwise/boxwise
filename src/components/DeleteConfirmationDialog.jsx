@@ -13,6 +13,7 @@ const ConfirmDeleteAlert = ({ open, onCancel, onConfirm, children }) => {
       onClose={onCancel}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
+      data-cy="deleteConfirmationDialog"
     >
       <DialogTitle id="alert-dialog-title">Are you sure?</DialogTitle>
       <DialogContent>
@@ -28,6 +29,7 @@ const ConfirmDeleteAlert = ({ open, onCancel, onConfirm, children }) => {
           onClick={onConfirm}
           color="secondary"
           variant="contained"
+          data-cy="confirmDeleteButton"
           autoFocus
         >
           Delete

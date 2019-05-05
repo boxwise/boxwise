@@ -47,7 +47,7 @@ const ProductDialog = ({
       fullWidth
       TransitionComponent={Transition}
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-cy="productDialog">
         <DialogToolbar
           title={initialValue ? "Edit Product" : "Add Product"}
           onClose={onClose}
