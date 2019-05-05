@@ -67,6 +67,14 @@ Cypress.Commands.add("navigateToInvitePage", () => {
     cy.get("a[data-cy=inviteDrawerButton]").last().click();
 });
 
+// 'Delete product' helper function
+Cypress.Commands.add("getDuplicateProductsCount", (productName) => {
+    cy.get('td[data-cy=productNameCell]').then(($nameCells) => {
+        let productsWithSameName = Cypress.$.grep($nameCells, function( n, i ) {return ( n.innerText == productName );});
+        return productsWithSameName.length;
+    });
+});
+
 //https://github.com/cypress-io/cypress/issues/761
 Cypress.Commands.add("cleanUpXHR", function() {
     if (Cypress.env("run_all_suite")) {

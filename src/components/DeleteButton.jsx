@@ -8,7 +8,11 @@ const DeleteButton = ({ confirmationText, onDelete }) => {
   const [dialogOpen, setDialogOpen] = useState(false);
   return (
     <React.Fragment>
-      <IconButton onClick={() => setDialogOpen(true)} aria-label="Delete">
+      <IconButton
+        onClick={() => setDialogOpen(true)}
+        aria-label="Delete"
+        data-cy="deleteProductButton"
+      >
         <DeleteIcon />
       </IconButton>
       <DeleteConfirmationDialog

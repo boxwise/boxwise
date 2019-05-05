@@ -59,7 +59,7 @@ const ProductTable = ({
               <TableCell padding="dense" />
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody data-cy="productsTableBody">
             {data.map(product => (
               <TableRow key={product.id}>
                 <TableCell padding="dense">{product.category}</TableCell>
@@ -70,6 +70,7 @@ const ProductTable = ({
                   <IconButton
                     onClick={() => setSelectedProduct(product)}
                     aria-label="Edit"
+                    data-cy="editProductButton"
                   >
                     <EditIcon />
                   </IconButton>
