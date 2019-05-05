@@ -15,10 +15,6 @@ describe('Create and delete boxes', function() {
         cy.reLogin(testUserMail, testPwd);
     });
 
-    afterEach(function() {
-        cy.wait(2000);
-    });
-
     it('Create new product', () => {
         let productName = uuidv4().substring(0,6);
         cy.navigateToProductsPage();
@@ -26,9 +22,9 @@ describe('Create and delete boxes', function() {
         cy.get('div[data-cy=selectCategory]').click();
         cy.get('li[tabindex=0]').click();
         cy.get('input[name=name]').type(`${productName}`);
-        cy.get('button').contains('Done').click({ timeout: 10000 }).then(() => {
-            cy.get('td').contains(`${productName}`).should('exist');  //cell with product name should be visible
-        });            
+        cy.get('button').contains('Done').click({ timeout: 10000 });
+        cy.wait(2000);   //give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
+        cy.get('td[data-cy=productNameCell]').contains(`${productName}`).should('exist');  //cell with product name should be visible
     });
 
     /*it('Create new box', () => {
