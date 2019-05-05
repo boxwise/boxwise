@@ -1,23 +1,16 @@
 import { connect } from "react-redux";
 
 import ProductDialog from "../components/ProductDialog";
-import * as actions from "../actions";
+import { productEdit } from "../actions";
 
-// You should almost never be using mergeProps
-const mergeProps = (
-  stateProps,
-  { productEdit },
-  { product, onClose, ...props }
-) => ({
-  ...props,
-  ...stateProps,
-  onClose,
-  initialValue: product,
-  onSubmit: values => productEdit({ id: product.id, ...values }).then(onClose)
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  onSubmit: values =>
+    dispatch(productEdit({ id: ownProps.productToEdit.id, ...values })).then(
+      ownProps.onClose
+    )
 });
 
 export default connect(
   null,
-  actions,
-  mergeProps
+  mapDispatchToProps
 )(ProductDialog);

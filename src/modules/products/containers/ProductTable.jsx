@@ -49,7 +49,7 @@ const ProductTable = ({
         <Table className={classes.table}>
           <EditProductDialog
             open={!!selectedProduct}
-            product={selectedProduct}
+            productToEdit={selectedProduct}
             onClose={() => setSelectedProduct(null)}
           />
           <TableHead>
