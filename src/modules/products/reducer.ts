@@ -1,12 +1,17 @@
 /* eslint-disable no-case-declarations */
+import { AnyAction } from "redux";
+
+import { RootState, ProductsState } from "storeTypes";
+
 import {
   PRODUCT_DELETE,
   PRODUCT_LIST,
   PRODUCT_EDIT,
   PRODUCT_ADD
 } from "./actions";
+import { Product } from "./api";
 
-export function getAllProducts({ products }) {
+export function getAllProducts({ products }: RootState) {
   return {
     loading: products.loading,
     error: products.error,
@@ -15,13 +20,14 @@ export function getAllProducts({ products }) {
 }
 
 export default function products(
-  state = {
+  state: ProductsState = {
     byId: {},
     allIds: [],
     loading: false,
-    error: null
+    error: undefined,
+    isDeletingId: undefined
   },
-  { type, payload }
+  { type, payload }: AnyAction
 ) {
   switch (type) {
     case PRODUCT_ADD.SUCCESS:
@@ -33,13 +39,14 @@ export default function products(
       };
 
     case PRODUCT_LIST.SUCCESS:
-      const indexedById = payload.reduce((obj, row) => {
+      const products = payload as Product[];
+      const indexedById = products.reduce((obj, row) => {
         return { ...obj, [row.id]: row };
       }, {});
 
       return {
         ...state,
-        allIds: payload.map(item => item.id),
+        allIds: products.map(item => item.id),
         byId: indexedById,
         loading: false
       };
@@ -63,6 +70,7 @@ export default function products(
       return { ...state, isDeletingId: payload };
 
     case PRODUCT_DELETE.SUCCESS:
+      if (!state.isDeletingId) return state;
       const {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         [state.isDeletingId]: _,

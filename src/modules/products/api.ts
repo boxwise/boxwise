@@ -1,7 +1,27 @@
 import { firebase, db } from "firebaseFactory";
+import { Flavor } from "typeScriptExtensions";
 
-const getProductFromData = doc => {
+export type ProductId = Flavor<string, "Product">;
+type OrganizationId = Flavor<string, "Organization">;
+type UserProfileId = Flavor<string, "UserProfile">;
+
+export interface Product {
+  id: ProductId;
+  name: string;
+  category: string;
+  organizationId: OrganizationId;
+  createdAt: string;
+  createdById: UserProfileId;
+  isDeleted: boolean;
+}
+
+type GetCurrentUser = () => { organizationRef: string; userProfileRef: string };
+
+const getProductFromData = (
+  doc: firebase.firestore.DocumentSnapshot
+): Product => {
   const data = doc.data();
+  if (!data) throw Error(`No data available on ${doc.ref}`);
   // we don't want to just store raw firebase data in here
   // else you get a load of firebase variables in the redux store
   return {
@@ -15,7 +35,9 @@ const getProductFromData = doc => {
   };
 };
 
-export const getAllProducts = async getCurrentUser => {
+export const getAllProducts = async (
+  getCurrentUser: GetCurrentUser
+): Promise<Product[]> => {
   const { organizationRef } = await getCurrentUser();
 
   return db
@@ -30,7 +52,13 @@ export const getAllProducts = async getCurrentUser => {
     });
 };
 
-export const addProduct = async (product, getCurrentUser) => {
+export const addProduct = async (
+  product: {
+    name: string;
+    category: string;
+  },
+  getCurrentUser: GetCurrentUser
+): Promise<Product> => {
   const { organizationRef, userProfileRef } = await getCurrentUser();
 
   const values = {
@@ -48,7 +76,7 @@ export const addProduct = async (product, getCurrentUser) => {
     .then(getProductFromData);
 };
 
-export const updateProduct = product => {
+export const updateProduct = (product: Product): Promise<Product> => {
   const ref = db.collection("products").doc(product.id);
 
   return ref
@@ -57,7 +85,7 @@ export const updateProduct = product => {
     .then(getProductFromData);
 };
 
-export const deleteProduct = productId => {
+export const deleteProduct = (productId: ProductId): Promise<void> => {
   return db
     .collection("products")
     .doc(productId)

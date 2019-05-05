@@ -1,8 +1,10 @@
+import { RootAction } from "storeTypes";
+
 import { BOX_ADD_ERROR, BOX_ADD_START, BOX_ADD_SUCCESS } from "./actions";
 
 export default function boxes(
   state = { data: [], loading: false, error: null },
-  { type, payload }
+  { type, payload }: RootAction
 ) {
   switch (type) {
     case BOX_ADD_START:

@@ -1,3 +1,5 @@
+import { AnyAction } from "redux";
+
 import {
   FETCH_PROFILE_ERROR,
   FETCH_PROFILE_START,
@@ -5,8 +7,8 @@ import {
 } from "./actions";
 
 export default function profile(
-  state = { loading: true, data: null },
-  { type, payload }
+  state = { loading: true, data: undefined },
+  { type, payload }: AnyAction
 ) {
   switch (type) {
     case FETCH_PROFILE_START:
