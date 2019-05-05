@@ -63,7 +63,9 @@ const ProductTable = ({
             {data.map(product => (
               <TableRow key={product.id}>
                 <TableCell padding="dense">{product.category}</TableCell>
-                <TableCell padding="dense">{product.name}</TableCell>
+                <TableCell padding="dense" data-cy="productNameCell">
+                  {product.name}
+                </TableCell>
                 <TableCell padding="dense">
                   <IconButton
                     onClick={() => setSelectedProduct(product)}
