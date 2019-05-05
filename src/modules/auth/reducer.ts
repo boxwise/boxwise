@@ -1,4 +1,4 @@
-import { RootAction } from "storeTypes";
+import { RootAction } from "redux/storeTypes";
 
 import {
   PASSWORD_EDIT,

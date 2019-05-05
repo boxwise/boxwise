@@ -1,4 +1,4 @@
-import { RootAction } from "storeTypes";
+import { RootAction } from "redux/storeTypes";
 
 import { BOX_ADD } from "./actions";
 

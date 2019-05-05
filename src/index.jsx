@@ -8,7 +8,7 @@ import { IntlProvider } from "react-intl";
 import App from "./App";
 import config from "./config";
 import * as serviceWorker from "./serviceWorker";
-import store from "./store";
+import store from "./redux/store";
 import { firebase } from "./firebaseFactory";
 
 if (config.SENTRY_URI) {

@@ -8,7 +8,7 @@ import products from "modules/products/reducer";
 import boxes from "modules/boxes/reducer";
 import profile from "modules/profile/reducer";
 import { logErrorActionsAsExceptions, sentryMiddleware } from "errorHandling";
-import { RootState } from "storeTypes";
+import { RootState } from "redux/storeTypes";
 
 const rootReducer = combineReducers<RootState>({
   products,

@@ -1,7 +1,7 @@
 /* eslint-disable no-case-declarations */
 import { AnyAction } from "redux";
 
-import { RootState, ProductsState } from "storeTypes";
+import { RootState, ProductsState } from "redux/storeTypes";
 
 import {
   PRODUCT_DELETE,
