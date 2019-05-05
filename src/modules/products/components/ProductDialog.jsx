@@ -54,6 +54,7 @@ const ProductDialog = ({
           buttonText="Done"
           buttonIsLoading={isSubmitting}
           onClickButton={handleSubmit}
+          dataCySubmitTag="submitCreateProduct"
         />
         <DialogContent>
           <FormErrorText message={serverErrorMessage} />
@@ -80,6 +81,7 @@ const ProductDialog = ({
             helperText="Enter a name, like “T-Shirt” or “Socks”. Don’t reuse the category
             name here."
             {...attachValidation("name")}
+            data-cy="productName"
           />
         </DialogContent>
       </form>

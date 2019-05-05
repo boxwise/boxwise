@@ -46,6 +46,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
         fullWidth
         margin="normal"
         {...attachValidation("currentPassword")}
+        data-cy="currentPassword"
       />
       <TextField
         type="password"
@@ -54,6 +55,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
         fullWidth
         margin="normal"
         {...attachValidation("newPassword")}
+        data-cy="newPassword"
       />
       <TextField
         type="password"
@@ -62,6 +64,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
         fullWidth
         margin="normal"
         {...attachValidation("confirmedPassword")}
+        data-cy="confirmedPassword"
       />
       <SubmitButton isSubmitting={user.isUpdating}>
         Update Password

@@ -15,16 +15,11 @@ describe('CRUD products tests', function() {
         cy.reLogin(testUserMail, testPwd);
     });
 
-    it('Create new product', () => {
-        let productName = uuidv4().substring(0,6);
+    //To keep the balance, I create 2 products because 2 products are deleted in following tests
+    it('Create 2 new products', () => {
         cy.navigateToProductsPage();
-        cy.get('button[data-cy=addProductButton]').click();
-        cy.get('div[data-cy=selectCategory]').click();
-        cy.get('li[tabindex=0]').click();
-        cy.get('input[name=name]').type(`${productName}`);
-        cy.get('button').contains('Done').click({ timeout: 10000 });
-        cy.wait(2000);   //give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
-        cy.get('td[data-cy=productNameCell]').contains(`${productName}`).should('exist');  //cell with product name should be visible
+        cy.createTestProduct();
+        cy.createTestProduct();
     });
 
 
@@ -34,7 +29,7 @@ describe('CRUD products tests', function() {
         cy.get('tbody[data-cy=productsTableBody').find('tr').its('length').then((rowsBefore) => {
             cy.get('button[data-cy=deleteProductButton]').first().click();
             cy.get('div[data-cy=deleteConfirmationDialog').should('be.visible');
-            cy.get('button[data-cy=confirmDeleteButton').click()
+            cy.get('button[data-cy=confirmDeleteButton').click();
             cy.wait(2000);  //updating table takes some time
             cy.get('tbody[data-cy=productsTableBody').find('tr').its('length').as('rowsAfter');
             cy.get('@rowsAfter').should('equal', rowsBefore - 1);    //there should be one less row 
@@ -64,9 +59,9 @@ describe('CRUD products tests', function() {
         cy.navigateToProductsPage();
         cy.get('button[data-cy=editProductButton]').first().click();
         cy.get('form[data-cy=productDialog').should('be.visible');
-        cy.get("input[name=name]").clear().type(newName);
-        cy.get('button[type=submit]').click();
-        cy.wait(2000);  //updating table takes some time
-        cy.get('td[data-cy=productNameCell]').first().invoke('text').should('equal', newName);
+        cy.get("div[data-cy=productName] input").clear().type(newName);
+        cy.get('button[data-cy=submitCreateProduct').click().then(()=>{
+            cy.get('td[data-cy=productNameCell]').first().invoke('text').should('equal', newName);
+        });        
     });
 });

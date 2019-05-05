@@ -37,6 +37,7 @@ const SignUpForm = ({
         fullWidth
         margin="normal"
         {...attachValidation("name")}
+        data-cy="name"
       />
       <TextField
         type="email"
@@ -45,6 +46,7 @@ const SignUpForm = ({
         fullWidth
         margin="normal"
         {...attachValidation("email")}
+        data-cy="email"
       />
       <TextField
         type="password"
@@ -53,11 +55,9 @@ const SignUpForm = ({
         fullWidth
         margin="normal"
         {...attachValidation("password")}
+        data-cy="password"
       />
-      <SubmitButton 
-        data-cy="createUserButton"
-        isSubmitting={isSubmitting}
-      >
+      <SubmitButton dataCyTag="createUserButton" isSubmitting={isSubmitting}>
         {submitButtonText}
       </SubmitButton>
     </form>

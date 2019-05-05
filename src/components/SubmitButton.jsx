@@ -26,6 +26,7 @@ export const SubmitButton = ({
   children,
   isSubmitting = false,
   isInDialog = false,
+  dataCyTag,
   ...props
 }) => (
   <div
@@ -38,6 +39,7 @@ export const SubmitButton = ({
       variant={isInDialog ? "text" : "contained"}
       color="primary"
       type="submit"
+      data-cy={dataCyTag}
       disabled={isSubmitting}
       {...props}
     >
