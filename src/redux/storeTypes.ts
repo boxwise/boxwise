@@ -2,19 +2,28 @@
 import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
+import { Product } from "modules/products/api";
+import { Box } from "modules/boxes/api";
+
 export interface ProductsState {
-  byId: any;
+  byId: { [id: string]: Product };
   allIds: string[];
   loading: boolean;
   error?: string;
   isDeletingId?: string;
 }
 
+export interface BoxesState {
+  loading: boolean;
+  error?: string;
+  data: Box[];
+}
+
 export interface RootState {
   profile: any;
   products: ProductsState;
   user: any;
-  boxes: any;
+  boxes: BoxesState;
 }
 
 export type RootAction = AnyAction;

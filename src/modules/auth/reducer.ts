@@ -1,4 +1,4 @@
-import { RootAction } from "redux/storeTypes";
+import { RootAction, RootState } from "redux/storeTypes";
 
 import {
   PASSWORD_EDIT,
@@ -7,6 +7,19 @@ import {
   USER_SIGN_IN,
   USER_SIGN_OUT
 } from "./actions";
+
+export type GetCurrentUser = () => {
+  organizationRef: string;
+  userProfileRef: string;
+};
+
+export const getCurrentUserFromState = (getState: () => RootState) => () => {
+  const { profile } = getState();
+  return {
+    organizationRef: profile.data.organization.ref,
+    userProfileRef: profile.data.ref
+  };
+};
 
 export default function user(
   state = {

@@ -1,12 +1,30 @@
 import { firebase, db } from "firebaseFactory";
 import { createAsyncAction } from "redux/actionCreators";
+import { getCurrentUserFromState } from "modules/auth/reducer";
 
-// eslint-disable-next-line no-underscore-dangle
+import * as api from "./api";
+
 export const BOX_ADD = createAsyncAction(
   "BOX_ADD_START",
   "BOX_ADD_SUCCESS",
   "BOX_ADD_ERROR"
 );
+
+export const BOX_LIST = createAsyncAction(
+  "BOX_LIST_START",
+  "BOX_LIST_SUCCESS",
+  "BOX_LIST_ERROR"
+);
+
+export const fetchBoxes = () => (dispatch, getState) => {
+  dispatch({ type: BOX_LIST.START });
+  return api
+    .fetchActiveBoxes(getCurrentUserFromState(getState))
+    .then(
+      boxes => dispatch({ type: BOX_LIST.SUCCESS, payload: boxes }),
+      error => dispatch({ type: BOX_ADD.ERROR, payload: error })
+    );
+};
 
 export const addBox = ({
   product,

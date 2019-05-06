@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getBoxesWithProductInfoFromState should have consistent properties 1`] = `
+Object {
+  "data": Array [
+    Object {
+      "humanId": "213",
+      "id": "123",
+      "productCategory": "Adult",
+      "productId": "AdultShorts",
+      "productName": "Adult Shorts",
+      "quantity": 100,
+    },
+    Object {
+      "humanId": "213",
+      "id": "123",
+      "productCategory": "Adult",
+      "productId": "AdultTShirt",
+      "productName": "Adult T-Shirts",
+      "quantity": 50,
+    },
+  ],
+  "error": undefined,
+  "loading": undefined,
+}
+`;

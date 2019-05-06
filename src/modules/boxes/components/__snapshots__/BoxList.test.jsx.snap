@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoxList renders correctly when boxes match filter 1`] = `
+<div>
+  <div>
+    <ProductSelect
+      onChange={[Function]}
+      products={Array []}
+      value="abc"
+    />
+  </div>
+  <br />
+  <WithStyles(List)>
+    <WithStyles(Divider) />
+    <WithStyles(ListItem)>
+      <WithStyles(ListItemText)
+        primary={
+          <span>
+            <strong>
+              xyz
+            </strong>
+             
+            100
+            x
+             
+             / 
+            TShirt
+          </span>
+        }
+        secondary=" "
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider) />
+  </WithStyles(List)>
+</div>
+`;
+
+exports[`BoxList renders correctly when boxes present 1`] = `
+<div>
+  <div>
+    <ProductSelect
+      onChange={[Function]}
+      products={Array []}
+    />
+  </div>
+  <br />
+  <WithStyles(List)>
+    <WithStyles(Divider) />
+    <WithStyles(ListItem)>
+      <WithStyles(ListItemText)
+        primary={
+          <span>
+            <strong>
+              123
+            </strong>
+             
+            100
+            x
+             
+             / 
+            TShirt
+          </span>
+        }
+        secondary=" "
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider) />
+    <WithStyles(ListItem)>
+      <WithStyles(ListItemText)
+        primary={
+          <span>
+            <strong>
+              456
+            </strong>
+             
+            29
+            x
+             
+             / 
+            Shorts
+          </span>
+        }
+        secondary=" "
+      />
+    </WithStyles(ListItem)>
+    <WithStyles(Divider) />
+  </WithStyles(List)>
+</div>
+`;
+
+exports[`BoxList renders correctly when no boxes present matching filter 1`] = `
+<div>
+  <div>
+    <ProductSelect
+      onChange={[Function]}
+      products={Array []}
+      value="xyz"
+    />
+  </div>
+  <br />
+  <WithStyles(Typography)>
+    No boxes
+     that matches your current filter
+    .
+     
+    <Link
+      to="/"
+    >
+      Make some?
+    </Link>
+  </WithStyles(Typography)>
+</div>
+`;
+
+exports[`BoxList renders correctly with no boxes 1`] = `
+<div>
+  <div>
+    <ProductSelect
+      onChange={[Function]}
+      products={Array []}
+    />
+  </div>
+  <br />
+  <WithStyles(Typography)>
+    No boxes
+    .
+     
+    <Link
+      to="/"
+    >
+      Make some?
+    </Link>
+  </WithStyles(Typography)>
+</div>
+`;
+
+exports[`BoxList renders correctly with when loading 1`] = `
+<div>
+  <div>
+    <ProductSelect
+      onChange={[Function]}
+      products={Array []}
+    />
+  </div>
+  <br />
+  <div>
+    <Progress />
+  </div>
+</div>
+`;

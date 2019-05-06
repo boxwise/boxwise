@@ -11,7 +11,7 @@ import {
 } from "./actions";
 import { Product } from "./api";
 
-export function getAllProducts({ products }: RootState) {
+export function getAllProductsFromState({ products }: RootState) {
   return {
     loading: products.loading,
     error: products.error,

@@ -14,19 +14,6 @@
       ]
     },
     {
-      "collectionId": "boxes",
-      "fields": [
-        {
-          "fieldPath": "product",
-          "mode": "ASCENDING"
-        },
-        {
-          "fieldPath": "humanID",
-          "mode": "ASCENDING"
-        }
-      ]
-    },
-    {
       "collectionId": "products",
       "fields": [
         {

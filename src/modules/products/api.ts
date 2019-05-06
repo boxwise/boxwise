@@ -1,5 +1,6 @@
 import { firebase, db } from "firebaseFactory";
 import { Flavor } from "typeScriptExtensions";
+import { GetCurrentUser } from "modules/auth/api";
 
 export type ProductId = Flavor<string, "Product">;
 type OrganizationId = Flavor<string, "Organization">;
@@ -14,8 +15,6 @@ export interface Product {
   createdById: UserProfileId;
   isDeleted: boolean;
 }
-
-type GetCurrentUser = () => { organizationRef: string; userProfileRef: string };
 
 const getProductFromData = (
   doc: firebase.firestore.DocumentSnapshot
