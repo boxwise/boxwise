@@ -1,8 +1,6 @@
 import React, { PureComponent } from "react";
 import Dialog from "@material-ui/core/Dialog";
 
-import { ProductsCollection } from "modules/products/components";
-
 import AddBoxForm from "./AddBoxForm";
 import AddBoxDone from "./AddBoxDone";
 
@@ -22,6 +20,11 @@ export default class AddBoxDialog extends PureComponent {
     this.handleReset = this.handleReset.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleClose = this.handleClose.bind(this);
+  }
+
+  componentDidMount() {
+    const { fetchData } = this.props;
+    fetchData();
   }
 
   handleReset() {
@@ -57,9 +60,9 @@ export default class AddBoxDialog extends PureComponent {
     if (onClose) onClose();
   }
 
-  renderDialog(products) {
+  render() {
     const { box, selectedProduct, done, serverError } = this.state;
-    const { open } = this.props;
+    const { open, products } = this.props;
 
     return (
       <Dialog
@@ -78,29 +81,13 @@ export default class AddBoxDialog extends PureComponent {
           />
         ) : (
           <AddBoxForm
-            products={products}
+            products={products.data}
             onClose={this.handleClose}
             onSubmit={this.handleSubmit}
             serverError={serverError}
           />
         )}
       </Dialog>
-    );
-  }
-
-  render() {
-    const { profile } = this.props;
-
-    if (profile.loading || !profile) {
-      return null; // TODO: Add a loading spinner
-    }
-
-    const { organization } = profile.data;
-    return (
-      <ProductsCollection
-        organizationRef={organization.ref}
-        render={({ data }) => this.renderDialog(data)}
-      />
     );
   }
 }
