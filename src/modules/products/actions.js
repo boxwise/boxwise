@@ -1,5 +1,7 @@
-import * as api from "./api";
 import { createAsyncAction } from "redux/actionCreators";
+import { getCurrentUserFromState } from "modules/auth/reducer";
+
+import * as api from "./api";
 
 export const PRODUCT_LIST = createAsyncAction(
   "PRODUCT_LIST_START",
@@ -21,14 +23,6 @@ export const PRODUCT_DELETE = createAsyncAction(
   "PRODUCT_DELETE_SUCCESS",
   "PRODUCT_DELETE_ERROR"
 );
-
-const getCurrentUserFromState = getState => () => {
-  const { profile } = getState();
-  return {
-    organizationRef: profile.data.organization.ref,
-    userProfileRef: profile.data.ref
-  };
-};
 
 export const productList = () => (dispatch, getState) => {
   dispatch({ type: PRODUCT_LIST.START });

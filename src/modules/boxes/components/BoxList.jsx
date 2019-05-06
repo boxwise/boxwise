@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
@@ -27,52 +27,50 @@ const styles = theme => ({
   productSelect: theme.mixins.gutters({})
 });
 
-const BoxList = ({
+export const BoxList = ({
   classes,
-  isLoading,
-  boxes,
+  boxesWithProductInfo,
   products,
-  selectedProductFilter,
-  onChangeProductFilter
+  fetchBoxesAndProducts
 }) => {
-  const getProduct = id => {
-    const result = products.filter(product => product.id === id);
-    if (result[0]) {
-      return result[0];
-    }
-    return {
-      category: "[none]",
-      name: "[none]"
-    };
-  };
+  const [filterByProductId, setFilterByProductId] = useState(undefined);
+
+  useEffect(() => {
+    fetchBoxesAndProducts();
+  }, [fetchBoxesAndProducts]);
+  let filteredData = boxesWithProductInfo.data;
+  if (filterByProductId)
+    filteredData = filteredData.filter(
+      box => box.productId === filterByProductId
+    );
 
   let list;
 
-  if (isLoading) {
+  if (boxesWithProductInfo.loading) {
     list = (
       <div className={classes.progress}>
         <Progress />
       </div>
     );
-  } else if (!boxes.length) {
+  } else if (!filteredData.length) {
     list = (
       <Typography className={classes.empty}>
-        No boxes. <Link to="/">Make some?</Link>
+        No boxes{filterByProductId ? " that matches your current filter" : ""}.{" "}
+        <Link to="/">Make some?</Link>
       </Typography>
     );
   } else {
     list = (
       <List>
         <Divider />
-        {boxes.map(box => (
+        {filteredData.map(box => (
           <React.Fragment key={box.id}>
             <ListItem>
               <ListItemText
                 primary={
                   <span>
-                    <strong>{box.humanID}</strong> {box.quantity}x{" "}
-                    {getProduct(box.product.id).category} /{" "}
-                    {getProduct(box.product.id).name}
+                    <strong>{box.humanId}</strong> {box.quantity}x{" "}
+                    {box.productCategory} / {box.productName}
                   </span>
                 }
                 secondary={box.comment ? box.comment : " "}
@@ -89,9 +87,9 @@ const BoxList = ({
     <div className={classes.root}>
       <div className={classes.productSelect}>
         <ProductSelect
-          products={products}
-          value={selectedProductFilter}
-          onChange={onChangeProductFilter}
+          products={products.data}
+          value={filterByProductId}
+          onChange={value => setFilterByProductId(value)}
         />
       </div>
       <br />

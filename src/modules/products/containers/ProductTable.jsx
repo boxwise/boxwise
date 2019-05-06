@@ -13,7 +13,7 @@ import Progress from "components/Progress";
 import DeleteButton from "components/DeleteButton";
 
 import { productDelete, productList } from "../actions";
-import { getAllProducts } from "../reducer";
+import { getAllProductsFromState } from "../reducer";
 
 import EditProductDialog from "./EditProductDialog";
 
@@ -88,6 +88,6 @@ const ProductTable = ({
 export const ProductTableWithStyles = withStyles(styles)(ProductTable);
 
 export default connect(
-  state => ({ products: getAllProducts(state) }),
+  state => ({ products: getAllProductsFromState(state) }),
   { productDelete, productList }
 )(ProductTableWithStyles);
