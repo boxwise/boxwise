@@ -20,8 +20,7 @@ import {
 import {
   InvitePage,
   CreateOrganizationPage,
-  JoinPage,
-  HomePage
+  JoinPage
 } from "./modules/signup/pages";
 import { ProductsPage } from "./modules/products/pages";
 import { BoxesPage, CreateLabelsPage } from "./modules/boxes/pages";
@@ -44,7 +43,7 @@ const App = () => (
             <Route
               exact
               path="/"
-              component={withAuthentication(DashboardPage, HomePage)}
+              component={withAuthentication(DashboardPage)}
             />
             <Route
               exact
