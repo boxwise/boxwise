@@ -3,7 +3,6 @@ import { RootAction, RootState } from "redux/storeTypes";
 import {
   PASSWORD_EDIT,
   PASSWORD_RESET,
-  USER_NOT_SIGN_IN,
   USER_SIGN_IN,
   USER_SIGN_OUT
 } from "./actions";
@@ -23,7 +22,7 @@ export const getCurrentUserFromState = (getState: () => RootState) => () => {
 
 export default function user(
   state = {
-    loading: null,
+    loading: true,
     hasTriggeredReset: false,
     data: null,
     error: null
@@ -40,11 +39,8 @@ export default function user(
     case USER_SIGN_IN.ERROR:
       return { ...state, loading: false, error: payload };
 
-    case USER_NOT_SIGN_IN:
-      return { ...state, loading: false };
-
     case USER_SIGN_OUT:
-      return { ...state, data: null };
+      return { ...state, loading: false, data: null };
 
     case PASSWORD_RESET.START:
       return { ...state, loading: true, hasTriggeredReset: false };
