@@ -3,7 +3,7 @@ import { AnyAction } from "redux";
 import { FETCH_PROFILE } from "./actions";
 
 export default function profile(
-  state = { loading: true, data: undefined },
+  state = { loading: false, data: undefined },
   { type, payload }: AnyAction
 ) {
   switch (type) {

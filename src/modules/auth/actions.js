@@ -7,7 +7,7 @@ export const USER_SIGN_IN = createAsyncAction(
   "USER_SIGN_IN_SUCCESS",
   "USER_SIGN_IN_ERROR"
 );
-export const USER_NOT_SIGN_IN = "USER_NOT_SIGN_IN";
+
 export const USER_SIGN_OUT = "USER_SIGN_OUT";
 
 export const PASSWORD_RESET = createAsyncAction(
@@ -33,8 +33,10 @@ export const firebaseSignOut = () => dispatch => {
 
 export const userSignInSuccess = user => dispatch => {
   const payload = user.toJSON();
-  dispatch({ type: USER_SIGN_IN.SUCCESS, payload });
+  // dispatching the fetch first, so profile loading status
+  // set before we mark the user profile loading status as done
   dispatch(fetchProfile(payload.uid));
+  dispatch({ type: USER_SIGN_IN.SUCCESS, payload });
 };
 
 export const userSignIn = ({ email, password }) => dispatch => {
@@ -75,17 +77,12 @@ export const userPasswordChange = ({ currentPassword, newPassword }) => (
     );
 };
 
-export const registerAuthStateObserver = () => (dispatch, getState) => {
-  const { loading } = getState().user;
-  if (loading === null) {
-    dispatch({ type: USER_SIGN_IN.START });
-
-    return firebase.auth().onAuthStateChanged(user => {
-      if (!user) {
-        dispatch({ type: USER_NOT_SIGN_IN });
-        userSignOut();
-      } else dispatch(userSignInSuccess(user));
-    });
-  }
-  return Promise.resolve();
+export const registerAuthStateObserver = () => dispatch => {
+  return firebase.auth().onAuthStateChanged(user => {
+    if (!user) {
+      dispatch(userSignOut());
+    } else {
+      dispatch(userSignInSuccess(user));
+    }
+  });
 };
