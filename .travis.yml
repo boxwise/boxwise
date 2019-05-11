@@ -18,7 +18,10 @@ after_success:
 - yarn upload-coverage-report
 env:
 - TEST_SUITE="travis-job-unit-tests.sh"
-- TEST_SUITE="travis-job-ui-tests.sh"
+- TEST_SUITE="travis-job-ui-tests-products.sh"
+- TEST_SUITE="travis-job-ui-tests-boxes.sh"
+- TEST_SUITE="travis-job-ui-tests-signup.sh"
+- TEST_SUITE="travis-job-ui-tests-controls.sh"
 - TEST_SUITE="travis-job-build.sh"
 script: ./${TEST_SUITE}
 branches:
