@@ -16,6 +16,7 @@ cache:
     - ~/.cache    #this one caches Cypress binary which is saved at '/home/travis/.cache/Cypress' (more info here: https://docs.cypress.io/guides/guides/continuous-integration.html#Caching)
 after_success:
 - yarn upload-coverage-report
+#fast_finish for parallel jobs still not implemented (https://github.com/travis-ci/travis-ci/issues/2062)
 env:
 - TEST_SUITE="travis-job-unit-tests.sh"
 - TEST_SUITE="travis-job-ui-tests-products.sh"
