@@ -8,25 +8,19 @@ import Snackbar from "@material-ui/core/Snackbar";
 
 import { captureException } from "errorHandling";
 import Progress from "components/Progress";
-import { registerAuthStateObserver } from "modules/auth/actions";
 
 import { getOrAddInvite, createInviteLink } from "../actions";
 
-const InviteLink = ({ profile, children, registerAuthStateObserver }) => {
+const InviteLink = ({ user, children }) => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [inviteData, setInviteData] = useState({
     isFetching: true,
     inviteLink: null
   });
-  // as we're not yet within a withAuthentication hook
-  // trigger the auth state monitoring as we should have been signed in
-  useEffect(() => {
-    registerAuthStateObserver();
-  }, [registerAuthStateObserver]);
 
   useEffect(() => {
-    if (profile && profile.data) {
-      getOrAddInvite(profile.data.organization.ref)
+    if (user && user.data) {
+      getOrAddInvite(user.data.organizationRef)
         .then(invite => {
           setInviteData({
             isFetching: false,
@@ -35,7 +29,7 @@ const InviteLink = ({ profile, children, registerAuthStateObserver }) => {
         })
         .catch(captureException); // TODO: actually handle errors
     }
-  }, [profile, profile.data]);
+  }, [user, user.data]);
 
   if (inviteData.isFetching) {
     return <Progress />;
@@ -69,7 +63,4 @@ const InviteLink = ({ profile, children, registerAuthStateObserver }) => {
   );
 };
 
-export default connect(
-  ({ profile }) => ({ profile }),
-  { registerAuthStateObserver }
-)(InviteLink);
+export default connect(({ user }) => ({ user }))(InviteLink);

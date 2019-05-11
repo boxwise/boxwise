@@ -1,5 +1,5 @@
 import { createAsyncAction } from "redux/actionCreators";
-import { getCurrentUserFromState } from "modules/auth/reducer";
+import { createGetCurrentUser } from "modules/auth/actions";
 
 import * as api from "./api";
 
@@ -27,7 +27,7 @@ export const PRODUCT_DELETE = createAsyncAction(
 export const productList = () => (dispatch, getState) => {
   dispatch({ type: PRODUCT_LIST.START });
   return api
-    .getAllProducts(getCurrentUserFromState(getState))
+    .getAllProducts(createGetCurrentUser(getState))
     .then(
       allProducts =>
         dispatch({ type: PRODUCT_LIST.SUCCESS, payload: allProducts }),
@@ -38,7 +38,7 @@ export const productList = () => (dispatch, getState) => {
 export const productAdd = product => (dispatch, getState) => {
   dispatch({ type: PRODUCT_ADD.START });
   return api
-    .addProduct(product, getCurrentUserFromState(getState))
+    .addProduct(product, createGetCurrentUser(getState))
     .then(
       product => dispatch({ type: PRODUCT_ADD.SUCCESS, payload: product }),
       err => dispatch({ type: PRODUCT_ADD.ERROR, payload: err })

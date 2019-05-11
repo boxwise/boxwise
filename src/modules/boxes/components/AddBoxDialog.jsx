@@ -33,14 +33,11 @@ export default class AddBoxDialog extends PureComponent {
 
   handleSubmit(values) {
     const selectedProduct = JSON.parse(values.product);
-    const { profile, addBox } = this.props;
-    const { organization } = profile.data;
+    const { addBox } = this.props;
 
     addBox({
       ...values,
-      organization,
-      product: selectedProduct,
-      profile: profile.data
+      product: selectedProduct
     }).then(({ error, data }) => {
       if (error) this.setState({ serverError: error });
       else

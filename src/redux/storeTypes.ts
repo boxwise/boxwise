@@ -4,6 +4,7 @@ import { ThunkAction } from "redux-thunk";
 
 import { Product } from "modules/products/api";
 import { Box } from "modules/boxes/api";
+import { User } from "modules/auth/api";
 
 export interface ProductsState {
   byId: { [id: string]: Product };
@@ -19,10 +20,19 @@ export interface BoxesState {
   data: Box[];
 }
 
+export interface UserState {
+  hasInitialized: boolean;
+  data: User | undefined;
+  loading: boolean;
+  error?: string;
+  // hmmm
+  hasTriggeredReset: boolean;
+  isUpdating: boolean;
+}
+
 export interface RootState {
-  profile: any;
   products: ProductsState;
-  user: any;
+  user: UserState;
   boxes: BoxesState;
 }
 

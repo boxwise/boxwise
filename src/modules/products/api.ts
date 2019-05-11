@@ -1,18 +1,20 @@
 import { firebase, db } from "firebaseFactory";
 import { Flavor } from "typeScriptExtensions";
-import { GetCurrentUser } from "modules/auth/api";
+import {
+  GetCurrentUser,
+  OrganizationRef,
+  UserProfileRef
+} from "modules/auth/api";
 
 export type ProductId = Flavor<string, "Product">;
-type OrganizationId = Flavor<string, "Organization">;
-type UserProfileId = Flavor<string, "UserProfile">;
 
 export interface Product {
   id: ProductId;
   name: string;
   category: string;
-  organizationId: OrganizationId;
+  organizationId: OrganizationRef;
   createdAt: string;
-  createdById: UserProfileId;
+  createdById: UserProfileRef;
   isDeleted: boolean;
 }
 

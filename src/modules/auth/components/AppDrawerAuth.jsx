@@ -6,39 +6,27 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import Progress from "components/Progress";
 
-const AppDrawerAuth = ({
-  notAuthenticated,
-  loading,
-  user,
-  profile,
-  onSignOut,
-  onClose
-}) => {
-  if (loading) {
+const AppDrawerAuth = ({ user }) => {
+  if (!user) {
     return <Progress />;
   }
-  if (notAuthenticated) {
-    return null;
-  }
 
-  const { email } = user.data;
-  const { name, organization } = profile.data;
+  const { displayName, organizationName } = user;
 
   return (
     <List>
       <ListItem>
-        <ListItemText 
+        <ListItemText
           data-cy="signedInAsLabel"
-          secondary={`Signed in as ${name || email}`} 
+          secondary={`Signed in as ${displayName}`}
         />
       </ListItem>
       <ListItem>
-        <ListItemText secondary={`Organization: ${organization.name}`} />
+        <ListItemText secondary={`Organization: ${organizationName}`} />
       </ListItem>
       <ListItem
         component={Link}
         to="/invite"
-        onClick={onClose}
         data-cy="inviteDrawerButton"
         button
       >
@@ -47,14 +35,18 @@ const AppDrawerAuth = ({
       <ListItem
         component={Link}
         to="/password"
-        onClick={onClose}
         data-cy="changePasswordDrawerButton"
         button
       >
         <ListItemText primary="Change password" />
       </ListItem>
-      <ListItem data-cy="signoutDrawerButton" button>
-        <ListItemText primary="Sign out" onClick={onSignOut} />
+      <ListItem
+        component={Link}
+        to="/signout"
+        data-cy="signoutDrawerButton"
+        button
+      >
+        <ListItemText primary="Sign out" />
       </ListItem>
     </List>
   );

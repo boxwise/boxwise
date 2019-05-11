@@ -17,8 +17,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
     }
     if (!values.confirmedPassword) {
       errors.confirmedPassword = "Please confirm your new password.";
-    }
-    if (values.newPassword !== values.confirmedPassword) {
+    } else if (values.newPassword !== values.confirmedPassword) {
       errors.confirmedPassword =
         "The confirmed password is different from the new password.";
     } else if (values.newPassword.length < 6) {
