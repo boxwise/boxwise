@@ -11,7 +11,7 @@ before_install:
 cache: 
   yarn: true
   directories:
-    - node_modules
+    #- node_modules
     - ~/.cache    #this one caches Cypress binary which is saved at '/home/travis/.cache/Cypress' (more info here: https://docs.cypress.io/guides/guides/continuous-integration.html#Caching)
 script:
 - yarn test-with-coverage
