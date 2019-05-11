@@ -1,24 +1,15 @@
 import React from "react";
 import "./CreateLabelsPage.css";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import uuidv4 from "uuid/v4";
 
-const CreateLabelsPage = ({ profile }) => {
+const CreateLabelsPage = () => {
   const numberOfLabels = 104;
-
-  if (profile.loading) {
-    // TODO: loading spinner
-    return <p>Loading</p>;
-  }
-
-  const { organization } = profile.data;
 
   return (
     <div className="CreateLabelsPage">
       {[...Array(numberOfLabels)].map(labelNumber => (
         <div className="label" key={labelNumber}>
-          <div className="name">{organization.name}</div>
           <div className="boxid">box number</div>
           <div className="count">count</div>
           <div className="product">product</div>
@@ -40,6 +31,4 @@ const CreateLabelsPage = ({ profile }) => {
   );
 };
 
-export default connect(state => ({
-  profile: state.profile
-}))(CreateLabelsPage);
+export default CreateLabelsPage;

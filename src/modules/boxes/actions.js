@@ -1,6 +1,9 @@
 import { firebase, db } from "firebaseFactory";
 import { createAsyncAction } from "redux/actionCreators";
-import { getCurrentUserFromState } from "modules/auth/reducer";
+import {
+  createGetCurrentUser,
+  getCurrentUserFromState
+} from "modules/auth/actions";
 
 import * as api from "./api";
 
@@ -19,28 +22,26 @@ export const BOX_LIST = createAsyncAction(
 export const fetchBoxes = () => (dispatch, getState) => {
   dispatch({ type: BOX_LIST.START });
   return api
-    .fetchActiveBoxes(getCurrentUserFromState(getState))
+    .fetchActiveBoxes(createGetCurrentUser(getState))
     .then(
       boxes => dispatch({ type: BOX_LIST.SUCCESS, payload: boxes }),
       error => dispatch({ type: BOX_ADD.ERROR, payload: error })
     );
 };
 
-export const addBox = ({
-  product,
-  profile,
-  organization,
-  quantity,
-  comment
-}) => dispatch => {
+export const addBox = ({ product, quantity, comment }) => (
+  dispatch,
+  getState
+) => {
+  const currentUser = getCurrentUserFromState(getState());
   dispatch({ type: BOX_ADD.START });
   const box = {
     quantity,
     comment,
-    organization: db.doc(organization.ref),
+    organization: db.doc(currentUser.organizationRef),
     product: db.doc(`products/${product.id}`),
     createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-    createdBy: db.doc(profile.ref),
+    createdBy: db.doc(currentUser.userProfileRef),
     humanID: Math.floor(Math.random() * 1000000)
   };
 

@@ -1,18 +1,17 @@
-import React from "react";
+import { useEffect } from "react";
 import { connect } from "react-redux";
-import { Redirect } from "react-router-dom";
 
 import { firebaseSignOut } from "../actions";
 
-class SignOutPage extends React.Component {
-  componentWillMount() {
-    const { dispatch } = this.props;
-    dispatch(firebaseSignOut);
-  }
+export const SignOutPage = ({ firebaseSignOut }) => {
+  useEffect(() => {
+    firebaseSignOut();
+  });
 
-  render() {
-    return <Redirect to="/" />;
-  }
-}
+  return null;
+};
 
-export default connect()(SignOutPage);
+export default connect(
+  null,
+  { firebaseSignOut }
+)(SignOutPage);

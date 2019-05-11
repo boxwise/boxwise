@@ -1,4 +1,4 @@
-import { RootAction, RootState } from "redux/storeTypes";
+import { RootAction, UserState } from "redux/storeTypes";
 
 import {
   PASSWORD_EDIT,
@@ -7,40 +7,32 @@ import {
   USER_SIGN_OUT
 } from "./actions";
 
-export type GetCurrentUser = () => {
-  organizationRef: string;
-  userProfileRef: string;
-};
-
-export const getCurrentUserFromState = (getState: () => RootState) => () => {
-  const { profile } = getState();
-  return {
-    organizationRef: profile.data.organization.ref,
-    userProfileRef: profile.data.ref
-  };
-};
-
 export default function user(
-  state = {
-    loading: true,
+  state: UserState = {
+    hasInitialized: false,
+    loading: false,
+    isUpdating: false,
     hasTriggeredReset: false,
-    data: null,
-    error: null
+    data: undefined,
+    error: undefined
   },
   { type, payload }: RootAction
 ) {
   switch (type) {
     case USER_SIGN_IN.START:
-      return { ...state, error: null, loading: true };
+      return { ...state, hasInitialized: true, error: null, loading: true };
 
     case USER_SIGN_IN.SUCCESS:
-      return { ...state, loading: false, data: payload };
+      return { ...state, hasInitialized: true, loading: false, data: payload };
 
     case USER_SIGN_IN.ERROR:
-      return { ...state, loading: false, error: payload };
+      return { ...state, hasInitialized: true, loading: false, error: payload };
 
-    case USER_SIGN_OUT:
-      return { ...state, loading: false, data: null };
+    case USER_SIGN_OUT.SUCCESS:
+      return { ...state, hasInitialized: true, loading: false, data: null };
+
+    case USER_SIGN_OUT.ERROR:
+      return { ...state, hasInitialized: true, loading: false, error: payload };
 
     case PASSWORD_RESET.START:
       return { ...state, loading: true, hasTriggeredReset: false };

@@ -30,8 +30,8 @@ const getBoxFromData = (doc: firebase.firestore.DocumentSnapshot): Box => {
 };
 
 // TODO: want to subscribe to updates
-export const fetchActiveBoxes = (getCurrentUser: GetCurrentUser) => {
-  const { organizationRef } = getCurrentUser();
+export const fetchActiveBoxes = async (getCurrentUser: GetCurrentUser) => {
+  const { organizationRef } = await getCurrentUser();
   // TODO: we only want to return boxes that are currently 'active'
   return db
     .collection("boxes")

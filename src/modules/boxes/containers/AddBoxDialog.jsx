@@ -7,8 +7,7 @@ import AddBoxDialog from "../components/AddBoxDialog";
 import { addBox } from "../actions";
 
 const mapStateToProps = state => ({
-  products: getAllProductsFromState(state),
-  profile: state.profile
+  products: getAllProductsFromState(state)
 });
 const mapDispatchToProps = { addBox, fetchData: productList };
 export default connect(

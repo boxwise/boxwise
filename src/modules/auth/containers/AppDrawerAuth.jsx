@@ -1,13 +1,10 @@
 import { connect } from "react-redux";
 
 import AppDrawerAuth from "../components/AppDrawerAuth";
-import { firebaseSignOut } from "../actions";
+import { firebaseSignOut, getCurrentUserFromState } from "../actions";
 
-const mapStateToProps = ({ profile, user }) => ({
-  profile,
-  user,
-  notAuthenticated: !user.data || !profile.data,
-  loading: user.loading || profile.loading
+const mapStateToProps = state => ({
+  user: getCurrentUserFromState(state)
 });
 
 const mapDispatchToProps = dispatch => ({
