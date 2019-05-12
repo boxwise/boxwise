@@ -1,6 +1,6 @@
 {
   "env": {
-    "host":"http://localhost:3000",
+    "host":"https://boxwise-production.firebaseapp.com",
     "testOrg": "browserTestOrganization",
     "testUser": "browsertestuser",
     "testUserMail": "browsertestuser@example.com",
@@ -9,5 +9,6 @@
     "changePwdPwd": "changePwdPwd",
     "newPwd": "newPwd"
   },
-  "projectId": "e6jvz9"
+  "projectId": "e6jvz9",
+  "chromeWebSecurity": false
 }
