@@ -28,7 +28,8 @@ describe("CRUD products tests", () => {
           .click();
         cy.get("div[data-cy=deleteConfirmationDialog").should("be.visible");
         cy.get("button[data-cy=confirmDeleteButton").click();
-        // cy.wait(2000); // updating table takes some time
+        // eslint-disable-next-line cypress/no-unnecessary-waiting
+        cy.wait(2000); // updating table takes some time
         cy.get("tbody[data-cy=productsTableBody")
           .find("tr")
           .its("length")
@@ -53,7 +54,8 @@ describe("CRUD products tests", () => {
               .click();
             cy.get("div[data-cy=deleteConfirmationDialog").should("be.visible");
             cy.get("button[data-cy=confirmDeleteButton").click();
-            // cy.wait(2000); // updating table takes some time
+            // eslint-disable-next-line cypress/no-unnecessary-waiting
+            cy.wait(2000); // updating table takes some time
             if (sameNameCountBefore === 1) {
               cy.get(`td:contains(${firstProductName})`).should("not.exist"); // if there was only such product name, now it shouldn't exist at all
             } else {

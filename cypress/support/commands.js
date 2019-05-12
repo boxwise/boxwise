@@ -69,7 +69,8 @@ Cypress.Commands.add("createTestProduct", () => {
     .click();
   cy.get("div[data-cy=productName] input").type(`${productName}`);
   cy.get("button[data-cy=submitCreateProduct").click({ timeout: 10000 });
-  // cy.wait(2000); // give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
+  // eslint-disable-next-line cypress/no-unnecessary-waiting
+  cy.wait(2000); // give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
   cy.get("td[data-cy=productNameCell]")
     .contains(`${productName}`)
     .should("exist"); // cell with product name should be visible
