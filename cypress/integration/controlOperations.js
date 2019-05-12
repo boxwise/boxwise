@@ -1,7 +1,6 @@
 import { getTestConfig, getChangePwdConfig } from "../config";
 
 describe("Control operations", () => {
-  
   const { testUserMail, testPwd } = getTestConfig();
   const { changePwdUserMail, changePwdPwd, newPwd } = getChangePwdConfig();
 
@@ -15,8 +14,10 @@ describe("Control operations", () => {
     cy.get("a[data-cy=findBoxesButton]").should("exist");
     cy.get("button[data-cy=appDrawerOpener]").should("exist");
     cy.openAppDrawer();
-    cy.get("a[data-cy=signoutDrawerButton]").click();
-    cy.get("a[data-cy=loginLink]").should("exist"); // existing login link means user is logged out
+    cy.get("a[data-cy=signoutDrawerButton]")
+      .last()
+      .click();
+    cy.get("button[data-cy=signInButton]").should("exist"); // existing sign-in button means user is logged out
   });
 
   it("Change password -> Relogin -> Change password", () => {
@@ -63,7 +64,7 @@ describe("Control operations", () => {
   it("Invite", () => {
     cy.reLogin(testUserMail, testPwd);
     cy.navigateToInvitePage();
-    cy.get("button[data-cy=copyToClipboardButton]").click();
+    cy.get("button[data-cy=copyToClipboardButton]").should("be.visible");
     // cypress opens an alert to confirm copying to clipboard - not sure what to do here (how to confirm it automatically)
     // const stub = cy.stub();
     // cy.on('window:alert', stub);
