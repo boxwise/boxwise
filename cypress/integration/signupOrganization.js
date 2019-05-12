@@ -1,13 +1,20 @@
 import uuidv4 from "uuid/v4";
 
 describe('Add Organization', function() {
+    let host;
     let testOrg;
     let testUser;
     let testPwd;
 
+    before(function() {
+        cy.getHost().then(($result) => {
+            host= $result.host;
+        });
+    });   
+
     beforeEach(function() {
-        cy.visit("http://localhost:3000/signout");
-        cy.visit('http://localhost:3000/create-organization')
+        cy.visit(host + "/signout");
+        cy.visit(host + "/create-organization");
         //data need to be recreated before each test to ensure their valid and not in the DB yet
         testOrg = uuidv4();
         let substr = testOrg.substring(0,6);

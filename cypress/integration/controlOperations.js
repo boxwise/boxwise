@@ -1,6 +1,7 @@
 import uuidv4 from "uuid/v4";
 
 describe('Control operations', function() {
+    let host;
     let testUserMail;
     let testPwd;
     let changePwdUserMail;
@@ -17,11 +18,14 @@ describe('Control operations', function() {
             changePwdPwd= $result.changePwdPwd;
             newPwd = $result.newPwd;
         });
+        cy.getHost().then(($result) => {
+            host= $result.host;
+        });
       });   
 
     it('Login -> logout', () => {
-        cy.visit("http://localhost:3000/signout");
-        cy.visit("http://localhost:3000/signin");
+        cy.visit(host + "/signout");
+        cy.visit(host + "/signin");
         cy.get("div[data-cy=email] input").type(`${testUserMail}`);
         cy.get("div[data-cy=password] input").type(`${testPwd}`);
         cy.get("button[data-cy=signInButton]").click({ timeout: 10000}).then(() => {

@@ -25,6 +25,11 @@ import uuidv4 from "uuid/v4";
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
+Cypress.Commands.add("getHost", () => { 
+    let host = Cypress.env('host');
+    return {host: host};
+});
+
 Cypress.Commands.add("getTestData", () => { 
     let testUser = Cypress.env('testUser');
     let testUserMail = Cypress.env('testUserMail');
@@ -39,9 +44,9 @@ Cypress.Commands.add("getChangePwdData", () => {
     return {changePwdUserMail: changePwdUserMail, changePwdPwd: changePwdPwd, newPwd: newPwd};
 });
 
-Cypress.Commands.add("reLogin", (userMail, userPassword) => { 
-    cy.visit("http://localhost:3000/signout");
-    cy.visit("http://localhost:3000/signin");
+Cypress.Commands.add("reLogin", (userMail, userPassword) => {
+    cy.visit(Cypress.env('host') + "/signout");
+    cy.visit(Cypress.env('host') + "/signin");
     cy.get("div[data-cy=email] input").type(`${userMail}`);
     cy.get("div[data-cy=password] input").type(`${userPassword}`);
     cy.get("button[data-cy=signInButton]").click();

@@ -1,5 +1,6 @@
 {
   "env": {
+    "host":"http://localhost:3000",
     "testOrg": "browserTestOrganization",
     "testUser": "browsertestuser",
     "testUserMail": "browsertestuser@example.com",
