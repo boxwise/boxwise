@@ -6,7 +6,6 @@ describe("Control operations", () => {
 
   it("Login -> logout", () => {
     cy.visit("/signout");
-    cy.visit("/signin");
     cy.get("div[data-cy=email] input").type(`${testUserMail}`);
     cy.get("div[data-cy=password] input").type(`${testPwd}`);
     cy.get("button[data-cy=signInButton]").click({ timeout: 10000 });
