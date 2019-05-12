@@ -6,8 +6,8 @@ describe("Add Organization", function() {
   let testPwd;
 
   beforeEach(function() {
-    cy.visit("http://localhost:3000/signout");
-    cy.visit("http://localhost:3000/create-organization");
+    cy.visit("/signout");
+    cy.visit("/create-organization");
     // data need to be recreated before each test to ensure their valid and not in the DB yet
     testOrg = uuidv4();
     const substr = testOrg.substring(0, 6);

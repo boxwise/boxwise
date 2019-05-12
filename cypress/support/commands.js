@@ -40,8 +40,8 @@ Cypress.Commands.add("getChangePwdData", () => {
 });
 
 Cypress.Commands.add("reLogin", (userMail, userPassword) => {
-  cy.visit("http://localhost:3000/signout");
-  cy.visit("http://localhost:3000/signin");
+  cy.visit("/signout");
+  cy.visit("/signin");
   cy.get("div[data-cy=email] input").type(`${userMail}`);
   cy.get("div[data-cy=password] input").type(`${userPassword}`);
   cy.get("button[data-cy=signInButton]").click();
