@@ -1,7 +1,6 @@
 import { getTestConfig, getChangePwdConfig } from "../config";
 
 describe("Control operations", () => {
-  
   const { testUserMail, testPwd } = getTestConfig();
   const { changePwdUserMail, changePwdPwd, newPwd } = getChangePwdConfig();
 
@@ -15,7 +14,6 @@ describe("Control operations", () => {
       .then(() => {
         cy.get("button[data-cy=makeBoxButton]").should("exist");
         cy.get("a[data-cy=findBoxesButton]").should("exist");
-        cy.get("button[data-cy=appDrawerOpener]").should("exist");
         cy.openAppDrawer();
         cy.get("div[data-cy=signoutDrawerButton]")
           .last()
