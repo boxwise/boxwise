@@ -27,7 +27,6 @@ import uuidv4 from "uuid/v4";
 
 Cypress.Commands.add("reLogin", (userMail, userPassword) => {
   cy.visit("/signout");
-  cy.visit("/signin");
   cy.get("div[data-cy=email] input").type(`${userMail}`);
   cy.get("div[data-cy=password] input").type(`${userPassword}`);
   cy.get("button[data-cy=signInButton]").click();
