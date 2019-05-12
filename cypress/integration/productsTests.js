@@ -1,6 +1,6 @@
 import uuidv4 from "uuid/v4";
-import { getTestConfig } from "../config";
 
+import { getTestConfig } from "../config";
 
 describe("CRUD products tests", () => {
   const { testUserMail, testPwd } = getTestConfig();
@@ -28,7 +28,7 @@ describe("CRUD products tests", () => {
           .click();
         cy.get("div[data-cy=deleteConfirmationDialog").should("be.visible");
         cy.get("button[data-cy=confirmDeleteButton").click();
-        cy.wait(2000); // updating table takes some time
+        // cy.wait(2000); // updating table takes some time
         cy.get("tbody[data-cy=productsTableBody")
           .find("tr")
           .its("length")
@@ -53,7 +53,7 @@ describe("CRUD products tests", () => {
               .click();
             cy.get("div[data-cy=deleteConfirmationDialog").should("be.visible");
             cy.get("button[data-cy=confirmDeleteButton").click();
-            cy.wait(2000); // updating table takes some time
+            // cy.wait(2000); // updating table takes some time
             if (sameNameCountBefore === 1) {
               cy.get(`td:contains(${firstProductName})`).should("not.exist"); // if there was only such product name, now it shouldn't exist at all
             } else {
