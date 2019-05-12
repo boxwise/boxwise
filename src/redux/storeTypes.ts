@@ -15,7 +15,7 @@ export interface ProductsState extends IndexedState<Product> {
   error?: string;
 }
 
-export interface BoxesState {
+export interface BoxesState extends IndexedState<Box> {
   loading: boolean;
   error?: string;
   byId: { [id: string]: Box };

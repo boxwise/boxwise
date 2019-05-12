@@ -1,13 +1,13 @@
 import React, { PureComponent } from "react";
 import Dialog from "@material-ui/core/Dialog";
 
+import AddBoxDone from "../containers/AddBoxDone";
+
 import AddBoxForm from "./AddBoxForm";
-import AddBoxDone from "./AddBoxDone";
 
 const getInitialState = () => {
   return {
-    box: null,
-    selectedProduct: null,
+    boxId: null,
     done: false,
     serverError: null
   };
@@ -32,22 +32,10 @@ export default class AddBoxDialog extends PureComponent {
   }
 
   handleSubmit(values) {
-    const selectedProduct = JSON.parse(values.product);
     const { addBox } = this.props;
 
-    addBox({
-      ...values,
-      product: selectedProduct
-    }).then(({ error, data }) => {
-      if (error) this.setState({ serverError: error });
-      else
-        this.setState({
-          box: data,
-          done: true,
-          selectedProduct: `${selectedProduct.category} / ${
-            selectedProduct.name
-          }`
-        });
+    addBox(values).then(({ payload }) => {
+      this.setState({ boxId: payload.id, done: true });
     });
   }
 
@@ -58,8 +46,8 @@ export default class AddBoxDialog extends PureComponent {
   }
 
   render() {
-    const { box, selectedProduct, done, serverError } = this.state;
-    const { open, products } = this.props;
+    const { boxId, done } = this.state;
+    const { open, products, serverError } = this.props;
 
     return (
       <Dialog
@@ -71,8 +59,7 @@ export default class AddBoxDialog extends PureComponent {
       >
         {done ? (
           <AddBoxDone
-            box={box}
-            selectedProduct={selectedProduct}
+            boxId={boxId}
             onClose={this.handleClose}
             onReset={this.handleReset}
           />

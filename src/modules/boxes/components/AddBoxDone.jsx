@@ -5,7 +5,7 @@ import Button from "@material-ui/core/Button";
 
 import DialogToolbar from "components/DialogToolbar";
 
-const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
+const AddBoxDone = ({ box, onClose, onReset }) => (
   <div>
     <DialogToolbar
       title="New box"
@@ -21,7 +21,7 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
       <Typography gutterBottom>Write on the label:</Typography>
       <br />
       <Typography variant="h6" gutterBottom>
-        <strong>{box.humanID}</strong>
+        <strong>{box.humanId}</strong>
       </Typography>
       <Typography
         variant="h6"
@@ -31,8 +31,11 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
         <strong>{box.quantity}x</strong>
       </Typography>
       <Typography variant="h6" gutterBottom>
-        <strong>{selectedProduct}</strong>
+        <strong>
+          {box.productCategory} / {box.productName}
+        </strong>
       </Typography>
+      {box.comment}
       <br />
       <Button
         variant="contained"

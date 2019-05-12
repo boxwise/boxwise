@@ -13,8 +13,8 @@ import { useMaterialUIForm } from "hooks/forms";
 const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
   const handleValidation = values => {
     const errors = {};
-    if (!values.product) {
-      errors.product = "Select a product.";
+    if (!values.productId) {
+      errors.productId = "Select a product.";
     }
     if (!values.quantity) {
       errors.quantity = "Enter the number of items in the box.";
@@ -42,20 +42,16 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
           <div>
             <TextField
               label="Product"
-              name="product"
+              name="productId"
               select
               fullWidth
               autoFocus
               margin="dense"
               data-testid="selectProduct"
-              {...attachValidation("product")}
+              {...attachValidation("productId")}
             >
               {products.map(({ id, name, category }) => (
-                <MenuItem
-                  key={id}
-                  value={JSON.stringify({ id, category, name })}
-                  data-testid="productDropdownItem"
-                >
+                <MenuItem key={id} value={id} data-testid="productDropdownItem">
                   {category} / {name}
                 </MenuItem>
               ))}

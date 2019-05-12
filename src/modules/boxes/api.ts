@@ -1,8 +1,12 @@
 import { firebase, db } from "firebaseFactory";
 import { GetCurrentUser } from "modules/auth/api";
+import { ProductId } from "modules/products/api";
+import { Flavor } from "typeScriptExtensions";
+
+export type BoxId = Flavor<string, "Box">;
 
 export interface Box {
-  id: string;
+  id: BoxId;
   quantity: number;
   comment?: string;
   productId: string;
@@ -41,4 +45,28 @@ export const fetchActiveBoxes = async (getCurrentUser: GetCurrentUser) => {
     .then(({ docs }) => {
       return docs.map(getBoxFromData);
     });
+};
+
+export const addBox = async (
+  quantity: number,
+  comment: string,
+  productId: ProductId,
+  getCurrentUser: GetCurrentUser
+) => {
+  const { organizationRef, userProfileRef } = await getCurrentUser();
+  const box = {
+    quantity,
+    comment: comment || "",
+    organization: db.doc(organizationRef),
+    product: db.doc(`products/${productId}`),
+    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+    createdBy: db.doc(userProfileRef),
+    humanID: Math.floor(Math.random() * 1000000)
+  };
+
+  return db
+    .collection("boxes")
+    .add(box)
+    .then(ref => ref.get())
+    .then(getBoxFromData);
 };
