@@ -10,18 +10,13 @@ describe("Control operations", () => {
     cy.visit("/signin");
     cy.get("div[data-cy=email] input").type(`${testUserMail}`);
     cy.get("div[data-cy=password] input").type(`${testPwd}`);
-    cy.get("button[data-cy=signInButton]")
-      .click({ timeout: 10000 })
-      .then(() => {
-        cy.get("button[data-cy=makeBoxButton]").should("exist");
-        cy.get("a[data-cy=findBoxesButton]").should("exist");
-        cy.get("button[data-cy=appDrawerOpener]").should("exist");
-        cy.openAppDrawer();
-        cy.get("div[data-cy=signoutDrawerButton]")
-          .last()
-          .click();
-        cy.get("a[data-cy=loginLink]").should("exist"); // existing login link means user is logged out
-      });
+    cy.get("button[data-cy=signInButton]").click({ timeout: 10000 });
+    cy.get("button[data-cy=makeBoxButton]").should("exist");
+    cy.get("a[data-cy=findBoxesButton]").should("exist");
+    cy.get("button[data-cy=appDrawerOpener]").should("exist");
+    cy.openAppDrawer();
+    cy.get("a[data-cy=signoutDrawerButton]").click();
+    cy.get("a[data-cy=loginLink]").should("exist"); // existing login link means user is logged out
   });
 
   it("Change password -> Relogin -> Change password", () => {
