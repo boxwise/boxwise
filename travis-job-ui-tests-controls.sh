@@ -1,2 +1,2 @@
 cp .travis/.env.feature-tests ./.env.local
-cypress run --record --spec "cypress/integration/controlOperations.js"
+cypress run --spec "cypress/integration/controlOperations.js"
