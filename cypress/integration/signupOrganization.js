@@ -1,11 +1,11 @@
 import uuidv4 from "uuid/v4";
 
-describe("Add Organization", function() {
+describe("Add Organization", () => {
   let testOrg;
   let testUser;
   let testPwd;
 
-  beforeEach(function() {
+  beforeEach(() => {
     cy.visit("/signout");
     cy.visit("/create-organization");
     // data need to be recreated before each test to ensure their valid and not in the DB yet
@@ -34,7 +34,7 @@ describe("Add Organization", function() {
       });
   });
 
-  it("Adds an organization confirmed by enter", function() {
+  it("Adds an organization confirmed by enter", () => {
     cy.get("div[data-cy=orgNameInput] input").type(`${testOrg}{enter}`);
     cy.get("div[data-cy=name] input").type(`${testUser}`);
     cy.get("div[data-cy=email] input").type(`${testUser}@example.com`);
@@ -46,7 +46,7 @@ describe("Add Organization", function() {
       });
   });
 
-  it("Adds an organization confirmed by submit button", function() {
+  it("Adds an organization confirmed by submit button", () => {
     cy.get("div[data-cy=orgNameInput] input").type(`${testOrg}_2{enter}`);
     cy.get("div[data-cy=name] input").type(`${testUser}_2`);
     cy.get("div[data-cy=email] input").type(`${testUser}_2@example.com`); // can't use the same mail as the previous test

@@ -1,17 +1,10 @@
 import uuidv4 from "uuid/v4";
+import { getTestConfig } from "../config";
 
-describe("CRUD boxes tests", function() {
-  let testUserMail;
-  let testPwd;
+describe("CRUD boxes tests", () => {
+  const { testUserMail, testPwd } = getTestConfig();
 
-  before(function() {
-    cy.getTestData().then($result => {
-      testUserMail = $result.testUserMail;
-      testPwd = $result.testPwd;
-    });
-  });
-
-  beforeEach(function() {
+  beforeEach(() => {
     cy.reLogin(testUserMail, testPwd);
   });
 

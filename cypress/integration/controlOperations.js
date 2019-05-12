@@ -1,23 +1,9 @@
-import uuidv4 from "uuid/v4";
+import { getTestConfig, getChangePwdConfig } from "../config";
 
-describe("Control operations", function() {
-  let testUserMail;
-  let testPwd;
-  let changePwdUserMail;
-  let changePwdPwd;
-  let newPwd;
-
-  before(function() {
-    cy.getTestData().then($result => {
-      testUserMail = $result.testUserMail;
-      testPwd = $result.testPwd;
-    });
-    cy.getChangePwdData().then($result => {
-      changePwdUserMail = $result.changePwdUserMail;
-      changePwdPwd = $result.changePwdPwd;
-      newPwd = $result.newPwd;
-    });
-  });
+describe("Control operations", () => {
+  
+  const { testUserMail, testPwd } = getTestConfig();
+  const { changePwdUserMail, changePwdPwd, newPwd } = getChangePwdConfig();
 
   it("Login -> logout", () => {
     cy.visit("/signout");

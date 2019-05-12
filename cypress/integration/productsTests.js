@@ -1,17 +1,11 @@
 import uuidv4 from "uuid/v4";
+import { getTestConfig } from "../config";
 
-describe("CRUD products tests", function() {
-  let testUserMail;
-  let testPwd;
 
-  before(function() {
-    cy.getTestData().then($result => {
-      testUserMail = $result.testUserMail;
-      testPwd = $result.testPwd;
-    });
-  });
+describe("CRUD products tests", () => {
+  const { testUserMail, testPwd } = getTestConfig();
 
-  beforeEach(function() {
+  beforeEach(() => {
     cy.reLogin(testUserMail, testPwd);
   });
 
@@ -60,7 +54,7 @@ describe("CRUD products tests", function() {
             cy.get("div[data-cy=deleteConfirmationDialog").should("be.visible");
             cy.get("button[data-cy=confirmDeleteButton").click();
             cy.wait(2000); // updating table takes some time
-            if (sameNameCountBefore == 1) {
+            if (sameNameCountBefore === 1) {
               cy.get(`td:contains(${firstProductName})`).should("not.exist"); // if there was only such product name, now it shouldn't exist at all
             } else {
               cy.get(`td:contains(${firstProductName})`)

@@ -25,20 +25,6 @@ import uuidv4 from "uuid/v4";
 // -- This is will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
 
-Cypress.Commands.add("getTestData", () => {
-  const testUser = Cypress.env("testUser");
-  const testUserMail = Cypress.env("testUserMail");
-  const testPwd = Cypress.env("testPwd");
-  return { testUser, testUserMail, testPwd };
-});
-
-Cypress.Commands.add("getChangePwdData", () => {
-  const changePwdUserMail = Cypress.env("changePwdUserMail");
-  const changePwdPwd = Cypress.env("changePwdPwd");
-  const newPwd = Cypress.env("newPwd");
-  return { changePwdUserMail, changePwdPwd, newPwd };
-});
-
 Cypress.Commands.add("reLogin", (userMail, userPassword) => {
   cy.visit("/signout");
   cy.visit("/signin");
@@ -90,8 +76,8 @@ Cypress.Commands.add("createTestProduct", () => {
 });
 
 // https://github.com/cypress-io/cypress/issues/761
-Cypress.Commands.add("cleanUpXHR", function() {
+Cypress.Commands.add("cleanUpXHR", () => {
   if (Cypress.env("run_all_suite")) {
-    cy.visit(`${Cypress.env("yourAppUrl")}/404`, { failOnStatusCode: false });
+    cy.visit("/404", { failOnStatusCode: false });
   }
 });
