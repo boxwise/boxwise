@@ -15,8 +15,7 @@ export const useForm = (callback, validate, initialValues) => {
     if (event) event.preventDefault();
     if (validateForm()) {
       setIsSubmitting(true);
-      callback(values);
-      setIsSubmitting(false);
+      Promise.resolve(callback(values)).then(() => setIsSubmitting(false));
     }
   };
 
