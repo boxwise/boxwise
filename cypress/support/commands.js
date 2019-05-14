@@ -27,25 +27,25 @@ import uuidv4 from "uuid/v4";
 
 Cypress.Commands.add("reLogin", (userMail, userPassword) => {
   cy.visit("/signout");
-  cy.get("div[data-testid=email] input").type(`${userMail}`);
-  cy.get("div[data-testid=password] input").type(`${userPassword}`);
-  cy.get("button[data-testid=signInButton]").click();
+  cy.get("[data-testid=email] input").type(`${userMail}`);
+  cy.get("[data-testid=password] input").type(`${userPassword}`);
+  cy.get("[data-testid=signInButton]").click();
   cy.location("pathname", { timeout: 10000 }).should("not.include", "/signin");
 });
 
 Cypress.Commands.add("openAppDrawer", () => {
-  cy.get("button[data-ctestidy=appDrawerOpener]").should("be.visible");
+  cy.get("[data-testid=appDrawerOpener]").should("be.visible");
   cy.get("body").then($body => {
-    if ($body.find("button[data-testid=appDrawerOpener]").length > 0) {
-      cy.get("button[data-testid=appDrawerOpener]")
+    if ($body.find("[data-testid=appDrawerOpener]").length > 0) {
+      cy.get("[data-testid=appDrawerOpener]")
         .click()
         .then(() => {
-          cy.get("div[data-testid=appDrawerDiv]")
+          cy.get("[data-testid=appDrawerDiv]")
             .last()
             .should("be.visible");
         });
     } else {
-      cy.get("div[data-testid=appDrawerDiv]")
+      cy.get("[data-testid=appDrawerDiv]")
         .last()
         .should("be.visible");
     }
@@ -54,21 +54,21 @@ Cypress.Commands.add("openAppDrawer", () => {
 
 Cypress.Commands.add("navigateToChangePasswordForm", () => {
   cy.openAppDrawer();
-  cy.get("a[data-testid=changePasswordDrawerButton]")
+  cy.get("[data-testid=changePasswordDrawerButton]")
     .last()
     .click();
 });
 
 Cypress.Commands.add("navigateToProductsPage", () => {
   cy.openAppDrawer();
-  cy.get("a[data-testid=productsDrawerButton]")
+  cy.get("[data-testid=productsDrawerButton]")
     .last()
     .click();
 });
 
 Cypress.Commands.add("navigateToInvitePage", () => {
   cy.openAppDrawer();
-  cy.get("a[data-testid=inviteDrawerButton]")
+  cy.get("[data-testid=inviteDrawerButton]")
     .last()
     .click();
 });
@@ -76,16 +76,16 @@ Cypress.Commands.add("navigateToInvitePage", () => {
 // 'Delete product' helper function
 Cypress.Commands.add("createTestProduct", () => {
   const productName = uuidv4().substring(0, 6);
-  cy.get("button[data-testid=addProductButton]").click();
-  cy.get("div[data-testid=selectCategory]").click();
+  cy.get("[data-testid=addProductButton]").click();
+  cy.get("[data-testid=selectCategory]").click();
   cy.get("li[id=category]")
     .first()
     .click();
-  cy.get("div[data-testid=productName] input").type(`${productName}`);
-  cy.get("button[data-testid=submitCreateProduct").click({ timeout: 10000 });
+  cy.get("[data-testid=productName] input").type(`${productName}`);
+  cy.get("[data-testid=submitCreateProduct").click({ timeout: 10000 });
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000); // give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
-  cy.get("td[data-testid=productNameCell]")
+  cy.get("[data-testid=productNameCell]")
     .contains(`${productName}`)
     .should("exist"); // cell with product name should be visible
 });
