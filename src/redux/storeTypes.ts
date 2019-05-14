@@ -18,7 +18,8 @@ export interface ProductsState extends IndexedState<Product> {
 export interface BoxesState {
   loading: boolean;
   error?: string;
-  data: Box[];
+  byId: { [id: string]: Box };
+  allIds: string[];
 }
 
 export interface UserState {

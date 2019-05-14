@@ -1,5 +1,6 @@
 import { firebase, db } from "firebaseFactory";
 import { createAsyncAction } from "redux/actionCreators";
+import { createThunkWithState } from "redux/thunkFactory";
 import {
   createGetCurrentUser,
   getCurrentUserFromState
@@ -19,15 +20,9 @@ export const BOX_LIST = createAsyncAction(
   "BOX_LIST_ERROR"
 );
 
-export const fetchBoxes = () => (dispatch, getState) => {
-  dispatch({ type: BOX_LIST.START });
-  return api
-    .fetchActiveBoxes(createGetCurrentUser(getState))
-    .then(
-      boxes => dispatch({ type: BOX_LIST.SUCCESS, payload: boxes }),
-      error => dispatch({ type: BOX_ADD.ERROR, payload: error })
-    );
-};
+export const fetchBoxes = createThunkWithState(BOX_LIST, getState =>
+  api.fetchActiveBoxes(createGetCurrentUser(getState))
+);
 
 export const addBox = ({ product, quantity, comment }) => (
   dispatch,

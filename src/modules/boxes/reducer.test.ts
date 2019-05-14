@@ -11,20 +11,21 @@ import { getBoxesWithProductInfoFromState } from "./reducer";
 // firebase mock doesn't support querying by reference
 describe("getBoxesWithProductInfoFromState", () => {
   const boxes: Partial<BoxesState> = {
-    data: [
-      {
+    allIds: ["123", "456"],
+    byId: {
+      "123": {
         id: "123",
         productId: "AdultShorts",
         quantity: 100,
         humanId: "213"
       } as Box,
-      {
-        id: "123",
+      "456": {
+        id: "456",
         productId: "AdultTShirt",
         quantity: 50,
         humanId: "213"
       } as Box
-    ]
+    }
   };
 
   const products: Partial<ProductsState> = {
