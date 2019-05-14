@@ -15,9 +15,10 @@ const SelectField = ({
   <TextField
     label={label}
     name={name}
+    id={name}
     select
     fullWidth
-    margin="dense"
+    margin="normal"
     value={value || ""}
     SelectProps={{
       // we use native select elements for a better mobile experience

@@ -1,9 +1,9 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 
 import { useMaterialUIForm } from "hooks/forms";
 import FormErrorText from "components/FormErrorText";
 import SubmitButton from "components/SubmitButton";
+import EmailField from "components/EmailField";
 
 // do we use redux or just call firebase directly? via actions?
 const ResetPasswordForm = ({ isSubmitting, serverError, resetPassword }) => {
@@ -21,15 +21,18 @@ const ResetPasswordForm = ({ isSubmitting, serverError, resetPassword }) => {
   return (
     <form onSubmit={handleSubmit}>
       <FormErrorText message={serverError} />
-      <TextField
-        type="email"
+      <EmailField
         label="Email"
         name="email"
-        fullWidth
-        margin="normal"
+        dataTestId="email"
         {...attachValidation("email")}
       />
-      <SubmitButton isSubmitting={isSubmitting}>Reset Password</SubmitButton>
+      <SubmitButton
+        dataTestId="resetPasswordButton"
+        isSubmitting={isSubmitting}
+      >
+        Reset Password
+      </SubmitButton>
     </form>
   );
 };

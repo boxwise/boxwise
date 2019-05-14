@@ -42,13 +42,13 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
           <div>
             <SelectField
               label="Product"
-              name="product"
+              name="productId"
               autoFocus
               dataTestId="selectProduct"
               items={products}
-              itemToId={({ id }) => id }
+              itemToId={({ id }) => id}
               itemToText={({ category, name }) => `${category} / ${name}`}
-              {...attachValidation("product")}
+              {...attachValidation("productId")}
             />
             <TextField
               label="Number of items"

@@ -1,11 +1,12 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 
 import { useMaterialUIForm } from "hooks/forms";
 import SubmitButton from "components/SubmitButton";
 import FormErrorText from "components/FormErrorText";
+import PasswordField from "components/PasswordField";
+import EmailField from "components/EmailField";
 
-const SignInForm = ({ serverError, loading, userSignIn }) => {
+const SignInForm = ({ serverError, userSignIn }) => {
   const validate = values => {
     const errors = {};
     if (!values.email) {
@@ -16,36 +17,26 @@ const SignInForm = ({ serverError, loading, userSignIn }) => {
     }
     return errors;
   };
-  const { attachValidation, handleSubmit } = useMaterialUIForm(
+  const { attachValidation, handleSubmit, isSubmitting } = useMaterialUIForm(
     userSignIn,
     validate
   );
-
   return (
     <form onSubmit={handleSubmit}>
       <FormErrorText message={serverError && serverError.message} />
-      <TextField
-        id="email"
-        type="email"
+      <EmailField
         label="Email address"
         name="email"
-        autoComplete="email"
-        fullWidth
-        margin="normal"
+        dataTestId="email"
         {...attachValidation("email")}
-        data-testid="email"
       />
-      <TextField
-        id="password"
-        type="password"
+      <PasswordField
         label="Password"
         name="password"
-        fullWidth
-        margin="normal"
+        dataTestId="password"
         {...attachValidation("password")}
-        data-testid="password"
       />
-      <SubmitButton isSubmitting={loading || false} dataTestId="signInButton">
+      <SubmitButton isSubmitting={isSubmitting} dataTestId="signInButton">
         Sign In
       </SubmitButton>
     </form>

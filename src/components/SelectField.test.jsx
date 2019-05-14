@@ -1,6 +1,6 @@
 import React from "react";
 
-import { render, fireEvent } from "reactTestingHelpers";
+import { render, typeText } from "reactTestingHelpers";
 
 import SelectField from "./SelectField";
 
@@ -36,7 +36,7 @@ describe("BoxList", () => {
         dataTestId="filter"
       />
     );
-    fireEvent.change(getByTestId("filter"), { target: { value: "xyz" } });
+    typeText(getByTestId("filter"), "xyz");
     expect(container).toMatchSnapshot();
   });
 });
