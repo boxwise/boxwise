@@ -5,64 +5,64 @@ describe("Control operations", () => {
 
   it("Login -> logout", () => {
     cy.visit("/signout");
-    cy.get("[data-testid=email] input").type(`${testUserMail}`);
-    cy.get("[data-testid=password] input").type(`${testPwd}`);
-    cy.get("[data-testid=signInButton]").click({ timeout: 10000 });
-    cy.get("[data-testid=makeBoxButton]").should("exist");
-    cy.get("[data-testid=findBoxesButton]").should("exist");
-    cy.get("[data-testid=appDrawerOpener]").should("exist");
+    cy.getInputContainedByTestId("email").type(`${testUserMail}`);
+    cy.getInputContainedByTestId("password").type(`${testPwd}`);
+    cy.getByTestId("signInButton").click({ timeout: 10000 });
+    cy.getByTestId("makeBoxButton").should("exist");
+    cy.getByTestId("findBoxesButton").should("exist");
+    cy.getByTestId("appDrawerOpener").should("exist");
     cy.openAppDrawer();
-    cy.get("[data-testid=signoutDrawerButton]")
+    cy.getByTestId("signoutDrawerButton")
       .last()
       .click();
-    cy.get("[data-testid=signInButton]").should("exist"); // existing sign-in button means user is logged out
+    cy.getByTestId("signInButton").should("exist"); // existing sign-in button means user is logged out
   });
 
   it("Change password -> Relogin -> Change password", () => {
     cy.reLogin(testUserMail, testPwd);
     cy.navigateToChangePasswordForm();
-    cy.get("[data-testid=currentPassword] input").type(`${testPwd}`);
-    cy.get("[data-testid=newPassword] input").type(`${testPwd}`);
-    cy.get("[data-testid=confirmedPassword] input").type(`${testPwd}`);
+    cy.getInputContainedByTestId("currentPassword").type(`${testPwd}`);
+    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
+    cy.getInputContainedByTestId("confirmedPassword").type(`${testPwd}`);
     cy.get("button[type=submit]").click({ timeout: 10000 });
-    cy.get("[data-testid=pwdChangeConfirmation").should("be.visible");
+    cy.getByTestId("pwdChangeConfirmation").should("be.visible");
     // now change the password again to see it works and to ensure configured password is still valid
     cy.reLogin(testUserMail, testPwd);
     cy.openAppDrawer();
-    cy.get("[data-testid=changePasswordDrawerButton]")
+    cy.getByTestId("changePasswordDrawerButton")
       .last()
       .click();
-    cy.get("[data-testid=currentPassword] input").type(`${testPwd}`);
-    cy.get("[data-testid=newPassword] input").type(`${testPwd}`);
-    cy.get("[data-testid=confirmedPassword] input").type(`${testPwd}`);
+    cy.getInputContainedByTestId("currentPassword").type(`${testPwd}`);
+    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
+    cy.getInputContainedByTestId("confirmedPassword").type(`${testPwd}`);
     cy.get("button[type=submit]").click({ timeout: 10000 });
-    cy.get("[data-testid=pwdChangeConfirmation").should("be.visible");
+    cy.getByTestId("pwdChangeConfirmation").should("be.visible");
   });
 
   it("Change password form cannot have any empty field", () => {
     cy.reLogin(testUserMail, testPwd);
     cy.navigateToChangePasswordForm();
     // confirmedPassword empty
-    cy.get("[data-testid=currentPassword] input").type(`${testPwd}`);
-    cy.get("[data-testid=newPassword] input").type(`${testPwd}`);
+    cy.getInputContainedByTestId("currentPassword").type(`${testPwd}`);
+    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
     cy.get("button[type=submit]").click();
-    cy.get("[data-testid=pwdChangeConfirmation").should("not.be.visible");
+    cy.getByTestId("pwdChangeConfirmation").should("not.be.visible");
     // newPassword empty
-    cy.get("[data-testid=confirmedPassword] input").type(`${testPwd}`);
-    cy.get("[data-testid=newPassword] input").clear();
+    cy.getInputContainedByTestId("confirmedPassword").type(`${testPwd}`);
+    cy.getInputContainedByTestId("newPassword").clear();
     cy.get("button[type=submit]").click();
-    cy.get("[data-testid=pwdChangeConfirmation").should("not.be.visible");
+    cy.getByTestId("pwdChangeConfirmation").should("not.be.visible");
     // currentPassword empty
-    cy.get("[data-testid=newPassword] input").type(`${testPwd}`);
-    cy.get("[data-testid=currentPassword] input").clear();
+    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
+    cy.getInputContainedByTestId("currentPassword").clear();
     cy.get("button[type=submit]").click();
-    cy.get("[data-testid=pwdChangeConfirmation").should("not.be.visible");
+    cy.getByTestId("pwdChangeConfirmation").should("not.be.visible");
   });
 
   it("Invite", () => {
     cy.reLogin(testUserMail, testPwd);
     cy.navigateToInvitePage();
-    cy.get("[data-testid=copyToClipboardButton]").should("be.visible");
+    cy.getByTestId("copyToClipboardButton").should("be.visible");
     // cypress opens an alert to confirm copying to clipboard - not sure what to do here (how to confirm it automatically)
     // const stub = cy.stub();
     // cy.on('window:alert', stub);

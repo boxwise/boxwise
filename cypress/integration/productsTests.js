@@ -19,18 +19,18 @@ describe("CRUD products tests", () => {
   // We're expecting this test to fail once pagination of tables gets implemented
   it("'Delete product' removes one row from table", () => {
     cy.navigateToProductsPage();
-    cy.get("[data-testid=productsTableBody")
+    cy.getByTestId("productsTableBody")
       .find("tr")
       .its("length")
       .then(rowsBefore => {
-        cy.get("[data-testid=deleteProductButton]")
+        cy.getByTestId("deleteProductButton")
           .first()
           .click();
-        cy.get("[data-testid=deleteConfirmationDialog").should("be.visible");
-        cy.get("[data-testid=confirmDeleteButton").click();
+        cy.getByTestId("deleteConfirmationDialog").should("be.visible");
+        cy.getByTestId("confirmDeleteButton").click();
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(2000); // updating table takes some time
-        cy.get("[data-testid=productsTableBody")
+        cy.getByTestId("productsTableBody")
           .find("tr")
           .its("length")
           .as("rowsAfter");
@@ -40,7 +40,7 @@ describe("CRUD products tests", () => {
 
   it("'Delete product' lowers count of products with same name by 1", () => {
     cy.navigateToProductsPage();
-    cy.get("[data-testid=productNameCell]")
+    cy.getByTestId("productNameCell")
       .first()
       .invoke("text")
       .as("firstProductName")
@@ -49,13 +49,11 @@ describe("CRUD products tests", () => {
           .its("length")
           .as("sameNameCountBefore")
           .then(sameNameCountBefore => {
-            cy.get("[data-testid=deleteProductButton]")
+            cy.getByTestId("deleteProductButton")
               .first()
               .click();
-            cy.get("[data-testid=deleteConfirmationDialog").should(
-              "be.visible"
-            );
-            cy.get("[data-testid=confirmDeleteButton").click();
+            cy.getByTestId("deleteConfirmationDialog").should("be.visible");
+            cy.getByTestId("confirmDeleteButton").click();
             // eslint-disable-next-line cypress/no-unnecessary-waiting
             cy.wait(2000); // updating table takes some time
             if (sameNameCountBefore === 1) {
@@ -76,17 +74,17 @@ describe("CRUD products tests", () => {
   it("Edit product", () => {
     const newName = uuidv4().substring(0, 6);
     cy.navigateToProductsPage();
-    cy.get("[data-testid=editProductButton]")
+    cy.getByTestId("editProductButton")
       .first()
       .click();
-    cy.get("[data-testid=productDialog").should("be.visible");
-    cy.get("[data-testid=productName] input")
+    cy.getByTestId("productDialog").should("be.visible");
+    cy.getInputContainedByTestId("productName")
       .clear()
       .type(newName);
-    cy.get("[data-testid=submitCreateProduct")
+    cy.getByTestId("submitCreateProduct")
       .click()
       .then(() => {
-        cy.get("[data-testid=productNameCell]")
+        cy.getByTestId("productNameCell")
           .first()
           .invoke("text")
           .should("equal", newName);
