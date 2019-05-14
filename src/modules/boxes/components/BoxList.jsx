@@ -27,7 +27,7 @@ const styles = theme => ({
   productSelect: theme.mixins.gutters({})
 });
 
-export const BoxList = ({
+const BoxList = ({
   classes,
   boxesWithProductInfo,
   products,

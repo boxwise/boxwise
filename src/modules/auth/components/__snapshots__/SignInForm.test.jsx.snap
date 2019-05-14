@@ -1,0 +1,486 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignInForm does not trigger submission when email is not provided 1`] = `
+<div>
+  <form>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-16 MuiFormLabel-error-19 MuiInputLabel-error-8 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+        data-shrink="false"
+        for="email"
+      >
+        Email address
+      </label>
+      <div
+        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-error-42 MuiInput-error-28 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
+      >
+        <input
+          aria-describedby="email-helper-text"
+          aria-invalid="true"
+          autocomplete="email"
+          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
+          data-testid="email"
+          id="email"
+          name="email"
+          type="email"
+          value=""
+        />
+      </div>
+      <p
+        class="MuiFormHelperText-root-93 MuiFormHelperText-error-94"
+        id="email-helper-text"
+      >
+        Email address is required.
+      </p>
+    </div>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-16 MuiFormLabel-error-19 MuiInputLabel-error-8 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+        data-shrink="false"
+        for="password"
+      >
+        Password
+      </label>
+      <div
+        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-error-42 MuiInput-error-28 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
+      >
+        <input
+          aria-describedby="password-helper-text"
+          aria-invalid="true"
+          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
+          data-testid="password"
+          id="password"
+          name="password"
+          type="password"
+          value=""
+        />
+      </div>
+      <p
+        class="MuiFormHelperText-root-93 MuiFormHelperText-error-94"
+        id="password-helper-text"
+      >
+        Password is required.
+      </p>
+    </div>
+    <div
+      class="SubmitButton-root-53 SubmitButton-submitInPage-56"
+    >
+      <button
+        class="MuiButtonBase-root-83 MuiButton-root-57 MuiButton-contained-68 MuiButton-containedPrimary-69 MuiButton-raised-71 MuiButton-raisedPrimary-72"
+        data-testid="signInButton"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label-58"
+        >
+          Sign In
+        </span>
+        <span
+          class="MuiTouchRipple-root-86"
+        />
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SignInForm does not trigger submission when email is not provided: after submit 1`] = `
+<div>
+  <form>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-16 MuiFormLabel-error-19 MuiInputLabel-error-8 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+        data-shrink="false"
+        for="email"
+      >
+        Email address
+      </label>
+      <div
+        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-error-42 MuiInput-error-28 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
+      >
+        <input
+          aria-describedby="email-helper-text"
+          aria-invalid="true"
+          autocomplete="email"
+          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
+          data-testid="email"
+          id="email"
+          name="email"
+          type="email"
+          value=""
+        />
+      </div>
+      <p
+        class="MuiFormHelperText-root-93 MuiFormHelperText-error-94"
+        id="email-helper-text"
+      >
+        Email address is required.
+      </p>
+    </div>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-16 MuiFormLabel-error-19 MuiInputLabel-error-8 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+        data-shrink="false"
+        for="password"
+      >
+        Password
+      </label>
+      <div
+        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-error-42 MuiInput-error-28 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
+      >
+        <input
+          aria-describedby="password-helper-text"
+          aria-invalid="true"
+          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
+          data-testid="password"
+          id="password"
+          name="password"
+          type="password"
+          value=""
+        />
+      </div>
+      <p
+        class="MuiFormHelperText-root-93 MuiFormHelperText-error-94"
+        id="password-helper-text"
+      >
+        Password is required.
+      </p>
+    </div>
+    <div
+      class="SubmitButton-root-53 SubmitButton-submitInPage-56"
+    >
+      <button
+        class="MuiButtonBase-root-83 MuiButton-root-57 MuiButton-contained-68 MuiButton-containedPrimary-69 MuiButton-raised-71 MuiButton-raisedPrimary-72"
+        data-testid="signInButton"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label-58"
+        >
+          Sign In
+        </span>
+        <span
+          class="MuiTouchRipple-root-86"
+        />
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SignInForm does not trigger submission when email is not provided: before submit 1`] = `
+<div>
+  <form>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+        data-shrink="false"
+        for="email"
+      >
+        Email address
+      </label>
+      <div
+        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
+      >
+        <input
+          aria-invalid="false"
+          autocomplete="email"
+          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
+          data-testid="email"
+          id="email"
+          name="email"
+          type="email"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        class="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
+        data-shrink="false"
+        for="password"
+      >
+        Password
+      </label>
+      <div
+        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
+          data-testid="password"
+          id="password"
+          name="password"
+          type="password"
+          value=""
+        />
+      </div>
+    </div>
+    <div
+      class="SubmitButton-root-53 SubmitButton-submitInPage-56"
+    >
+      <button
+        class="MuiButtonBase-root-83 MuiButton-root-57 MuiButton-contained-68 MuiButton-containedPrimary-69 MuiButton-raised-71 MuiButton-raisedPrimary-72"
+        data-testid="signInButton"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label-58"
+        >
+          Sign In
+        </span>
+        <span
+          class="MuiTouchRipple-root-86"
+        />
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SignInForm does not trigger submission when password is not provided 1`] = `
+<div>
+  <form>
+    <div
+      class="MuiFormControl-root-101 MuiFormControl-marginNormal-102 MuiFormControl-fullWidth-104"
+    >
+      <label
+        class="MuiFormLabel-root-116 MuiFormLabel-filled-120 MuiInputLabel-root-105 MuiInputLabel-formControl-110 MuiInputLabel-animated-113 MuiInputLabel-shrink-112"
+        data-shrink="true"
+        for="email"
+      >
+        Email address
+      </label>
+      <div
+        class="MuiInputBase-root-136 MuiInput-root-123 MuiInput-underline-127 MuiInputBase-fullWidth-145 MuiInput-fullWidth-130 MuiInputBase-formControl-137 MuiInput-formControl-124"
+      >
+        <input
+          aria-invalid="false"
+          autocomplete="email"
+          class="MuiInputBase-input-146 MuiInput-input-131 MuiInputBase-inputType-149 MuiInput-inputType-134"
+          data-testid="email"
+          id="email"
+          name="email"
+          type="email"
+          value="test@example.com"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root-101 MuiFormControl-marginNormal-102 MuiFormControl-fullWidth-104"
+    >
+      <label
+        class="MuiFormLabel-root-116 MuiFormLabel-error-119 MuiInputLabel-error-108 MuiInputLabel-root-105 MuiInputLabel-formControl-110 MuiInputLabel-animated-113"
+        data-shrink="false"
+        for="password"
+      >
+        Password
+      </label>
+      <div
+        class="MuiInputBase-root-136 MuiInput-root-123 MuiInput-underline-127 MuiInputBase-error-142 MuiInput-error-128 MuiInputBase-fullWidth-145 MuiInput-fullWidth-130 MuiInputBase-formControl-137 MuiInput-formControl-124"
+      >
+        <input
+          aria-describedby="password-helper-text"
+          aria-invalid="true"
+          class="MuiInputBase-input-146 MuiInput-input-131 MuiInputBase-inputType-149 MuiInput-inputType-134"
+          data-testid="password"
+          id="password"
+          name="password"
+          type="password"
+          value=""
+        />
+      </div>
+      <p
+        class="MuiFormHelperText-root-193 MuiFormHelperText-error-194"
+        id="password-helper-text"
+      >
+        Password is required.
+      </p>
+    </div>
+    <div
+      class="SubmitButton-root-153 SubmitButton-submitInPage-156"
+    >
+      <button
+        class="MuiButtonBase-root-183 MuiButton-root-157 MuiButton-contained-168 MuiButton-containedPrimary-169 MuiButton-raised-171 MuiButton-raisedPrimary-172"
+        data-testid="signInButton"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label-158"
+        >
+          Sign In
+        </span>
+        <span
+          class="MuiTouchRipple-root-186"
+        />
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SignInForm signs in user when form is submitted: after submit 1`] = `
+<div>
+  <form>
+    <div
+      class="MuiFormControl-root-201 MuiFormControl-marginNormal-202 MuiFormControl-fullWidth-204"
+    >
+      <label
+        class="MuiFormLabel-root-216 MuiFormLabel-filled-220 MuiInputLabel-root-205 MuiInputLabel-formControl-210 MuiInputLabel-animated-213 MuiInputLabel-shrink-212"
+        data-shrink="true"
+        for="email"
+      >
+        Email address
+      </label>
+      <div
+        class="MuiInputBase-root-236 MuiInput-root-223 MuiInput-underline-227 MuiInputBase-fullWidth-245 MuiInput-fullWidth-230 MuiInputBase-formControl-237 MuiInput-formControl-224"
+      >
+        <input
+          aria-invalid="false"
+          autocomplete="email"
+          class="MuiInputBase-input-246 MuiInput-input-231 MuiInputBase-inputType-249 MuiInput-inputType-234"
+          data-testid="email"
+          id="email"
+          name="email"
+          type="email"
+          value="test@example.com"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root-201 MuiFormControl-marginNormal-202 MuiFormControl-fullWidth-204"
+    >
+      <label
+        class="MuiFormLabel-root-216 MuiFormLabel-filled-220 MuiInputLabel-root-205 MuiInputLabel-formControl-210 MuiInputLabel-animated-213 MuiInputLabel-shrink-212"
+        data-shrink="true"
+        for="password"
+      >
+        Password
+      </label>
+      <div
+        class="MuiInputBase-root-236 MuiInput-root-223 MuiInput-underline-227 MuiInputBase-fullWidth-245 MuiInput-fullWidth-230 MuiInputBase-formControl-237 MuiInput-formControl-224"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input-246 MuiInput-input-231 MuiInputBase-inputType-249 MuiInput-inputType-234"
+          data-testid="password"
+          id="password"
+          name="password"
+          type="password"
+          value="passw0rd"
+        />
+      </div>
+    </div>
+    <div
+      class="SubmitButton-root-253 SubmitButton-submitInPage-256"
+    >
+      <button
+        class="MuiButtonBase-root-283 MuiButton-root-257 MuiButton-contained-268 MuiButton-containedPrimary-269 MuiButton-raised-271 MuiButton-raisedPrimary-272"
+        data-testid="signInButton"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label-258"
+        >
+          Sign In
+        </span>
+        <span
+          class="MuiTouchRipple-root-286"
+        />
+      </button>
+    </div>
+  </form>
+</div>
+`;
+
+exports[`SignInForm signs in user when form is submitted: before submit 1`] = `
+<div>
+  <form>
+    <div
+      class="MuiFormControl-root-201 MuiFormControl-marginNormal-202 MuiFormControl-fullWidth-204"
+    >
+      <label
+        class="MuiFormLabel-root-216 MuiFormLabel-filled-220 MuiInputLabel-root-205 MuiInputLabel-formControl-210 MuiInputLabel-animated-213 MuiInputLabel-shrink-212"
+        data-shrink="true"
+        for="email"
+      >
+        Email address
+      </label>
+      <div
+        class="MuiInputBase-root-236 MuiInput-root-223 MuiInput-underline-227 MuiInputBase-fullWidth-245 MuiInput-fullWidth-230 MuiInputBase-formControl-237 MuiInput-formControl-224"
+      >
+        <input
+          aria-invalid="false"
+          autocomplete="email"
+          class="MuiInputBase-input-246 MuiInput-input-231 MuiInputBase-inputType-249 MuiInput-inputType-234"
+          data-testid="email"
+          id="email"
+          name="email"
+          type="email"
+          value="test@example.com"
+        />
+      </div>
+    </div>
+    <div
+      class="MuiFormControl-root-201 MuiFormControl-marginNormal-202 MuiFormControl-fullWidth-204"
+    >
+      <label
+        class="MuiFormLabel-root-216 MuiFormLabel-filled-220 MuiInputLabel-root-205 MuiInputLabel-formControl-210 MuiInputLabel-animated-213 MuiInputLabel-shrink-212"
+        data-shrink="true"
+        for="password"
+      >
+        Password
+      </label>
+      <div
+        class="MuiInputBase-root-236 MuiInput-root-223 MuiInput-underline-227 MuiInputBase-fullWidth-245 MuiInput-fullWidth-230 MuiInputBase-formControl-237 MuiInput-formControl-224"
+      >
+        <input
+          aria-invalid="false"
+          class="MuiInputBase-input-246 MuiInput-input-231 MuiInputBase-inputType-249 MuiInput-inputType-234"
+          data-testid="password"
+          id="password"
+          name="password"
+          type="password"
+          value="passw0rd"
+        />
+      </div>
+    </div>
+    <div
+      class="SubmitButton-root-253 SubmitButton-submitInPage-256"
+    >
+      <button
+        class="MuiButtonBase-root-283 MuiButton-root-257 MuiButton-contained-268 MuiButton-containedPrimary-269 MuiButton-raised-271 MuiButton-raisedPrimary-272"
+        data-testid="signInButton"
+        tabindex="0"
+        type="submit"
+      >
+        <span
+          class="MuiButton-label-258"
+        >
+          Sign In
+        </span>
+        <span
+          class="MuiTouchRipple-root-286"
+        />
+      </button>
+    </div>
+  </form>
+</div>
+`;

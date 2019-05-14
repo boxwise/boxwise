@@ -1,14 +1,14 @@
 import React from "react";
 
-import { shallow } from "enzymeHelpers";
+import { render } from "reactTestingHelpers";
 
 import { AppBarHeader } from "./AppBarHeader";
 
 describe("<AppBarHeader />", () => {
   it("renders correctly", () => {
-    const component = shallow(
+    const { container } = render(
       <AppBarHeader title="Hello" backUrl="/dummy" classes="{}" />
     );
-    expect(component).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

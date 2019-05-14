@@ -2,149 +2,443 @@
 
 exports[`BoxList renders correctly when boxes match filter 1`] = `
 <div>
-  <div>
-    <ProductSelect
-      onChange={[Function]}
-      products={Array []}
-      value="abc"
-    />
-  </div>
-  <br />
-  <WithStyles(List)>
-    <WithStyles(Divider) />
-    <WithStyles(ListItem)>
-      <WithStyles(ListItemText)
-        primary={
-          <span>
-            <strong>
-              xyz
-            </strong>
-             
-            100
-            x
-             
-             / 
-            TShirt
-          </span>
-        }
-        secondary=" "
+  <div
+    class="BoxList-root-451"
+  >
+    <div
+      class="BoxList-productSelect-454"
+    >
+      <div
+        class="MuiFormControl-root-455 MuiFormControl-marginNormal-456 MuiFormControl-fullWidth-458"
+      >
+        <label
+          class="MuiFormLabel-root-470 MuiInputLabel-root-459 MuiInputLabel-formControl-464 MuiInputLabel-animated-467"
+          data-shrink="false"
+          for="productIdFilter"
+        >
+          Filter by product
+        </label>
+        <div
+          class="MuiInputBase-root-497 MuiInput-root-484 MuiInput-underline-488 MuiInputBase-fullWidth-506 MuiInput-fullWidth-491 MuiInputBase-formControl-498 MuiInput-formControl-485"
+        >
+          <div
+            class="MuiSelect-root-477"
+          >
+            <select
+              aria-invalid="false"
+              class="MuiSelect-select-478 MuiInputBase-input-507 MuiInput-input-492"
+              data-testid="productsFilter"
+              id="productIdFilter"
+              name="productIdFilter"
+            >
+              <option
+                value=""
+              />
+            </select>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root-514 MuiSelect-icon-483"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <ul
+      class="MuiList-root-523 MuiList-padding-524"
+    >
+      <hr
+        class="MuiDivider-root-527"
       />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider) />
-  </WithStyles(List)>
+      <li
+        class="MuiListItem-root-532 MuiListItem-default-535 MuiListItem-gutters-540"
+      >
+        <div
+          class="MuiListItemText-root-544"
+        >
+          <span
+            class="MuiTypography-root-550 MuiTypography-body1-559 MuiListItemText-primary-547"
+          >
+            <span>
+              <strong>
+                xyz
+              </strong>
+               
+              100
+              x
+               
+               / 
+              TShirt
+            </span>
+          </span>
+          <p
+            class="MuiTypography-root-550 MuiTypography-body2-558 MuiTypography-colorTextSecondary-583 MuiListItemText-secondary-548"
+          >
+             
+          </p>
+        </div>
+      </li>
+      <hr
+        class="MuiDivider-root-527"
+      />
+    </ul>
+  </div>
 </div>
 `;
 
 exports[`BoxList renders correctly when boxes present 1`] = `
 <div>
-  <div>
-    <ProductSelect
-      onChange={[Function]}
-      products={Array []}
-    />
+  <div
+    class="BoxList-root-181"
+  >
+    <div
+      class="BoxList-productSelect-184"
+    >
+      <div
+        class="MuiFormControl-root-185 MuiFormControl-marginNormal-186 MuiFormControl-fullWidth-188"
+      >
+        <label
+          class="MuiFormLabel-root-200 MuiInputLabel-root-189 MuiInputLabel-formControl-194 MuiInputLabel-animated-197"
+          data-shrink="false"
+          for="productIdFilter"
+        >
+          Filter by product
+        </label>
+        <div
+          class="MuiInputBase-root-227 MuiInput-root-214 MuiInput-underline-218 MuiInputBase-fullWidth-236 MuiInput-fullWidth-221 MuiInputBase-formControl-228 MuiInput-formControl-215"
+        >
+          <div
+            class="MuiSelect-root-207"
+          >
+            <select
+              aria-invalid="false"
+              class="MuiSelect-select-208 MuiInputBase-input-237 MuiInput-input-222"
+              data-testid="productsFilter"
+              id="productIdFilter"
+              name="productIdFilter"
+            >
+              <option
+                value=""
+              />
+            </select>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root-244 MuiSelect-icon-213"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <ul
+      class="MuiList-root-253 MuiList-padding-254"
+    >
+      <hr
+        class="MuiDivider-root-257"
+      />
+      <li
+        class="MuiListItem-root-262 MuiListItem-default-265 MuiListItem-gutters-270"
+      >
+        <div
+          class="MuiListItemText-root-274"
+        >
+          <span
+            class="MuiTypography-root-280 MuiTypography-body1-289 MuiListItemText-primary-277"
+          >
+            <span>
+              <strong>
+                123
+              </strong>
+               
+              100
+              x
+               
+               / 
+              TShirt
+            </span>
+          </span>
+          <p
+            class="MuiTypography-root-280 MuiTypography-body2-288 MuiTypography-colorTextSecondary-313 MuiListItemText-secondary-278"
+          >
+             
+          </p>
+        </div>
+      </li>
+      <hr
+        class="MuiDivider-root-257"
+      />
+      <li
+        class="MuiListItem-root-262 MuiListItem-default-265 MuiListItem-gutters-270"
+      >
+        <div
+          class="MuiListItemText-root-274"
+        >
+          <span
+            class="MuiTypography-root-280 MuiTypography-body1-289 MuiListItemText-primary-277"
+          >
+            <span>
+              <strong>
+                456
+              </strong>
+               
+              29
+              x
+               
+               / 
+              Shorts
+            </span>
+          </span>
+          <p
+            class="MuiTypography-root-280 MuiTypography-body2-288 MuiTypography-colorTextSecondary-313 MuiListItemText-secondary-278"
+          >
+             
+          </p>
+        </div>
+      </li>
+      <hr
+        class="MuiDivider-root-257"
+      />
+    </ul>
   </div>
-  <br />
-  <WithStyles(List)>
-    <WithStyles(Divider) />
-    <WithStyles(ListItem)>
-      <WithStyles(ListItemText)
-        primary={
-          <span>
-            <strong>
-              123
-            </strong>
-             
-            100
-            x
-             
-             / 
-            TShirt
-          </span>
-        }
-        secondary=" "
-      />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider) />
-    <WithStyles(ListItem)>
-      <WithStyles(ListItemText)
-        primary={
-          <span>
-            <strong>
-              456
-            </strong>
-             
-            29
-            x
-             
-             / 
-            Shorts
-          </span>
-        }
-        secondary=" "
-      />
-    </WithStyles(ListItem)>
-    <WithStyles(Divider) />
-  </WithStyles(List)>
 </div>
 `;
 
 exports[`BoxList renders correctly when no boxes present matching filter 1`] = `
 <div>
-  <div>
-    <ProductSelect
-      onChange={[Function]}
-      products={Array []}
-      value="xyz"
-    />
-  </div>
-  <br />
-  <WithStyles(Typography)>
-    No boxes
-     that matches your current filter
-    .
-     
-    <Link
-      to="/"
+  <div
+    class="BoxList-root-316"
+  >
+    <div
+      class="BoxList-productSelect-319"
     >
-      Make some?
-    </Link>
-  </WithStyles(Typography)>
+      <div
+        class="MuiFormControl-root-320 MuiFormControl-marginNormal-321 MuiFormControl-fullWidth-323"
+      >
+        <label
+          class="MuiFormLabel-root-335 MuiInputLabel-root-324 MuiInputLabel-formControl-329 MuiInputLabel-animated-332"
+          data-shrink="false"
+          for="productIdFilter"
+        >
+          Filter by product
+        </label>
+        <div
+          class="MuiInputBase-root-362 MuiInput-root-349 MuiInput-underline-353 MuiInputBase-fullWidth-371 MuiInput-fullWidth-356 MuiInputBase-formControl-363 MuiInput-formControl-350"
+        >
+          <div
+            class="MuiSelect-root-342"
+          >
+            <select
+              aria-invalid="false"
+              class="MuiSelect-select-343 MuiInputBase-input-372 MuiInput-input-357"
+              data-testid="productsFilter"
+              id="productIdFilter"
+              name="productIdFilter"
+            >
+              <option
+                value=""
+              />
+            </select>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root-379 MuiSelect-icon-348"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <ul
+      class="MuiList-root-388 MuiList-padding-389"
+    >
+      <hr
+        class="MuiDivider-root-392"
+      />
+      <li
+        class="MuiListItem-root-397 MuiListItem-default-400 MuiListItem-gutters-405"
+      >
+        <div
+          class="MuiListItemText-root-409"
+        >
+          <span
+            class="MuiTypography-root-415 MuiTypography-body1-424 MuiListItemText-primary-412"
+          >
+            <span>
+              <strong>
+                xyz
+              </strong>
+               
+              100
+              x
+               
+               / 
+              TShirt
+            </span>
+          </span>
+          <p
+            class="MuiTypography-root-415 MuiTypography-body2-423 MuiTypography-colorTextSecondary-448 MuiListItemText-secondary-413"
+          >
+             
+          </p>
+        </div>
+      </li>
+      <hr
+        class="MuiDivider-root-392"
+      />
+    </ul>
+  </div>
 </div>
 `;
 
 exports[`BoxList renders correctly with no boxes 1`] = `
 <div>
-  <div>
-    <ProductSelect
-      onChange={[Function]}
-      products={Array []}
-    />
-  </div>
-  <br />
-  <WithStyles(Typography)>
-    No boxes
-    .
-     
-    <Link
-      to="/"
+  <div
+    class="BoxList-root-1"
+  >
+    <div
+      class="BoxList-productSelect-4"
     >
-      Make some?
-    </Link>
-  </WithStyles(Typography)>
+      <div
+        class="MuiFormControl-root-5 MuiFormControl-marginNormal-6 MuiFormControl-fullWidth-8"
+      >
+        <label
+          class="MuiFormLabel-root-20 MuiInputLabel-root-9 MuiInputLabel-formControl-14 MuiInputLabel-animated-17"
+          data-shrink="false"
+          for="productIdFilter"
+        >
+          Filter by product
+        </label>
+        <div
+          class="MuiInputBase-root-47 MuiInput-root-34 MuiInput-underline-38 MuiInputBase-fullWidth-56 MuiInput-fullWidth-41 MuiInputBase-formControl-48 MuiInput-formControl-35"
+        >
+          <div
+            class="MuiSelect-root-27"
+          >
+            <select
+              aria-invalid="false"
+              class="MuiSelect-select-28 MuiInputBase-input-57 MuiInput-input-42"
+              data-testid="productsFilter"
+              id="productIdFilter"
+              name="productIdFilter"
+            >
+              <option
+                value=""
+              />
+            </select>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root-64 MuiSelect-icon-33"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <p
+      class="MuiTypography-root-73 MuiTypography-body2-81 BoxList-empty-2"
+    >
+      No boxes
+      
+      .
+       
+      <a
+        href="/"
+      >
+        Make some?
+      </a>
+    </p>
+  </div>
 </div>
 `;
 
 exports[`BoxList renders correctly with when loading 1`] = `
 <div>
-  <div>
-    <ProductSelect
-      onChange={[Function]}
-      products={Array []}
-    />
-  </div>
-  <br />
-  <div>
-    <Progress />
+  <div
+    class="BoxList-root-109"
+  >
+    <div
+      class="BoxList-productSelect-112"
+    >
+      <div
+        class="MuiFormControl-root-113 MuiFormControl-marginNormal-114 MuiFormControl-fullWidth-116"
+      >
+        <label
+          class="MuiFormLabel-root-128 MuiInputLabel-root-117 MuiInputLabel-formControl-122 MuiInputLabel-animated-125"
+          data-shrink="false"
+          for="productIdFilter"
+        >
+          Filter by product
+        </label>
+        <div
+          class="MuiInputBase-root-155 MuiInput-root-142 MuiInput-underline-146 MuiInputBase-fullWidth-164 MuiInput-fullWidth-149 MuiInputBase-formControl-156 MuiInput-formControl-143"
+        >
+          <div
+            class="MuiSelect-root-135"
+          >
+            <select
+              aria-invalid="false"
+              class="MuiSelect-select-136 MuiInputBase-input-165 MuiInput-input-150"
+              data-testid="productsFilter"
+              id="productIdFilter"
+              name="productIdFilter"
+            >
+              <option
+                value=""
+              />
+            </select>
+            <svg
+              aria-hidden="true"
+              class="MuiSvgIcon-root-172 MuiSelect-icon-141"
+              focusable="false"
+              role="presentation"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M7 10l5 5 5-5z"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div
+      class="BoxList-progress-111"
+    >
+      <img
+        alt="progress"
+        class=""
+        src="/images/loading-boxes.gif"
+        style="height: 40px; width: 40px;"
+      />
+    </div>
   </div>
 </div>
 `;

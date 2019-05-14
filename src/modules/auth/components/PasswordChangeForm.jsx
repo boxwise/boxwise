@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
 import { useMaterialUIForm } from "hooks/forms";
 import SubmitButton from "components/SubmitButton";
 import FormErrorText from "components/FormErrorText";
+import PasswordField from "components/PasswordField";
 
-const PasswordChangeForm = ({ user, userPasswordChange }) => {
+export const PasswordChangeForm = ({ serverError, userPasswordChange }) => {
   const handleValidation = values => {
     const errors = {};
     if (!values.currentPassword) {
@@ -25,47 +25,43 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
     }
     return errors;
   };
-  const [hasSubmittedForm, setHasSubmittedForm] = useState(false);
-  const { attachValidation, handleSubmit } = useMaterialUIForm(values => {
-    userPasswordChange(values).then(() => setHasSubmittedForm(true));
-  }, handleValidation);
-
+  const hasSubmittedForm = false;
+  // const [hasSubmittedForm, setHasSubmittedForm] = useState(false);
+  const { attachValidation, handleSubmit, isSubmitting } = useMaterialUIForm(
+    userPasswordChange,
+    handleValidation
+  );
+  // .then(() => setHasSubmittedForm(true));
   return (
     <form onSubmit={handleSubmit}>
-      {hasSubmittedForm && !user.error ? (
+      {hasSubmittedForm && !serverError ? (
         <Typography color="primary" data-testid="pwdChangeConfirmation">
           Your password has been updated successfully.
         </Typography>
       ) : null}
-      <FormErrorText message={user.error && user.error.message} />
-      <TextField
-        type="password"
-        label="Current Password"
+      <FormErrorText message={serverError} />
+      <PasswordField
         name="currentPassword"
-        fullWidth
-        margin="normal"
+        label="Current Password"
+        dataTestId="currentPassword"
         {...attachValidation("currentPassword")}
-        data-testid="currentPassword"
       />
-      <TextField
-        type="password"
-        label="New Password"
+      <PasswordField
         name="newPassword"
-        fullWidth
-        margin="normal"
+        label="New Password"
+        dataTestId="newPassword"
         {...attachValidation("newPassword")}
-        data-testid="newPassword"
       />
-      <TextField
-        type="password"
-        label="Confirm Password"
+      <PasswordField
         name="confirmedPassword"
-        fullWidth
-        margin="normal"
+        label="Confirm Password"
+        dataTestId="confirmedPassword"
         {...attachValidation("confirmedPassword")}
-        data-testid="confirmedPassword"
       />
-      <SubmitButton isSubmitting={user.isUpdating}>
+      <SubmitButton
+        isSubmitting={isSubmitting}
+        data-testid="updatePasswordButton"
+      >
         Update Password
       </SubmitButton>
     </form>

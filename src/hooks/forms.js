@@ -14,9 +14,9 @@ export const useForm = (callback, validate, initialValues) => {
   const handleSubmit = event => {
     if (event) event.preventDefault();
     if (validateForm()) {
-      setIsSubmitting(true);
-      callback(values);
-      setIsSubmitting(false);
+         setIsSubmitting(true);
+         callback(values);
+         setIsSubmitting(false);
     }
   };
 

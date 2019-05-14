@@ -1,54 +1,59 @@
 import React from "react";
 
-import { mount, setInputFieldValue } from "enzymeHelpers";
+import { render, fireEvent, typeText } from "reactTestingHelpers";
 
-import SignUpFormUnconnected from "./SignUpForm";
+import SignUpForm from "./SignUpForm";
 
 describe("SignUpForm", () => {
-  const onSubmit = jest.fn(() => {
-    Promise.resolve();
-  });
-  let component;
+  let container;
+  let getByTestId;
+
+  const handler = jest.fn(() => Promise.resolve());
+  const clickSubmit = () => fireEvent.click(getByTestId("signUpButton"));
+  const enterEmail = text => typeText(getByTestId("email"), text);
+  const enterPassword = text => typeText(getByTestId("password"), text);
+  const enterName = text => enterName(text);
 
   beforeEach(() => {
-    component = mount(<SignUpFormUnconnected onSubmit={onSubmit} />);
+    ({ container, getByTestId } = render(<SignUpForm onSubmit={handler} />));
   });
 
   it("does not trigger submit when name is not provided", () => {
-    setInputFieldValue(component, "name", "");
-    setInputFieldValue(component, "email", "test@example.com");
-    setInputFieldValue(component, "password", "password");
+    enterName("");
+    enterEmail("test@example.com");
+    enterPassword("password");
 
-    component.find("button[type='submit']").simulate("submit");
+    clickSubmit();
 
-    expect(onSubmit).not.toBeCalled();
+    expect(handler).not.toBeCalled();
+    expect(container).toMatchSnapshot();
   });
   it("does not trigger submit when email is not provided", () => {
-    setInputFieldValue(component, "name", "test");
-    setInputFieldValue(component, "email", "");
-    setInputFieldValue(component, "password", "password");
+    enterName("test");
+    enterEmail("");
+    enterPassword("password");
 
-    component.find("button[type='submit']").simulate("submit");
+    clickSubmit();
 
-    expect(onSubmit).not.toBeCalled();
+    expect(handler).not.toBeCalled();
   });
   it("does not trigger submit when password is not provided", () => {
-    setInputFieldValue(component, "name", "test");
-    setInputFieldValue(component, "email", "test@example.com");
-    setInputFieldValue(component, "password", "");
+    enterName("test");
+    enterEmail("test@example.com");
+    enterPassword("");
 
-    component.find("button[type='submit']").simulate("submit");
+    clickSubmit();
 
-    expect(onSubmit).not.toBeCalled();
+    expect(handler).not.toBeCalled();
   });
   it("signs up users when name, email and password are provided", () => {
-    setInputFieldValue(component, "name", "test");
-    setInputFieldValue(component, "email", "test@example.com");
-    setInputFieldValue(component, "password", "password");
+    enterName("test");
+    enterEmail("test@example.com");
+    enterPassword("password");
 
-    component.find("button[type='submit']").simulate("submit");
+    clickSubmit();
 
-    expect(onSubmit).toBeCalledWith({
+    expect(handler).toBeCalledWith({
       name: "test",
       email: "test@example.com",
       password: "password"

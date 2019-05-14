@@ -1,49 +1,87 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SubmitButton /> renders correctly 1`] = `
-<div
-  className=" "
->
-  <WithStyles(Button)
-    color="primary"
-    disabled={false}
-    type="submit"
-    variant="contained"
+<div>
+  <div
+    class="SubmitButton-root-1 SubmitButton-submitInPage-4"
   >
-    Hello
-  </WithStyles(Button)>
+    <button
+      class="MuiButtonBase-root-31 MuiButton-root-5 MuiButton-contained-16 MuiButton-containedPrimary-17 MuiButton-raised-19 MuiButton-raisedPrimary-20"
+      tabindex="0"
+      type="submit"
+    >
+      <span
+        class="MuiButton-label-6"
+      >
+        Hello
+      </span>
+      <span
+        class="MuiTouchRipple-root-34"
+      />
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<SubmitButton /> renders correctly when in dialog: dialog 1`] = `
-<div
-  className=" "
->
-  <WithStyles(Button)
-    color="primary"
-    disabled={false}
-    type="submit"
-    variant="text"
+<div>
+  <div
+    class="SubmitButton-root-84 SubmitButton-submitInDialog-86"
   >
-    Hello
-  </WithStyles(Button)>
+    <button
+      class="MuiButtonBase-root-114 MuiButton-root-88 MuiButton-text-90 MuiButton-textPrimary-91 MuiButton-flat-93 MuiButton-flatPrimary-94"
+      tabindex="0"
+      type="submit"
+    >
+      <span
+        class="MuiButton-label-89"
+      >
+        Hello
+      </span>
+      <span
+        class="MuiTouchRipple-root-117"
+      />
+    </button>
+  </div>
 </div>
 `;
 
 exports[`<SubmitButton /> renders correctly when submitting: submitting 1`] = `
-<div
-  className=" "
->
-  <WithStyles(Button)
-    color="primary"
-    disabled={true}
-    type="submit"
-    variant="contained"
+<div>
+  <div
+    class="SubmitButton-root-41 SubmitButton-submitInPage-44"
   >
-    Hello
-  </WithStyles(Button)>
-  <WithStyles(CircularProgress)
-    size={24}
-  />
+    <button
+      class="MuiButtonBase-root-71 MuiButtonBase-disabled-72 MuiButton-root-45 MuiButton-contained-56 MuiButton-containedPrimary-57 MuiButton-raised-59 MuiButton-raisedPrimary-60 MuiButton-disabled-65"
+      disabled=""
+      tabindex="-1"
+      type="submit"
+    >
+      <span
+        class="MuiButton-label-46"
+      >
+        Hello
+      </span>
+    </button>
+    <div
+      class="MuiCircularProgress-root-74 MuiCircularProgress-colorPrimary-77 MuiCircularProgress-indeterminate-76 SubmitButton-progress-42"
+      role="progressbar"
+      style="width: 24px; height: 24px;"
+    >
+      <svg
+        class="MuiCircularProgress-svg-79"
+        viewBox="22 22 44 44"
+      >
+        <circle
+          class="MuiCircularProgress-circle-80 MuiCircularProgress-circleIndeterminate-82"
+          cx="44"
+          cy="44"
+          fill="none"
+          r="20.2"
+          stroke-width="3.6"
+        />
+      </svg>
+    </div>
+  </div>
 </div>
 `;

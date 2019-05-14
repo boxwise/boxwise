@@ -1,36 +1,41 @@
 import React from "react";
 
-import { mount, setInputFieldValue } from "enzymeHelpers";
+import { render, fireEvent, typeText } from "reactTestingHelpers";
 
 import ResetPassword from "./ResetPasswordForm";
 
 describe("ResetPasswordForm", () => {
-  const resetPassword = jest.fn(() => {
-    Promise.resolve();
-  });
-  let component;
+  let container;
+  let getByTestId;
+
+  const handler = jest.fn(() => Promise.resolve());
+  const clickSubmit = () => fireEvent.click(getByTestId("resetPasswordButton"));
+  const enterEmailAddress = text => typeText(getByTestId("email"), text);
 
   beforeEach(() => {
-    component = mount(<ResetPassword resetPassword={resetPassword} />);
+    ({ container, getByTestId } = render(
+      <ResetPassword resetPassword={handler} />
+    ));
   });
 
   it("does not trigger resetPassword when email is not provided", () => {
-    setInputFieldValue(component, "email", "");
-    component.find("button[type='submit']").simulate("submit");
-
-    expect(resetPassword).not.toBeCalled();
+    enterEmailAddress("xyz");
+    expect(getByTestId("email").value).toEqual("xyz");
+    expect(container).toMatchSnapshot();
+    expect(handler).not.toBeCalled();
   });
 
-  it("triggers resetPassword when email is provided", () => {
-    setInputFieldValue(component, "email", "test@example.com");
-    component.find("button[type='submit']").simulate("submit");
+  it("triggers resetPassword when email is provided", async () => {
+    enterEmailAddress("test@example.com");
+    clickSubmit();
 
-    expect(resetPassword).toBeCalledWith({
+    expect(container).toMatchSnapshot();
+    expect(handler).toBeCalledWith({
       email: "test@example.com"
     });
   });
 
   it("renders correctly", () => {
-    expect(component).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

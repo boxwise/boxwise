@@ -1,8 +1,8 @@
 import React from "react";
 
-import { shallow } from "enzymeHelpers";
+import { render, fireEvent } from "reactTestingHelpers";
 
-import { BoxList } from "./BoxList";
+import BoxList from "./BoxList";
 
 describe("BoxList", () => {
   const emptyProducts = { data: [] };
@@ -10,27 +10,25 @@ describe("BoxList", () => {
   const emptyFetch = () => {};
 
   it("renders correctly with no boxes", () => {
-    const wrapper = shallow(
+    const { container } = render(
       <BoxList
-        classes={{ titleText: "styles" }}
         products={emptyProducts}
         boxesWithProductInfo={emptyBoxesWithProductInfo}
         fetchBoxesAndProducts={emptyFetch}
       />
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it("renders correctly with when loading", () => {
-    const wrapper = shallow(
+    const { container } = render(
       <BoxList
-        classes={{ titleText: "styles" }}
         products={emptyProducts}
         boxesWithProductInfo={{ loading: true, data: [] }}
         fetchBoxesAndProducts={emptyFetch}
       />
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it("renders correctly when boxes present", () => {
@@ -38,15 +36,14 @@ describe("BoxList", () => {
       { id: "xx", humanId: "123", productName: "TShirt", quantity: 100 },
       { id: "xy", humanId: "456", productName: "Shorts", quantity: 29 }
     ];
-    const wrapper = shallow(
+    const { container } = render(
       <BoxList
-        classes={{ titleText: "styles" }}
         products={{ data: [] }}
         boxesWithProductInfo={{ data: boxes }}
         fetchBoxesAndProducts={emptyFetch}
       />
     );
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 
   it("renders correctly when no boxes present matching filter", () => {
@@ -59,16 +56,17 @@ describe("BoxList", () => {
         quantity: 100
       }
     ];
-    const wrapper = shallow(
+    const { container, getByTestId } = render(
       <BoxList
-        classes={{ titleText: "styles" }}
         products={{ data: [] }}
         boxesWithProductInfo={{ data: boxes }}
         fetchBoxesAndProducts={emptyFetch}
       />
     );
-    wrapper.find("ProductSelect").simulate("change", "xyz");
-    expect(wrapper).toMatchSnapshot();
+    fireEvent.change(getByTestId("productsFilter"), {
+      target: { value: "xyz" }
+    });
+    expect(container).toMatchSnapshot();
   });
 
   it("renders correctly when boxes match filter", () => {
@@ -81,15 +79,16 @@ describe("BoxList", () => {
         quantity: 100
       }
     ];
-    const wrapper = shallow(
+    const { container, getByTestId } = render(
       <BoxList
-        classes={{ titleText: "styles" }}
         products={{ data: [] }}
         boxesWithProductInfo={{ data: boxes }}
         fetchBoxesAndProducts={emptyFetch}
       />
     );
-    wrapper.find("ProductSelect").simulate("change", "abc");
-    expect(wrapper).toMatchSnapshot();
+    fireEvent.change(getByTestId("productsFilter"), {
+      target: { value: "abc" }
+    });
+    expect(container).toMatchSnapshot();
   });
 });
