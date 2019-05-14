@@ -7,14 +7,17 @@ import Progress from "components/Progress";
 const mapStateToProps = ({ user }) => ({ user });
 
 export const PrivateRoute = ({ user, component: Component, ...props }) => {
-  const getComponent = () => {
-    if (user.loading || !user.hasInitialized) return <Progress />;
-
-    if (!user.data) return <Redirect to="/signin" />;
-
-    return <Component />;
-  };
-  return <Route component={getComponent} {...props} />;
+  const isSigningIn = user.loading || !user.hasInitialized;
+  const isNotSignedIn = !user.data;
+  // returning seperate routes based on auth state, rather than returning
+  // a single route and switching on the inner component as this seemed
+  // to cause the  entire application to re-mount whenever the 'user'
+  // state changes (so you'd lose state of forms)
+  // TODO: write test on this for change password?
+  if (isSigningIn) return <Route component={Progress} {...props} />;
+  if (isNotSignedIn)
+    return <Route component={() => <Redirect to="/signin" />} {...props} />;
+  return <Route component={Component} {...props} />;
 };
 
 export default connect(mapStateToProps)(PrivateRoute);
