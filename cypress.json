@@ -4,9 +4,7 @@
     "testUser": "browsertestuser",
     "testUserMail": "browsertestuser@example.com",
     "testPwd": "browsertestuser",
-    "changePwdUserMail": "changePwdUser@example.com",
-    "changePwdPwd": "changePwdPwd",
-    "newPwd": "newPwd"
+    "newPwd": "browsertestuser"
   },
   "projectId": "e6jvz9"
 }

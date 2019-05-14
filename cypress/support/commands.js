@@ -29,7 +29,8 @@ Cypress.Commands.add("reLogin", (userMail, userPassword) => {
   cy.visit("/signout");
   cy.get("div[data-cy=email] input").type(`${userMail}`);
   cy.get("div[data-cy=password] input").type(`${userPassword}`);
-  cy.get("button[data-cy=signInButton]").click({ timeout: 10000 });
+  cy.get("button[data-cy=signInButton]").click();
+  cy.location("pathname", { timeout: 10000 }).should("not.include", "/signin");
 });
 
 Cypress.Commands.add("openAppDrawer", () => {
