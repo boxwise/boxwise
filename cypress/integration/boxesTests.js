@@ -20,11 +20,8 @@ describe("CRUD boxes tests", () => {
       .click();
     cy.getInputContainedByTestId("quantity").type(`${testCount}`);
     cy.getTextAreaContainedByTestId("comment").type(`${testComment}`);
-    cy.getByTestId("submitCreateBox")
-      .click({ timeout: 10000 })
-      .then(() => {
-        cy.getByTestId("boxCreatedLabel").should("exist"); // "Box created" label with box details should be visible
-      });
+    cy.getByTestId("submitCreateBox").click({ timeout: 10000 });
+    cy.getByTestId("boxCreatedLabel").should("exist"); // "Box created" label with box details should be visible
   });
 
   it("Create 2 boxes in a row updates overview of last added box", () => {
