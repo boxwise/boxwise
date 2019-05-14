@@ -39,7 +39,7 @@ export const SubmitButton = ({
       variant={isInDialog ? "text" : "contained"}
       color="primary"
       type="submit"
-      data-cy={dataCyTag}
+      data-testid={dataCyTag}
       disabled={isSubmitting}
       {...props}
     >

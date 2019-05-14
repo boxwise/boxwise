@@ -47,7 +47,7 @@ const ProductDialog = ({
       fullWidth
       TransitionComponent={Transition}
     >
-      <form onSubmit={handleSubmit} data-cy="productDialog">
+      <form onSubmit={handleSubmit} data-testid="productDialog">
         <DialogToolbar
           title={productToEdit ? "Edit Product" : "Add Product"}
           onClose={onClose}
@@ -64,7 +64,7 @@ const ProductDialog = ({
             select
             fullWidth
             margin="dense"
-            data-cy="selectCategory"
+            data-testid="selectCategory"
             {...attachValidation("category")}
           >
             {CATEGORIES.map(category => (
@@ -81,7 +81,7 @@ const ProductDialog = ({
             helperText="Enter a name, like “T-Shirt” or “Socks”. Don’t reuse the category
             name here."
             {...attachValidation("name")}
-            data-cy="productName"
+            data-testid="productName"
           />
         </DialogContent>
       </form>

@@ -75,7 +75,7 @@ const AppFrame = ({ children, classes, title }) => {
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             className={classes.hamburger}
-            data-cy="appDrawerOpener"
+            data-testid="appDrawerOpener"
           >
             <MenuIcon />
           </IconButton>

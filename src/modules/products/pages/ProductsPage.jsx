@@ -19,7 +19,7 @@ const ProductsPage = () => {
         <Paper>
           <Toolbar>
             <Button
-              data-cy="addProductButton"
+              data-testid="addProductButton"
               color="primary"
               onClick={handleDialogOpen}
             >

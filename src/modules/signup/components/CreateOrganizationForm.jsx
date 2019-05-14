@@ -19,7 +19,7 @@ const CreateOrganizationForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <TextField
-        data-cy="orgNameInput"
+        data-testid="orgNameInput"
         type="text"
         label="What’s the name of your organization?"
         name="name"

@@ -33,7 +33,7 @@ const SignInForm = ({ serverError, loading, userSignIn }) => {
         fullWidth
         margin="normal"
         {...attachValidation("email")}
-        data-cy="email"
+        data-testid="email"
       />
       <TextField
         id="password"
@@ -43,7 +43,7 @@ const SignInForm = ({ serverError, loading, userSignIn }) => {
         fullWidth
         margin="normal"
         {...attachValidation("password")}
-        data-cy="password"
+        data-testid="password"
       />
       <SubmitButton isSubmitting={loading || false} dataCyTag="signInButton">
         Sign In
