@@ -23,7 +23,7 @@ export function getAllProductsFromState({ products }: RootState) {
 const productsIndexedStateReducer = createReducerForIndexedState<
   Product,
   ProductsState
->(PRODUCT_ADD, PRODUCT_LIST, PRODUCT_DELETE);
+>(PRODUCT_LIST, PRODUCT_ADD, PRODUCT_DELETE);
 
 export default function products(
   state: ProductsState = {
