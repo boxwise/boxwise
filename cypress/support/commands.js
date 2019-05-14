@@ -30,11 +30,26 @@ Cypress.Commands.add("reLogin", (userMail, userPassword) => {
   cy.get("div[data-cy=email] input").type(`${userMail}`);
   cy.get("div[data-cy=password] input").type(`${userPassword}`);
   cy.get("button[data-cy=signInButton]").click();
+  cy.location("pathname", { timeout: 10000 }).should("not.include", "/signin");
 });
 
 Cypress.Commands.add("openAppDrawer", () => {
-  cy.get("button[data-cy=appDrawerOpener]").click();
-  cy.get("div[data-cy=appDrawerDiv]").should("be.visible");
+  cy.get("button[data-cy=appDrawerOpener]").should("be.visible");
+  cy.get("body").then($body => {
+    if ($body.find("button[data-cy=appDrawerOpener]").length > 0) {
+      cy.get("button[data-cy=appDrawerOpener]")
+        .click()
+        .then(() => {
+          cy.get("div[data-cy=appDrawerDiv]")
+            .last()
+            .should("be.visible");
+        });
+    } else {
+      cy.get("div[data-cy=appDrawerDiv]")
+        .last()
+        .should("be.visible");
+    }
+  });
 });
 
 Cypress.Commands.add("navigateToChangePasswordForm", () => {

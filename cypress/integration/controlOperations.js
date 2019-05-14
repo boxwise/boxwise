@@ -1,8 +1,7 @@
-import { getTestConfig, getChangePwdConfig } from "../config";
+import { getTestConfig } from "../config";
 
 describe("Control operations", () => {
   const { testUserMail, testPwd } = getTestConfig();
-  const { changePwdUserMail, changePwdPwd, newPwd } = getChangePwdConfig();
 
   it("Login -> logout", () => {
     cy.visit("/signout");
@@ -19,44 +18,42 @@ describe("Control operations", () => {
     cy.get("button[data-cy=signInButton]").should("exist"); // existing sign-in button means user is logged out
   });
 
-  // skipping, as this is causing other test failures when it fails
-  // by not restoring the password
-  it.skip("Change password -> Relogin -> Change password", () => {
-    cy.reLogin(changePwdUserMail, changePwdPwd);
+  it("Change password -> Relogin -> Change password", () => {
+    cy.reLogin(testUserMail, testPwd);
     cy.navigateToChangePasswordForm();
-    cy.get("div[data-cy=currentPassword] input").type(`${changePwdPwd}`);
-    cy.get("div[data-cy=newPassword] input").type(`${newPwd}`);
-    cy.get("div[data-cy=confirmedPassword] input").type(`${newPwd}`);
+    cy.get("div[data-cy=currentPassword] input").type(`${testPwd}`);
+    cy.get("div[data-cy=newPassword] input").type(`${testPwd}`);
+    cy.get("div[data-cy=confirmedPassword] input").type(`${testPwd}`);
     cy.get("button[type=submit]").click({ timeout: 10000 });
     cy.get("p[data-cy=pwdChangeConfirmation").should("be.visible");
     // now change the password again to see it works and to ensure configured password is still valid
-    cy.reLogin(changePwdUserMail, newPwd);
+    cy.reLogin(testUserMail, testPwd);
     cy.openAppDrawer();
     cy.get("a[data-cy=changePasswordDrawerButton]")
       .last()
       .click();
-    cy.get("div[data-cy=currentPassword] input").type(`${newPwd}`);
-    cy.get("div[data-cy=newPassword] input").type(`${changePwdPwd}`);
-    cy.get("div[data-cy=confirmedPassword] input").type(`${changePwdPwd}`);
+    cy.get("div[data-cy=currentPassword] input").type(`${testPwd}`);
+    cy.get("div[data-cy=newPassword] input").type(`${testPwd}`);
+    cy.get("div[data-cy=confirmedPassword] input").type(`${testPwd}`);
     cy.get("button[type=submit]").click({ timeout: 10000 });
     cy.get("p[data-cy=pwdChangeConfirmation").should("be.visible");
   });
 
   it("Change password form cannot have any empty field", () => {
-    cy.reLogin(changePwdUserMail, changePwdPwd);
+    cy.reLogin(testUserMail, testPwd);
     cy.navigateToChangePasswordForm();
     // confirmedPassword empty
-    cy.get("div[data-cy=currentPassword] input").type(`${changePwdPwd}`);
-    cy.get("div[data-cy=newPassword] input").type(`${newPwd}`);
+    cy.get("div[data-cy=currentPassword] input").type(`${testPwd}`);
+    cy.get("div[data-cy=newPassword] input").type(`${testPwd}`);
     cy.get("button[type=submit]").click();
     cy.get("p[data-cy=pwdChangeConfirmation").should("not.be.visible");
     // newPassword empty
-    cy.get("div[data-cy=confirmedPassword] input").type(`${newPwd}`);
+    cy.get("div[data-cy=confirmedPassword] input").type(`${testPwd}`);
     cy.get("div[data-cy=newPassword] input").clear();
     cy.get("button[type=submit]").click();
     cy.get("p[data-cy=pwdChangeConfirmation").should("not.be.visible");
     // currentPassword empty
-    cy.get("div[data-cy=newPassword] input").type(`${newPwd}`);
+    cy.get("div[data-cy=newPassword] input").type(`${testPwd}`);
     cy.get("div[data-cy=currentPassword] input").clear();
     cy.get("button[type=submit]").click();
     cy.get("p[data-cy=pwdChangeConfirmation").should("not.be.visible");

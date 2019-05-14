@@ -3,10 +3,7 @@
     "testOrg": "browserTestOrganization",
     "testUser": "browsertestuser",
     "testUserMail": "browsertestuser@example.com",
-    "testPwd": "browsertestuser",
-    "changePwdUserMail": "changePwdUser@example.com",
-    "changePwdPwd": "changePwdPwd",
-    "newPwd": "newPwd"
+    "testPwd": "browsertestuser"
   },
   "projectId": "e6jvz9"
 }
