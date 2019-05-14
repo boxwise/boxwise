@@ -22,9 +22,17 @@ export function createReducerForIndexedState<
   TItem extends { id: string },
   TState extends IndexedState<TItem>
 >(
-  addAsyncAction: AsyncAction,
   replaceAllAsyncAction: AsyncAction,
-  deleteAsyncAction: AsyncAction
+  addAsyncAction: AsyncAction = {
+    SUCCESS: "**IGNORE**",
+    ERROR: "**IGNORE**",
+    START: "**IGNORE**"
+  },
+  deleteAsyncAction: AsyncAction = {
+    SUCCESS: "**IGNORE**",
+    ERROR: "**IGNORE**",
+    START: "**IGNORE**"
+  }
 ) {
   return (state: TState, { type, payload }: AnyAction) => {
     switch (type) {
