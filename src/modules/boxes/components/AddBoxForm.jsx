@@ -27,7 +27,7 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
     handleValidation
   );
   return (
-    <form onSubmit={handleSubmit} data-cy="boxForm">
+    <form onSubmit={handleSubmit} data-testid="boxForm">
       <DialogToolbar
         title="New box"
         onClose={onClose}
@@ -47,14 +47,14 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
               fullWidth
               autoFocus
               margin="dense"
-              data-cy="selectProduct"
+              data-testid="selectProduct"
               {...attachValidation("product")}
             >
               {products.map(({ id, name, category }) => (
                 <MenuItem
                   key={id}
                   value={JSON.stringify({ id, category, name })}
-                  data-cy="productDropdownItem"
+                  data-testid="productDropdownItem"
                 >
                   {category} / {name}
                 </MenuItem>
@@ -68,7 +68,7 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
               margin="dense"
               inputProps={{ pattern: "[0-9]*", inputMode: "numeric" }}
               {...attachValidation("quantity")}
-              data-cy="quantity"
+              data-testid="quantity"
             />
             <TextField
               label="Comments"
@@ -78,7 +78,7 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
               fullWidth
               margin="dense"
               {...attachValidation("comment")}
-              data-cy="comment"
+              data-testid="comment"
             />
           </div>
         ) : (

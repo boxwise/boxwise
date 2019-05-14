@@ -17,7 +17,7 @@ const AppDrawerAuth = ({ user }) => {
     <List>
       <ListItem>
         <ListItemText
-          data-cy="signedInAsLabel"
+          data-testid="signedInAsLabel"
           secondary={`Signed in as ${displayName}`}
         />
       </ListItem>
@@ -27,7 +27,7 @@ const AppDrawerAuth = ({ user }) => {
       <ListItem
         component={Link}
         to="/invite"
-        data-cy="inviteDrawerButton"
+        data-testid="inviteDrawerButton"
         button
       >
         <ListItemText primary="Invite people" />
@@ -35,7 +35,7 @@ const AppDrawerAuth = ({ user }) => {
       <ListItem
         component={Link}
         to="/password"
-        data-cy="changePasswordDrawerButton"
+        data-testid="changePasswordDrawerButton"
         button
       >
         <ListItemText primary="Change password" />
@@ -43,7 +43,7 @@ const AppDrawerAuth = ({ user }) => {
       <ListItem
         component={Link}
         to="/signout"
-        data-cy="signoutDrawerButton"
+        data-testid="signoutDrawerButton"
         button
       >
         <ListItemText primary="Sign out" />

@@ -33,7 +33,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
   return (
     <form onSubmit={handleSubmit}>
       {hasSubmittedForm && !user.error ? (
-        <Typography color="primary" data-cy="pwdChangeConfirmation">
+        <Typography color="primary" data-testid="pwdChangeConfirmation">
           Your password has been updated successfully.
         </Typography>
       ) : null}
@@ -45,7 +45,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
         fullWidth
         margin="normal"
         {...attachValidation("currentPassword")}
-        data-cy="currentPassword"
+        data-testid="currentPassword"
       />
       <TextField
         type="password"
@@ -54,7 +54,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
         fullWidth
         margin="normal"
         {...attachValidation("newPassword")}
-        data-cy="newPassword"
+        data-testid="newPassword"
       />
       <TextField
         type="password"
@@ -63,7 +63,7 @@ const PasswordChangeForm = ({ user, userPasswordChange }) => {
         fullWidth
         margin="normal"
         {...attachValidation("confirmedPassword")}
-        data-cy="confirmedPassword"
+        data-testid="confirmedPassword"
       />
       <SubmitButton isSubmitting={user.isUpdating}>
         Update Password

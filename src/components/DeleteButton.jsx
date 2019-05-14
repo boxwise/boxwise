@@ -11,7 +11,7 @@ const DeleteButton = ({ confirmationText, onDelete }) => {
       <IconButton
         onClick={() => setDialogOpen(true)}
         aria-label="Delete"
-        data-cy="deleteProductButton"
+        data-testid="deleteProductButton"
       >
         <DeleteIcon />
       </IconButton>

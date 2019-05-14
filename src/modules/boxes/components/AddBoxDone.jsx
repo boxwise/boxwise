@@ -15,7 +15,7 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
     />
     <DialogContent>
       <br />
-      <Typography variant="h6" data-cy="boxCreatedLabel" gutterBottom>
+      <Typography variant="h6" data-testid="boxCreatedLabel" gutterBottom>
         Box created
       </Typography>
       <Typography gutterBottom>Write on the label:</Typography>
@@ -23,7 +23,11 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
       <Typography variant="h6" gutterBottom>
         <strong>{box.humanID}</strong>
       </Typography>
-      <Typography variant="h6" gutterBottom data-cy="boxCreatedQuantityLabel">
+      <Typography
+        variant="h6"
+        gutterBottom
+        data-testid="boxCreatedQuantityLabel"
+      >
         <strong>{box.quantity}x</strong>
       </Typography>
       <Typography variant="h6" gutterBottom>
@@ -34,7 +38,7 @@ const AddBoxDone = ({ box, selectedProduct, onClose, onReset }) => (
         variant="contained"
         onClick={onReset}
         color="primary"
-        data-cy="createAnotherBoxButton"
+        data-testid="createAnotherBoxButton"
       >
         Create another box
       </Button>

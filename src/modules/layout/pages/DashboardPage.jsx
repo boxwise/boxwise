@@ -48,7 +48,7 @@ const DashboardPage = ({ classes }) => {
             <FormattedMessage {...messages.headline} />
           </Typography>
           <Button
-            data-cy="makeBoxButton"
+            data-testid="makeBoxButton"
             variant="contained"
             color="secondary"
             onClick={() => setAddBoxDialogOpen(true)}
@@ -58,7 +58,7 @@ const DashboardPage = ({ classes }) => {
           <br />
           <br />
           <Button
-            data-cy="findBoxesButton"
+            data-testid="findBoxesButton"
             variant="contained"
             color="secondary"
             component={Link}

@@ -44,7 +44,7 @@ const InviteLink = ({ user, children }) => {
         text={inviteData.inviteLink}
         onCopy={() => setSnackbarOpen(true)}
       >
-        <Button color="primary" data-cy="copyToClipboardButton">
+        <Button color="primary" data-testid="copyToClipboardButton">
           Copy to clipboard
         </Button>
       </CopyToClipboard>
