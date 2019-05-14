@@ -67,7 +67,7 @@ module.exports = {
   "overrides": [
     {
       // allow dependencies in test files to be devDependencies only
-      "files": ["src/**/*.test.js","src/setupTests.js"],
+      "files": ["src/**/*.test.js","src/setupTests.js","src/reactTestingHelpers.jsx"],
       "rules": {
         "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
       }
