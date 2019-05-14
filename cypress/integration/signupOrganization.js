@@ -16,46 +16,46 @@ describe("Add Organization", () => {
   });
 
   it("Organization name cannot be empty", () => {
-    cy.get("[data-testid=orgNameInput] input")
+    cy.getInputContainedByTestId("orgNameInput")
       .type(`{enter}`)
       .then(() => {
-        cy.get("[data-testid=orgNameInput]").should("be.visible"); // organization name input should be visible
+        cy.getByTestId("orgNameInput").should("be.visible"); // organization name input should be visible
       });
   });
 
   it("Password cannot be empty", () => {
-    cy.get("[data-testid=orgNameInput] input").type(`${testOrg}{enter}`);
-    cy.get("[data-testid=name] input").type(`${testUser}`);
-    cy.get("[data-testid=email] input").type(`${testUser}@example.com`);
-    cy.get("[data-testid=createUserButton")
+    cy.getInputContainedByTestId("orgNameInput").type(`${testOrg}{enter}`);
+    cy.getInputContainedByTestId("name").type(`${testUser}`);
+    cy.getInputContainedByTestId("email").type(`${testUser}@example.com`);
+    cy.getByTestId("createUserButton")
       .click()
       .then(() => {
-        cy.get("[data-testid=createUserButton").should("be.visible"); // continue button should be visible
+        cy.getByTestId("createUserButton").should("be.visible"); // continue button should be visible
       });
   });
 
   it("Adds an organization confirmed by enter", () => {
-    cy.get("[data-testid=orgNameInput] input").type(`${testOrg}{enter}`);
-    cy.get("[data-testid=name] input").type(`${testUser}`);
-    cy.get("[data-testid=email] input").type(`${testUser}@example.com`);
-    cy.get("[data-testid=password] input")
+    cy.getInputContainedByTestId("orgNameInput").type(`${testOrg}{enter}`);
+    cy.getInputContainedByTestId("name").type(`${testUser}`);
+    cy.getInputContainedByTestId("email").type(`${testUser}@example.com`);
+    cy.getInputContainedByTestId("password")
       .type(`${testPwd}{enter}`)
       .then(() => {
-        cy.get("[data-testid=createUserButton]").should("not.exist");
-        cy.get("[data-testid=copyToClipboardButton]").should("be.visible");
+        cy.getByTestId("createUserButton").should("not.exist");
+        cy.getByTestId("copyToClipboardButton").should("be.visible");
       });
   });
 
   it("Adds an organization confirmed by submit button", () => {
-    cy.get("[data-testid=orgNameInput] input").type(`${testOrg}_2{enter}`);
-    cy.get("[data-testid=name] input").type(`${testUser}_2`);
-    cy.get("[data-testid=email] input").type(`${testUser}_2@example.com`); // can't use the same mail as the previous test
-    cy.get("[data-testid=password] input").type(`${testPwd}_2`);
-    cy.get("[data-testid=createUserButton]")
+    cy.getInputContainedByTestId("orgNameInput").type(`${testOrg}_2{enter}`);
+    cy.getInputContainedByTestId("name").type(`${testUser}_2`);
+    cy.getInputContainedByTestId("email").type(`${testUser}_2@example.com`); // can't use the same mail as the previous test
+    cy.getInputContainedByTestId("password").type(`${testPwd}_2`);
+    cy.getByTestId("createUserButton")
       .click()
       .then(() => {
-        cy.get("[data-testid=createUserButton]").should("not.exist");
-        cy.get("[data-testid=copyToClipboardButton]").should("be.visible");
+        cy.getByTestId("createUserButton").should("not.exist");
+        cy.getByTestId("copyToClipboardButton").should("be.visible");
       });
   });
 });
