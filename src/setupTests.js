@@ -4,6 +4,7 @@ import Enzyme from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import "jest-enzyme";
 import firebaseMock from "firebase-mock";
+import "react-testing-library/cleanup-after-each";
 
 Enzyme.configure({ adapter: new Adapter() });
 // jest/jsdom throws a not implemented exception for this
