@@ -1,4 +1,5 @@
 import uuidv4 from "uuid/v4";
+
 import { getTestConfig } from "../config";
 
 describe("CRUD boxes tests", () => {
@@ -37,32 +38,28 @@ describe("CRUD boxes tests", () => {
       .click();
     cy.get("div[data-cy=quantity] input").type(`${testCount}`);
     cy.get("div[data-cy=comment] textarea").type(`${testComment}`);
-    cy.get("button[data-cy=submitCreateBox]")
-      .click({ timeout: 10000 })
-      .then(() => {
-        cy.get("h6[data-cy='boxCreatedLabel']").should("exist"); // "Box created" label with box details should be visible
-        cy.get("h6[data-cy='boxCreatedQuantityLabel']").should(
-          "contain",
-          `${testCount}x`
-        ); // count of items should be displayed
-        cy.get("button[data-cy='createAnotherBoxButton']").click();
-        cy.get("div[data-cy=selectProduct]").click();
-        cy.get("form[data-cy=boxForm]").should("exist"); // form to add box should pop up
-        cy.get("li[data-cy=productDropdownItem]")
-          .first()
-          .click();
-        cy.get("div[data-cy=quantity] input").type(`${testCount + 1}`);
-        cy.get("div[data-cy=comment] textarea").type(`${testComment}`);
-        cy.get("button[data-cy=submitCreateBox]")
-          .click({ timeout: 10000 })
-          .then(() => {
-            cy.get("h6[data-cy='boxCreatedLabel']").should("exist"); // "Box created" label with box details should be visible
-            cy.get("h6[data-cy='boxCreatedQuantityLabel']").should(
-              "contain",
-              `${testCount + 1}x`
-            ); // updated count of items should be displayed
-          });
-      });
+    cy.get("button[data-cy=submitCreateBox]").click({ timeout: 10000 });
+
+    cy.get("h6[data-cy='boxCreatedLabel']").should("exist"); // "Box created" label with box details should be visible
+    cy.get("h6[data-cy='boxCreatedQuantityLabel']").should(
+      "contain",
+      `${testCount}x`
+    ); // count of items should be displayed
+    cy.get("button[data-cy='createAnotherBoxButton']").click();
+    cy.get("div[data-cy=selectProduct]").click();
+    cy.get("form[data-cy=boxForm]").should("exist"); // form to add box should pop up
+    cy.get("li[data-cy=productDropdownItem]")
+      .first()
+      .click();
+    cy.get("div[data-cy=quantity] input").type(`${testCount + 1}`);
+    cy.get("div[data-cy=comment] textarea").type(`${testComment}`);
+    cy.get("button[data-cy=submitCreateBox]").click({ timeout: 10000 });
+
+    cy.get("h6[data-cy='boxCreatedLabel']").should("exist"); // "Box created" label with box details should be visible
+    cy.get("h6[data-cy='boxCreatedQuantityLabel']").should(
+      "contain",
+      `${testCount + 1}x`
+    ); // updated count of items should be displayed
   });
 
   it("Number of items during box creation has to be specified", () => {
@@ -75,10 +72,7 @@ describe("CRUD boxes tests", () => {
       .first()
       .click();
     cy.get("div[data-cy=comment] textarea").type(`${testComment}`);
-    cy.get("button[data-cy=submitCreateBox]")
-      .click({ timeout: 10000 })
-      .then(() => {
-        cy.get("div[data-cy=quantity] input").should("exist"); // number of items input should be visible
-      });
+    cy.get("button[data-cy=submitCreateBox]").click({ timeout: 10000 });
+    cy.get("div[data-cy=quantity] input").should("exist"); // number of items input should be visible
   });
 });
