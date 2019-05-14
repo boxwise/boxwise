@@ -6,12 +6,13 @@ import { Product } from "modules/products/api";
 import { Box } from "modules/boxes/api";
 import { User } from "modules/auth/api";
 
-export interface ProductsState {
+import { IndexedState } from "./reducerFactory";
+
+export interface ProductsState extends IndexedState<Product> {
   byId: { [id: string]: Product };
   allIds: string[];
   loading: boolean;
   error?: string;
-  isDeletingId?: string;
 }
 
 export interface BoxesState {

@@ -6,6 +6,12 @@
 // see https://github.com/piotrwitek/typesafe-actions#constants
 export type TypeConstant = string;
 
+export interface AsyncAction {
+  START: string;
+  SUCCESS: string;
+  ERROR: string;
+}
+
 export function createAsyncAction<
   T1 extends TypeConstant,
   T2 extends TypeConstant,
