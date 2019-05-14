@@ -1,4 +1,5 @@
 import { RootAction, RootState, BoxesState } from "redux/storeTypes";
+import { createReducerForIndexedState } from "redux/reducerFactory";
 
 import { BOX_ADD, BOX_LIST } from "./actions";
 import { Box } from "./api";
@@ -22,7 +23,8 @@ export const getBoxesWithProductInfoFromState = ({
     error: boxes.error,
     data: isLoading
       ? []
-      : boxes.data.map(box => {
+      : boxes.allIds.map(boxId => {
+          const box = boxes.byId[boxId];
           const product = products.byId[box.productId];
           return {
             ...box,
@@ -35,27 +37,24 @@ export const getBoxesWithProductInfoFromState = ({
   return data;
 };
 
+const boxesIndexedStateReducer = createReducerForIndexedState<Box, BoxesState>(
+  BOX_LIST,
+  BOX_ADD
+);
+
 export default function boxes(
-  state: BoxesState = { data: [], loading: false, error: undefined },
-  { type, payload }: RootAction
+  state: BoxesState = {
+    byId: {},
+    allIds: [],
+    loading: false,
+    error: undefined
+  },
+  action: RootAction
 ) {
+  const { type } = action;
+
   switch (type) {
-    case BOX_LIST.START:
-      return { ...state, loading: true };
-    case BOX_LIST.SUCCESS:
-      return { ...state, loading: false, data: payload };
-    case BOX_LIST.ERROR:
-      return { ...state, loading: false, error: payload };
-    case BOX_ADD.START:
-      return { ...state, loading: true };
-
-    case BOX_ADD.SUCCESS:
-      return { ...state, loading: false, data: [...state.data, payload] };
-
-    case BOX_ADD.ERROR:
-      return { ...state, loading: false, error: payload };
-
     default:
-      return state;
+      return boxesIndexedStateReducer(state, action);
   }
 }
