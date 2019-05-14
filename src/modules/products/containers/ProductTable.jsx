@@ -43,47 +43,44 @@ const ProductTable = ({
 
   return (
     <div className={classes.root}>
-      {isLoading ? (
-        <Progress />
-      ) : (
-        <Table className={classes.table}>
-          <EditProductDialog
-            open={!!selectedProduct}
-            productToEdit={selectedProduct}
-            onClose={() => setSelectedProduct(null)}
-          />
-          <TableHead>
-            <TableRow>
-              <TableCell padding="dense">Category</TableCell>
-              <TableCell padding="dense">Name</TableCell>
-              <TableCell padding="dense" />
+      {isLoading ? <Progress /> : null}
+      <Table className={classes.table}>
+        <EditProductDialog
+          open={!!selectedProduct}
+          productToEdit={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+        <TableHead>
+          <TableRow>
+            <TableCell padding="dense">Category</TableCell>
+            <TableCell padding="dense">Name</TableCell>
+            <TableCell padding="dense" />
+          </TableRow>
+        </TableHead>
+        <TableBody data-cy="productsTableBody">
+          {data.map(product => (
+            <TableRow key={product.id}>
+              <TableCell padding="dense">{product.category}</TableCell>
+              <TableCell padding="dense" data-cy="productNameCell">
+                {product.name}
+              </TableCell>
+              <TableCell padding="dense">
+                <IconButton
+                  onClick={() => setSelectedProduct(product)}
+                  aria-label="Edit"
+                  data-cy="editProductButton"
+                >
+                  <EditIcon />
+                </IconButton>
+                <DeleteButton
+                  confirmationText="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working."
+                  onDelete={() => productDelete(product.id)}
+                />
+              </TableCell>
             </TableRow>
-          </TableHead>
-          <TableBody data-cy="productsTableBody">
-            {data.map(product => (
-              <TableRow key={product.id}>
-                <TableCell padding="dense">{product.category}</TableCell>
-                <TableCell padding="dense" data-cy="productNameCell">
-                  {product.name}
-                </TableCell>
-                <TableCell padding="dense">
-                  <IconButton
-                    onClick={() => setSelectedProduct(product)}
-                    aria-label="Edit"
-                    data-cy="editProductButton"
-                  >
-                    <EditIcon />
-                  </IconButton>
-                  <DeleteButton
-                    confirmationText="If you delete this product, the boxes that reference it will not be deleted. But, some stuff might stop working."
-                    onDelete={() => productDelete(product.id)}
-                  />
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      )}
+          ))}
+        </TableBody>
+      </Table>
     </div>
   );
 };

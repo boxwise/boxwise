@@ -21,7 +21,6 @@ const ProductDialog = ({
   onClose,
   productToEdit,
   onSubmit,
-  isSubmitting,
   serverErrorMessage
 }) => {
   const handleValidation = values => {
@@ -34,7 +33,7 @@ const ProductDialog = ({
     }
     return errors;
   };
-  const { attachValidation, handleSubmit } = useMaterialUIForm(
+  const { attachValidation, handleSubmit, isSubmitting } = useMaterialUIForm(
     onSubmit,
     handleValidation,
     productToEdit
