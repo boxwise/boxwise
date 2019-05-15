@@ -34,10 +34,8 @@ jobs:
     - stage: Build
       script: ./run-build.sh
     - stage: Deploy
+      if: branch = master
       script: ./deploy
-      on:
-        branch: master
-        all_branches: false
 after_success:
 - yarn upload-coverage-report
 branches:
