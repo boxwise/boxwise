@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BoxList renders correctly with items 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root-1 MuiFormControl-marginDense-3 MuiFormControl-fullWidth-4"
+  >
+    <label
+      class="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-marginDense-11"
+      data-shrink="false"
+    >
+      Some Field
+    </label>
+    <div
+      class="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37 MuiInputBase-formControl-44 MuiInput-formControl-31 MuiInputBase-marginDense-50"
+    >
+      <div
+        class="MuiSelect-root-23"
+      >
+        <select
+          aria-invalid="false"
+          class="MuiSelect-select-24 MuiInputBase-input-53 MuiInput-input-38 MuiInputBase-inputMarginDense-54 MuiInput-inputMarginDense-39"
+          name="SomeField"
+        >
+          <option
+            value=""
+          />
+          <option
+            value="123"
+          >
+            123: Hello
+          </option>
+        </select>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root-60 MuiSelect-icon-29"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BoxList renders correctly with no items 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root-1 MuiFormControl-marginDense-3 MuiFormControl-fullWidth-4"
+  >
+    <label
+      class="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-marginDense-11"
+      data-shrink="false"
+    >
+      Some Field
+    </label>
+    <div
+      class="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37 MuiInputBase-formControl-44 MuiInput-formControl-31 MuiInputBase-marginDense-50"
+    >
+      <div
+        class="MuiSelect-root-23"
+      >
+        <select
+          aria-invalid="false"
+          class="MuiSelect-select-24 MuiInputBase-input-53 MuiInput-input-38 MuiInputBase-inputMarginDense-54 MuiInput-inputMarginDense-39"
+          name="SomeField"
+        >
+          <option
+            value=""
+          />
+        </select>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root-60 MuiSelect-icon-29"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`BoxList triggers onChange 1`] = `
+<div>
+  <div
+    class="MuiFormControl-root-1 MuiFormControl-marginDense-3 MuiFormControl-fullWidth-4"
+  >
+    <label
+      class="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-marginDense-11"
+      data-shrink="false"
+    >
+      Some Field
+    </label>
+    <div
+      class="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-fullWidth-52 MuiInput-fullWidth-37 MuiInputBase-formControl-44 MuiInput-formControl-31 MuiInputBase-marginDense-50"
+    >
+      <div
+        class="MuiSelect-root-23"
+      >
+        <select
+          aria-invalid="false"
+          class="MuiSelect-select-24 MuiInputBase-input-53 MuiInput-input-38 MuiInputBase-inputMarginDense-54 MuiInput-inputMarginDense-39"
+          data-testid="filter"
+          name="SomeField"
+        >
+          <option
+            value=""
+          />
+          <option
+            value="123"
+          >
+            123: Hello
+          </option>
+        </select>
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root-60 MuiSelect-icon-29"
+          focusable="false"
+          role="presentation"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M7 10l5 5 5-5z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
