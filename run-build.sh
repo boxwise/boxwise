@@ -1,2 +1,2 @@
-- cp .travis/.env.production ./
-- yarn build
+cp .travis/.env.production ./
+yarn build
