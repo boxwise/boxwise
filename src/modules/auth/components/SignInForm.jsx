@@ -45,7 +45,7 @@ const SignInForm = ({ serverError, loading, userSignIn }) => {
         {...attachValidation("password")}
         data-testid="password"
       />
-      <SubmitButton isSubmitting={loading || false} dataCyTag="signInButton">
+      <SubmitButton isSubmitting={loading || false} dataTestId="signInButton">
         Sign In
       </SubmitButton>
     </form>

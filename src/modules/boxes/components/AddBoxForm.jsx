@@ -33,8 +33,8 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
         onClose={onClose}
         buttonText={products.length ? "Create" : "Cancel"}
         buttonIsLoading={isSubmitting}
+        buttonDataTestId="submitCreateBox"
         onClickButton={products.length ? handleSubmit : onClose}
-        dataCySubmitTag="submitCreateBox"
       />
       <DialogContent>
         <FormErrorText message={serverError} />

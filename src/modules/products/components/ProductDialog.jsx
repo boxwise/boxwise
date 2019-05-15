@@ -53,8 +53,8 @@ const ProductDialog = ({
           onClose={onClose}
           buttonText="Done"
           buttonIsLoading={isSubmitting}
+          buttonDataTestId="submitCreateProduct"
           onClickButton={handleSubmit}
-          dataCySubmitTag="submitCreateProduct"
         />
         <DialogContent>
           <FormErrorText message={serverErrorMessage} />
