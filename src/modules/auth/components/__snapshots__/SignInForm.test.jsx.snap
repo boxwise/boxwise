@@ -1,94 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignInForm does not trigger submission when email is not provided 1`] = `
-<div>
-  <form>
-    <div
-      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
-    >
-      <label
-        class="MuiFormLabel-root-16 MuiFormLabel-error-19 MuiInputLabel-error-8 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
-        data-shrink="false"
-        for="email"
-      >
-        Email address
-      </label>
-      <div
-        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-error-42 MuiInput-error-28 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
-      >
-        <input
-          aria-describedby="email-helper-text"
-          aria-invalid="true"
-          autocomplete="email"
-          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
-          data-testid="email"
-          id="email"
-          name="email"
-          type="email"
-          value=""
-        />
-      </div>
-      <p
-        class="MuiFormHelperText-root-93 MuiFormHelperText-error-94"
-        id="email-helper-text"
-      >
-        Email address is required.
-      </p>
-    </div>
-    <div
-      class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
-    >
-      <label
-        class="MuiFormLabel-root-16 MuiFormLabel-error-19 MuiInputLabel-error-8 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
-        data-shrink="false"
-        for="password"
-      >
-        Password
-      </label>
-      <div
-        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-error-42 MuiInput-error-28 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
-      >
-        <input
-          aria-describedby="password-helper-text"
-          aria-invalid="true"
-          class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
-          data-testid="password"
-          id="password"
-          name="password"
-          type="password"
-          value=""
-        />
-      </div>
-      <p
-        class="MuiFormHelperText-root-93 MuiFormHelperText-error-94"
-        id="password-helper-text"
-      >
-        Password is required.
-      </p>
-    </div>
-    <div
-      class="SubmitButton-root-53 SubmitButton-submitInPage-56"
-    >
-      <button
-        class="MuiButtonBase-root-83 MuiButton-root-57 MuiButton-contained-68 MuiButton-containedPrimary-69 MuiButton-raised-71 MuiButton-raisedPrimary-72"
-        data-testid="signInButton"
-        tabindex="0"
-        type="submit"
-      >
-        <span
-          class="MuiButton-label-58"
-        >
-          Sign In
-        </span>
-        <span
-          class="MuiTouchRipple-root-86"
-        />
-      </button>
-    </div>
-  </form>
-</div>
-`;
-
 exports[`SignInForm does not trigger submission when email is not provided: after submit 1`] = `
 <div>
   <form>
@@ -128,32 +39,25 @@ exports[`SignInForm does not trigger submission when email is not provided: afte
       class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
     >
       <label
-        class="MuiFormLabel-root-16 MuiFormLabel-error-19 MuiInputLabel-error-8 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
-        data-shrink="false"
+        class="MuiFormLabel-root-16 MuiFormLabel-filled-20 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-shrink-12"
+        data-shrink="true"
         for="password"
       >
         Password
       </label>
       <div
-        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-error-42 MuiInput-error-28 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
+        class="MuiInputBase-root-36 MuiInput-root-23 MuiInput-underline-27 MuiInputBase-fullWidth-45 MuiInput-fullWidth-30 MuiInputBase-formControl-37 MuiInput-formControl-24"
       >
         <input
-          aria-describedby="password-helper-text"
-          aria-invalid="true"
+          aria-invalid="false"
           class="MuiInputBase-input-46 MuiInput-input-31 MuiInputBase-inputType-49 MuiInput-inputType-34"
           data-testid="password"
           id="password"
           name="password"
           type="password"
-          value=""
+          value="passw0rd"
         />
       </div>
-      <p
-        class="MuiFormHelperText-root-93 MuiFormHelperText-error-94"
-        id="password-helper-text"
-      >
-        Password is required.
-      </p>
     </div>
     <div
       class="SubmitButton-root-53 SubmitButton-submitInPage-56"
@@ -210,8 +114,8 @@ exports[`SignInForm does not trigger submission when email is not provided: befo
       class="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
     >
       <label
-        class="MuiFormLabel-root-16 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13"
-        data-shrink="false"
+        class="MuiFormLabel-root-16 MuiFormLabel-filled-20 MuiInputLabel-root-5 MuiInputLabel-formControl-10 MuiInputLabel-animated-13 MuiInputLabel-shrink-12"
+        data-shrink="true"
         for="password"
       >
         Password
@@ -226,7 +130,7 @@ exports[`SignInForm does not trigger submission when email is not provided: befo
           id="password"
           name="password"
           type="password"
-          value=""
+          value="passw0rd"
         />
       </div>
     </div>
@@ -391,9 +295,10 @@ exports[`SignInForm signs in user when form is submitted: after submit 1`] = `
       class="SubmitButton-root-253 SubmitButton-submitInPage-256"
     >
       <button
-        class="MuiButtonBase-root-283 MuiButton-root-257 MuiButton-contained-268 MuiButton-containedPrimary-269 MuiButton-raised-271 MuiButton-raisedPrimary-272"
+        class="MuiButtonBase-root-283 MuiButtonBase-disabled-284 MuiButton-root-257 MuiButton-contained-268 MuiButton-containedPrimary-269 MuiButton-raised-271 MuiButton-raisedPrimary-272 MuiButton-disabled-277"
         data-testid="signInButton"
-        tabindex="0"
+        disabled=""
+        tabindex="-1"
         type="submit"
       >
         <span
@@ -401,10 +306,26 @@ exports[`SignInForm signs in user when form is submitted: after submit 1`] = `
         >
           Sign In
         </span>
-        <span
-          class="MuiTouchRipple-root-286"
-        />
       </button>
+      <div
+        class="MuiCircularProgress-root-293 MuiCircularProgress-colorPrimary-296 MuiCircularProgress-indeterminate-295 SubmitButton-progress-254"
+        role="progressbar"
+        style="width: 24px; height: 24px;"
+      >
+        <svg
+          class="MuiCircularProgress-svg-298"
+          viewBox="22 22 44 44"
+        >
+          <circle
+            class="MuiCircularProgress-circle-299 MuiCircularProgress-circleIndeterminate-301"
+            cx="44"
+            cy="44"
+            fill="none"
+            r="20.2"
+            stroke-width="3.6"
+          />
+        </svg>
+      </div>
     </div>
   </form>
 </div>

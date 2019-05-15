@@ -1,7 +1,6 @@
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import TextField from "@material-ui/core/TextField";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
 
@@ -9,6 +8,7 @@ import { useMaterialUIForm } from "hooks/forms";
 import DialogToolbar from "components/DialogToolbar";
 import FormErrorText from "components/FormErrorText";
 import SelectField from "components/SelectField";
+import TextField from "components/TextField";
 
 import { CATEGORIES } from "../categories";
 
@@ -70,12 +70,10 @@ const ProductDialog = ({
           <TextField
             label="Name"
             name="name"
-            fullWidth
-            margin="dense"
             helperText="Enter a name, like “T-Shirt” or “Socks”. Don’t reuse the category
             name here."
+            dataTestId="productName"
             {...attachValidation("name")}
-            data-testid="productName"
           />
         </DialogContent>
       </form>

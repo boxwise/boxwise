@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Typography from "@material-ui/core/Typography";
 
 import { useMaterialUIForm } from "hooks/forms";
@@ -25,16 +25,15 @@ export const PasswordChangeForm = ({ serverError, userPasswordChange }) => {
     }
     return errors;
   };
-  const hasSubmittedForm = false;
-  // const [hasSubmittedForm, setHasSubmittedForm] = useState(false);
-  const { attachValidation, handleSubmit, isSubmitting } = useMaterialUIForm(
-    userPasswordChange,
-    handleValidation
-  );
-  // .then(() => setHasSubmittedForm(true));
+  const {
+    attachValidation,
+    handleSubmit,
+    isSubmitting,
+    hasSubmittedSuccess
+  } = useMaterialUIForm(userPasswordChange, handleValidation);
   return (
     <form onSubmit={handleSubmit}>
-      {hasSubmittedForm && !serverError ? (
+      {hasSubmittedSuccess ? (
         <Typography color="primary" data-testid="pwdChangeConfirmation">
           Your password has been updated successfully.
         </Typography>

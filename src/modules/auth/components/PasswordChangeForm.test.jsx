@@ -9,11 +9,11 @@ const typeText = (element, value) => {
 
 describe("PasswordChangeForm", () => {
   let container;
-  let getByText;
   let getByTestId;
 
   const handler = jest.fn(() => Promise.resolve());
-  const clickSubmit = () => fireEvent.click(getByText(/Update Password/i));
+  const clickSubmit = () =>
+    fireEvent.click(getByTestId("updatePasswordButton"));
   const enterCurrentPassword = text =>
     typeText(getByTestId("currentPassword"), text);
   const enterNewPassword = text => typeText(getByTestId("newPassword"), text);
@@ -21,13 +21,14 @@ describe("PasswordChangeForm", () => {
     typeText(getByTestId("confirmedPassword"), text);
 
   beforeEach(() => {
-    ({ container, getByText, getByTestId } = render(
+    ({ container, getByTestId } = render(
       <PasswordChangeForm userPasswordChange={handler} />
     ));
   });
 
   it("does not submit when password is not provided", () => {
     enterCurrentPassword("xx");
+
     clickSubmit();
 
     expect(container).toMatchSnapshot();
@@ -36,24 +37,23 @@ describe("PasswordChangeForm", () => {
 
   it("submits when password is provided at least 6 characters", () => {
     typeText(getByTestId("currentPassword"), "hellooooooooo");
-    // enterCurrentPassword("abc");
+    enterCurrentPassword("abc");
     enterNewPassword("xyzxyz9");
     enterConfirmedPassword("xyzxyz9");
 
-    expect(container).toMatchSnapshot("x");
+    expect(container).toMatchSnapshot("before submit");
 
-    // clickSubmit();
+    clickSubmit();
 
-    expect(container).toMatchSnapshot("y");
+    expect(container).toMatchSnapshot("after submit");
     expect(handler).toBeCalledWith({
       currentPassword: "abc",
       confirmedPassword: "xyzxyz9",
       newPassword: "xyzxyz9"
     });
   });
-  // password updated successfully
 
-  // it("renders correctly", () => {
-  //   expect(container).toMatchSnapshot();
-  // });
+  it("renders correctly", () => {
+    expect(container).toMatchSnapshot();
+  });
 });

@@ -4,6 +4,7 @@ export const useForm = (callback, validate, initialValues) => {
   const [values, setValues] = useState(initialValues || {});
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [hasSubmittedSuccess, setHasSubmittedSuccess] = useState(false);
 
   const validateForm = () => {
     const errors = validate(values);
@@ -14,9 +15,11 @@ export const useForm = (callback, validate, initialValues) => {
   const handleSubmit = event => {
     if (event) event.preventDefault();
     if (validateForm()) {
-         setIsSubmitting(true);
-         callback(values);
-         setIsSubmitting(false);
+      setIsSubmitting(true);
+      Promise.resolve(callback(values)).then(() => {
+        setIsSubmitting(false);
+        setHasSubmittedSuccess(true);
+      });
     }
   };
 
@@ -27,10 +30,10 @@ export const useForm = (callback, validate, initialValues) => {
   };
 
   const handleChange = event => {
-    event.persist();
+    const { name, value } = event.target;
     setValues(values => ({
       ...values,
-      [event.target.name]: event.target.value
+      [name]: value
     }));
   };
 
@@ -46,6 +49,7 @@ export const useForm = (callback, validate, initialValues) => {
       setValues(initialValues || {});
       setErrors({});
       setIsSubmitting(false);
+      setHasSubmittedSuccess(false);
     };
     resetFormWhenDefaultValuesChange();
   }, [initialValues]);
@@ -55,16 +59,20 @@ export const useForm = (callback, validate, initialValues) => {
     handleSubmit,
     errors,
     values,
-    isSubmitting
+    isSubmitting,
+    hasSubmittedSuccess
   };
 };
 
 export const useMaterialUIForm = (callback, validate, initialValues) => {
-  const { attachEvents, handleSubmit, errors, values, isSubmitting } = useForm(
-    callback,
-    validate,
-    initialValues
-  );
+  const {
+    attachEvents,
+    handleSubmit,
+    errors,
+    values,
+    isSubmitting,
+    hasSubmittedSuccess
+  } = useForm(callback, validate, initialValues);
   const attachValidation = name => {
     // these are fields specific to MaterialUI that we
     // are attaching in order to trigger validation
@@ -75,5 +83,5 @@ export const useMaterialUIForm = (callback, validate, initialValues) => {
       error: errors[name] !== undefined
     };
   };
-  return { attachValidation, handleSubmit, isSubmitting };
+  return { attachValidation, handleSubmit, isSubmitting, hasSubmittedSuccess };
 };

@@ -1,8 +1,10 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 
 import { useMaterialUIForm } from "hooks/forms";
 import FormErrorText from "components/FormErrorText";
+import TextField from "components/TextField";
+import PasswordField from "components/PasswordField";
+import EmailField from "components/EmailField";
 import SubmitButton from "components/SubmitButton";
 
 const SignUpForm = ({
@@ -31,31 +33,22 @@ const SignUpForm = ({
     <form onSubmit={handleSubmit}>
       <FormErrorText message={serverError} />
       <TextField
-        type="name"
         label="Enter your name"
         name="name"
-        fullWidth
-        margin="normal"
+        dataTestId="name"
         {...attachValidation("name")}
-        data-testid="name"
       />
-      <TextField
-        type="email"
+      <EmailField
         label="What is your email?"
         name="email"
-        fullWidth
-        margin="normal"
+        dataTestId="email"
         {...attachValidation("email")}
-        data-testid="email"
       />
-      <TextField
-        type="password"
+      <PasswordField
         label="Choose a password"
         name="password"
-        fullWidth
-        margin="normal"
+        dataTestId="password"
         {...attachValidation("password")}
-        data-testid="password"
       />
       <SubmitButton dataTestId="createUserButton" isSubmitting={isSubmitting}>
         {submitButtonText}

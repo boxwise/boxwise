@@ -92,7 +92,6 @@ const BoxList = ({
           itemToText={item => `${item.category} / ${item.name}`}
           value={filterByProductId || ""}
           name="productIdFilter"
-          defaultText="(All products)"
           label="Filter by product"
           dataTestId="productsFilter"
           onChange={({ target }) => setFilterByProductId(target.value)}
