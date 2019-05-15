@@ -1,7 +1,6 @@
 import React from "react";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import withMobileDialog from "@material-ui/core/withMobileDialog";
 import Slide from "@material-ui/core/Slide";
@@ -9,6 +8,7 @@ import Slide from "@material-ui/core/Slide";
 import { useMaterialUIForm } from "hooks/forms";
 import DialogToolbar from "components/DialogToolbar";
 import FormErrorText from "components/FormErrorText";
+import SelectField from "components/SelectField";
 
 import { CATEGORIES } from "../categories";
 
@@ -58,21 +58,15 @@ const ProductDialog = ({
         />
         <DialogContent>
           <FormErrorText message={serverErrorMessage} />
-          <TextField
+          <SelectField
             label="Category"
             name="category"
-            select
-            fullWidth
-            margin="dense"
-            data-testid="selectCategory"
+            dataTestId="selectCategory"
+            items={CATEGORIES}
+            itemToText={item => item}
+            itemToId={item => item}
             {...attachValidation("category")}
-          >
-            {CATEGORIES.map(category => (
-              <MenuItem key={category} id="category" value={category}>
-                {category}
-              </MenuItem>
-            ))}
-          </TextField>
+          />
           <TextField
             label="Name"
             name="name"

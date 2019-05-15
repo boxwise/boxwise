@@ -7,7 +7,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Divider from "@material-ui/core/Divider";
 import Typography from "@material-ui/core/Typography";
 
-import { ProductSelect } from "modules/products/components";
+import SelectField from "components/SelectField";
 import Progress from "components/Progress";
 
 const styles = theme => ({
@@ -86,10 +86,16 @@ export const BoxList = ({
   return (
     <div className={classes.root}>
       <div className={classes.productSelect}>
-        <ProductSelect
-          products={products.data}
-          value={filterByProductId}
-          onChange={value => setFilterByProductId(value)}
+        <SelectField
+          items={products.data}
+          itemToId={item => item.id}
+          itemToText={item => `${item.category} / ${item.name}`}
+          value={filterByProductId || ""}
+          name="productIdFilter"
+          defaultText="(All products)"
+          label="Filter by product"
+          dataTestId="productsFilter"
+          onChange={({ target }) => setFilterByProductId(target.value)}
         />
       </div>
       <br />

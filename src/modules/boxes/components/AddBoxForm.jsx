@@ -2,10 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import DialogContent from "@material-ui/core/DialogContent";
-import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
+import SelectField from "components/SelectField";
 import DialogToolbar from "components/DialogToolbar";
 import FormErrorText from "components/FormErrorText";
 import { useMaterialUIForm } from "hooks/forms";
@@ -40,22 +40,16 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
         <FormErrorText message={serverError} />
         {products.length ? (
           <div>
-            <TextField
+            <SelectField
               label="Product"
-              name="productId"
-              select
-              fullWidth
+              name="product"
               autoFocus
-              margin="dense"
-              data-testid="selectProduct"
-              {...attachValidation("productId")}
-            >
-              {products.map(({ id, name, category }) => (
-                <MenuItem key={id} value={id} data-testid="productDropdownItem">
-                  {category} / {name}
-                </MenuItem>
-              ))}
-            </TextField>
+              dataTestId="selectProduct"
+              items={products}
+              itemToId={({ id }) => id }
+              itemToText={({ category, name }) => `${category} / ${name}`}
+              {...attachValidation("product")}
+            />
             <TextField
               label="Number of items"
               name="quantity"
