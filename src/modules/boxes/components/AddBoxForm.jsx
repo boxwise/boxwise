@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Button from "@material-ui/core/Button";
 import DialogContent from "@material-ui/core/DialogContent";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
 import SelectField from "components/SelectField";
 import DialogToolbar from "components/DialogToolbar";
 import FormErrorText from "components/FormErrorText";
+import TextField from "components/TextField";
+import NumberField from "components/NumberField";
 import { useMaterialUIForm } from "hooks/forms";
 
 const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
@@ -50,25 +51,19 @@ const AddBoxForm = ({ onClose, onSubmit, products, serverError }) => {
               itemToText={({ category, name }) => `${category} / ${name}`}
               {...attachValidation("productId")}
             />
-            <TextField
+            <NumberField
               label="Number of items"
               name="quantity"
-              type="number"
-              fullWidth
-              margin="dense"
-              inputProps={{ pattern: "[0-9]*", inputMode: "numeric" }}
+              dataTestId="quantity"
               {...attachValidation("quantity")}
-              data-testid="quantity"
             />
             <TextField
               label="Comments"
               name="comment"
               multiline
               rows="4"
-              fullWidth
-              margin="dense"
+              dataTestId="comment"
               {...attachValidation("comment")}
-              data-testid="comment"
             />
           </div>
         ) : (

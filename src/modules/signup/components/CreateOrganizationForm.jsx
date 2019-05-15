@@ -1,6 +1,6 @@
 import React from "react";
-import TextField from "@material-ui/core/TextField";
 
+import TextField from "components/TextField";
 import SubmitButton from "components/SubmitButton";
 import { useMaterialUIForm } from "hooks/forms";
 
@@ -19,12 +19,9 @@ const CreateOrganizationForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <TextField
-        data-testid="orgNameInput"
-        type="text"
+        dataTestId="orgNameInput"
         label="What’s the name of your organization?"
         name="name"
-        fullWidth
-        margin="normal"
         {...attachValidation("name")}
       />
       <SubmitButton isSubmitting={isSubmitting}>Continue</SubmitButton>

@@ -9,19 +9,18 @@ describe("SignUpForm", () => {
   let getByTestId;
 
   const handler = jest.fn(() => Promise.resolve());
-  const clickSubmit = () => fireEvent.click(getByTestId("signUpButton"));
+  const clickSubmit = () => fireEvent.click(getByTestId("createUserButton"));
   const enterEmail = text => typeText(getByTestId("email"), text);
   const enterPassword = text => typeText(getByTestId("password"), text);
-  const enterName = text => enterName(text);
+  const enterName = text => typeText(getByTestId("name"), text);
 
   beforeEach(() => {
     ({ container, getByTestId } = render(<SignUpForm onSubmit={handler} />));
   });
 
   it("does not trigger submit when name is not provided", () => {
-    enterName("");
-    enterEmail("test@example.com");
-    enterPassword("password");
+    enterEmail("alice@example.com");
+    enterPassword("passw0rd");
 
     clickSubmit();
 
@@ -29,34 +28,40 @@ describe("SignUpForm", () => {
     expect(container).toMatchSnapshot();
   });
   it("does not trigger submit when email is not provided", () => {
-    enterName("test");
-    enterEmail("");
-    enterPassword("password");
+    enterName("alice");
+    enterPassword("passw0rd");
+    expect(getByTestId("name").value).toEqual("alice");
 
     clickSubmit();
 
     expect(handler).not.toBeCalled();
+    expect(container).toMatchSnapshot();
   });
   it("does not trigger submit when password is not provided", () => {
-    enterName("test");
-    enterEmail("test@example.com");
-    enterPassword("");
+    enterName("bob");
+    enterEmail("bob@example.com");
+
+    expect(getByTestId("name").value).toEqual("bob");
 
     clickSubmit();
-
+    expect(container).toMatchSnapshot();
     expect(handler).not.toBeCalled();
   });
   it("signs up users when name, email and password are provided", () => {
-    enterName("test");
-    enterEmail("test@example.com");
-    enterPassword("password");
+    enterName("alice");
+    enterEmail("alice@example.com");
+    enterPassword("passw0rd");
 
+    expect(getByTestId("email").value).toEqual("alice@example.com");
+    expect(getByTestId("name").value).toEqual("alice");
     clickSubmit();
 
+    expect(container).toMatchSnapshot("after submit");
+
     expect(handler).toBeCalledWith({
-      name: "test",
-      email: "test@example.com",
-      password: "password"
+      name: "alice",
+      email: "alice@example.com",
+      password: "passw0rd"
     });
   });
 });
