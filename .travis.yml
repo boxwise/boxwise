@@ -9,20 +9,30 @@ before_install:
 # install specific version of yarn
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
 - export PATH="$HOME/.yarn/bin:$PATH"
-script:
-- yarn test-with-coverage
-- yarn test-no-cycles
-- yarn lint
-- cp .travis/.env.feature-tests ./.env.local
-- yarn start &
-- yarn wait-on http://localhost:3000
-- yarn cypress run --record
-# .env.production is kept out of the root directory, because if it were there
-# running "firebase deploy" would create a clone of our real production
-# environment. This is not something we can stop (they are public details) but
-# we should at least stop people from doing it accidentally.
-- cp .travis/.env.production ./
-- yarn build
+# script:
+# - yarn test-with-coverage
+# - yarn test-no-cycles
+# - yarn lint
+# - cp .travis/.env.feature-tests ./.env.local
+# - yarn start &
+# - yarn wait-on http://localhost:3000
+# - yarn cypress run --record
+# # .env.production is kept out of the root directory, because if it were there
+# # running "firebase deploy" would create a clone of our real production
+# # environment. This is not something we can stop (they are public details) but
+# # we should at least stop people from doing it accidentally.
+# - cp .travis/.env.production ./
+# - yarn build
+jobs:
+  include:
+    - stage: Unit tests
+      script: yarn test-with-coverage
+      script: yarn test-no-cycles
+      script: yarn lint
+    - stage: Browser tests
+      script: ./execute-browser-tests.sh
+    - stage: Deploy
+    - script: ./deploy
 after_success:
 - yarn upload-coverage-report
 branches:
