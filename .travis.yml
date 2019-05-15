@@ -31,8 +31,13 @@ jobs:
     - script: yarn lint
     - stage: Browser tests
       script: ./run-browser-tests.sh
+    - stage: Build
+      script: ./run-build.sh
     - stage: Deploy
       script: ./deploy
+      on:
+        branch: master
+        all_branches: false
 after_success:
 - yarn upload-coverage-report
 branches:
