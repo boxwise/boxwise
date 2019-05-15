@@ -27,8 +27,8 @@ jobs:
   include:
     - stage: Unit tests
       script: yarn test-with-coverage
-      script: yarn test-no-cycles
-      script: yarn lint
+    - script: yarn test-no-cycles
+    - script: yarn lint
     - stage: Browser tests
       script: ./execute-browser-tests.sh
     - stage: Deploy
