@@ -32,7 +32,7 @@ jobs:
     - stage: Browser tests
       script: ./execute-browser-tests.sh
     - stage: Deploy
-    - script: ./deploy
+      script: ./deploy
 after_success:
 - yarn upload-coverage-report
 branches:
