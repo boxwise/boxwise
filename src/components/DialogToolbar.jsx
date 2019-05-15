@@ -25,7 +25,7 @@ const DialogToolbar = ({
   buttonText,
   buttonIsLoading,
   onClickButton,
-  dataCySubmitTag
+  buttonDataTestId
 }) => (
   <AppBar color="default" className={classes.appBar}>
     <Toolbar>
@@ -39,7 +39,7 @@ const DialogToolbar = ({
         isInDialog
         onClick={onClickButton}
         isSubmitting={buttonIsLoading}
-        dataCyTag={dataCySubmitTag}
+        dataTestId={buttonDataTestId}
       >
         {buttonText}
       </SubmitButton>

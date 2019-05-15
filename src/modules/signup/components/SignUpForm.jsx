@@ -57,7 +57,7 @@ const SignUpForm = ({
         {...attachValidation("password")}
         data-testid="password"
       />
-      <SubmitButton dataCyTag="createUserButton" isSubmitting={isSubmitting}>
+      <SubmitButton dataTestId="createUserButton" isSubmitting={isSubmitting}>
         {submitButtonText}
       </SubmitButton>
     </form>
