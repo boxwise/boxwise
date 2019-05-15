@@ -30,7 +30,7 @@ jobs:
     - script: yarn test-no-cycles
     - script: yarn lint
     - stage: Browser tests
-      script: ./execute-browser-tests.sh
+      script: ./run-browser-tests.sh
     - stage: Deploy
       script: ./deploy
 after_success:
