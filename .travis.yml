@@ -37,7 +37,7 @@ jobs:
       #if: branch = something
       branches:
         only:
-        - master
+        - test
       deploy:
         provider: firebase
         project: boxwise-production
