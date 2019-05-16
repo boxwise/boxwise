@@ -31,7 +31,7 @@ jobs:
     - script: yarn test-no-cycles
     - script: yarn lint
     - stage: Browser tests
-      script: ./rrun-browser-tests.sh
+      script: ./run-browser-tests.sh
     - stage: Build
       script: ./run-build.sh
     - stage: Deploy
