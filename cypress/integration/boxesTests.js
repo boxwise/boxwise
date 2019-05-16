@@ -13,13 +13,10 @@ describe("CRUD boxes tests", () => {
     const testCount = Math.floor(Math.random() * 6) + 1;
     const testComment = uuidv4().substring(0, 6);
     cy.getByTestId("makeBoxButton").click();
-    cy.getByTestId("selectProduct").click();
     cy.getByTestId("boxForm").should("exist"); // form to add box should pop up
-    cy.getByTestId("productDropdownItem")
-      .first()
-      .click();
-    cy.getInputContainedByTestId("quantity").type(`${testCount}`);
-    cy.getTextAreaContainedByTestId("comment").type(`${testComment}`);
+    cy.getByTestId("selectProduct").selectNth(1);
+    cy.getByTestId("quantity").type(`${testCount}`);
+    cy.getByTestId("comment").type(`${testComment}`);
     cy.getByTestId("submitCreateBox").click({ timeout: 10000 });
     cy.getByTestId("boxCreatedLabel").should("exist"); // "Box created" label with box details should be visible
   });
@@ -28,13 +25,11 @@ describe("CRUD boxes tests", () => {
     const testCount = Math.floor(Math.random() * 6) + 1;
     const testComment = uuidv4().substring(0, 6);
     cy.getByTestId("makeBoxButton").click();
-    cy.getByTestId("selectProduct").click();
     cy.getByTestId("boxForm").should("exist"); // form to add box should pop up
-    cy.getByTestId("productDropdownItem")
-      .first()
-      .click();
-    cy.getInputContainedByTestId("quantity").type(`${testCount}`);
-    cy.getTextAreaContainedByTestId("comment").type(`${testComment}`);
+
+    cy.getByTestId("selectProduct").selectNth(1);
+    cy.getByTestId("quantity").type(`${testCount}`);
+    cy.getByTestId("comment").type(`${testComment}`);
     cy.getByTestId("submitCreateBox").click({ timeout: 10000 });
 
     cy.getByTestId("boxCreatedLabel").should("exist"); // "Box created" label with box details should be visible
@@ -43,13 +38,11 @@ describe("CRUD boxes tests", () => {
       `${testCount}x`
     ); // count of items should be displayed
     cy.getByTestId("createAnotherBoxButton").click();
-    cy.getByTestId("selectProduct").click();
+
     cy.getByTestId("boxForm").should("exist"); // form to add box should pop up
-    cy.getByTestId("productDropdownItem")
-      .first()
-      .click();
-    cy.getInputContainedByTestId("quantity").type(`${testCount + 1}`);
-    cy.getTextAreaContainedByTestId("comment").type(`${testComment}`);
+    cy.getByTestId("selectProduct").selectNth(1);
+    cy.getByTestId("quantity").type(`${testCount + 1}`);
+    cy.getByTestId("comment").type(`${testComment}`);
     cy.getByTestId("submitCreateBox").click({ timeout: 10000 });
 
     cy.getByTestId("boxCreatedLabel").should("exist"); // "Box created" label with box details should be visible
@@ -63,13 +56,11 @@ describe("CRUD boxes tests", () => {
     const testComment = uuidv4().substring(0, 6);
     cy.getByTestId("makeBoxButton").should("be.visible");
     cy.getByTestId("makeBoxButton").click();
-    cy.getByTestId("selectProduct").click();
     cy.getByTestId("boxForm").should("exist"); // form to add box should pop up
-    cy.getByTestId("productDropdownItem")
-      .first()
-      .click();
-    cy.getTextAreaContainedByTestId("comment").type(`${testComment}`);
+
+    cy.getByTestId("selectProduct").selectNth(1);
+    cy.getByTestId("comment").type(`${testComment}`);
     cy.getByTestId("submitCreateBox").click({ timeout: 10000 });
-    cy.getInputContainedByTestId("quantity").should("exist"); // number of items input should be visible
+    cy.getByTestId("quantity").should("exist"); // number of items input should be visible
   });
 });

@@ -5,8 +5,8 @@ describe("Control operations", () => {
 
   it("Login -> logout", () => {
     cy.visit("/signout");
-    cy.getInputContainedByTestId("email").type(`${testUserMail}`);
-    cy.getInputContainedByTestId("password").type(`${testPwd}`);
+    cy.getByTestId("email").type(`${testUserMail}`);
+    cy.getByTestId("password").type(`${testPwd}`);
     cy.getByTestId("signInButton").click({ timeout: 10000 });
     cy.getByTestId("makeBoxButton").should("exist");
     cy.getByTestId("findBoxesButton").should("exist");
@@ -21,9 +21,9 @@ describe("Control operations", () => {
   it("Change password -> Relogin -> Change password", () => {
     cy.reLogin(testUserMail, testPwd);
     cy.navigateToChangePasswordForm();
-    cy.getInputContainedByTestId("currentPassword").type(`${testPwd}`);
-    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
-    cy.getInputContainedByTestId("confirmedPassword").type(`${testPwd}`);
+    cy.getByTestId("currentPassword").type(`${testPwd}`);
+    cy.getByTestId("newPassword").type(`${testPwd}`);
+    cy.getByTestId("confirmedPassword").type(`${testPwd}`);
     cy.get("button[type=submit]").click({ timeout: 10000 });
     cy.getByTestId("pwdChangeConfirmation").should("be.visible");
     // now change the password again to see it works and to ensure configured password is still valid
@@ -32,9 +32,9 @@ describe("Control operations", () => {
     cy.getByTestId("changePasswordDrawerButton")
       .last()
       .click();
-    cy.getInputContainedByTestId("currentPassword").type(`${testPwd}`);
-    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
-    cy.getInputContainedByTestId("confirmedPassword").type(`${testPwd}`);
+    cy.getByTestId("currentPassword").type(`${testPwd}`);
+    cy.getByTestId("newPassword").type(`${testPwd}`);
+    cy.getByTestId("confirmedPassword").type(`${testPwd}`);
     cy.get("button[type=submit]").click({ timeout: 10000 });
     cy.getByTestId("pwdChangeConfirmation").should("be.visible");
   });
@@ -43,18 +43,18 @@ describe("Control operations", () => {
     cy.reLogin(testUserMail, testPwd);
     cy.navigateToChangePasswordForm();
     // confirmedPassword empty
-    cy.getInputContainedByTestId("currentPassword").type(`${testPwd}`);
-    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
+    cy.getByTestId("currentPassword").type(`${testPwd}`);
+    cy.getByTestId("newPassword").type(`${testPwd}`);
     cy.get("button[type=submit]").click();
     cy.getByTestId("pwdChangeConfirmation").should("not.be.visible");
     // newPassword empty
-    cy.getInputContainedByTestId("confirmedPassword").type(`${testPwd}`);
-    cy.getInputContainedByTestId("newPassword").clear();
+    cy.getByTestId("confirmedPassword").type(`${testPwd}`);
+    cy.getByTestId("newPassword").clear();
     cy.get("button[type=submit]").click();
     cy.getByTestId("pwdChangeConfirmation").should("not.be.visible");
     // currentPassword empty
-    cy.getInputContainedByTestId("newPassword").type(`${testPwd}`);
-    cy.getInputContainedByTestId("currentPassword").clear();
+    cy.getByTestId("newPassword").type(`${testPwd}`);
+    cy.getByTestId("currentPassword").clear();
     cy.get("button[type=submit]").click();
     cy.getByTestId("pwdChangeConfirmation").should("not.be.visible");
   });

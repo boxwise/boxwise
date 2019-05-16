@@ -16,46 +16,34 @@ describe("Add Organization", () => {
   });
 
   it("Organization name cannot be empty", () => {
-    cy.getInputContainedByTestId("orgNameInput")
-      .type(`{enter}`)
-      .then(() => {
-        cy.getByTestId("orgNameInput").should("be.visible"); // organization name input should be visible
-      });
+    cy.getByTestId("orgNameInput").type(`{enter}`);
+    cy.getByTestId("orgNameInput").should("be.visible"); // organization name input should be visible
   });
 
   it("Password cannot be empty", () => {
-    cy.getInputContainedByTestId("orgNameInput").type(`${testOrg}{enter}`);
-    cy.getInputContainedByTestId("name").type(`${testUser}`);
-    cy.getInputContainedByTestId("email").type(`${testUser}@example.com`);
-    cy.getByTestId("createUserButton")
-      .click()
-      .then(() => {
-        cy.getByTestId("createUserButton").should("be.visible"); // continue button should be visible
-      });
+    cy.getByTestId("orgNameInput").type(`${testOrg}{enter}`);
+    cy.getByTestId("name").type(`${testUser}`);
+    cy.getByTestId("email").type(`${testUser}@example.com`);
+    cy.getByTestId("createUserButton").click();
+    cy.getByTestId("createUserButton").should("be.visible"); // continue button should be visible
   });
 
   it("Adds an organization confirmed by enter", () => {
-    cy.getInputContainedByTestId("orgNameInput").type(`${testOrg}{enter}`);
-    cy.getInputContainedByTestId("name").type(`${testUser}`);
-    cy.getInputContainedByTestId("email").type(`${testUser}@example.com`);
-    cy.getInputContainedByTestId("password")
-      .type(`${testPwd}{enter}`)
-      .then(() => {
-        cy.getByTestId("createUserButton").should("not.exist");
-        cy.getByTestId("copyToClipboardButton").should("be.visible");
-      });
+    cy.getByTestId("orgNameInput").type(`${testOrg}{enter}`);
+    cy.getByTestId("name").type(`${testUser}`);
+    cy.getByTestId("email").type(`${testUser}@example.com`);
+    cy.getByTestId("password").type(`${testPwd}{enter}`);
+    cy.getByTestId("createUserButton").should("not.exist");
+    cy.getByTestId("copyToClipboardButton").should("be.visible");
   });
 
   it("Adds an organization confirmed by submit button", () => {
-    cy.getInputContainedByTestId("orgNameInput").type(`${testOrg}_2{enter}`);
-    cy.getInputContainedByTestId("name").type(`${testUser}_2`);
-    cy.getInputContainedByTestId("email").type(`${testUser}_2@example.com`); // can't use the same mail as the previous test
-    cy.getInputContainedByTestId("password").type(`${testPwd}_2`);
-    cy.getByTestId("createUserButton")
-      .click()
-      .then(() => {
-        cy.getByTestId("createUserButton").should("not.exist");
-        cy.getByTestId("copyToClipboardButton").should("be.visible");
-      });
+    cy.getByTestId("orgNameInput").type(`${testOrg}_2{enter}`);
+    cy.getByTestId("name").type(`${testUser}_2`);
+    cy.getByTestId("email").type(`${testUser}_2@example.com`); // can't use the same mail as the previous test
+    cy.getByTestId("password").type(`${testPwd}_2`);
+    cy.getByTestId("createUserButton").click();
+    cy.getByTestId("createUserButton").should("not.exist");
+    cy.getByTestId("copyToClipboardButton").should("be.visible");
   });
 });

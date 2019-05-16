@@ -78,16 +78,13 @@ describe("CRUD products tests", () => {
       .first()
       .click();
     cy.getByTestId("productDialog").should("be.visible");
-    cy.getInputContainedByTestId("productName")
+    cy.getByTestId("productName")
       .clear()
       .type(newName);
-    cy.getByTestId("submitCreateProduct")
-      .click()
-      .then(() => {
-        cy.getByTestId("productNameCell")
-          .first()
-          .invoke("text")
-          .should("equal", newName);
-      });
+    cy.getByTestId("submitCreateProduct").click();
+    cy.getByTestId("productNameCell")
+      .first()
+      .invoke("text")
+      .should("equal", newName);
   });
 });
