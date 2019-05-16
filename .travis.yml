@@ -34,7 +34,7 @@ jobs:
     - stage: Build
       script: ./run-build.sh
     - stage: Deploy
-      if: branch = something
+      if: branch = master
       deploy:
         provider: firebase
         project: boxwise-production
