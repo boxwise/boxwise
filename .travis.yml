@@ -34,7 +34,7 @@ jobs:
     - stage: Build
       script: ./run-build.sh
     - stage: Deploy
-      if: branch = master
+      if: branch = something
       script: ./deploy
 after_success:
 - yarn upload-coverage-report
