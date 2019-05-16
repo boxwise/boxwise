@@ -26,12 +26,12 @@ before_install:
 jobs:
   fast_finish: true
   include:
-    - stage: Browser tests
-      script: ./rrun-browser-tests.sh
     - stage: Unit tests
       script: yarn test-with-coverage
     - script: yarn test-no-cycles
     - script: yarn lint
+    - stage: Browser tests
+      script: ./rrun-browser-tests.sh
     - stage: Build
       script: ./run-build.sh
     - stage: Deploy
