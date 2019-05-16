@@ -28,17 +28,22 @@ import uuidv4 from "uuid/v4";
 Cypress.Commands.add("getByTestId", testId =>
   cy.get(`[data-testid=${testId}]`)
 );
-Cypress.Commands.add("getInputContainedByTestId", testId =>
-  cy.get(`[data-testid=${testId}] input`)
+Cypress.Commands.add(
+  "selectNth",
+  { prevSubject: "element" },
+  (subject, pos) => {
+    cy.wrap(subject)
+      .children("option")
+      .eq(pos)
+      .then(e => {
+        cy.wrap(subject).select(e.val());
+      });
+  }
 );
-Cypress.Commands.add("getTextAreaContainedByTestId", testId =>
-  cy.get(`[data-testid=${testId}] textarea`)
-);
-
 Cypress.Commands.add("reLogin", (userMail, userPassword) => {
   cy.visit("/signout");
-  cy.getInputContainedByTestId("email").type(`${userMail}`);
-  cy.getInputContainedByTestId("password").type(`${userPassword}`);
+  cy.getByTestId("email").type(`${userMail}`);
+  cy.getByTestId("password").type(`${userPassword}`);
   cy.getByTestId("signInButton").click();
   cy.location("pathname", { timeout: 10000 }).should("not.include", "/signin");
 });
@@ -87,11 +92,8 @@ Cypress.Commands.add("navigateToInvitePage", () => {
 Cypress.Commands.add("createTestProduct", () => {
   const productName = uuidv4().substring(0, 6);
   cy.getByTestId("addProductButton").click();
-  cy.getByTestId("selectCategory").click();
-  cy.get("li[id=category]")
-    .first()
-    .click();
-  cy.getInputContainedByTestId("productName").type(`${productName}`);
+  cy.getByTestId("selectCategory").selectNth(1);
+  cy.getByTestId("productName").type(`${productName}`);
   cy.getByTestId("submitCreateProduct").click({ timeout: 10000 });
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000); // give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
