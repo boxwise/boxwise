@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProductsPageContainer renders correctly with a simple list 1`] = `
+exports[`ProductsPageContainer renders correctly with a simple list: loaded data 1`] = `
 <div>
   <table
     class="MuiTable-root-2"
@@ -50,18 +50,18 @@ exports[`ProductsPageContainer renders correctly with a simple list 1`] = `
         >
           <a
             aria-label="Edit"
-            class="MuiButtonBase-root-28 MuiIconButton-root-22"
+            class="MuiButtonBase-root-40 MuiIconButton-root-66"
             data-testid="editProductButton"
             href="/products/edit/abc"
             role="button"
             tabindex="0"
           >
             <span
-              class="MuiIconButton-label-27"
+              class="MuiIconButton-label-71"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root-31"
+                class="MuiSvgIcon-root-43"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -76,22 +76,22 @@ exports[`ProductsPageContainer renders correctly with a simple list 1`] = `
               </svg>
             </span>
             <span
-              class="MuiTouchRipple-root-81"
+              class="MuiTouchRipple-root-59"
             />
           </a>
           <button
             aria-label="Delete"
-            class="MuiButtonBase-root-28 MuiIconButton-root-22"
+            class="MuiButtonBase-root-40 MuiIconButton-root-66"
             data-testid="deleteProductButton"
             tabindex="0"
             type="button"
           >
             <span
-              class="MuiIconButton-label-27"
+              class="MuiIconButton-label-71"
             >
               <svg
                 aria-hidden="true"
-                class="MuiSvgIcon-root-31"
+                class="MuiSvgIcon-root-43"
                 focusable="false"
                 role="presentation"
                 viewBox="0 0 24 24"
@@ -106,7 +106,7 @@ exports[`ProductsPageContainer renders correctly with a simple list 1`] = `
               </svg>
             </span>
             <span
-              class="MuiTouchRipple-root-81"
+              class="MuiTouchRipple-root-59"
             />
           </button>
         </td>
@@ -115,7 +115,7 @@ exports[`ProductsPageContainer renders correctly with a simple list 1`] = `
   </table>
   <a
     aria-label="Add"
-    class="MuiButtonBase-root-28 MuiFab-root-64 MuiFab-secondary-67 ProductList-fab-1"
+    class="MuiButtonBase-root-40 MuiFab-root-30 MuiFab-secondary-33 ProductList-fab-1"
     data-testid="addProductButton"
     href="/products/add"
     role="button"
@@ -123,11 +123,11 @@ exports[`ProductsPageContainer renders correctly with a simple list 1`] = `
     title="Add product"
   >
     <span
-      class="MuiFab-label-65"
+      class="MuiFab-label-31"
     >
       <svg
         aria-hidden="true"
-        class="MuiSvgIcon-root-31"
+        class="MuiSvgIcon-root-43"
         focusable="false"
         role="presentation"
         viewBox="0 0 24 24"
@@ -142,8 +142,132 @@ exports[`ProductsPageContainer renders correctly with a simple list 1`] = `
       </svg>
     </span>
     <span
-      class="MuiTouchRipple-root-81"
+      class="MuiTouchRipple-root-59"
     />
   </a>
 </div>
+`;
+
+exports[`ProductsPageContainer renders correctly with a simple list: loading data 1`] = `
+<div>
+  <img
+    alt="progress"
+    class=""
+    src="/images/loading-boxes.gif"
+    style="height: 40px; width: 40px;"
+  />
+  <table
+    class="MuiTable-root-2"
+  >
+    <thead
+      class="MuiTableHead-root-3"
+    >
+      <tr
+        class="MuiTableRow-root-4 MuiTableRow-head-7"
+      >
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        >
+          Category
+        </th>
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root-21"
+      data-testid="productsTableBody"
+    />
+  </table>
+  <a
+    aria-label="Add"
+    class="MuiButtonBase-root-40 MuiFab-root-30 MuiFab-secondary-33 ProductList-fab-1"
+    data-testid="addProductButton"
+    href="/products/add"
+    role="button"
+    tabindex="0"
+    title="Add product"
+  >
+    <span
+      class="MuiFab-label-31"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root-43"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+    <span
+      class="MuiTouchRipple-root-59"
+    />
+  </a>
+</div>
+`;
+
+exports[`ProductsPageContainer renders correctly with a simple list: store loaded data 1`] = `
+"{
+  \\"products\\": {
+    \\"byId\\": {
+      \\"abc\\": {
+        \\"id\\": \\"abc\\",
+        \\"name\\": \\"hello\\"
+      }
+    },
+    \\"allIds\\": [
+      \\"abc\\"
+    ],
+    \\"loading\\": false
+  },
+  \\"user\\": {
+    \\"hasInitialized\\": false,
+    \\"loading\\": false,
+    \\"isUpdating\\": false,
+    \\"hasTriggeredReset\\": false
+  },
+  \\"boxes\\": {
+    \\"byId\\": {},
+    \\"allIds\\": [],
+    \\"loading\\": false
+  }
+}"
+`;
+
+exports[`ProductsPageContainer renders correctly with a simple list: store loading data 1`] = `
+"{
+  \\"products\\": {
+    \\"byId\\": {},
+    \\"allIds\\": [],
+    \\"loading\\": true
+  },
+  \\"user\\": {
+    \\"hasInitialized\\": false,
+    \\"loading\\": false,
+    \\"isUpdating\\": false,
+    \\"hasTriggeredReset\\": false
+  },
+  \\"boxes\\": {
+    \\"byId\\": {},
+    \\"allIds\\": [],
+    \\"loading\\": false
+  }
+}"
 `;
