@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import { withRouter } from "react-router-dom";
 import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import ArrowBack from "@material-ui/icons/ArrowBack";
+import CloseIcon from "@material-ui/icons/Close";
 
 import { drawerTheme } from "theme";
 
@@ -59,7 +62,14 @@ const styles = theme => ({
   }
 });
 
-const AppFrame = ({ children, classes, title }) => {
+const AppFrame = ({
+  children,
+  classes,
+  title,
+  showBackButton = false,
+  showCloseButton = false,
+  history
+}) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerOpen = () => setMobileOpen(true);
@@ -70,15 +80,25 @@ const AppFrame = ({ children, classes, title }) => {
     <div className={divClass}>
       <AppBar className={classes.appBar} position="fixed">
         <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            className={classes.hamburger}
-            data-testid="appDrawerOpener"
-          >
-            <MenuIcon />
-          </IconButton>
+          {showBackButton || showCloseButton ? (
+            <IconButton
+              color="inherit"
+              aria-label="go back"
+              onClick={() => history.goBack()}
+            >
+              {showBackButton ? <ArrowBack /> : <CloseIcon />}
+            </IconButton>
+          ) : (
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              className={classes.hamburger}
+              data-testid="appDrawerOpener"
+            >
+              <MenuIcon />
+            </IconButton>
+          )}
           {title !== null && (
             <Typography
               className={classes.title}
@@ -109,4 +129,4 @@ const AppFrame = ({ children, classes, title }) => {
   );
 };
 
-export default withStyles(styles)(AppFrame);
+export default withRouter(withStyles(styles)(AppFrame));
