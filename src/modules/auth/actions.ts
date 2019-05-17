@@ -47,7 +47,7 @@ export const firebaseSignOut = (): ThunkResult<void> => dispatch => {
     () => {
       /* no need to dispatch, as triggered by auth observer */
     },
-    error => dispatch({ type: USER_SIGN_OUT.ERROR, payload: error })
+    error => dispatch({ type: USER_SIGN_OUT.ERROR, payload: error.message })
   );
 };
 
@@ -63,7 +63,7 @@ export const userSignIn = ({
     () => {
       /* no need to dispatch, as triggered by auth observer */
     },
-    error => dispatch({ type: USER_SIGN_IN.ERROR, payload: error })
+    error => dispatch({ type: USER_SIGN_IN.ERROR, payload: error.message })
   );
 };
 
@@ -77,7 +77,7 @@ export const resetPassword = ({
     .sendPasswordResetEmail(email)
     .then(
       () => dispatch({ type: PASSWORD_RESET.SUCCESS }),
-      error => dispatch({ type: PASSWORD_RESET.ERROR, payload: error })
+      error => dispatch({ type: PASSWORD_RESET.ERROR, payload: error.message })
     );
 };
 
@@ -97,7 +97,7 @@ export const userPasswordChange = ({
     )
     .then(
       () => dispatch({ type: PASSWORD_EDIT.SUCCESS }),
-      error => dispatch({ type: PASSWORD_EDIT.ERROR, payload: error })
+      error => dispatch({ type: PASSWORD_EDIT.ERROR, payload: error.message })
     );
 };
 

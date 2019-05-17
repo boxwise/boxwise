@@ -7,6 +7,8 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import thunk from "redux-thunk";
 import { createStore, applyMiddleware } from "redux";
 
+import { rootReducer } from "redux/store";
+
 export { fireEvent, wait } from "react-testing-library";
 
 // following suggestions in https://testing-library.com/docs/react-testing-library/setup#custom-render
@@ -27,17 +29,21 @@ export function customRender(
     route = "/",
     history = createMemoryHistory({ initialEntries: [route] }),
     initialState = {},
-    reducer = state => state
+    reducer = rootReducer
   } = {}
 ) {
   const store = createStore(reducer, initialState, applyMiddleware(thunk));
-  return render(
-    <MuiThemeProvider theme={theme}>
-      <Provider store={store}>
-        <Router history={history}>{ui}</Router>
-      </Provider>
-    </MuiThemeProvider>
-  );
+  return {
+    ...render(
+      <MuiThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Router history={history}>{ui}</Router>
+        </Provider>
+      </MuiThemeProvider>
+    ),
+    store,
+    history
+  };
 }
 
 export { customRender as render };

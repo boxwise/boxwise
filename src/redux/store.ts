@@ -9,7 +9,7 @@ import boxes from "modules/boxes/reducer";
 import { logErrorActionsAsExceptions, sentryMiddleware } from "errorHandling";
 import { RootState } from "redux/storeTypes";
 
-const rootReducer = combineReducers<RootState>({
+export const rootReducer = combineReducers<RootState>({
   products,
   user,
   boxes

@@ -16,7 +16,7 @@ export function createThunkWithState<TResult, TArgs extends any[]>(
     dispatch({ type: action.START });
     return handleAction(getState, ...args).then(
       result => dispatch({ type: action.SUCCESS, payload: result }),
-      error => dispatch({ type: action.ERROR, payload: error })
+      error => dispatch({ type: action.ERROR, payload: error.message })
     );
   };
 }

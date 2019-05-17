@@ -22,7 +22,7 @@ const getProductFromData = (
   doc: firebase.firestore.DocumentSnapshot
 ): Product => {
   const data = doc.data();
-  if (!data) throw Error(`No data available on ${doc.ref}`);
+  if (!data) throw new Error(`No data available on ${doc.ref}`);
   // we don't want to just store raw firebase data in here
   // else you get a load of firebase variables in the redux store
   return {
@@ -40,7 +40,6 @@ export const getAllProducts = async (
   getCurrentUser: GetCurrentUser
 ): Promise<Product[]> => {
   const { organizationRef } = await getCurrentUser();
-
   return db
     .collection("products")
     .where("organization", "==", db.doc(organizationRef))
