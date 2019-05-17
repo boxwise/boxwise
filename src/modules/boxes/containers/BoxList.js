@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import { getAllProductsFromState } from "modules/products/reducer";
-import { productList } from "modules/products/actions";
+import { getAllProducts } from "modules/products/actions";
 
 import { fetchBoxes } from "../actions";
 import BoxList from "../components/BoxList";
@@ -14,6 +14,6 @@ export default connect(
   }),
   dispatch => ({
     fetchBoxesAndProducts: () =>
-      dispatch(fetchBoxes()).then(dispatch(productList()))
+      dispatch(fetchBoxes()).then(dispatch(getAllProducts()))
   })
 )(BoxList);

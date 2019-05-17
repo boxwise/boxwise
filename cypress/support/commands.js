@@ -94,7 +94,7 @@ Cypress.Commands.add("createTestProduct", () => {
   cy.getByTestId("addProductButton").click();
   cy.getByTestId("selectCategory").selectNth(1);
   cy.getByTestId("productName").type(`${productName}`);
-  cy.getByTestId("submitCreateProduct").click({ timeout: 10000 });
+  cy.getByTestId("submitProduct").click({ timeout: 10000 });
   // eslint-disable-next-line cypress/no-unnecessary-waiting
   cy.wait(2000); // give table some time to update (without wait or doing this in click().then({}) doesn't find new row at all)
   cy.getByTestId("productNameCell")

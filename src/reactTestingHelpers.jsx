@@ -1,10 +1,11 @@
 import React from "react";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
-import { createStore } from "redux";
 import { Provider } from "react-redux";
 import { render, fireEvent } from "react-testing-library";
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import thunk from "redux-thunk";
+import { createStore, applyMiddleware } from "redux";
 
 export { fireEvent, wait } from "react-testing-library";
 
@@ -26,10 +27,10 @@ export function customRender(
     route = "/",
     history = createMemoryHistory({ initialEntries: [route] }),
     initialState = {},
-    reducer = state => state,
-    store = createStore(reducer, initialState)
+    reducer = state => state
   } = {}
 ) {
+  const store = createStore(reducer, initialState, applyMiddleware(thunk));
   return render(
     <MuiThemeProvider theme={theme}>
       <Provider store={store}>

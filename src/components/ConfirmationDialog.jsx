@@ -6,14 +6,21 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 
-const ConfirmDeleteAlert = ({ open, onCancel, onConfirm, children }) => {
+const ConfirmationDialog = ({
+  open,
+  onCancel,
+  confirmationAction,
+  onConfirm,
+  children,
+  "data-testid": dataTestId
+}) => {
   return (
     <Dialog
       open={open}
       onClose={onCancel}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
-      data-testid="deleteConfirmationDialog"
+      data-testid={dataTestId}
     >
       <DialogTitle id="alert-dialog-title">Are you sure?</DialogTitle>
       <DialogContent>
@@ -29,14 +36,14 @@ const ConfirmDeleteAlert = ({ open, onCancel, onConfirm, children }) => {
           onClick={onConfirm}
           color="secondary"
           variant="contained"
-          data-testid="confirmDeleteButton"
+          data-testid={`${dataTestId}ConfirmButton`}
           autoFocus
         >
-          Delete
+          {confirmationAction}
         </Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-export default React.memo(ConfirmDeleteAlert);
+export default React.memo(ConfirmationDialog);

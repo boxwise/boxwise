@@ -12,6 +12,17 @@ import {
 } from "./actions";
 import { Product } from "./api";
 
+export function getProductFromState(
+  { products }: RootState,
+  productId: string
+) {
+  return {
+    loading: products.loading,
+    error: products.error,
+    data: products.byId[productId]
+  };
+}
+
 export function getAllProductsFromState({ products }: RootState) {
   return {
     loading: products.loading,

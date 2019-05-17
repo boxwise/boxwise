@@ -23,7 +23,11 @@ import {
   CreateOrganizationPage,
   JoinPage
 } from "./modules/signup/pages";
-import { ProductsPage } from "./modules/products/pages";
+import {
+  ProductsPage,
+  AddProductPage,
+  EditProductPage
+} from "./modules/products/pages";
 import { BoxesPage, CreateLabelsPage } from "./modules/boxes/pages";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -54,6 +58,16 @@ const App = ({ registerAuthStateObserver }) => {
                 component={CreateLabelsPage}
               />
               <PrivateRoute exact path="/products" component={ProductsPage} />
+              <PrivateRoute
+                exact
+                path="/products/add"
+                component={AddProductPage}
+              />
+              <PrivateRoute
+                exact
+                path="/products/edit/:productId"
+                component={EditProductPage}
+              />
               <PrivateRoute exact path="/invite" component={InvitePage} />
               <PrivateRoute exact path="/signout" component={SignOutPage} />
               <PrivateRoute

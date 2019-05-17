@@ -26,8 +26,8 @@ describe("CRUD products tests", () => {
         cy.getByTestId("deleteProductButton")
           .first()
           .click();
-        cy.getByTestId("deleteConfirmationDialog").should("be.visible");
-        cy.getByTestId("confirmDeleteButton").click();
+        cy.getByTestId("deleteProductDialog").should("be.visible");
+        cy.getByTestId("deleteProductDialogConfirmButton").click();
         // eslint-disable-next-line cypress/no-unnecessary-waiting
         cy.wait(2000); // updating table takes some time
         cy.getByTestId("productsTableBody")
@@ -52,8 +52,8 @@ describe("CRUD products tests", () => {
             cy.getByTestId("deleteProductButton")
               .first()
               .click();
-            cy.getByTestId("deleteConfirmationDialog").should("be.visible");
-            cy.getByTestId("confirmDeleteButton").click();
+            cy.getByTestId("deleteProductDialog").should("be.visible");
+            cy.getByTestId("deleteProductDialogConfirmButton").click();
             // eslint-disable-next-line cypress/no-unnecessary-waiting
             cy.wait(2000); // updating table takes some time
             if (sameNameCountBefore === 1) {
@@ -81,7 +81,7 @@ describe("CRUD products tests", () => {
     cy.getByTestId("productName")
       .clear()
       .type(newName);
-    cy.getByTestId("submitCreateProduct").click();
+    cy.getByTestId("submitProduct").click();
     cy.getByTestId("productNameCell")
       .first()
       .invoke("text")

@@ -54,7 +54,7 @@ module.exports = {
     "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
     "no-restricted-imports": [ "error",
       {
-        "paths": [],
+        "paths": ["react-redux","redux"],
         "patterns": [
           // why: preventing weird hierarchies for files */
           denyImportPatterns.relativeImportsUpMoreThanOneLevel,
@@ -100,17 +100,17 @@ module.exports = {
         "import/prefer-default-export": "off"
       }
     },
+    // permitted uses of redux, to enforce convention
     {
-      "files": ["src/modules/*/components/**"],
+      "files": ["src/*.{jsx,ts,js,tsx}","src/redux/**","src/modules/*/containers/**","src/modules/*/{components,pages}/**Container.*","src/modules/*/{reducer,actions}.{js,ts}"],
       "rules": {
         "no-restricted-imports": [ 
           "error", 
           {
-            // rule: don't allow use of redux 
-            // why: these are unconnected components that shouldn't
-            //      be hooked up to redux. use containers instead.
-            "paths": ["react-redux","redux"],
+            // rule: allow use of redux 
+            "paths": [],
             "patterns": [
+              // copied from global rule, as the whole section gets overwritten
               // why: preventing weird hierarchies for files
               denyImportPatterns.relativeImportsUpMoreThanOneLevel,
               // why: you should use the public 'API' exposed by the module

@@ -25,19 +25,19 @@ export const PRODUCT_DELETE = createAsyncAction(
   "PRODUCT_DELETE_ERROR"
 );
 
-export const productList = createThunkWithState(PRODUCT_LIST, getState =>
+export const getAllProducts = createThunkWithState(PRODUCT_LIST, getState =>
   api.getAllProducts(createGetCurrentUser(getState))
 );
 
-export const productAdd = createThunkWithState(
+export const addProduct = createThunkWithState(
   PRODUCT_ADD,
   (getState, product) => api.addProduct(product, createGetCurrentUser(getState))
 );
 
-export const productEdit = createThunk(PRODUCT_EDIT, product =>
+export const updateProduct = createThunk(PRODUCT_EDIT, product =>
   api.updateProduct(product)
 );
 
-export const productDelete = createThunk(PRODUCT_DELETE, productId =>
+export const deleteProduct = createThunk(PRODUCT_DELETE, productId =>
   api.deleteProduct(productId).then(() => productId)
 );
