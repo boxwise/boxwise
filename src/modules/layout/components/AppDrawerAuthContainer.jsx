@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 
-import AppDrawerAuth from "../components/AppDrawerAuth";
-import { firebaseSignOut, getCurrentUserFromState } from "../actions";
+import { firebaseSignOut, getCurrentUserFromState } from "modules/auth/actions";
+
+import AppDrawerAuth from "./AppDrawerAuth";
 
 const mapStateToProps = state => ({
   user: getCurrentUserFromState(state)
