@@ -14,7 +14,14 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import "./commands";
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+// before any of the tests runs, we ensure Firestore has the data needed for tests to succeed
+before(() => {
+  cy.exec("node import-ui-test-data-to-firestore.js", {
+    failOnNonZeroExit: false
+  });
+});

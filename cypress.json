@@ -1,9 +1,9 @@
 {
   "env": {
-    "testOrg": "browserTestOrganization",
-    "testUser": "browsertestuser",
-    "testUserMail": "browsertestuser@example.com",
-    "testPwd": "browsertestuser"
+    "testOrg": "travisImport",
+    "testUser": "travisImport",
+    "testUserMail": "travisImport@example.com",
+    "testPwd": "travisImport"
   },
   "projectId": "e6jvz9"
 }
