@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
 
-import Progress from "components/Progress";
+import LoadingPage from "../pages/LoadingPage";
 
 const mapStateToProps = ({ user }) => ({ user });
 
@@ -14,7 +14,7 @@ export const PrivateRoute = ({ user, component: Component, ...props }) => {
   // to cause the  entire application to re-mount whenever the 'user'
   // state changes (so you'd lose state of forms)
   // TODO: write test on this for change password?
-  if (isSigningIn) return <Route component={Progress} {...props} />;
+  if (isSigningIn) return <Route component={LoadingPage} {...props} />;
   if (isNotSignedIn)
     return <Route component={() => <Redirect to="/signin" />} {...props} />;
   return <Route component={Component} {...props} />;
