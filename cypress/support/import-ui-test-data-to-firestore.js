@@ -1,6 +1,7 @@
-const admin = await import("firebase-admin");
-// eslint-disable-next-line import/no-unresolved
-const serviceAccount = await import("./serviceAccountKey.json");
+// eslint-disable-next-line
+const admin = require("firebase-admin");
+// eslint-disable-next-line
+const serviceAccount = require("./serviceAccountKey.json");
 
 /* DECIDE INTO WHICH FIRESTORE SHOULD DATA BE IMPORTED */
 let projectId = process.argv[2]; // [0] is node command, [1] is name of script, [2] is parameter
