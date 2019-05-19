@@ -9,7 +9,7 @@ before_install:
   # install specific version of yarn
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
 - export PATH="$HOME/.yarn/bin:$PATH"
-- echo $import_ui_data_pwd | gpg --passphrase-fd 0 ../cypress/support/serviceAccountKey.json .travis/serviceAccountKey_tests.json.gpg
+- echo $import_ui_data_pwd | gpg --passphrase-fd 0 .travis/serviceAccountKey_tests.json.gpg
 script:
 - yarn test-with-coverage
 - yarn test-no-cycles
