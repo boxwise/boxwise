@@ -21,7 +21,7 @@ import "./commands";
 
 // before any of the tests runs, we ensure Firestore has the data needed for tests to succeed
 before(() => {
-  cy.exec("node cypress/support/import-ui-test-data-to-firestore.js", {
+  cy.exec("node support/import-ui-test-data-to-firestore.js", {
     failOnNonZeroExit: false
   });
 });

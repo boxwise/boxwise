@@ -1,9 +1,9 @@
 {
   "env": {
-    "testOrg": "itworks3",
-    "testUser": "itworks3",
-    "testUserMail": "itworks3@example.com",
-    "testPwd": "itworks3"
+    "testOrg": "itworks4",
+    "testUser": "itworks4",
+    "testUserMail": "itworks4@example.com",
+    "testPwd": "itworks4"
   },
   "projectId": "e6jvz9"
 }

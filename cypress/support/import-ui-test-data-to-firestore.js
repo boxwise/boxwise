@@ -20,10 +20,10 @@ admin.initializeApp({
 });
 
 /* IMPORT DATA */
-const testOrgName = "itworks3";
-const testUserName = "itworks3";
-const testUserEmail = "itwork3@example.com";
-const testUserPwd = "itworks3";
+const testOrgName = "itworks4";
+const testUserName = "itworks4";
+const testUserEmail = "itworks4@example.com";
+const testUserPwd = "itworks4";
 
 admin
   .auth()
