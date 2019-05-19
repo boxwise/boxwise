@@ -11,6 +11,7 @@ before_install:
 - export PATH="$HOME/.yarn/bin:$PATH"
 - echo $import_ui_data_pwd | gpg --passphrase-fd 0 .travis/serviceAccountKey_tests.json.gpg
 - mv .travis/serviceAccountKey_tests.json cypress/support/serviceAccountKey.json
+- node cypress/support/import-ui-test-data-to-firestore.js 
 script:
 - yarn test-with-coverage
 - yarn test-no-cycles
