@@ -63,6 +63,7 @@
     "test": "react-scripts test --modulePaths=src",
     "test-with-coverage": "react-scripts test --modulePaths=src --coverage",
     "test-no-cycles": "madge \"src/index.jsx\" --circular",
+    "import-browser-test-data": "node cypress/support/import-ui-test-data-to-firestore.js",
     "browser-test": "cypress open",
     "upload-coverage-report": "./node_modules/.bin/codecov",
     "eject": "react-scripts eject",
