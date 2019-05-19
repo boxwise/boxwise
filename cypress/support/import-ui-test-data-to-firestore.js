@@ -20,10 +20,10 @@ admin.initializeApp({
 });
 
 /* IMPORT DATA */
-const testOrgName = "travisImport";
-const testUserName = "travisImport";
-const testUserEmail = "travisImport@example.com";
-const testUserPwd = "travisImport";
+const testOrgName = "itworks";
+const testUserName = "itworks";
+const testUserEmail = "itworks@example.com";
+const testUserPwd = "itworks";
 
 admin
   .auth()
@@ -65,8 +65,17 @@ admin
                 .firestore()
                 .collection("profiles")
                 .doc(userRecord.uid)
-                .set(testUser);
-              process.exit(0);
+                .set(testUser)
+                .then(() => {
+                  // eslint-disable-next-line no-console
+                  console.log("Successfully created new user profile");
+                  process.exit(0);
+                })
+                .catch(error => {
+                  // eslint-disable-next-line no-console
+                  console.log("Error creating test user profile:", error);
+                  process.exit(1);
+                });
             })
             .catch(error => {
               // eslint-disable-next-line no-console
