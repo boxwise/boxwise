@@ -20,8 +20,8 @@ import "./commands";
 // require('./commands')
 
 // before any of the tests runs, we ensure Firestore has the data needed for tests to succeed
-// before(() => {
-//   cy.exec("node import-ui-test-data-to-firestore.js", {
-//     failOnNonZeroExit: false
-//   });
-// });
+before(() => {
+  cy.exec("node import-ui-test-data-to-firestore.js", {
+    failOnNonZeroExit: false
+  });
+});
