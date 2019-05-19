@@ -13,9 +13,9 @@ before_install:
 - mv .travis/serviceAccountKey_tests.json cypress/support/serviceAccountKey.json
 script:
 #- node cypress/support/import-ui-test-data-to-firestore.js 
-- yarn test-with-coverage
-- yarn test-no-cycles
-- yarn lint
+#- yarn test-with-coverage
+#- yarn test-no-cycles
+#- yarn lint
 - cp .travis/.env.feature-tests ./.env.local
 - yarn start &
 - yarn wait-on http://localhost:3000
