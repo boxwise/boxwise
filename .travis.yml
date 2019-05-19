@@ -1,14 +1,15 @@
 language: node_js
 node_js:
-- '11.14.0' # pin to stable version
+- 11.14.0
 cache: yarn
 before_install:
 - if [[ -n "$encrypted_5b7b89e871be_key" ]]; then openssl aes-256-cbc -K $encrypted_5b7b89e871be_key
   -iv $encrypted_5b7b89e871be_iv -in .travis/.service-account-key.json.enc -out .service-account-key.json
   -d; fi
-# install specific version of yarn
+  # install specific version of yarn
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
 - export PATH="$HOME/.yarn/bin:$PATH"
+- echo $import_ui_data_pwd | gpg --passphrase-fd 0 ../cypress/support/serviceAccountKey.json .travis/serviceAccountKey_tests.json.gpg
 script:
 - yarn test-with-coverage
 - yarn test-no-cycles
@@ -41,3 +42,6 @@ notifications:
     on_failure: change
     rooms:
       secure: UsyAyS/TPGo5n4t7xaasx13IQkJPREUliDee4N5UaDaj1rZ9qUkRhcQaVuouSbM+8l5fN04l2aNeVJQeX9aODaQ2sGKeNdhtXknI+ivUrJonmsuXbnntU+/XYTBDUE57vz0CCIY2/HjXMnrz5NuXkb88r2bvzhtphACqeFrgqlZ0RxghKAdpUWadQhAm56C9ibNfOWSuC8HqCPhixJXpJlOmRoJ9ZcjOUy+8c6EEdxvMqH/Jv4dCqVQTYdJdo1ymME/1euN52/a2igS43sPug5KJh0Gnm1SrAvEPgBUH4gMWvaew8wt6WHPkTN2vcDphkz5KguH2DYZJ0reBItOSawAUlY8Md7CUlDQ+fWN77piZShKMye8NSWnGOK6lr7gWIYAeUt3dtxkszY5YFdPh8OfwAPeRmGLRsHg4TTeyVFuhG2vIpOapF2usVcpTzGZTKaz7VMS0yyVI5vt2NOj8p4tAJpXpVmQQw1MspLVI3nkgfw0XV/btjZxoMzIK0YoMWWTH42VVxVwiPz63+sUSiAU0XbDWY01G90w20Qtzj3ui6DiiwMrJ+Zf0Ym/ltv04IQjYxwyxuHoVY4AYA8zLaMZf8+gkcWkvKqBSfs062CMxTXFnyrid3D9jbZXOqrZ5+Dsz0lUF9AP4sQ6XEQ+OtWFiQYpzp34jzadPYLYPJco=
+env:
+  global:
+    secure: QYIvngh04PZzLQNGXq2DHKYUQ+6tYKzS6Sx4mt16jbih7Xuj9wUdByzii/7i2D060AQrv45EqwwH2D8+DLbgdOcqxgcl4HAwLOqf3VeyrtnOBiDDLj6JATQj7Vyzso6FuBR6NBVY4SQDUyLqUBXz1UJDmFWturCr/WGYT1JpJQDxGWD3scgzGctpN5jPBl01W2QpJ1U8EheYVRfm1/X64EYInDqXQkAXOI6CI/107f6X2D3gtBpAJu66k6x3KqT79wtqR68PgrlQnP2c5HQYwDVeBIF8eDQrkCrgtHiUyU13Iyr82hNi9QpuxSeYo0oHVPbujv3F/RRJUz4twUPcBSvAV1rUx3ucmRD4k951ZzvtTxF7CMKF6XuWXVkcAdd9fc4fOgEBGMbODaK+lEaDM+ctTmdIuc5SXkKmAW3SRmWTg0DDdO5KMoWlV0ANHLy+b9G70OoreSoVWPn07syNiKGvwsc2INCjMlnHCn5mVfVUXktqctX45Nl4HD7OUDjWfDtyeS8zrclmQ0mSv06mtL9UPMhFu0e6M+qcw4pUR/alHfrryPzBoBddQFQkTqqTpzRJfmL0McRe7KZruH7VKNfDi4FY6B39mQmZgLqRIysnwSFibqZzRQ15Y36VSWRZzsggt4Mzer9YCYEDg8ruI9MhB1K6rGWOcznyPWgUHrU=
