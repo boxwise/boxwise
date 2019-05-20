@@ -23,7 +23,7 @@ const SignInForm = ({ serverError, userSignIn }) => {
   );
   return (
     <form onSubmit={handleSubmit}>
-      <FormErrorText message={serverError && serverError.message} />
+      <FormErrorText message={serverError} />
       <EmailField
         label="Email address"
         name="email"
