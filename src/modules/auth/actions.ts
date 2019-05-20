@@ -43,7 +43,7 @@ export const createGetCurrentUser = (
 
 export const firebaseSignOut = (): ThunkResult<void> => dispatch => {
   dispatch({ type: USER_SIGN_OUT.START });
-  api.signOut().then(
+  return api.signOut().then(
     () => {
       /* no need to dispatch, as triggered by auth observer */
     },
@@ -59,7 +59,7 @@ export const userSignIn = ({
   password: string;
 }): ThunkResult<void> => dispatch => {
   dispatch({ type: USER_SIGN_IN.START });
-  api.signIn(email, password).then(
+  return api.signIn(email, password).then(
     () => {
       /* no need to dispatch, as triggered by auth observer */
     },
@@ -73,7 +73,7 @@ export const resetPassword = ({
   email: string;
 }): ThunkResult<void> => dispatch => {
   dispatch({ type: PASSWORD_RESET.START });
-  api
+  return api
     .sendPasswordResetEmail(email)
     .then(
       () => dispatch({ type: PASSWORD_RESET.SUCCESS }),
