@@ -5,12 +5,14 @@ import thunk from "redux-thunk";
 
 import user from "modules/auth/reducer";
 import products from "modules/products/reducer";
+import categories from "modules/categories/reducer";
 import boxes from "modules/boxes/reducer";
 import { logErrorActionsAsExceptions, sentryMiddleware } from "errorHandling";
 import { RootState } from "redux/storeTypes";
 
 export const rootReducer = combineReducers<RootState>({
   products,
+  categories,
   user,
   boxes
 });

@@ -3,6 +3,7 @@ import { AnyAction } from "redux";
 import { ThunkAction } from "redux-thunk";
 
 import { Product } from "modules/products/api";
+import { Category } from "modules/categories/api";
 import { Box } from "modules/boxes/api";
 import { User } from "modules/auth/api";
 
@@ -10,6 +11,13 @@ import { IndexedState } from "./reducerFactory";
 
 export interface ProductsState extends IndexedState<Product> {
   byId: { [id: string]: Product };
+  allIds: string[];
+  loading: boolean;
+  error?: string;
+}
+
+export interface CategoriesState extends IndexedState<Category> {
+  byId: { [id: string]: Category };
   allIds: string[];
   loading: boolean;
   error?: string;
@@ -34,6 +42,7 @@ export interface UserState {
 
 export interface RootState {
   products: ProductsState;
+  categories: CategoriesState;
   user: UserState;
   boxes: BoxesState;
 }
