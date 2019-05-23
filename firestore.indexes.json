@@ -33,6 +33,23 @@
           "mode": "ASCENDING"
         }
       ]
+    },
+    {
+      "collectionId": "categories",
+      "fields": [
+        {
+          "fieldPath": "isDeleted",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "organization",
+          "mode": "ASCENDING"
+        },
+        {
+          "fieldPath": "name",
+          "mode": "ASCENDING"
+        }
+      ]
     }
   ]
 }

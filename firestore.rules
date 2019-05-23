@@ -35,6 +35,12 @@ service cloud.firestore {
       allow update: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
       allow delete: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
     }
+    match /categories/{categoryId} {
+      allow read: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
+      allow create: if isAuthenticated() && userIsInOrganisation(request.resource.data.organization);
+      allow update: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
+      allow delete: if isAuthenticated() && userIsInOrganisation(resource.data.organization);
+    }
     match /organizations/{organizationId} {
       // Check user is in organization
       allow get: if true;
