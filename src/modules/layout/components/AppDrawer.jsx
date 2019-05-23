@@ -91,6 +91,15 @@ const AppDrawer = ({
         </ListItem>
         <ListItem
           component={Link}
+          to="/categories"
+          onClick={onClose}
+          data-testid="categoriesDrawerButton"
+          button
+        >
+          <ListItemText primary="Manage categories" />
+        </ListItem>
+        <ListItem
+          component={Link}
           to="/create-labels"
           onClick={onClose}
           data-testid="labelsDrawerButton"

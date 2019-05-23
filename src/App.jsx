@@ -28,6 +28,11 @@ import {
   AddProductPage,
   EditProductPage
 } from "./modules/products/pages";
+import {
+  CategoriesPage,
+  AddCategoryPage,
+  EditCategoryPage
+} from "./modules/categories/pages";
 import { BoxesPage, CreateLabelsPage } from "./modules/boxes/pages";
 import ScrollToTop from "./components/ScrollToTop";
 import ErrorBoundary from "./components/ErrorBoundary";
@@ -67,6 +72,21 @@ const App = ({ registerAuthStateObserver }) => {
                 exact
                 path="/products/edit/:productId"
                 component={EditProductPage}
+              />
+              <PrivateRoute
+                exact
+                path="/categories"
+                component={CategoriesPage}
+              />
+              <PrivateRoute
+                exact
+                path="/categories/add"
+                component={AddCategoryPage}
+              />
+              <PrivateRoute
+                exact
+                path="/categories/edit/:categoryId"
+                component={EditCategoryPage}
               />
               <PrivateRoute exact path="/invite" component={InvitePage} />
               <PrivateRoute exact path="/signout" component={SignOutPage} />
