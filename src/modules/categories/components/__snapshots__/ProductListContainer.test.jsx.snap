@@ -1,0 +1,273 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProductsPageContainer renders correctly with a simple list: loaded data 1`] = `
+<div>
+  <table
+    class="MuiTable-root-2"
+  >
+    <thead
+      class="MuiTableHead-root-3"
+    >
+      <tr
+        class="MuiTableRow-root-4 MuiTableRow-head-7"
+      >
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        >
+          Category
+        </th>
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root-21"
+      data-testid="productsTableBody"
+    >
+      <tr
+        class="MuiTableRow-root-4"
+      >
+        <td
+          class="MuiTableCell-root-9 MuiTableCell-body-11 MuiTableCell-paddingDense-14"
+        />
+        <td
+          class="MuiTableCell-root-9 MuiTableCell-body-11 MuiTableCell-paddingDense-14"
+          data-testid="productNameCell"
+        >
+          hello
+        </td>
+        <td
+          class="MuiTableCell-root-9 MuiTableCell-body-11 MuiTableCell-paddingDense-14"
+        >
+          <a
+            aria-label="Edit"
+            class="MuiButtonBase-root-40 MuiIconButton-root-66"
+            data-testid="editProductButton"
+            href="/products/edit/abc"
+            role="button"
+            tabindex="0"
+          >
+            <span
+              class="MuiIconButton-label-71"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root-43"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34a.9959.9959 0 0 0-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"
+                />
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root-59"
+            />
+          </a>
+          <button
+            aria-label="Delete"
+            class="MuiButtonBase-root-40 MuiIconButton-root-66"
+            data-testid="deleteProductButton"
+            tabindex="0"
+            type="button"
+          >
+            <span
+              class="MuiIconButton-label-71"
+            >
+              <svg
+                aria-hidden="true"
+                class="MuiSvgIcon-root-43"
+                focusable="false"
+                role="presentation"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+                />
+                <path
+                  d="M0 0h24v24H0z"
+                  fill="none"
+                />
+              </svg>
+            </span>
+            <span
+              class="MuiTouchRipple-root-59"
+            />
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <a
+    aria-label="Add"
+    class="MuiButtonBase-root-40 MuiFab-root-30 MuiFab-secondary-33 ProductList-fab-1"
+    data-testid="addProductButton"
+    href="/products/add"
+    role="button"
+    tabindex="0"
+    title="Add product"
+  >
+    <span
+      class="MuiFab-label-31"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root-43"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+    <span
+      class="MuiTouchRipple-root-59"
+    />
+  </a>
+</div>
+`;
+
+exports[`ProductsPageContainer renders correctly with a simple list: loading data 1`] = `
+<div>
+  <img
+    alt="progress"
+    class=""
+    src="/images/loading-boxes.gif"
+    style="height: 40px; width: 40px;"
+  />
+  <table
+    class="MuiTable-root-2"
+  >
+    <thead
+      class="MuiTableHead-root-3"
+    >
+      <tr
+        class="MuiTableRow-root-4 MuiTableRow-head-7"
+      >
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        >
+          Category
+        </th>
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="MuiTableCell-root-9 MuiTableCell-head-10 MuiTableCell-paddingDense-14"
+          scope="col"
+        />
+      </tr>
+    </thead>
+    <tbody
+      class="MuiTableBody-root-21"
+      data-testid="productsTableBody"
+    />
+  </table>
+  <a
+    aria-label="Add"
+    class="MuiButtonBase-root-40 MuiFab-root-30 MuiFab-secondary-33 ProductList-fab-1"
+    data-testid="addProductButton"
+    href="/products/add"
+    role="button"
+    tabindex="0"
+    title="Add product"
+  >
+    <span
+      class="MuiFab-label-31"
+    >
+      <svg
+        aria-hidden="true"
+        class="MuiSvgIcon-root-43"
+        focusable="false"
+        role="presentation"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+        <path
+          d="M0 0h24v24H0z"
+          fill="none"
+        />
+      </svg>
+    </span>
+    <span
+      class="MuiTouchRipple-root-59"
+    />
+  </a>
+</div>
+`;
+
+exports[`ProductsPageContainer renders correctly with a simple list: store loaded data 1`] = `
+"{
+  \\"products\\": {
+    \\"byId\\": {
+      \\"abc\\": {
+        \\"id\\": \\"abc\\",
+        \\"name\\": \\"hello\\"
+      }
+    },
+    \\"allIds\\": [
+      \\"abc\\"
+    ],
+    \\"loading\\": false
+  },
+  \\"user\\": {
+    \\"hasInitialized\\": false,
+    \\"loading\\": false,
+    \\"isUpdating\\": false,
+    \\"hasTriggeredReset\\": false
+  },
+  \\"boxes\\": {
+    \\"byId\\": {},
+    \\"allIds\\": [],
+    \\"loading\\": false
+  }
+}"
+`;
+
+exports[`ProductsPageContainer renders correctly with a simple list: store loading data 1`] = `
+"{
+  \\"products\\": {
+    \\"byId\\": {},
+    \\"allIds\\": [],
+    \\"loading\\": true
+  },
+  \\"user\\": {
+    \\"hasInitialized\\": false,
+    \\"loading\\": false,
+    \\"isUpdating\\": false,
+    \\"hasTriggeredReset\\": false
+  },
+  \\"boxes\\": {
+    \\"byId\\": {},
+    \\"allIds\\": [],
+    \\"loading\\": false
+  }
+}"
+`;
