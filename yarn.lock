@@ -971,10 +971,17 @@
     "@firebase/storage-types" "0.2.11"
     tslib "1.9.3"
 
-"@firebase/util@0.2.14", "@firebase/util@^0.2.14":
+"@firebase/util@0.2.14":
   version "0.2.14"
   resolved "https://registry.yarnpkg.com/@firebase/util/-/util-0.2.14.tgz#c22911407453436d0f472c8d408791a6bd5feb9c"
   integrity sha512-2ke1Lra0R5T+5ucCMWft/IB2rI/IzumHHYm9aqrM9lJ3XURiWmBHAYrvaPVP7///gDhJAo+NNDUCAJH/Y4PmvA==
+  dependencies:
+    tslib "1.9.3"
+
+"@firebase/util@^0.2.21":
+  version "0.2.21"
+  resolved "https://registry.yarnpkg.com/@firebase/util/-/util-0.2.21.tgz#b9a592d6381efbc526ea8b07ec94875800935f64"
+  integrity sha512-80ZblYuorX4Udr4wPzht1upQzk99xS2SIRfl4gvTNiu5WXKTSKKk5WbpiR8IL2bYVSo/dd634B2L7BOTEjHcqA==
   dependencies:
     tslib "1.9.3"
 
