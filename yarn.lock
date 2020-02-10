@@ -825,10 +825,15 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-"@firebase/app-types@0.3.10", "@firebase/app-types@^0.3.10":
+"@firebase/app-types@0.3.10":
   version "0.3.10"
   resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.3.10.tgz#8f6d24d80bf833622b53ed26eaa04cfa9dd0f2f3"
   integrity sha512-l+5BJtSQopalBXiY/YuSaB9KF9PnDj37FLV0Sx3qJjh5B3IthCuZbPc1Vpbbbee/QZgudl0G212BBsUMGHP+fQ==
+
+"@firebase/app-types@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@firebase/app-types/-/app-types-0.5.1.tgz#8add41d10c533759a80a376d09d24af0a1009343"
+  integrity sha512-fhe4KxEoRLD596tuIkvBXVHedVByI5ALzf5nMraOXsnBxLY0gKcMSXQGwwPxZyeUt/S1VM8DRVXOg9shegEO7g==
 
 "@firebase/app@0.3.17":
   version "0.3.17"
