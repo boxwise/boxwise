@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@firebase/app-types": "^0.3.10",
-    "@firebase/util": "^0.2.14",
+    "@firebase/util": "^0.2.43",
     "@material-ui/core": "^3.9.3",
     "@material-ui/icons": "^3.0.2",
     "@sentry/browser": "^5.1.1",
