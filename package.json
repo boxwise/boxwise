@@ -45,7 +45,7 @@
     "expect-firestore": "^1.0.1",
     "firebase-mock": "^2.2.10",
     "firebase-tools": "^6.8.0",
-    "husky": "^2.2.0",
+    "husky": "^4.2.5",
     "jest": "^24.7.1",
     "lint-staged": "^8.1.5",
     "madge": "^3.4.4",
