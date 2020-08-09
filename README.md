@@ -2,6 +2,7 @@
 [![Codecov Coverage](https://img.shields.io/codecov/c/github/boxwise/boxwise/master.svg?style=flat-square)](https://codecov.io/gh/boxwise/boxwise/)
 
 # Boxwise
+**THIS REPOSITORY IS ARCHIVED.** Please refer to our [Dropapp](https://github.com/boxwise/dropapp), [boxwise-react](https://github.com/boxwise/boxwise-react), and [boxwise-flask](https://github.com/boxwise/boxwise-flask) repos to view its replacement.
 
 Boxwise makes it easy for organizations (such as refugee camps) to distribute donated goods to people in need. It consists of:
 
