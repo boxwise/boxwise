@@ -9,32 +9,42 @@ before_install:
 # install specific version of yarn
 - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.15.2
 - export PATH="$HOME/.yarn/bin:$PATH"
-script:
-- yarn test-with-coverage
-- yarn test-no-cycles
-- yarn lint
-- cp .travis/.env.feature-tests ./.env.local
-- yarn start &
-- yarn wait-on http://localhost:3000
-- yarn cypress run --record
-# .env.production is kept out of the root directory, because if it were there
-# running "firebase deploy" would create a clone of our real production
-# environment. This is not something we can stop (they are public details) but
-# we should at least stop people from doing it accidentally.
-- cp .travis/.env.production ./
-- yarn build
-after_success:
-- yarn upload-coverage-report
-branches:
-  only:
-  - master
-deploy:
-  provider: firebase
-  project: boxwise-production
-  edge: true
-  skip_cleanup: true
-  token:
-    secure: tMSjTph1dH/aU8XkrxpyjT5b911oi7+qIylFySz81u17eNVb7jtmtsNz8SuGZW0u+U+1E6hK9AeotwvTAbKpRtDZYi8lZ4sgcswVkMdk8wHsyTN1kJdatkUV9msi5DMYasHVMTUGTwhICtO4wVoEZ2KuxuwC6kaAXSq6s9nQdb/LJcArzhOYbYQAnSIW4uouPmjrGmF/kxcVrtnfYHTL48Dru7bi7t4ukdhxFNnr6oVX5LUa6O35KMtLEQRpP/0jYAzPPMMPVjVCIsTe96qXkUDY9r2B24CAxYQOwCUMw0lsWJca2pVxkJNgedMOHPH91z1qv9KG+eJSR7O7dGS4cj0EYMF4t3rXjiEEwKcK0G4hYZKGCgsXTAv+RQup/NmkKdtEB7Xtzut7a1oh85rSCPS2hzefOj/2GzS2tRgtyECb1b+tfHB6Pko/eRHqaiH+SGR7iKn96TAp0MxAeJ0v1blY+FzRfNH/LM0BpXtcb5jkNMX5S+HrFuD6yexqK41Q6+5utH8SRBVaVUVccNQ2R0CSK9gloTzRvopu8ITpZkGvisYRB93JeoE4T/UX7E58wwU1CxT1eHUiQI97X3gTO59ZeuWsvkShUsUGLKCdZZXy01eZ+eYHLBSoo7NTU6cwjz7VmJFpLyLP56wQa7+nWXlrY1gAuL+IsVklzY9GVYg=
+# script:
+# - yarn test-with-coverage
+# - yarn test-no-cycles
+# - yarn lint
+# - cp .travis/.env.feature-tests ./.env.local
+# - yarn start &
+# - yarn wait-on http://localhost:3000
+# - yarn cypress run --record
+# # .env.production is kept out of the root directory, because if it were there
+# # running "firebase deploy" would create a clone of our real production
+# # environment. This is not something we can stop (they are public details) but
+# # we should at least stop people from doing it accidentally.
+# - cp .travis/.env.production ./
+# - yarn build
+jobs:
+  fast_finish: true
+  include:
+    - stage: Unit tests
+      script: yarn test-with-coverage
+    - script: yarn test-no-cycles
+    - script: yarn lint
+    - stage: Browser tests
+      script: ./run-browser-tests.sh
+    - stage: Build
+      script: ./run-build.sh
+    - stage: Deploy
+      if: branch = master
+      deploy:
+        provider: firebase
+        project: boxwise-production
+        edge: true
+        skip_cleanup: true
+        token:
+          secure: tMSjTph1dH/aU8XkrxpyjT5b911oi7+qIylFySz81u17eNVb7jtmtsNz8SuGZW0u+U+1E6hK9AeotwvTAbKpRtDZYi8lZ4sgcswVkMdk8wHsyTN1kJdatkUV9msi5DMYasHVMTUGTwhICtO4wVoEZ2KuxuwC6kaAXSq6s9nQdb/LJcArzhOYbYQAnSIW4uouPmjrGmF/kxcVrtnfYHTL48Dru7bi7t4ukdhxFNnr6oVX5LUa6O35KMtLEQRpP/0jYAzPPMMPVjVCIsTe96qXkUDY9r2B24CAxYQOwCUMw0lsWJca2pVxkJNgedMOHPH91z1qv9KG+eJSR7O7dGS4cj0EYMF4t3rXjiEEwKcK0G4hYZKGCgsXTAv+RQup/NmkKdtEB7Xtzut7a1oh85rSCPS2hzefOj/2GzS2tRgtyECb1b+tfHB6Pko/eRHqaiH+SGR7iKn96TAp0MxAeJ0v1blY+FzRfNH/LM0BpXtcb5jkNMX5S+HrFuD6yexqK41Q6+5utH8SRBVaVUVccNQ2R0CSK9gloTzRvopu8ITpZkGvisYRB93JeoE4T/UX7E58wwU1CxT1eHUiQI97X3gTO59ZeuWsvkShUsUGLKCdZZXy01eZ+eYHLBSoo7NTU6cwjz7VmJFpLyLP56wQa7+nWXlrY1gAuL+IsVklzY9GVYg=
+      after_success:
+        - yarn upload-coverage-report
 notifications:
   slack:
     on_success: change
